@@ -23,6 +23,8 @@
 		0F068D79167CD97F00E2C536 /* LWebServiceError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F068D76167CD97B00E2C536 /* LWebServiceError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F068D7A167CD97F00E2C536 /* LWebServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F068D77167CD97C00E2C536 /* LWebServiceError.m */; };
 		0F068D7C167CD97F00E2C536 /* LWebServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F068D77167CD97C00E2C536 /* LWebServiceError.m */; };
+		0F0A122E1B2968E7004C25E1 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0A12291B2968D6004C25E1 /* libsbjson-ios.a */; };
+		0F0A12311B2968F3004C25E1 /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0A12251B2968D6004C25E1 /* SBJson.framework */; };
 		0F0C6B9F17707301008587E0 /* LDataSubmitterPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0C6B9D17707301008587E0 /* LDataSubmitterPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F0C6BA017707301008587E0 /* LDataSubmitterPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0C6B9D17707301008587E0 /* LDataSubmitterPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F0C6BA117707301008587E0 /* LDataSubmitterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0C6B9E17707301008587E0 /* LDataSubmitterPlugin.m */; };
@@ -667,33 +669,47 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0F0A12151B2967E8004C25E1 /* PBXContainerItemProxy */ = {
+		0F0A12241B2968D6004C25E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
+			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BC12323D1391D5CC00131607;
 			remoteInfo = SBJson;
 		};
-		0F0A12171B2967E8004C25E1 /* PBXContainerItemProxy */ = {
+		0F0A12261B2968D6004C25E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
+			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BC1232521391D5CC00131607;
 			remoteInfo = SBJsonTests;
 		};
-		0F0A12191B2967E8004C25E1 /* PBXContainerItemProxy */ = {
+		0F0A12281B2968D6004C25E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
+			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BCC2626913920FC7003D9994;
 			remoteInfo = "sbjson-ios";
 		};
-		0F0A121B1B2967E8004C25E1 /* PBXContainerItemProxy */ = {
+		0F0A122A1B2968D6004C25E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
+			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BCC2627313920FC7003D9994;
 			remoteInfo = "sbjson-iosTests";
+		};
+		0F0A122C1B2968DF004C25E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCC2626813920FC7003D9994;
+			remoteInfo = "sbjson-ios";
+		};
+		0F0A122F1B2968ED004C25E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC12323C1391D5CC00131607;
+			remoteInfo = SBJson;
 		};
 		0F427AED16F30A2F00300E2B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -770,6 +786,7 @@
 		0F08B7D716A659FE0093A9D6 /* LiTunesProductsRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiTunesProductsRequestDelegate.h; sourceTree = "<group>"; };
 		0F08B7D816A659FE0093A9D6 /* LiTunesProductsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiTunesProductsRequest.h; sourceTree = "<group>"; };
 		0F08B7D916A659FE0093A9D6 /* LiTunesProductsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiTunesProductsRequest.m; sourceTree = "<group>"; };
+		0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "3rdParty/json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
 		0F0C6B9D17707301008587E0 /* LDataSubmitterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDataSubmitterPlugin.h; sourceTree = "<group>"; };
 		0F0C6B9E17707301008587E0 /* LDataSubmitterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDataSubmitterPlugin.m; sourceTree = "<group>"; };
 		0F0C6BA51770735A008587E0 /* LDataSubmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDataSubmitter.h; sourceTree = "<group>"; };
@@ -1199,7 +1216,6 @@
 		7EEBEE8B13E3C6FC00DDFB8E /* LRemoteDebuggingSubmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRemoteDebuggingSubmitter.m; sourceTree = "<group>"; };
 		7EECD53613DB0A8D00AB9859 /* LWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWebServiceClient.h; sourceTree = "<group>"; };
 		7EECD53713DB0A8D00AB9859 /* LWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWebServiceClient.m; sourceTree = "<group>"; };
-		7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "3rdParty/json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
 		7EECD54D13DB2D6A00AB9859 /* NSURLRequest+SSLChecks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SSLChecks.h"; sourceTree = "<group>"; };
 		7EF2B0EF13CD797800422A74 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
 		7EF2B0F013CD797800422A74 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
@@ -1217,6 +1233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F0A122E1B2968E7004C25E1 /* libsbjson-ios.a in Frameworks */,
 				0FEF2C291774499A001631C9 /* Foundation.framework in Frameworks */,
 				0FEF2C27177448AC001631C9 /* CoreGraphics.framework in Frameworks */,
 				0FEF2C2517744893001631C9 /* UIKit.framework in Frameworks */,
@@ -1257,6 +1274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F0A12311B2968F3004C25E1 /* SBJson.framework in Frameworks */,
 				0FEF2C2E17744C45001631C9 /* CoreFoundation.framework in Frameworks */,
 				0FE9D7F61696EB20003B8672 /* MagicKit.framework in Frameworks */,
 			);
@@ -1303,13 +1321,13 @@
 			name = Store;
 			sourceTree = "<group>";
 		};
-		0F0A120F1B2967E8004C25E1 /* Products */ = {
+		0F0A121E1B2968D6004C25E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0F0A12161B2967E8004C25E1 /* SBJson.framework */,
-				0F0A12181B2967E8004C25E1 /* SBJsonTests.octest */,
-				0F0A121A1B2967E8004C25E1 /* libsbjson-ios.a */,
-				0F0A121C1B2967E8004C25E1 /* sbjson-iosTests.octest */,
+				0F0A12251B2968D6004C25E1 /* SBJson.framework */,
+				0F0A12271B2968D6004C25E1 /* SBJsonTests.octest */,
+				0F0A12291B2968D6004C25E1 /* libsbjson-ios.a */,
+				0F0A122B1B2968D6004C25E1 /* sbjson-iosTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1337,8 +1355,8 @@
 		0F194C61135C82B4002C7AB2 = {
 			isa = PBXGroup;
 			children = (
+				0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */,
 				0FE9D7E11696EB07003B8672 /* MagicKit.xcodeproj */,
-				7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */,
 				0F194C71135C82B4002C7AB2 /* Lightcast iOS */,
 				7EB6A7EF13D97DDC002C8325 /* 3rd Party Libraries */,
 				0F194CFC135C87D2002C7AB2 /* Shared */,
@@ -2955,6 +2973,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0F0A122D1B2968DF004C25E1 /* PBXTargetDependency */,
 				0FE9D7F21696EB11003B8672 /* PBXTargetDependency */,
 			);
 			name = Lightcast;
@@ -3012,6 +3031,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0F0A12301B2968ED004C25E1 /* PBXTargetDependency */,
 				0FE9D7F51696EB1C003B8672 /* PBXTargetDependency */,
 			);
 			name = "Lightcast-MacOSX";
@@ -3043,7 +3063,7 @@
 		0F194C63135C82B4002C7AB2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Nimasystems Ltd";
 			};
 			buildConfigurationList = 0F194C66135C82B4002C7AB2 /* Build configuration list for PBXProject "Lightcast" */;
@@ -3064,8 +3084,8 @@
 					ProjectRef = 0FE9D7E11696EB07003B8672 /* MagicKit.xcodeproj */;
 				},
 				{
-					ProductGroup = 0F0A120F1B2967E8004C25E1 /* Products */;
-					ProjectRef = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
+					ProductGroup = 0F0A121E1B2968D6004C25E1 /* Products */;
+					ProjectRef = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -3080,32 +3100,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0F0A12161B2967E8004C25E1 /* SBJson.framework */ = {
+		0F0A12251B2968D6004C25E1 /* SBJson.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = SBJson.framework;
-			remoteRef = 0F0A12151B2967E8004C25E1 /* PBXContainerItemProxy */;
+			remoteRef = 0F0A12241B2968D6004C25E1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0F0A12181B2967E8004C25E1 /* SBJsonTests.octest */ = {
+		0F0A12271B2968D6004C25E1 /* SBJsonTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = SBJsonTests.octest;
-			remoteRef = 0F0A12171B2967E8004C25E1 /* PBXContainerItemProxy */;
+			remoteRef = 0F0A12261B2968D6004C25E1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0F0A121A1B2967E8004C25E1 /* libsbjson-ios.a */ = {
+		0F0A12291B2968D6004C25E1 /* libsbjson-ios.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libsbjson-ios.a";
-			remoteRef = 0F0A12191B2967E8004C25E1 /* PBXContainerItemProxy */;
+			remoteRef = 0F0A12281B2968D6004C25E1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0F0A121C1B2967E8004C25E1 /* sbjson-iosTests.octest */ = {
+		0F0A122B1B2968D6004C25E1 /* sbjson-iosTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "sbjson-iosTests.octest";
-			remoteRef = 0F0A121B1B2967E8004C25E1 /* PBXContainerItemProxy */;
+			remoteRef = 0F0A122A1B2968D6004C25E1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0FE9D7EC1696EB08003B8672 /* MagicKit.framework */ = {
@@ -3560,6 +3580,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0F0A122D1B2968DF004C25E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "sbjson-ios";
+			targetProxy = 0F0A122C1B2968DF004C25E1 /* PBXContainerItemProxy */;
+		};
+		0F0A12301B2968ED004C25E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SBJson;
+			targetProxy = 0F0A122F1B2968ED004C25E1 /* PBXContainerItemProxy */;
+		};
 		0F427AEE16F30A2F00300E2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7E2C640713F006D30092D661 /* Lightcast-MacOSX */;
@@ -3594,6 +3624,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -3604,7 +3635,7 @@
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Lightcast;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3703,6 +3734,7 @@
 				INFOPLIST_FILE = "LightcastTestApp/LightcastTestApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nimasystems.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3729,6 +3761,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nimasystems.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3915,6 +3948,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nimasystems.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
