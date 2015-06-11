@@ -433,7 +433,6 @@
 		0FEF2C2517744893001631C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C2417744893001631C9 /* UIKit.framework */; };
 		0FEF2C27177448AC001631C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C26177448AC001631C9 /* CoreGraphics.framework */; };
 		0FEF2C291774499A001631C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C281774499A001631C9 /* Foundation.framework */; };
-		0FEF2C2C17744C3E001631C9 /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EECD54213DB22D100AB9859 /* SBJson.framework */; };
 		0FEF2C2E17744C45001631C9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C2D17744C45001631C9 /* CoreFoundation.framework */; };
 		0FEF2C32177458B3001631C9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C31177458B3001631C9 /* CFNetwork.framework */; };
 		0FEF2C34177458BA001631C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C33177458BA001631C9 /* QuartzCore.framework */; };
@@ -444,7 +443,6 @@
 		0FEF2C3E177458E5001631C9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C3D177458E5001631C9 /* libz.dylib */; };
 		0FEF2C4117745901001631C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C4017745901001631C9 /* Foundation.framework */; };
 		0FEF2C4217745907001631C9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C2D17744C45001631C9 /* CoreFoundation.framework */; };
-		0FEF2C4317745917001631C9 /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EECD54213DB22D100AB9859 /* SBJson.framework */; };
 		0FEF2C4417745958001631C9 /* MagicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE9D7EC1696EB08003B8672 /* MagicKit.framework */; };
 		0FEF2C461774599F001631C9 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C451774599F001631C9 /* AppKit.framework */; };
 		0FEF2C4917745A09001631C9 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C4817745A09001631C9 /* CoreServices.framework */; };
@@ -650,7 +648,6 @@
 		7EEBEE8D13E3C6FD00DDFB8E /* LRemoteDebuggingSubmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBEE8B13E3C6FC00DDFB8E /* LRemoteDebuggingSubmitter.m */; };
 		7EECD53813DB0A8D00AB9859 /* LWebServiceClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EECD53613DB0A8D00AB9859 /* LWebServiceClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EECD53913DB0A8D00AB9859 /* LWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EECD53713DB0A8D00AB9859 /* LWebServiceClient.m */; };
-		7EECD54913DB22E500AB9859 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EECD54613DB22D100AB9859 /* libsbjson-ios.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		7EECD54E13DB2D6A00AB9859 /* NSURLRequest+SSLChecks.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EECD54D13DB2D6A00AB9859 /* NSURLRequest+SSLChecks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EF2B0F113CD797800422A74 /* UIColor+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EF2B0EF13CD797800422A74 /* UIColor+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EF2B0F213CD797800422A74 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF2B0F013CD797800422A74 /* UIColor+Additions.m */; };
@@ -670,6 +667,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0F0A12151B2967E8004C25E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC12323D1391D5CC00131607;
+			remoteInfo = SBJson;
+		};
+		0F0A12171B2967E8004C25E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC1232521391D5CC00131607;
+			remoteInfo = SBJsonTests;
+		};
+		0F0A12191B2967E8004C25E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCC2626913920FC7003D9994;
+			remoteInfo = "sbjson-ios";
+		};
+		0F0A121B1B2967E8004C25E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCC2627313920FC7003D9994;
+			remoteInfo = "sbjson-iosTests";
+		};
 		0F427AED16F30A2F00300E2B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F194C63135C82B4002C7AB2 /* Project object */;
@@ -718,48 +743,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = MagicKit;
-		};
-		7E2C643113F006EA0092D661 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BC12323C1391D5CC00131607;
-			remoteInfo = SBJson;
-		};
-		7EECD54113DB22D100AB9859 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC12323D1391D5CC00131607;
-			remoteInfo = SBJson;
-		};
-		7EECD54313DB22D100AB9859 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC1232521391D5CC00131607;
-			remoteInfo = SBJsonTests;
-		};
-		7EECD54513DB22D100AB9859 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCC2626913920FC7003D9994;
-			remoteInfo = "sbjson-ios";
-		};
-		7EECD54713DB22D100AB9859 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCC2627313920FC7003D9994;
-			remoteInfo = "sbjson-iosTests";
-		};
-		7EECD54A13DB22F300AB9859 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCC2626813920FC7003D9994;
-			remoteInfo = "sbjson-ios";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1216,7 +1199,7 @@
 		7EEBEE8B13E3C6FC00DDFB8E /* LRemoteDebuggingSubmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRemoteDebuggingSubmitter.m; sourceTree = "<group>"; };
 		7EECD53613DB0A8D00AB9859 /* LWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWebServiceClient.h; sourceTree = "<group>"; };
 		7EECD53713DB0A8D00AB9859 /* LWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWebServiceClient.m; sourceTree = "<group>"; };
-		7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "../../json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
+		7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "3rdParty/json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
 		7EECD54D13DB2D6A00AB9859 /* NSURLRequest+SSLChecks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SSLChecks.h"; sourceTree = "<group>"; };
 		7EF2B0EF13CD797800422A74 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
 		7EF2B0F013CD797800422A74 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
@@ -1239,7 +1222,6 @@
 				0FEF2C2517744893001631C9 /* UIKit.framework in Frameworks */,
 				0FEF2C231774488E001631C9 /* QuartzCore.framework in Frameworks */,
 				0FE9D7F31696EB16003B8672 /* libMagicKit-iOS.a in Frameworks */,
-				7EECD54913DB22E500AB9859 /* libsbjson-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1276,7 +1258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FEF2C2E17744C45001631C9 /* CoreFoundation.framework in Frameworks */,
-				0FEF2C2C17744C3E001631C9 /* SBJson.framework in Frameworks */,
 				0FE9D7F61696EB20003B8672 /* MagicKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1288,7 +1269,6 @@
 				0FEF2C4917745A09001631C9 /* CoreServices.framework in Frameworks */,
 				0FEF2C461774599F001631C9 /* AppKit.framework in Frameworks */,
 				0FEF2C4417745958001631C9 /* MagicKit.framework in Frameworks */,
-				0FEF2C4317745917001631C9 /* SBJson.framework in Frameworks */,
 				0FEF2C4217745907001631C9 /* CoreFoundation.framework in Frameworks */,
 				0FEF2C4117745901001631C9 /* Foundation.framework in Frameworks */,
 				0FEF2C3E177458E5001631C9 /* libz.dylib in Frameworks */,
@@ -1321,6 +1301,17 @@
 				0F08B7D916A659FE0093A9D6 /* LiTunesProductsRequest.m */,
 			);
 			name = Store;
+			sourceTree = "<group>";
+		};
+		0F0A120F1B2967E8004C25E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F0A12161B2967E8004C25E1 /* SBJson.framework */,
+				0F0A12181B2967E8004C25E1 /* SBJsonTests.octest */,
+				0F0A121A1B2967E8004C25E1 /* libsbjson-ios.a */,
+				0F0A121C1B2967E8004C25E1 /* sbjson-iosTests.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		0F0C6B99177072E5008587E0 /* DataSubmitter */ = {
@@ -2563,17 +2554,6 @@
 			name = "Web Services";
 			sourceTree = "<group>";
 		};
-		7EECD53B13DB22D100AB9859 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7EECD54213DB22D100AB9859 /* SBJson.framework */,
-				7EECD54413DB22D100AB9859 /* SBJsonTests.octest */,
-				7EECD54613DB22D100AB9859 /* libsbjson-ios.a */,
-				7EECD54813DB22D100AB9859 /* sbjson-iosTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		7EECD54C13DB2D4B00AB9859 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -2976,7 +2956,6 @@
 			);
 			dependencies = (
 				0FE9D7F21696EB11003B8672 /* PBXTargetDependency */,
-				7EECD54B13DB22F300AB9859 /* PBXTargetDependency */,
 			);
 			name = Lightcast;
 			productName = "Lightcast iOS";
@@ -3034,7 +3013,6 @@
 			);
 			dependencies = (
 				0FE9D7F51696EB1C003B8672 /* PBXTargetDependency */,
-				7E2C643213F006EA0092D661 /* PBXTargetDependency */,
 			);
 			name = "Lightcast-MacOSX";
 			productName = "Lightcast-MacOSX";
@@ -3086,7 +3064,7 @@
 					ProjectRef = 0FE9D7E11696EB07003B8672 /* MagicKit.xcodeproj */;
 				},
 				{
-					ProductGroup = 7EECD53B13DB22D100AB9859 /* Products */;
+					ProductGroup = 0F0A120F1B2967E8004C25E1 /* Products */;
 					ProjectRef = 7EECD53A13DB22D100AB9859 /* SBJson.xcodeproj */;
 				},
 			);
@@ -3102,6 +3080,34 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0F0A12161B2967E8004C25E1 /* SBJson.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SBJson.framework;
+			remoteRef = 0F0A12151B2967E8004C25E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0F0A12181B2967E8004C25E1 /* SBJsonTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SBJsonTests.octest;
+			remoteRef = 0F0A12171B2967E8004C25E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0F0A121A1B2967E8004C25E1 /* libsbjson-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libsbjson-ios.a";
+			remoteRef = 0F0A12191B2967E8004C25E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0F0A121C1B2967E8004C25E1 /* sbjson-iosTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "sbjson-iosTests.octest";
+			remoteRef = 0F0A121B1B2967E8004C25E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0FE9D7EC1696EB08003B8672 /* MagicKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -3121,34 +3127,6 @@
 			fileType = "compiled.mach-o.executable";
 			path = MagicKitTest;
 			remoteRef = 0FE9D7EF1696EB08003B8672 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7EECD54213DB22D100AB9859 /* SBJson.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SBJson.framework;
-			remoteRef = 7EECD54113DB22D100AB9859 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7EECD54413DB22D100AB9859 /* SBJsonTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SBJsonTests.octest;
-			remoteRef = 7EECD54313DB22D100AB9859 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7EECD54613DB22D100AB9859 /* libsbjson-ios.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libsbjson-ios.a";
-			remoteRef = 7EECD54513DB22D100AB9859 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7EECD54813DB22D100AB9859 /* sbjson-iosTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "sbjson-iosTests.octest";
-			remoteRef = 7EECD54713DB22D100AB9859 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -3601,16 +3579,6 @@
 			isa = PBXTargetDependency;
 			name = MagicKit;
 			targetProxy = 0FE9D7F41696EB1C003B8672 /* PBXContainerItemProxy */;
-		};
-		7E2C643213F006EA0092D661 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SBJson;
-			targetProxy = 7E2C643113F006EA0092D661 /* PBXContainerItemProxy */;
-		};
-		7EECD54B13DB22F300AB9859 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "sbjson-ios";
-			targetProxy = 7EECD54A13DB22F300AB9859 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
