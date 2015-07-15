@@ -57,7 +57,7 @@
 }
 
 - (NSString *)getStrWithNullValue {
-	if ([self isEqual:[NSNull null]])
+	if (self == (id)[NSNull null])
     {
         return @"NULL";
     }
