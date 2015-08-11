@@ -92,7 +92,7 @@
 
 - (NSString *)sqlString
 {
-    return @"";
+    return [self addSlashes];
 }
 
 - (int)sqlInt
