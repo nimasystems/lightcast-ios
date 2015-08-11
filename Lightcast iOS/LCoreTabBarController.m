@@ -47,13 +47,14 @@ controllerDelegate;
     {
         selectedViewController = nil;
         tabBar = [tabBar_ retain];
+        _innerView = [[[UIView alloc] init] autorelease];
     }
     return self;
 }
 
 - (id)init
 {
-    return [self initWithTabBar:nil];
+    return [self initWithTabBar:[[[LCoreTabBarView alloc] init] autorelease]];
 }
 
 - (void)dealloc
@@ -74,15 +75,12 @@ controllerDelegate;
 {
     [super viewDidLoad];
     
-    if (!tabBar)
-    {
-        CGRect tabBarFrame = CGRectMake(0,
-                                        self.view.bounds.size.height - kLCoreTabBarControllerDefaultTabBarHeight,
-                                        self.view.bounds.size.width,
-                                        kLCoreTabBarControllerDefaultTabBarHeight
-                                        );
-        tabBar = [[LCoreTabBarView alloc] initWithFrame:tabBarFrame];
-    }
+    CGRect tabBarFrame = CGRectMake(0,
+                                    self.view.bounds.size.height - kLCoreTabBarControllerDefaultTabBarHeight,
+                                    self.view.bounds.size.width,
+                                    kLCoreTabBarControllerDefaultTabBarHeight
+                                    );
+    tabBar.frame = tabBarFrame;
     
     tabBar.delegate = self;
     
@@ -92,7 +90,7 @@ controllerDelegate;
                                        self.view.bounds.size.width,
                                        self.view.bounds.size.height - tabBar.frame.size.height);
     
-    _innerView = [[UIView alloc] initWithFrame:innerViewFrame];
+    _innerView.frame = innerViewFrame;
 
     [self.view addSubview:_innerView];
 }
