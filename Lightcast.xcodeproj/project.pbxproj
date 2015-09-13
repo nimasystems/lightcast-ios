@@ -620,7 +620,7 @@
 		7E9A9AD813F17243002C3D7A /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0CE13E140DC0089273C /* ioapi.c */; };
 		7E9A9AE213F17276002C3D7A /* ZipWriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 3623A0DF13E140DC0089273C /* ZipWriteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EA4C86E13AB459D00026105 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA4C86C13AB459D00026105 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EA4C86F13AB459D00026105 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4C86D13AB459D00026105 /* Reachability.m */; };
+		7EA4C86F13AB459D00026105 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4C86D13AB459D00026105 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7EB6A7D313D86121002C8325 /* LiTunesImportExportPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A7D113D86121002C8325 /* LiTunesImportExportPlugin.m */; };
 		7EB6A80213D97F8E002C8325 /* ATMHud.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A7F513D97F8E002C8325 /* ATMHud.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB6A80313D97F8E002C8325 /* ATMHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A7F613D97F8E002C8325 /* ATMHud.m */; };

@@ -36,6 +36,8 @@
     
 - (UIImage*)screenshot;
 
+- (CGSize)realResolution;
+
 + (BOOL)isRetina;
 + (BOOL)isIphone5;
 

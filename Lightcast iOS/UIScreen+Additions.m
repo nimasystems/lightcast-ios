@@ -35,6 +35,12 @@
 
 @implementation UIScreen(LAdditions)
 
+- (CGSize)realResolution {
+    CGRect screenBounds = self.bounds;
+    CGFloat screenScale = self.scale;
+    return CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
+}
+
 - (UIImage*)screenshot 
 {
     // Create a graphics context with the target size

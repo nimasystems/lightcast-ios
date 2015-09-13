@@ -643,7 +643,7 @@ allowCompressedResponse;
                         if (!reopened)
                         {
                             // create the error
-                            NSError *err = [NSError errorWithDomainAndDescription:LUrlDownloaderErrorDomain errorCode:LUrlDownloaderErrorGeneric localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Could not reopen connection after obtaining HTTP Authentication information (%@)"), redirectLocation]];
+                            NSError *err = [NSError errorWithDomainAndDescription:LUrlDownloaderErrorDomain errorCode:LUrlDownloaderErrorGeneric localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Could not reopen connection after obtaining HTTP Authentication information (%@)"), reopenError]];
                             
                             if (error != NULL)
                             {
@@ -725,6 +725,10 @@ allowCompressedResponse;
         *shouldContinuePolling = NO;
     }
     
+    if (_finished) {
+        return NO;
+    }
+    
     // Work out stream's data
     lassert(_stream);
     
@@ -804,6 +808,10 @@ allowCompressedResponse;
         
         if (!headersParsed)
         {
+            return NO;
+        }
+        
+        if (_finished) {
             return NO;
         }
         
@@ -1001,7 +1009,7 @@ allowCompressedResponse;
 {
     lassert(!_fileHandle);
     lassert(downloadPath);
-    lassert(!pathToDownloadedFile);
+    //lassert(!pathToDownloadedFile);
     
     if (error != NULL)
     {
