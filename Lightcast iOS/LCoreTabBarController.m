@@ -470,7 +470,15 @@ controllerDelegate;
                 
                 NSString *title = (itm && ![NSString isNullOrEmpty:itm.title]) ? itm.title : @"";
                 UIImage *img = itm ? itm.image : nil;
-                UIImage *selectedImg = itm ? itm.finishedSelectedImage : nil;
+                
+                UIImage *selectedImg = nil;
+                
+                if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+                    selectedImg = itm ? itm.finishedSelectedImage : nil;
+                    selectedImg = selectedImg ? selectedImg : itm.selectedImage;
+                } else {
+                    selectedImg = itm ? itm.finishedSelectedImage : nil;
+                }
                 
                 tab = [[[LCoreTabBarControllerTab alloc] initWithTitle:title icon:img selectedIcon:selectedImg] autorelease];
             }
