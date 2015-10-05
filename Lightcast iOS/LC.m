@@ -89,6 +89,8 @@ NSString *LightcastLocalizedString(NSString *key)
     
     LCompressingLogFileManager *_logFileManager;
     DDFileLogger *_fileLogger;
+    
+    BOOL _consoleLoggersAdded;
 }
 
 @synthesize
@@ -141,8 +143,7 @@ logFileManager=_logFileManager;
         
         // attach console logger
 #if DEBUG || TESTING
-        [DDLog addLogger:[DDASLLogger sharedInstance]];
-        [DDLog addLogger:[DDTTYLogger sharedInstance]];
+        [self addConsoleLoggers];
 #endif
         
         _logFileManager = nil;
@@ -288,6 +289,14 @@ logFileManager=_logFileManager;
 	
     // notify everyone
     [nd postNotification:[LNotification notificationWithName:lnLightcastInitialized]];
+}
+
+- (void)addConsoleLoggers {
+    if (!_consoleLoggersAdded) {
+        _consoleLoggersAdded = YES;
+        [DDLog addLogger:[DDASLLogger sharedInstance]];
+        [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    }
 }
 
 - (BOOL)initEnvPaths:(NSError**)error

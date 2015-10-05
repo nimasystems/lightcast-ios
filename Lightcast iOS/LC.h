@@ -143,6 +143,7 @@ NSString *LightcastLocalizedString(NSString *key);
 
 - (BOOL)initFileLogger:(NSString*)logsDirectory error:(NSError**)error;
 - (BOOL)initFileLogger:(NSString*)logsDirectory compressLogs:(BOOL)compressLogs error:(NSError**)error;
+- (void)addConsoleLoggers;
 
 + (BOOL)resetAppData:(NSError**)error configuration:(LCAppConfiguration*)aConfiguration;
 
