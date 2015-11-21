@@ -273,6 +273,10 @@
 		0F91478616A8F65100E08821 /* LCoreTabBarControllerTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F91478416A8F64F00E08821 /* LCoreTabBarControllerTab.m */; };
 		0F91478A16A8F82800E08821 /* LCoreTabBarSelectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91478816A8F82700E08821 /* LCoreTabBarSelectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F91478B16A8F82800E08821 /* LCoreTabBarSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F91478916A8F82800E08821 /* LCoreTabBarSelectionView.m */; };
+		0F99049A1BFE2967008298EC /* LValidatorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9904981BFE2967008298EC /* LValidatorUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F99049B1BFE2967008298EC /* LValidatorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9904981BFE2967008298EC /* LValidatorUtils.h */; };
+		0F99049C1BFE2967008298EC /* LValidatorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9904991BFE2967008298EC /* LValidatorUtils.m */; };
+		0F99049D1BFE2967008298EC /* LValidatorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9904991BFE2967008298EC /* LValidatorUtils.m */; };
 		0FA3BB7A16AA525A00FA5061 /* LUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA3BB7816AA525A00FA5061 /* LUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FA3BB7B16AA525A00FA5061 /* LUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA3BB7816AA525A00FA5061 /* LUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FA3BB7C16AA525A00FA5061 /* LUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3BB7916AA525A00FA5061 /* LUserDefaults.m */; };
@@ -1004,6 +1008,8 @@
 		0F91478416A8F64F00E08821 /* LCoreTabBarControllerTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCoreTabBarControllerTab.m; sourceTree = "<group>"; };
 		0F91478816A8F82700E08821 /* LCoreTabBarSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCoreTabBarSelectionView.h; sourceTree = "<group>"; };
 		0F91478916A8F82800E08821 /* LCoreTabBarSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCoreTabBarSelectionView.m; sourceTree = "<group>"; };
+		0F9904981BFE2967008298EC /* LValidatorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LValidatorUtils.h; sourceTree = "<group>"; };
+		0F9904991BFE2967008298EC /* LValidatorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LValidatorUtils.m; sourceTree = "<group>"; };
 		0FA3BB7816AA525A00FA5061 /* LUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUserDefaults.h; sourceTree = "<group>"; };
 		0FA3BB7916AA525A00FA5061 /* LUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUserDefaults.m; sourceTree = "<group>"; };
 		0FA5D611167F58B400BD51EF /* LVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVars.h; sourceTree = "<group>"; };
@@ -1514,6 +1520,7 @@
 		0F194CE1135C84DE002C7AB2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0F9904941BFE2954008298EC /* Validation */,
 				0FD2A84F1851D5770038E232 /* Security */,
 				7E0995F713D55E2D00A274D8 /* Application */,
 				0FE3F68716CA550B00D14767 /* Bundles */,
@@ -2063,6 +2070,15 @@
 				0F51D06F16A90C1600ED899C /* UIViewController+LCoreTabBarControllerTab.m */,
 			);
 			name = LCoreTabBarController;
+			sourceTree = "<group>";
+		};
+		0F9904941BFE2954008298EC /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				0F9904981BFE2967008298EC /* LValidatorUtils.h */,
+				0F9904991BFE2967008298EC /* LValidatorUtils.m */,
+			);
+			name = Validation;
 			sourceTree = "<group>";
 		};
 		0FA05C0E16A453330031E927 /* Resources */ = {
@@ -2792,6 +2808,7 @@
 				0FCEE2081A73A07300DAB907 /* CLIColor.h in Headers */,
 				0F4D0A9C17AF80E00061CAED /* LCalendarView.h in Headers */,
 				0F4D0AAA17AF90DE0061CAED /* LCalendarGridView.h in Headers */,
+				0F99049A1BFE2967008298EC /* LValidatorUtils.h in Headers */,
 				0F4D0AA217AF80E00061CAED /* LCalendarCellView.h in Headers */,
 				0F4D0A8B17AEAA1B0061CAED /* LStringTranscoder.h in Headers */,
 				0FD2A8551851D59F0038E232 /* LStringObfuscator.h in Headers */,
@@ -2873,6 +2890,7 @@
 				7E2C646913F0081F0092D661 /* NSString+Additions.h in Headers */,
 				7E2C646A13F0081F0092D661 /* LVersionComparator.h in Headers */,
 				7E2C646B13F0081F0092D661 /* GeneralUtils.h in Headers */,
+				0F99049B1BFE2967008298EC /* LValidatorUtils.h in Headers */,
 				7E2C646C13F0081F0092D661 /* NSURLRequest+SSLChecks.h in Headers */,
 				7E2C646D13F0081F0092D661 /* Utilities.h in Headers */,
 				7E2C646E13F0081F0092D661 /* Logging.h in Headers */,
@@ -3420,6 +3438,7 @@
 				0F1EC05617720F6F00F2D6C1 /* SSHardwareInfo.m in Sources */,
 				0F1EC05C17720F6F00F2D6C1 /* SSJailbreakCheck.m in Sources */,
 				0F1EC06217720F6F00F2D6C1 /* SSLocalizationInfo.m in Sources */,
+				0F99049C1BFE2967008298EC /* LValidatorUtils.m in Sources */,
 				0F1EC06817720F6F00F2D6C1 /* SSMemoryInfo.m in Sources */,
 				0F1EC06E17720F6F00F2D6C1 /* SSNetworkInfo.m in Sources */,
 				0F1EC07417720F6F00F2D6C1 /* SSProcessInfo.m in Sources */,
@@ -3502,6 +3521,7 @@
 				7E2C649C13F008710092D661 /* LVersionComparator.m in Sources */,
 				7E2C649D13F008710092D661 /* GeneralUtils.m in Sources */,
 				7E2C649E13F008710092D661 /* Logging.m in Sources */,
+				0F99049D1BFE2967008298EC /* LValidatorUtils.m in Sources */,
 				7EE7919513FB95F60046000F /* NSUserDefaults+Additions.m in Sources */,
 				7E2C649F13F008710092D661 /* LWebServiceClient.m in Sources */,
 				0FCEE2211A73A07300DAB907 /* DDFileLogger.m in Sources */,

@@ -136,13 +136,8 @@ delegate=_delegate;
     if (!_items) return;
     
     CGFloat itemWidth = (_tabItemSize.width);
-    CGFloat tHeight = _tabItemSize.height > self.bounds.size.height ? self.bounds.size.height : _tabItemSize.height;
-    
+
     NSInteger visibleItems = [self maxVisibleTabsForWidth:itemWidth];
-    
-    // set the frame
-    CGRect r = [self innerViewFrameForAlignment:_tabsAlignment itemSize:_tabItemSize numberOfItems:visibleItems];
-    _innerView.frame = r;
     
     // set the alignment
     switch (_tabsAlignment) 
@@ -173,7 +168,54 @@ delegate=_delegate;
         }
     }
     
-    // walk each item
+    for(int i=0;i<visibleItems;i++)
+    {
+        UIView *view = [[[UIView alloc] init] autorelease];
+        view.tag = i;
+        
+        UITabBarItem *itm = [_items objectAtIndex:i];
+        
+        // create the button which will receive the touch events
+        UIButton *itemButton = [[[UIButton alloc] init] autorelease];
+        itemButton.backgroundColor = [UIColor clearColor];
+        itemButton.titleLabel.textColor = [UIColor blackColor];
+        itemButton.tag = i;
+        
+        [itemButton addTarget:self action:@selector(itemTabClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if (itm.image)
+        {
+            [itemButton setImage:itm.image forState:UIControlStateNormal];
+        }
+        
+        if (itm.title)
+        {
+            [itemButton setTitle:itm.title forState:UIControlStateNormal];
+        }
+        
+        [view addSubview:itemButton];
+        [_innerView addSubview:view];
+    }
+    
+    [self setNeedsLayout];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [self layoutTabs];
+}
+
+- (void)layoutTabs {
+
+    CGFloat itemWidth = (_tabItemSize.width);
+    CGFloat tHeight = _tabItemSize.height > self.bounds.size.height ? self.bounds.size.height : _tabItemSize.height;
+    
+    NSInteger visibleItems = [self maxVisibleTabsForWidth:itemWidth];
+    
+    // set the frame
+    CGRect r = [self innerViewFrameForAlignment:_tabsAlignment itemSize:_tabItemSize numberOfItems:visibleItems];
+    _innerView.frame = r;
     
     CGFloat padding = 0.0;
     
@@ -187,62 +229,22 @@ delegate=_delegate;
     {
         padding = _tabItemPadding;
     }
-
-    CGFloat lastX = round(padding / 2);
     
-    NSAutoreleasePool * pool = nil;
+    CGFloat lastX = round(padding / 2);
     
     for(int i=0;i<visibleItems;i++)
     {
-        pool = [[NSAutoreleasePool alloc] init];
+        UIView *view = [_innerView subviewWithTag:i];
         
-        @try 
-        {
-            UIView *view = [[UIView alloc] init];
-            view.tag = i;
-            
-            view.frame = CGRectMake(lastX,
-                                    round(self.bounds.size.height / 2 - tHeight / 2),
-                                    itemWidth,
-                                    tHeight);
-            
-            // the data
-            
-            UITabBarItem *itm = [_items objectAtIndex:i];
-            
-            // create the button which will receive the touch events
-            UIButton *itemButton = [[UIButton alloc] init];
-            itemButton.backgroundColor = [UIColor clearColor];
-            itemButton.titleLabel.textColor = [UIColor blackColor];
-            itemButton.tag = i;
-            
-            [itemButton addTarget:self action:@selector(itemTabClicked:) forControlEvents:UIControlEventTouchUpInside];
-            
-            if (itm.image)
-            {
-                [itemButton setImage:itm.image forState:UIControlStateNormal];
-            }
-            
-            if (itm.title)
-            {
-                [itemButton setTitle:itm.title forState:UIControlStateNormal];
-            }
-            
-            itemButton.frame = view.bounds;
-            
-            [view addSubview:itemButton];
-            [itemButton release];
-            
-            
-            [_innerView addSubview:view];
-            [view release];
-            
-            lastX += (itemWidth + padding);
-        }
-        @finally 
-        {
-            [pool drain];
-        }
+        view.frame = CGRectMake(lastX,
+                                round(self.bounds.size.height / 2 - tHeight / 2),
+                                itemWidth,
+                                tHeight);
+        
+        UIButton *itemButton = (UIButton*)[view subviewWithTag:i];
+        itemButton.frame = view.bounds;
+        
+        lastX += (itemWidth + padding);
     }
 }
 
@@ -307,10 +309,13 @@ delegate=_delegate;
     if (!_items) return 0;
     
     NSInteger numberOfItems = [_items count];
-    NSInteger maxItems = floor(self.bounds.size.width / itemWidth);
-    NSInteger itemsCount = (numberOfItems > maxItems) ? maxItems : numberOfItems;
     
-    return itemsCount;
+    return numberOfItems;
+    
+    //NSInteger maxItems = floor(self.bounds.size.width / itemWidth);
+    //NSInteger itemsCount = (numberOfItems > maxItems) ? maxItems : numberOfItems;
+    
+    //return itemsCount;
 }
 
 #pragma mark - Events

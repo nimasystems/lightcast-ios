@@ -31,7 +31,7 @@ extern CGFloat const kLCoreTabBarViewDefaultItemPaddingH;
 @property (nonatomic, setter = setItemPadding:) CGSize itemPadding;
 @property (nonatomic, setter = setItemMargin:) CGFloat itemMargin;
 
-@property (nonatomic, readonly, getter = getTabItems) NSArray *tabItems;
+@property (nonatomic, retain, setter = setTabItems:, getter = getTabItems) NSArray *tabItems;
 
 @property (nonatomic, assign) id<LCoreTabBarViewDelegate> delegate;
 
