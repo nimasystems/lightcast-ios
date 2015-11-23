@@ -78,4 +78,6 @@ typedef enum {
 
 - (UIImage *)resizedImage:(CGSize)newSize;
 
++ (UIImage *)imageWithColor:(UIColor*)color;
+
 @end
