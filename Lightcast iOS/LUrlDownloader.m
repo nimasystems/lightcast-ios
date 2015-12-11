@@ -1121,7 +1121,9 @@ allowCompressedResponse;
         bytesWritten += [_tmpWriteBuffer length];
         
         // clear the temp buffer
-        [_tmpWriteBuffer setData:nil];
+        L_RELEASE(_tmpWriteBuffer);
+        _tmpWriteBuffer = [[NSMutableData alloc] init];
+        //[_tmpWriteBuffer setData:nil];
     }
     @catch (NSException *e)
     {
@@ -1151,7 +1153,9 @@ allowCompressedResponse;
         
         lassert(bytesWritten == bytesDownloaded);
         
-        [_tmpWriteBuffer setData:nil];
+        L_RELEASE(_tmpWriteBuffer);
+        _tmpWriteBuffer = [[NSMutableData alloc] init];
+        //[_tmpWriteBuffer setData:nil];
     }
 }
 
@@ -1308,7 +1312,12 @@ allowCompressedResponse;
     L_RELEASE(responseContentType);
     L_RELEASE(responseHeaders);
     L_RELEASE(responseDescription);
-    [_tmpWriteBuffer setData:nil];
+    
+    //[_tmpWriteBuffer setData:nil];
+    
+    L_RELEASE(_tmpWriteBuffer);
+    _tmpWriteBuffer = [[NSMutableData alloc] init];
+    
     L_RELEASE(_decompressedData);
     _isResponseDataDecompressed = NO;
     

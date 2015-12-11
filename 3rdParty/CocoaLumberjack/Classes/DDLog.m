@@ -932,6 +932,10 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy) {
     return self;
 }
 
+- (id)init {
+    return [self initWithMessage:nil level:0 flag:0 context:0 file:nil function:nil line:0 tag:nil options:0 timestamp:nil];
+}
+
 - (id)copyWithZone:(NSZone *)zone {
     DDLogMessage *newMessage = [DDLogMessage new];
     
