@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <Lightcast/LUrlDownloader.h>
 
-extern NSString *const XLC_APILEVEL_HEADER_NAME;
-
 typedef enum
 {
     LWebServiceClientRequestTypeGet,

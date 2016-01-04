@@ -285,6 +285,7 @@
 		0FA5D614167F58B400BD51EF /* LVars.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA5D611167F58B400BD51EF /* LVars.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FA5D615167F58B400BD51EF /* LVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5D612167F58B400BD51EF /* LVars.m */; };
 		0FA5D617167F58B400BD51EF /* LVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5D612167F58B400BD51EF /* LVars.m */; };
+		0FAA1A0D1C3AC27A00122524 /* LWebServicesDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA1A0C1C3AC27A00122524 /* LWebServicesDefines.m */; };
 		0FAC498A178EBF9F0017D310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C281774499A001631C9 /* Foundation.framework */; };
 		0FAC498C178EBF9F0017D310 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C2417744893001631C9 /* UIKit.framework */; };
 		0FAC4A4C178EBFF30017D310 /* LiTunesProductsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F08B7D916A659FE0093A9D6 /* LiTunesProductsRequest.m */; };
@@ -1014,6 +1015,7 @@
 		0FA3BB7916AA525A00FA5061 /* LUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUserDefaults.m; sourceTree = "<group>"; };
 		0FA5D611167F58B400BD51EF /* LVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVars.h; sourceTree = "<group>"; };
 		0FA5D612167F58B400BD51EF /* LVars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVars.m; sourceTree = "<group>"; };
+		0FAA1A0C1C3AC27A00122524 /* LWebServicesDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWebServicesDefines.m; sourceTree = "<group>"; };
 		0FAC4A48178EBF9F0017D310 /* libLightcastiTunes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLightcastiTunes.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FAD501B1389175D000AA26B /* LWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWindow.h; sourceTree = "<group>"; };
 		0FAD501C1389175D000AA26B /* LWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWindow.m; sourceTree = "<group>"; };
@@ -2580,6 +2582,7 @@
 				0F068D68167CD81A00E2C536 /* LWebServicesValidationError.m */,
 				0F068D60167CCDB900E2C536 /* LWebServices.h */,
 				0F068D6F167CD8DE00E2C536 /* LWebServicesDefines.h */,
+				0FAA1A0C1C3AC27A00122524 /* LWebServicesDefines.m */,
 				7EECD53613DB0A8D00AB9859 /* LWebServiceClient.h */,
 				7EECD53713DB0A8D00AB9859 /* LWebServiceClient.m */,
 				0F068D55167CACE000E2C536 /* LWebServiceClient2.h */,
@@ -3275,6 +3278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FAA1A0D1C3AC27A00122524 /* LWebServicesDefines.m in Sources */,
 				0F194CAA135C83DC002C7AB2 /* LSQLiteDatabaseAdapter.m in Sources */,
 				0F194CB7135C843F002C7AB2 /* LDatabaseManager.m in Sources */,
 				0F194CCD135C8489002C7AB2 /* GeneralUtils.m in Sources */,

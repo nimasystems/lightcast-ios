@@ -12,12 +12,6 @@
 #import "LWebServicesValidationError.h"
 #import <SBJson/SBJsonParser.h>
 
-// default timeout
-NSTimeInterval const LWebServiceDefaultTimeout = 30; // in seconds (NSTimeInterval)
-NSInteger const LWebServiceDefaultAPILevel = 2; 
-NSString *const XLC_APILEVEL_HEADER_NAME = @"X-LC-Api-Level";
-NSString *const XLC_CLIENT_APILEVEL_HEADER_NAME = @"X-LC-Client-Api-Level";
-
 @interface LWebServiceClient2(Private)
 
 - (NSString*)formattedUrl:(NSString*)aHostname shouldUseSSL:(BOOL)useSSL serviceUrl:(NSString*)serviceUrl params:(NSDictionary*)params requestUri:(NSString**)requestUri_;

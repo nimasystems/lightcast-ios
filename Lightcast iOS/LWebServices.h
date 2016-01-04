@@ -8,5 +8,4 @@
 
 #import <Lightcast/LWebServicesDefines.h>
 #import <Lightcast/LWebServiceError.h>
-#import <Lightcast/LWebServiceClient2.h>
 #import <Lightcast/LWebServicesValidationError.h>
