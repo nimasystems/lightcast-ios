@@ -18,7 +18,7 @@
 }
 
 + (LWeakRefObject*)weakReferenceWithObject:(id) object {
-    return [[[self alloc] initWithObject:object] autorelease];
+    return [[self alloc] initWithObject:object];
 }
 
 - (id)nonretainedObjectValue { return nonretainedObjectValue; }

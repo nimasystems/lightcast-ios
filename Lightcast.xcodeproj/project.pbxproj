@@ -215,8 +215,8 @@
 		0F6A48CA174B1AD200FDB0EB /* LCompressingLogFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6A48C5174B1AD200FDB0EB /* LCompressingLogFileManager.m */; };
 		0F7783EE186E02E900FF65EB /* LWeakRefObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7783EC186E02E900FF65EB /* LWeakRefObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F7783EF186E02E900FF65EB /* LWeakRefObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7783EC186E02E900FF65EB /* LWeakRefObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F7783F0186E02E900FF65EB /* LWeakRefObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7783ED186E02E900FF65EB /* LWeakRefObject.m */; };
-		0F7783F1186E02E900FF65EB /* LWeakRefObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7783ED186E02E900FF65EB /* LWeakRefObject.m */; };
+		0F7783F0186E02E900FF65EB /* LWeakRefObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7783ED186E02E900FF65EB /* LWeakRefObject.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		0F7783F1186E02E900FF65EB /* LWeakRefObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7783ED186E02E900FF65EB /* LWeakRefObject.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		0F7857C0137AD35200155970 /* LCellLoadingDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7857BF137AD35000155970 /* LCellLoadingDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F7B5DBC170BE43800A1ED3C /* LUrlDownloaderCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B5DBA170BE43800A1ED3C /* LUrlDownloaderCompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F7B5DBD170BE43800A1ED3C /* LUrlDownloaderCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B5DBA170BE43800A1ED3C /* LUrlDownloaderCompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
