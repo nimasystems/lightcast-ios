@@ -809,20 +809,22 @@ threadingMode;
             
             if (res)
             {
-                ret = [self _commit:nil];
+                BOOL retr = [self _commit:nil];
                 
-                if (!ret)
+                if (!retr)
                 {
+                    ret = NO;
                     lassert(false);
                     return;
                 }
             }
             else
             {
-                ret = [self _rollback:nil];
+                BOOL retr = [self _rollback:nil];
                 
-                if (!ret)
+                if (!retr)
                 {
+                    ret = NO;
                     lassert(false);
                     return;
                 }
@@ -880,7 +882,9 @@ threadingMode;
     
     @try
     {
-        BOOL res = YES;
+        BOOL res;
+        BOOL ret = YES;
+        NSError *err = nil;
         
         for(NSString *statement in statements)
         {
@@ -893,32 +897,34 @@ threadingMode;
                 statement = [statement substringFromIndex:1];
             }
             
+            err = nil;
+            res = [self _executeNonQuery:statement error:&err];
             
-            res = [self _executeNonQuery:statement error:error];
-            
-            if (!res && softErrors)
-            {
-                res = YES;
+            if (softErrors && !res) {
+                lassert(false);
+                LogError(@"Could not execute SOFT query - continuing: %@", err);
+                continue;
             }
             
-            if (!res)
-            {
+            if (!res) {
+                ret = NO;
+                
                 // override the error message
-                if (error != NULL)
+                if (error != NULL && err)
                 {
-                    *error = [NSError errorWithDomain:(*error).domain code:(*error).code userInfo:[NSDictionary
-                                                                                      dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Error while executing sql statement in transaction (%@): %@"), statement, (*error).localizedDescription], NSLocalizedDescriptionKey, nil]];
+                    *error = [NSError errorWithDomain:err.domain code:err.code userInfo:[NSDictionary
+                                                                                                   dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Error while executing sql statement in transaction (%@): %@"), statement, err.localizedDescription], NSLocalizedDescriptionKey, nil]];
                 }
                 
                 break;
             }
         }
         
-        if (res)
+        if (ret)
         {
-            ret = [self _commit:error];
+            BOOL retr = [self _commit:error];
             
-            if (!ret)
+            if (!retr)
             {
                 lassert(false);
                 return NO;
@@ -926,9 +932,9 @@ threadingMode;
         }
         else
         {
-            ret = [self _rollback:error];
+            BOOL retr = [self _rollback:error];
             
-            if (!ret)
+            if (!retr)
             {
                 lassert(false);
                 return NO;

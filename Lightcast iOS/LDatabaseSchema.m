@@ -233,12 +233,15 @@ lastError;
             {
                 LogInfo(@"Running INITIALIZATION-sql statements...");
                 
-                BOOL preSQL = [self runSQLStatements:[schemaSpecsObject initializationSQLStatements] error:error];
+                NSError *err = nil;
+                BOOL preSQL = [self runSQLStatements:[schemaSpecsObject initializationSQLStatements] error:&err];
                 
                 if (!preSQL)
                 {
                     //[_adapter rollback:nil];
-                    return NO;
+                    lassert(false);
+                    LogError(@"Could not run INITIALIZATION-sql successfully - proceeding still: %@!", err);
+                    //return NO;
                 }
             }
             
@@ -258,13 +261,15 @@ lastError;
 			{
                 LogInfo(@"Running POST-sql statements...");
                 
-				BOOL postSQL = [self runSQLStatements:[schemaSpecsObject postSQLStatements] error:error];
+                NSError *err = nil;
+				BOOL postSQL = [self runSQLStatements:[schemaSpecsObject postSQLStatements] error:&err];
 				
 				if (!postSQL)
 				{
 					//[_adapter rollback:nil];
                     lassert(false);
-					return NO;
+                    LogError(@"Could not run POST-sql successfully - proceeding still: %@!", err);
+					//return NO;
 				}
 			}
 			
@@ -383,12 +388,14 @@ lastError;
 		{
             LogInfo(@"Running POST-sql statements...");
             
-			BOOL postSQL = [self runSQLStatements:[schemaSpecsObject postSQLStatements] error:error];
+            NSError *err = nil;
+			BOOL postSQL = [self runSQLStatements:[schemaSpecsObject postSQLStatements] error:&err];
 			
 			if (!postSQL)
 			{
+                LogError(@"Could not run POST-sql successfully - proceeding still: %@!", err);
 				//[_adapter rollback:nil];
-				return NO;
+				//return NO;
 			}
 		}
 		

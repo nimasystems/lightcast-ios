@@ -58,7 +58,7 @@ void openSystemLog(NSInteger maxLogFileSize, NSString *path); // in MB
 
 #ifndef DEBUG_LEVEL
 
-#ifdef DEBUG
+#if DEBUG || TESTING
 	#define DEBUG_LEVEL 4
     #import "debug.h"
 #else
@@ -73,7 +73,7 @@ void openSystemLog(NSInteger maxLogFileSize, NSString *path); // in MB
 #define DEBUG_WARN    (DEBUG_LEVEL >= 2) /** WARNING level */
 #define DEBUG_INFO    (DEBUG_LEVEL >= 3) /** INFO level */
 
-#ifdef DEBUG
+#if DEBUG || TESTING
 #define DEBUG_DEBUG (DEBUG_LEVEL >= 4) /** DEBUG level */
 #endif
 
