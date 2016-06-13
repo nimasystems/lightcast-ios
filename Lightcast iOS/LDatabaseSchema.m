@@ -124,10 +124,14 @@ lastError;
 }
 
 - (BOOL)runSQLStatements:(NSArray*)sqlStatements error:(NSError**)error {
-	
+    
+    BOOL overallRet = YES;
+    
 	if (sqlStatements && [sqlStatements count])
 	{
 		LogInfo(@"Running sql statements: %d", (int)[sqlStatements count]);
+        
+        NSError *err = nil;
 		
 		for(NSString *sql in sqlStatements)
 		{
@@ -135,16 +139,22 @@ lastError;
 			
 			LogInfo(@"SQL: %@", sql);
 			
-			BOOL res = [_adapter executeStatement:error sql:sql];
+            err = nil;
+			BOOL res = [_adapter executeStatement:&err sql:sql];
 			
 			if (!res)
 			{
-				return NO;
+                overallRet = NO;
+                
+                // do not stop - this is not a transaction!
+                lassert(false);
+                LogError(@"Could not run sql statement: %@", err);
+                continue;
 			}
 		}
 	}
 	
-	return YES;
+	return overallRet;
 }
 
 - (BOOL)upgradeSchema:(id<LDatabaseSchemaProtocol>)schemaSpecsObject error:(NSError**)error {
