@@ -42,9 +42,6 @@
 // Utilities
 #import <Lightcast/Utilities.h>
 
-// Web Services
-#import <Lightcast/LWebServicesDefines.h>
-
 // UI
 #import <Lightcast/UI.h>
 

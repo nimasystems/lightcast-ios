@@ -11,8 +11,9 @@
 
 @interface LGCDTimer : NSObject
 
-@property (readonly) BOOL isRunning;
-@property (assign) id<LGCDTimerDelegate> timerDelegate;
+@property (nonatomic, assign, readonly) BOOL isRunning;
+@property (nonatomic, assign) NSTimeInterval interval;
+@property (nonatomic, assign) id<LGCDTimerDelegate> timerDelegate;
 
 - (id)initWithTimeout:(NSTimeInterval)timeout;
 - (void)invalidate;

@@ -11,6 +11,7 @@
 #import "LWebServiceError.h"
 #import "LWebServicesValidationError.h"
 #import <SBJson/SBJsonParser.h>
+#import "LWebServicesDefines.h"
 
 @interface LWebServiceClient2(Private)
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Lightcast/LWebServices.h>
 #import <Lightcast/LUrlDownloader.h>
 
 typedef enum

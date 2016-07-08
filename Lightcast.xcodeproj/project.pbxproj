@@ -213,10 +213,6 @@
 		0F6A48C7174B1AD200FDB0EB /* LCompressingLogFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F6A48C4174B1AD200FDB0EB /* LCompressingLogFileManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F6A48C8174B1AD200FDB0EB /* LCompressingLogFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6A48C5174B1AD200FDB0EB /* LCompressingLogFileManager.m */; };
 		0F6A48CA174B1AD200FDB0EB /* LCompressingLogFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6A48C5174B1AD200FDB0EB /* LCompressingLogFileManager.m */; };
-		0F7783EE186E02E900FF65EB /* LWeakRefObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7783EC186E02E900FF65EB /* LWeakRefObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F7783EF186E02E900FF65EB /* LWeakRefObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7783EC186E02E900FF65EB /* LWeakRefObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F7783F0186E02E900FF65EB /* LWeakRefObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7783ED186E02E900FF65EB /* LWeakRefObject.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F7783F1186E02E900FF65EB /* LWeakRefObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7783ED186E02E900FF65EB /* LWeakRefObject.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		0F7857C0137AD35200155970 /* LCellLoadingDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7857BF137AD35000155970 /* LCellLoadingDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F7B5DBC170BE43800A1ED3C /* LUrlDownloaderCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B5DBA170BE43800A1ED3C /* LUrlDownloaderCompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F7B5DBD170BE43800A1ED3C /* LUrlDownloaderCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B5DBA170BE43800A1ED3C /* LUrlDownloaderCompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -404,6 +400,8 @@
 		0FE360F116FD9B7200276475 /* lightcast_licenses.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FE360EE16FD9B7200276475 /* lightcast_licenses.bundle */; };
 		0FE3F68A16CA551900D14767 /* NSBundle+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE3F68816CA551900D14767 /* NSBundle+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FE3F68B16CA551900D14767 /* NSBundle+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3F68916CA551900D14767 /* NSBundle+Additions.m */; };
+		0FE735CC1D1BD71A006E048E /* LWebServicesDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA1A0C1C3AC27A00122524 /* LWebServicesDefines.m */; };
+		0FE735CD1D1BD747006E048E /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0A12251B2968D6004C25E1 /* SBJson.framework */; };
 		0FE9D6821696CB99003B8672 /* LUrlDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D6801696CB99003B8672 /* LUrlDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FE9D6831696CB99003B8672 /* LUrlDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D6801696CB99003B8672 /* LUrlDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FE9D6841696CB99003B8672 /* LUrlDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9D6811696CB99003B8672 /* LUrlDownloader.m */; };
@@ -730,6 +728,13 @@
 			remoteGlobalIDString = 0F194C6B135C82B4002C7AB2;
 			remoteInfo = Lightcast;
 		};
+		0FE735CE1D1BD74B006E048E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC12323C1391D5CC00131607;
+			remoteInfo = SBJson;
+		};
 		0FE9D7EB1696EB08003B8672 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0FE9D7E11696EB07003B8672 /* MagicKit.xcodeproj */;
@@ -962,8 +967,6 @@
 		0F6A4876174B0BEC00FDB0EB /* NSNull+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+Additions.m"; sourceTree = "<group>"; };
 		0F6A48C4174B1AD200FDB0EB /* LCompressingLogFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCompressingLogFileManager.h; sourceTree = "<group>"; };
 		0F6A48C5174B1AD200FDB0EB /* LCompressingLogFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCompressingLogFileManager.m; sourceTree = "<group>"; };
-		0F7783EC186E02E900FF65EB /* LWeakRefObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWeakRefObject.h; sourceTree = "<group>"; };
-		0F7783ED186E02E900FF65EB /* LWeakRefObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWeakRefObject.m; sourceTree = "<group>"; };
 		0F7857BF137AD35000155970 /* LCellLoadingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCellLoadingDelegate.h; sourceTree = "<group>"; };
 		0F7B5DBA170BE43800A1ED3C /* LUrlDownloaderCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUrlDownloaderCompressor.h; sourceTree = "<group>"; };
 		0F7B5DBB170BE43800A1ED3C /* LUrlDownloaderCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUrlDownloaderCompressor.m; sourceTree = "<group>"; };
@@ -1292,6 +1295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE735CD1D1BD747006E048E /* SBJson.framework in Frameworks */,
 				0FEF2C4917745A09001631C9 /* CoreServices.framework in Frameworks */,
 				0FEF2C461774599F001631C9 /* AppKit.framework in Frameworks */,
 				0FEF2C4417745958001631C9 /* MagicKit.framework in Frameworks */,
@@ -2117,8 +2121,6 @@
 				0FA5D612167F58B400BD51EF /* LVars.m */,
 				0F6A4875174B0BEC00FDB0EB /* NSNull+Additions.h */,
 				0F6A4876174B0BEC00FDB0EB /* NSNull+Additions.m */,
-				0F7783EC186E02E900FF65EB /* LWeakRefObject.h */,
-				0F7783ED186E02E900FF65EB /* LWeakRefObject.m */,
 			);
 			name = Vars;
 			sourceTree = "<group>";
@@ -2818,7 +2820,6 @@
 				DFE7744A189F90DE00A3FC6B /* LCloudBackupDownloadDataDelegate.h in Headers */,
 				0FD83CB7189EA29D00993A0A /* UITableView+Additons.h in Headers */,
 				DFE7744C189F90DE00A3FC6B /* LCloudBackupLoadDataDelegate.h in Headers */,
-				0F7783EE186E02E900FF65EB /* LWeakRefObject.h in Headers */,
 				DFE77446189F90DE00A3FC6B /* LCloudBackup.h in Headers */,
 				DFE7744E189F90DE00A3FC6B /* LCloudFile.h in Headers */,
 				0FD83E26189FE5A300993A0A /* NGAParallaxMotion.h in Headers */,
@@ -2962,7 +2963,6 @@
 				0FCEE2311A73A07300DAB907 /* DDContextFilterLogFormatter.h in Headers */,
 				0FCEE2351A73A07300DAB907 /* DDDispatchQueueLogFormatter.h in Headers */,
 				0F4D0A8D17AEAA1B0061CAED /* LStringTranscoder.h in Headers */,
-				0F7783EF186E02E900FF65EB /* LWeakRefObject.h in Headers */,
 				0F0C6BA81770735A008587E0 /* LDataSubmitter.h in Headers */,
 				DFE7744D189F90DE00A3FC6B /* LCloudBackupLoadDataDelegate.h in Headers */,
 				DFE7744F189F90DE00A3FC6B /* LCloudFile.h in Headers */,
@@ -3071,6 +3071,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0FE735CF1D1BD74B006E048E /* PBXTargetDependency */,
 				0F427AEE16F30A2F00300E2B /* PBXTargetDependency */,
 			);
 			name = LightcastTranslator;
@@ -3413,7 +3414,6 @@
 				0F91475B16A8F57400E08821 /* LCoreTabBarContainerView.m in Sources */,
 				0F91478116A8F63600E08821 /* LCoreTabBarView.m in Sources */,
 				0F91478616A8F65100E08821 /* LCoreTabBarControllerTab.m in Sources */,
-				0F7783F0186E02E900FF65EB /* LWeakRefObject.m in Sources */,
 				0FD2A8571851D59F0038E232 /* LStringObfuscator.m in Sources */,
 				0F91478B16A8F82800E08821 /* LCoreTabBarSelectionView.m in Sources */,
 				0F51D07116A90C1600ED899C /* UIViewController+LCoreTabBarControllerTab.m in Sources */,
@@ -3503,7 +3503,6 @@
 				7E2C648713F008710092D661 /* LCacheManager.m in Sources */,
 				0FCEE2131A73A07300DAB907 /* DDAbstractDatabaseLogger.m in Sources */,
 				0FCEE2331A73A07300DAB907 /* DDContextFilterLogFormatter.m in Sources */,
-				0F7783F1186E02E900FF65EB /* LWeakRefObject.m in Sources */,
 				7E2C648813F008710092D661 /* LVirtualFile.m in Sources */,
 				7E2C648913F008710092D661 /* LVirtualFSSchema.m in Sources */,
 				0FD83E4218A0CD9B00993A0A /* LURLDataDownloader.m in Sources */,
@@ -3523,6 +3522,7 @@
 				7E2C649A13F008710092D661 /* NSMutableArray+Additions.m in Sources */,
 				7E2C649B13F008710092D661 /* NSString+Additions.m in Sources */,
 				7E2C649C13F008710092D661 /* LVersionComparator.m in Sources */,
+				0FE735CC1D1BD71A006E048E /* LWebServicesDefines.m in Sources */,
 				7E2C649D13F008710092D661 /* GeneralUtils.m in Sources */,
 				7E2C649E13F008710092D661 /* Logging.m in Sources */,
 				0F99049D1BFE2967008298EC /* LValidatorUtils.m in Sources */,
@@ -3623,6 +3623,11 @@
 			isa = PBXTargetDependency;
 			target = 0F194C6B135C82B4002C7AB2 /* Lightcast */;
 			targetProxy = 0F7F3B8216AF8AEA0073AF8B /* PBXContainerItemProxy */;
+		};
+		0FE735CF1D1BD74B006E048E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SBJson;
+			targetProxy = 0FE735CE1D1BD74B006E048E /* PBXContainerItemProxy */;
 		};
 		0FE9D7F21696EB11003B8672 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

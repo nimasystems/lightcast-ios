@@ -109,7 +109,7 @@ void parseStampiiMac()
 
 void parseEikaiwa()
 {
-    NSString *path = [@"/Users/mkovachev/sworkspace/kaiwanow-ios/trunk" stringByExpandingTildeInPath];
+    NSString *path = [@"/Users/mkovachev/sworkspace/kaiwanow-ios" stringByExpandingTildeInPath];
     
     LI18nProjectCatalog *catalog = [[LI18nProjectCatalog alloc] initWithBaseDir:path];
     catalog.bundleName = @"";

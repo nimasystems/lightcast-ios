@@ -65,7 +65,8 @@ NSString *kReachabilityChangedNotification = @"kNetworkReachabilityChangedNotifi
 static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char* comment)
 {
 #if kShouldPrintReachabilityFlags
-
+    
+#if	TARGET_OS_IPHONE
     NSLog(@"Reachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n",
           (flags & kSCNetworkReachabilityFlagsIsWWAN)				? 'W' : '-',
           (flags & kSCNetworkReachabilityFlagsReachable)            ? 'R' : '-',
@@ -79,6 +80,20 @@ static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char*
           (flags & kSCNetworkReachabilityFlagsIsDirect)             ? 'd' : '-',
           comment
           );
+#else 
+    NSLog(@"Reachability Flag Status: %c %c%c%c%c%c%c%c %s\n",
+          (flags & kSCNetworkReachabilityFlagsReachable)            ? 'R' : '-',
+          
+          (flags & kSCNetworkReachabilityFlagsTransientConnection)  ? 't' : '-',
+          (flags & kSCNetworkReachabilityFlagsConnectionRequired)   ? 'c' : '-',
+          (flags & kSCNetworkReachabilityFlagsConnectionOnTraffic)  ? 'C' : '-',
+          (flags & kSCNetworkReachabilityFlagsInterventionRequired) ? 'i' : '-',
+          (flags & kSCNetworkReachabilityFlagsConnectionOnDemand)   ? 'D' : '-',
+          (flags & kSCNetworkReachabilityFlagsIsLocalAddress)       ? 'l' : '-',
+          (flags & kSCNetworkReachabilityFlagsIsDirect)             ? 'd' : '-',
+          comment
+          );
+#endif
 #endif
 }
 
@@ -189,7 +204,6 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return returnValue;
 }
 
-
 - (void)stopNotifier
 {
 	if (_reachabilityRef != NULL)
@@ -198,10 +212,10 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	}
 }
 
-
 - (void)dealloc
 {
 	[self stopNotifier];
+    
 	if (_reachabilityRef != NULL)
 	{
 		CFRelease(_reachabilityRef);
@@ -259,7 +273,8 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
             returnValue = ReachableViaWiFi;
         }
     }
-
+    
+#if	TARGET_OS_IPHONE
 	if ((flags & kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)
 	{
 		/*
@@ -267,6 +282,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
          */
 		returnValue = ReachableViaWWAN;
 	}
+#endif
     
 	return returnValue;
 }

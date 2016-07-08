@@ -10,17 +10,15 @@
 
 // original source: http://www.fieryrobot.com/blog/2010/07/10/a-watchdog-timer-in-gcd/
 
-@implementation LGCDTimer {
-    
-    dispatch_queue_t      _queue;
-    dispatch_source_t     _timer;
-    
-    NSTimeInterval _timeout;
-}
+@interface LGCDTimer()
 
-@synthesize
-isRunning,
-timerDelegate;
+@property (nonatomic, assign) BOOL isRunning;
+
+@end
+
+@implementation LGCDTimer {
+    dispatch_source_t _timer;
+}
 
 #pragma mark - Initialization / Finalization
 
@@ -29,18 +27,7 @@ timerDelegate;
     self = [super init];
     if (self)
     {
-        _queue = dispatch_queue_create("com.lightcast.LGCDTimer", DISPATCH_QUEUE_SERIAL);
-        
-        if (!_queue || !timeout)
-        {
-            L_RELEASE(self);
-            lassert(false);
-            return nil;
-        }
-        
-        _timeout = timeout;
-        
-        isRunning = NO;
+        self.interval = timeout;
     }
     return self;
 }
@@ -52,12 +39,27 @@ timerDelegate;
 
 - (void)dealloc
 {
-    [self stopRelease];
+    self.timerDelegate = nil;
+    [self stop];
     
     [super dealloc];
 }
 
+
 #pragma mark - Timer methods
+
+- (dispatch_source_t)dispatchTimerInstance:(NSTimeInterval)interval queue:(dispatch_queue_t)queue block:(dispatch_block_t)block {
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    if (timer)
+    {
+        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_SEC), interval * NSEC_PER_SEC, (1ull * NSEC_PER_SEC) / 10);
+        dispatch_source_set_event_handler(timer, block);
+        dispatch_resume(timer);
+    }
+    
+    return timer;
+}
 
 - (void)invalidate {
     [self stop];
@@ -65,101 +67,29 @@ timerDelegate;
 
 - (void)stop
 {
-    if (_queue) {
-        dispatch_sync(_queue, ^{
-            [self stopInternal];
-        });
-    }
-}
-
-- (void)stopRelease
-{
-    if (_queue) {
-        dispatch_sync(_queue, ^{
-            [self stopInternal];
-        });
-        dispatch_release(_queue);
-        _queue = nil;
-    }
-}
-
-- (void)stopInternal {
-    if (!isRunning) {
-        return;
-    }
-    
-    if (_timer)
-    {
+    if (!self.isRunning && _timer) {
         dispatch_source_cancel(_timer);
         dispatch_release(_timer);
         _timer = nil;
+        self.isRunning = NO;
     }
-    
-    isRunning = NO;
 }
 
 - (void)start
 {
-    dispatch_async(_queue, ^{
-        [self startInternal];
-    });
-}
-
-- (void)startInternal {
-    if (isRunning)
-    {
+    if (self.isRunning || !self.interval) {
         return;
     }
     
-    lassert(!_timer);
+    self.isRunning = YES;
     
-    // create our timer source
-    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, _queue);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
-    if (!_timer)
-    {
-        lassert(false);
-        return;
-    }
-    
-    lassert(_timer);
-    
-    // set the time to fire (we're only going to fire once,
-    // so just fill in the initial time).
-    dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, _timeout * NSEC_PER_SEC), 0, 0);
-    
-    dispatch_source_set_event_handler(_timer, ^{
-        @try {
-            if (isRunning)
-            {
-                if (timerDelegate && [timerDelegate respondsToSelector:@selector(gcdTimerFired:)])
-                {
-                    [timerDelegate gcdTimerFired:self];
-                }
-                
-                // someone might have stopped the timer while we reach this point
-                if (isRunning) {
-                    if (_timer) {
-                        dispatch_source_cancel(_timer);
-                        dispatch_release(_timer);
-                        _timer = nil;
-                    }
-                    isRunning = NO;
-                    
-                    [self startInternal];
-                }
-            }
+    _timer = [self dispatchTimerInstance:self.interval queue:queue block:^{
+        if (self.timerDelegate && [self.timerDelegate respondsToSelector:@selector(gcdTimerFired:)]) {
+            [self.timerDelegate gcdTimerFired:self];
         }
-        @catch (NSException *e) {
-            LogError(@"Unhandled exception while running timer: %@", e);
-            lassert(false);
-        }
-    });
-    
-    isRunning = YES;
-    
-    // now that our timer is all set to go, start it
-    dispatch_resume(_timer);
+    }];
 }
 
 @end

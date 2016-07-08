@@ -31,6 +31,7 @@
  */
 
 #import <SBJson/SBJsonParser.h>
+#import <Lightcast/LWebServices.h>
 
 typedef enum
 {

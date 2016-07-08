@@ -126,6 +126,8 @@
 
 - (BOOL)containsString:(NSString*)searchFor;
 
+- (NSData *)dataFromHexRepresentation;
+
 /**
  * Calculate the md5 hash of this string using CC_MD5.
  *
