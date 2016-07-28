@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Lightcast"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "iOS utility framework"
 
   # This description is used to generate tags and improve search results.
@@ -138,6 +138,6 @@ Pod::Spec.new do |s|
   s.requires_arc = false
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "CocoaLumberjack"
+  #s.dependency "CocoaLumberjack"
 
 end
