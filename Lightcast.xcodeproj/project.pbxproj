@@ -3501,7 +3501,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					3rdParty,
-					"\"$(PUBLIC_HEADERS_FOLDER_PATH)/../SBJson\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
@@ -3523,7 +3522,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					3rdParty,
-					"\"$(PUBLIC_HEADERS_FOLDER_PATH)/../SBJson\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
@@ -3713,7 +3711,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					3rdParty,
-					"\"$(PUBLIC_HEADERS_FOLDER_PATH)/../SBJson\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/iphoneos/include\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";

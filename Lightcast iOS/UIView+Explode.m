@@ -165,7 +165,7 @@ float randomFloat()
         animGroup.animations = [NSArray arrayWithObjects:moveAnim,transformAnim,opacityAnim, nil];
         animGroup.duration = speed;
         animGroup.fillMode =kCAFillModeForwards;
-        animGroup.delegate = self;
+        //animGroup.delegate = self;
         [animGroup setValue:layer forKey:@"animationLayer"];
         [animGroup setValue:ended forKey:@"endedBlock"];
         [layer addAnimation:animGroup forKey:nil];
