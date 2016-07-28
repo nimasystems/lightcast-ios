@@ -135,6 +135,8 @@ NSString *LightcastLocalizedString(NSString *key);
 @property (nonatomic, retain, getter = getDocumentsPath) NSString *documentsPath;
 @property (nonatomic, retain, getter = getTemporaryPath) NSString *temporaryPath;
 
+@property (nonatomic, assign) LCAppBuildType buildType;
+
 + (LC*)sharedLC;
 
 - (void)initialize;

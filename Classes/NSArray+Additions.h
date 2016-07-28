@@ -44,4 +44,6 @@
  */
 - (NSArray *)tableIndexes;
 
+- (id)jsonRepresentation;
+
 @end

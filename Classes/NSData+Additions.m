@@ -126,7 +126,9 @@ static const unsigned long crc32table[] =
 
 - (id)jsonRepresentation {
     NSError *err = nil;
-    return [NSJSONSerialization JSONObjectWithData:self options:kNilOptions error:&err];
+    id obj = [NSJSONSerialization JSONObjectWithData:self options:kNilOptions error:&err];
+    lassert(!err);
+    return obj;
 }
 
 @end

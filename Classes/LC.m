@@ -146,6 +146,18 @@ logFileManager=_logFileManager;
         [self addConsoleLoggers];
 #endif
         
+        self.buildType = LCAppBuildTypeRelease;
+        
+#if DEBUG
+        self.buildType = LCAppBuildTypeDebug;
+#else
+#if TESTING
+        self.buildType = LCAppBuildTypeTesting;
+#else
+        self.buildType = LCAppBuildTypeRelease;
+#endif
+#endif
+        
         _logFileManager = nil;
         _fileLogger = nil;
         
@@ -242,12 +254,6 @@ logFileManager=_logFileManager;
             NSLog(@"ERROR: Could not initialize logger: %@", err);
         }
     }
-#endif
-    
-#if TESTING || DEBUG
-    // console logging while testing / debugging
-    [DDLog addLogger:[DDTTYLogger sharedInstance]]; // TTY = Xcode console
-    [DDLog addLogger:[DDASLLogger sharedInstance]]; // ASL = Apple System Logs
 #endif
     
     if (self.delegate)

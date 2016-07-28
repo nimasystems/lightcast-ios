@@ -100,3 +100,16 @@
 #define NSUINT "u"
 #endif
 
+// if no target defined - target iOS
+#ifndef TARGET_IOS
+#ifndef TARGET_OSX
+#define TARGET_IOS
+#endif
+#endif
+
+typedef enum LCAppBuildType : NSUInteger {
+    LCAppBuildTypeUnknown = 0,
+    LCAppBuildTypeDebug = 1,
+    LCAppBuildTypeTesting = 2,
+    LCAppBuildTypeRelease = 3
+} LCAppBuildType;
