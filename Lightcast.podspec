@@ -104,8 +104,7 @@ Pod::Spec.new do |s|
   #  non-essential files like tests, examples and documentation.
   #
 
-  # s.resource  = "icon.png"
-  s.resources = "Resources/**/*.png"
+  s.resources = "Resources/**/*.png", "Resources/lightcast_licenses.bundle"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 

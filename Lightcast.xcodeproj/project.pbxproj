@@ -37,7 +37,7 @@
 		0F0002261D4A4DD1004C4155 /* SSUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002091D4A4DD1004C4155 /* SSUUID.m */; };
 		0F0002271D4A4DD1004C4155 /* SystemServicesConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00020A1D4A4DD1004C4155 /* SystemServicesConstants.h */; };
 		0F00022A1D4A4DDC004C4155 /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002281D4A4DDC004C4155 /* Base64.h */; };
-		0F00022B1D4A4DDC004C4155 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002291D4A4DDC004C4155 /* Base64.m */; };
+		0F00022B1D4A4DDC004C4155 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002291D4A4DDC004C4155 /* Base64.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		0F00022E1D4A4DEC004C4155 /* defines-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00022C1D4A4DEC004C4155 /* defines-iOS.h */; };
 		0F0002301D4A4DF2004C4155 /* defines-MacOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00022D1D4A4DEC004C4155 /* defines-MacOSX.h */; };
 		0F0002331D4A4DFE004C4155 /* Exceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002311D4A4DFE004C4155 /* Exceptions.m */; };
