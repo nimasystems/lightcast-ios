@@ -113,7 +113,7 @@
 - (void)compressLogFile:(DDLogFileInfo *)logFile
 {
     // DISABLED - not stable enough!
-    return;
+    /*return;
     
     dispatch_group_enter(_compressionGroup);
     
@@ -127,7 +127,7 @@
         {
             dispatch_group_leave(_compressionGroup);
         }
-    });
+    });*/
 }
 
 - (void)compressLogFiles

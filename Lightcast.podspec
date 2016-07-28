@@ -25,6 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
+		Lightcast is Nimasystem Ltd's in-house proprietary library.
                    DESC
 
   s.homepage     = "http://lightcast.nimasystems.com"

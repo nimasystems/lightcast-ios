@@ -246,7 +246,7 @@ logFileManager=_logFileManager;
     
     if (self.delegate)
     {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(willBeginInitialization::)])
+        if (self.delegate && [self.delegate respondsToSelector:@selector(willBeginInitialization:)])
         {
             [self.delegate willBeginInitialization:self];
         }

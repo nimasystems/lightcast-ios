@@ -50,7 +50,7 @@
 #define DD_LEGACY_MACROS 0
 
 //#import </usr/include/libgen.h>
-#import <Lightcast/CocoaLumberjack.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 extern NSInteger const kMaxSystemLogFileSize;
 

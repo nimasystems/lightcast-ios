@@ -48,14 +48,7 @@
     // On iOS prior to 4, fall back to use UIGraphicsBeginImageContext
     CGSize imageSize = [self bounds].size;
     
-    if (NULL != &UIGraphicsBeginImageContextWithOptions)
-    {
-       UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0); 
-    }
-    else
-    {
-        UIGraphicsBeginImageContext(imageSize);
-    }
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
   
     CGContextRef context = UIGraphicsGetCurrentContext();
     

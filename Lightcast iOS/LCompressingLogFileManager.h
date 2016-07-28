@@ -30,7 +30,7 @@
  * @version $Revision: 266 $
  */
 
-#import <Lightcast/DDFileLogger.h>
+#import <CocoaLumberjack/DDFileLogger.h>
 
 @interface LCompressingLogFileManager : DDLogFileManagerDefault
 

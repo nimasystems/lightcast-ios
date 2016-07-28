@@ -84,13 +84,6 @@ int getopt_long(int argc, char * const *argv, const char *optstring, const struc
     "       %s -C [-m magicfiles]\n" \
     "       %s [--help]\n"
 
-private int 		/* Global command-line options 		*/
-	bflag = 0,	/* brief output format	 		*/
-	nopad = 0,	/* Don't pad output			*/
-	nobuffer = 0,   /* Do not buffer stdout 		*/
-	nulsep = 0;	/* Append '\0' to the separator		*/
-
-private const char *separator = ":";	/* Default field separator	*/
 /*private const struct option long_options[] = {
 #define OPT(shortname, longname, opt, doc)      \
     {longname, opt, NULL, shortname},
@@ -119,110 +112,8 @@ private const char *separator = ":";	/* Default field separator	*/
 	{ "tokens",	MAGIC_NO_CHECK_TOKENS }, 
 };*/
 
-private char *progname;		/* used throughout 		*/
-
-private void usage(void);
-private void help(void);
-
 //int main(int, char *[]);
 
-private int unwrap(struct magic_set *, const char *);
-private int process(struct magic_set *ms, const char *, int);
-private struct magic_set *load(const char *, int);
-
-
-private struct magic_set *
-/*ARGSUSED*/
-load(const char *magicfile, int flags)
-{
-	struct magic_set *magic = magic_open(flags);
-	if (magic == NULL) {
-		(void)fprintf(stderr, "%s: %s\n", progname, strerror(errno));
-		return NULL;
-	}
-	if (magic_load(magic, magicfile) == -1) {
-		(void)fprintf(stderr, "%s: %s\n",
-		    progname, magic_error(magic));
-		magic_close(magic);
-		return NULL;
-	}
-	return magic;
-}
-
-/*
- * unwrap -- read a file of filenames, do each one.
- */
-private int
-unwrap(struct magic_set *ms, const char *fn)
-{
-	FILE *f;
-	ssize_t len;
-	char *line = NULL;
-	size_t llen = 0;
-	int wid = 0, cwid;
-	int e = 0;
-
-	if (strcmp("-", fn) == 0) {
-		f = stdin;
-		wid = 1;
-	} else {
-		if ((f = fopen(fn, "r")) == NULL) {
-			(void)fprintf(stderr, "%s: Cannot open `%s' (%s).\n",
-			    progname, fn, strerror(errno));
-			return 1;
-		}
-
-		while ((len = getline(&line, &llen, f)) > 0) {
-			if (line[len - 1] == '\n')
-				line[len - 1] = '\0';
-			cwid = (int)file_mbswidth(line);
-			if (cwid > wid)
-				wid = cwid;
-		}
-
-		rewind(f);
-	}
-
-	while ((len = getline(&line, &llen, f)) > 0) {
-		if (line[len - 1] == '\n')
-			line[len - 1] = '\0';
-		e |= process(ms, line, wid);
-		if(nobuffer)
-			(void)fflush(stdout);
-	}
-
-	free(line);
-	(void)fclose(f);
-	return e;
-}
-
-/*
- * Called for each input file on the command line (or in a list of files)
- */
-private int
-process(struct magic_set *ms, const char *inname, int wid)
-{
-	const char *type;
-	int std_in = strcmp(inname, "-") == 0;
-
-	if (wid > 0 && !bflag) {
-		(void)printf("%s", std_in ? "/dev/stdin" : inname);
-		if (nulsep)
-			(void)putc('\0', stdout);
-		(void)printf("%s", separator);
-		(void)printf("%*s ",
-		    (int) (nopad ? 0 : (wid - file_mbswidth(inname))), "");
-	}
-
-	type = magic_file(ms, std_in ? NULL : inname);
-	if (type == NULL) {
-		(void)printf("ERROR: %s\n", magic_error(ms));
-		return 1;
-	} else {
-		(void)printf("%s\n", type);
-		return 0;
-	}
-}
 
 size_t
 file_mbswidth(const char *s)
@@ -258,27 +149,3 @@ file_mbswidth(const char *s)
 #endif
 }
 
-private void
-usage(void)
-{
-	(void)fprintf(stderr, USAGE, progname, progname, progname);
-	exit(1);
-}
-
-private void
-help(void)
-{
-	(void)fputs(
-"Usage: file [OPTION...] [FILE...]\n"
-"Determine type of FILEs.\n"
-"\n", stdout);
-#define OPT(shortname, longname, opt, doc)      \
-	fprintf(stdout, "  -%c, --" longname doc, shortname);
-#define OPT_LONGONLY(longname, opt, doc)        \
-	fprintf(stdout, "      --" longname doc);
-#include "file_opts.h"
-#undef OPT
-#undef OPT_LONGONLY
-	fprintf(stdout, "\nReport bugs to http://bugs.gw.com/\n");
-	exit(0);
-}

@@ -229,7 +229,7 @@ count;
 			}
             
             // inform the delegate
-            if([self.delegate respondsToSelector:@selector(errorLoadingPlugin::)])
+            if([self.delegate respondsToSelector:@selector(errorLoadingPlugin:error:)])
             {
                 [self.delegate errorLoadingPlugin:pluginName error:*error];
             }
@@ -243,7 +243,7 @@ count;
         if (!reqMet)
         {
             // inform the delegate
-            if([self.delegate respondsToSelector:@selector(errorLoadingPlugin::)])
+            if([self.delegate respondsToSelector:@selector(errorLoadingPlugin:error:)])
             {
                 [self.delegate errorLoadingPlugin:pluginName error:*error];
             }
@@ -283,7 +283,7 @@ count;
         if (!initialized)
         {
             // inform the delegate
-            if([self.delegate respondsToSelector:@selector(errorLoadingPlugin::)])
+            if([self.delegate respondsToSelector:@selector(errorLoadingPlugin:error:)])
             {
                 [self.delegate errorLoadingPlugin:pluginName error:pluginError];
             }
@@ -313,7 +313,7 @@ count;
 		}
         
         // inform the delegate
-        if([self.delegate respondsToSelector:@selector(errorLoadingPlugin::)])
+        if([self.delegate respondsToSelector:@selector(errorLoadingPlugin:error:)])
         {
             [self.delegate errorLoadingPlugin:pluginName error:*error];
         }

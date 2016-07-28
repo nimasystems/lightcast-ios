@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9A963B3C665BE38AE3CB3FBA8CEE45C3DCE8588D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9A963B3C665BE38AE3CB3FBA8CEE45C3DCE8588D" : 0,
+    "5B83ED3441501104059D3F83470D6F11CB05C2C3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B01F8B92-2C33-45FA-89D3-42DD907BCEEF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9A963B3C665BE38AE3CB3FBA8CEE45C3DCE8588D" : "lightcast-ios\/",
+    "5B83ED3441501104059D3F83470D6F11CB05C2C3" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Lightcast",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Lightcast.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.nimasystems.com\/kaiwanow-ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5B83ED3441501104059D3F83470D6F11CB05C2C3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.nimasystems.com\/lightcast-ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9A963B3C665BE38AE3CB3FBA8CEE45C3DCE8588D"
+    }
+  ]
+}
