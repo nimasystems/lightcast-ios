@@ -168,15 +168,6 @@ logFileManager=_logFileManager;
 													 name:UIApplicationDidReceiveMemoryWarningNotification
 												   object:nil];
 #endif
-        
-#ifdef DEBUG
-        LogWarn(@"---------------- WARNING: DEBUG MODE ENABLED! ----------------");
-#endif
-        
-#if TARGET_IPHONE_SIMULATOR
-        // where are you?
-        LogInfo(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
-#endif
     }
     return self;
 }
@@ -197,6 +188,37 @@ logFileManager=_logFileManager;
     [super dealloc];
 }
 
+#pragma mark - Getters / Setters
+
+- (void)setBuildType:(LCAppBuildType)buildType {
+    if (buildType != _buildType) {
+        _buildType = buildType;
+        
+        if (_buildType == LCAppBuildTypeDebug ||
+            _buildType == LCAppBuildTypeTesting) {
+            [self addConsoleLoggers];
+            ddLogLevel = DDLogLevelVerbose;
+        } else {
+            [self removeConsoleLoggers];
+            ddLogLevel = DDLogLevelInfo;
+        }
+    }
+}
+
+- (BOOL)isDebug {
+    return self.buildType == LCAppBuildTypeDebug;
+}
+
+- (BOOL)isTesting {
+    return self.buildType == LCAppBuildTypeTesting;
+}
+
+- (BOOL)isRelease {
+    return self.buildType == LCAppBuildTypeRelease;
+}
+
+#pragma mark - Inits
+
 - (void)initialize {
     [self initialize:nil];
 }
@@ -208,6 +230,15 @@ logFileManager=_logFileManager;
 - (void)initialize:(LCAppConfiguration*)aConfiguration notificationDispatcher:(LNotificationDispatcher*)dispatcher {
     
 	if (hasInitialized) return;
+    
+    if (self.isDebug) {
+        LogWarn(@"---------------- WARNING: DEBUG MODE ENABLED! ----------------");
+    }
+    
+#if TARGET_IPHONE_SIMULATOR
+    // where are you?
+    LogInfo(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+#endif
     
     // init config
     if (aConfiguration != configuration && aConfiguration)
@@ -241,7 +272,7 @@ logFileManager=_logFileManager;
     }
     
     // initialize file logging if not already initialized
-#ifndef DEBUG
+if (!self.isDebug) {
     if (!_fileLogger)
     {
         NSString *logFilePath = [self.config.documentsPath stringByAppendingPathComponent:@"Logs"];
@@ -254,7 +285,7 @@ logFileManager=_logFileManager;
             NSLog(@"ERROR: Could not initialize logger: %@", err);
         }
     }
-#endif
+}
     
     if (self.delegate)
     {
@@ -308,6 +339,14 @@ logFileManager=_logFileManager;
         _consoleLoggersAdded = YES;
         [DDLog addLogger:[DDASLLogger sharedInstance]];
         [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    }
+}
+
+- (void)removeConsoleLoggers {
+    if (_consoleLoggersAdded) {
+        _consoleLoggersAdded = NO;
+        [DDLog removeLogger:[DDASLLogger sharedInstance]];
+        [DDLog removeLogger:[DDTTYLogger sharedInstance]];
     }
 }
 
@@ -833,8 +872,7 @@ logFileManager=_logFileManager;
 
 #endif	// end of iOS Target
 
-#pragma mark -
-#pragma mark Configuration
+#pragma mark - Configuration
 
 + (LCAppConfiguration*)defaultConfiguration {
     LCAppConfiguration *defaultConfiguration = [[[LCAppConfiguration alloc] initWithNameAndDeepValues:LIGHTCAST_NAME
@@ -903,8 +941,7 @@ logFileManager=_logFileManager;
     return path;
 }
 
-#pragma mark -
-#pragma mark LDatabaseManagerDelegate
+#pragma mark - LDatabaseManagerDelegate
 
 - (void)adapterConnected:(id<LDatabaseAdapterProtocol>)anAdapter {
     
@@ -923,8 +960,7 @@ logFileManager=_logFileManager;
     
 }
 
-#pragma mark -
-#pragma mark Other
+#pragma mark - Other
 
 + (NSArray*)systemReservedNSKeys
 {

@@ -136,6 +136,9 @@ NSString *LightcastLocalizedString(NSString *key);
 @property (nonatomic, retain, getter = getTemporaryPath) NSString *temporaryPath;
 
 @property (nonatomic, assign) LCAppBuildType buildType;
+@property (nonatomic, assign, readonly) BOOL isDebug;
+@property (nonatomic, assign, readonly) BOOL isTesting;
+@property (nonatomic, assign, readonly) BOOL isRelease;
 
 + (LC*)sharedLC;
 

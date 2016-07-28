@@ -84,53 +84,53 @@ void openSystemLog(NSInteger maxLogFileSize, NSString *path); // in MB
  */
 #ifndef LOGGER_DISABLED
 #if DEBUG_DEBUG
-static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+static DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else
 #if DEBUG_INFO
-static const DDLogLevel ddLogLevel = DDLogLevelInfo;
+static DDLogLevel ddLogLevel = DDLogLevelInfo;
 #else
 #if DEBUG_WARN
-static const DDLogLevel ddLogLevel = DDLogLevelWarning;
+static DDLogLevel ddLogLevel = DDLogLevelWarning;
 #else
 #if DEBUG_ERROR
-static const DDLogLevel ddLogLevel = DDLogLevelError;
+static DDLogLevel ddLogLevel = DDLogLevelError;
 #endif
 #endif
 #endif
 #endif
 #else
-static const DDLogLevel ddLogLevel = DDLogLevelOff;
+static DDLogLevel ddLogLevel = DDLogLevelOff;
 #endif
 
 /** methods for logging different levels of messages
  */
 #ifndef LOGGER_DISABLED
-#define LogError(format, ...)   if(DEBUG_ERROR) DDLogError(@"ERROR: %@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging ERRORS */
-#define LogWarn(format, ...)    if(DEBUG_WARN)  DDLogWarn(@"WARNING: %@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging WARNING */
-#define LogInfo(format, ...)    if(DEBUG_INFO)  DDLogInfo(@"%@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging INFO MESSAGES */
+#define LogError(format, ...)   /*if(DEBUG_ERROR)*/ DDLogError(@"ERROR: %@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging ERRORS */
+#define LogWarn(format, ...)    /*if(DEBUG_WARN)*/  DDLogWarn(@"WARNING: %@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging WARNING */
+#define LogInfo(format, ...)    /*if(DEBUG_INFO)*/  DDLogInfo(@"%@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging INFO MESSAGES */
 
-#define LogCError(format, ...)   if(DEBUG_ERROR) DDLogError(@"ERROR: %@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging ERRORS */
-#define LogCWarn(format, ...)    if(DEBUG_WARN)  DDLogWarn(@"WARNING: %@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging WARNING */
-#define LogCInfo(format, ...)    if(DEBUG_INFO)  DDLogInfo(@"%@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging INFO MESSAGES */
+#define LogCError(format, ...)   /*if(DEBUG_ERROR)*/ DDLogError(@"ERROR: %@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging ERRORS */
+#define LogCWarn(format, ...)    /*if(DEBUG_WARN)*/  DDLogWarn(@"WARNING: %@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging WARNING */
+#define LogCInfo(format, ...)    /*if(DEBUG_INFO)*/  DDLogInfo(@"%@", [NSString stringWithFormat:(format), ##__VA_ARGS__]) /** Method for logging INFO MESSAGES */
 
 #ifdef DEBUG
-#define LogDebug(format, ...)   if(DEBUG_DEBUG) DDLogVerbose(@"DEBUG: %@ (%s:%d)", [NSString stringWithFormat:(format), ##__VA_ARGS__], __FILE__, __LINE__) /** Method for logging DEBUGGING INFO */
-#define LogCDebug(format, ...)   if(DEBUG_DEBUG) DDLogVerbose(@"DEBUG: %@ (%s:%d)", [NSString stringWithFormat:(format), ##__VA_ARGS__], __FILE__, __LINE__) /** Method for logging DEBUGGING INFO */
+#define LogDebug(format, ...)   /*if(DEBUG_DEBUG)*/ DDLogVerbose(@"DEBUG: %@ (%s:%d)", [NSString stringWithFormat:(format), ##__VA_ARGS__], __FILE__, __LINE__) /** Method for logging DEBUGGING INFO */
+#define LogCDebug(format, ...)   /*if(DEBUG_DEBUG)*/ DDLogVerbose(@"DEBUG: %@ (%s:%d)", [NSString stringWithFormat:(format), ##__VA_ARGS__], __FILE__, __LINE__) /** Method for logging DEBUGGING INFO */
 #else
 #define LogDebug(format, ...) ;
 #define LogCDebug(format, ...) ;
 #endif
 
 #else
-#define LogError(format, ...)   if(DEBUG_ERROR) ; /** Method for logging ERRORS */
-#define LogWarn(format, ...)    if(DEBUG_WARN)  ; /** Method for logging WARNING */
-#define LogInfo(format, ...)    if(DEBUG_INFO)  ; /** Method for logging INFO MESSAGES */
-#define LogDebug(format, ...)   if(DEBUG_DEBUG) ; /** Method for logging DEBUGGING INFO */
+#define LogError(format, ...)   /*if(DEBUG_ERROR)*/ ; /** Method for logging ERRORS */
+#define LogWarn(format, ...)    /*if(DEBUG_WARN)*/  ; /** Method for logging WARNING */
+#define LogInfo(format, ...)    /*if(DEBUG_INFO)*/  ; /** Method for logging INFO MESSAGES */
+#define LogDebug(format, ...)   /*if(DEBUG_DEBUG)*/ ; /** Method for logging DEBUGGING INFO */
 
-#define LogCError(format, ...)   if(DEBUG_ERROR) ; /** Method for logging ERRORS */
-#define LogCWarn(format, ...)    if(DEBUG_WARN)  ; /** Method for logging WARNING */
-#define LogCInfo(format, ...)    if(DEBUG_INFO)  ; /** Method for logging INFO MESSAGES */
-#define LogCDebug(format, ...)   if(DEBUG_DEBUG) ; /** Method for logging DEBUGGING INFO */
+#define LogCError(format, ...)   /*if(DEBUG_ERROR)*/ ; /** Method for logging ERRORS */
+#define LogCWarn(format, ...)    /*if(DEBUG_WARN)*/  ; /** Method for logging WARNING */
+#define LogCInfo(format, ...)    /*if(DEBUG_INFO)*/  ; /** Method for logging INFO MESSAGES */
+#define LogCDebug(format, ...)   /*if(DEBUG_DEBUG)*/ ; /** Method for logging DEBUGGING INFO */
 #endif
 
 /** methods for logging RECT / POINT
@@ -148,8 +148,8 @@ static const DDLogLevel ddLogLevel = DDLogLevelOff;
 
 /** methods for logging function + line
 */
-#define Log(xx, ...)    if(DEBUG_DEBUG) DDLogVerbose(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#define LogMethod()     if(DEBUG_DEBUG) DDLogVerbose(@"%s", __PRETTY_FUNCTION__)
+#define Log(xx, ...)    /*if(DEBUG_DEBUG)*/ DDLogVerbose(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define LogMethod()     /*if(DEBUG_DEBUG)*/ DDLogVerbose(@"%s", __PRETTY_FUNCTION__)
 
 #import <TargetConditionals.h>
 
