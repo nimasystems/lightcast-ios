@@ -332,56 +332,6 @@
 		0FC81EBE1681C3DF00D176C1 /* LUUIDHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC81EBC1681C3DF00D176C1 /* LUUIDHandler.m */; };
 		0FC972C916AF838C00D1E8F6 /* LBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC972C716AF838B00D1E8F6 /* LBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FC972CA16AF838C00D1E8F6 /* LBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC972C816AF838C00D1E8F6 /* LBadgeView.m */; };
-		0FCEE2081A73A07300DAB907 /* CLIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1ED1A73A07300DAB907 /* CLIColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2091A73A07300DAB907 /* CLIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1ED1A73A07300DAB907 /* CLIColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE20A1A73A07300DAB907 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1EE1A73A07300DAB907 /* CLIColor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE20B1A73A07300DAB907 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1EE1A73A07300DAB907 /* CLIColor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE20C1A73A07300DAB907 /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1EF1A73A07300DAB907 /* CocoaLumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE20D1A73A07300DAB907 /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1EF1A73A07300DAB907 /* CocoaLumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2101A73A07300DAB907 /* DDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F11A73A07300DAB907 /* DDAbstractDatabaseLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2111A73A07300DAB907 /* DDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F11A73A07300DAB907 /* DDAbstractDatabaseLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2121A73A07300DAB907 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1F21A73A07300DAB907 /* DDAbstractDatabaseLogger.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2131A73A07300DAB907 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1F21A73A07300DAB907 /* DDAbstractDatabaseLogger.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2141A73A07300DAB907 /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F31A73A07300DAB907 /* DDASLLogCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2151A73A07300DAB907 /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F31A73A07300DAB907 /* DDASLLogCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2161A73A07300DAB907 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1F41A73A07300DAB907 /* DDASLLogCapture.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2171A73A07300DAB907 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1F41A73A07300DAB907 /* DDASLLogCapture.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2181A73A07300DAB907 /* DDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F51A73A07300DAB907 /* DDASLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2191A73A07300DAB907 /* DDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F51A73A07300DAB907 /* DDASLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE21A1A73A07300DAB907 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1F61A73A07300DAB907 /* DDASLLogger.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE21B1A73A07300DAB907 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1F61A73A07300DAB907 /* DDASLLogger.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE21C1A73A07300DAB907 /* DDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F71A73A07300DAB907 /* DDAssertMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE21D1A73A07300DAB907 /* DDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F71A73A07300DAB907 /* DDAssertMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE21E1A73A07300DAB907 /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F81A73A07300DAB907 /* DDFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE21F1A73A07300DAB907 /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1F81A73A07300DAB907 /* DDFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2201A73A07300DAB907 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1F91A73A07300DAB907 /* DDFileLogger.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2211A73A07300DAB907 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1F91A73A07300DAB907 /* DDFileLogger.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2221A73A07300DAB907 /* DDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FA1A73A07300DAB907 /* DDLegacyMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2231A73A07300DAB907 /* DDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FA1A73A07300DAB907 /* DDLegacyMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2241A73A07300DAB907 /* DDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FB1A73A07300DAB907 /* DDLog+LOGV.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2251A73A07300DAB907 /* DDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FB1A73A07300DAB907 /* DDLog+LOGV.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2261A73A07300DAB907 /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FC1A73A07300DAB907 /* DDLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2271A73A07300DAB907 /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FC1A73A07300DAB907 /* DDLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2281A73A07300DAB907 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1FD1A73A07300DAB907 /* DDLog.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2291A73A07300DAB907 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE1FD1A73A07300DAB907 /* DDLog.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE22A1A73A07300DAB907 /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FE1A73A07300DAB907 /* DDLogMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE22B1A73A07300DAB907 /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FE1A73A07300DAB907 /* DDLogMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE22C1A73A07300DAB907 /* DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FF1A73A07300DAB907 /* DDTTYLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE22D1A73A07300DAB907 /* DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE1FF1A73A07300DAB907 /* DDTTYLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE22E1A73A07300DAB907 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE2001A73A07300DAB907 /* DDTTYLogger.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE22F1A73A07300DAB907 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE2001A73A07300DAB907 /* DDTTYLogger.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2301A73A07300DAB907 /* DDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE2021A73A07300DAB907 /* DDContextFilterLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2311A73A07300DAB907 /* DDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE2021A73A07300DAB907 /* DDContextFilterLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2321A73A07300DAB907 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE2031A73A07300DAB907 /* DDContextFilterLogFormatter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2331A73A07300DAB907 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE2031A73A07300DAB907 /* DDContextFilterLogFormatter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2341A73A07300DAB907 /* DDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE2041A73A07300DAB907 /* DDDispatchQueueLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2351A73A07300DAB907 /* DDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE2041A73A07300DAB907 /* DDDispatchQueueLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2361A73A07300DAB907 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE2051A73A07300DAB907 /* DDDispatchQueueLogFormatter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2371A73A07300DAB907 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE2051A73A07300DAB907 /* DDDispatchQueueLogFormatter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE2381A73A07300DAB907 /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE2061A73A07300DAB907 /* DDMultiFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE2391A73A07300DAB907 /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCEE2061A73A07300DAB907 /* DDMultiFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FCEE23A1A73A07300DAB907 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE2071A73A07300DAB907 /* DDMultiFormatter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0FCEE23B1A73A07300DAB907 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCEE2071A73A07300DAB907 /* DDMultiFormatter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		0FD10C9518A651E1007906A8 /* UIView+Explode.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD10C9318A651E1007906A8 /* UIView+Explode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FD10C9618A651E1007906A8 /* UIView+Explode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD10C9418A651E1007906A8 /* UIView+Explode.m */; };
 		0FD2A8551851D59F0038E232 /* LStringObfuscator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD2A8531851D59F0038E232 /* LStringObfuscator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -479,6 +429,7 @@
 		3623A0F113E140DC0089273C /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0DE13E140DC0089273C /* ZipReadStream.m */; };
 		3623A0F313E140DC0089273C /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0E013E140DC0089273C /* ZipWriteStream.m */; };
 		3FBC567D1431D29C008CD864 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC567B1431D29C008CD864 /* main.m */; };
+		61DFA632450266EE76242974 /* libPods-LightcastTestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D221511AD8E693753B1D1A76 /* libPods-LightcastTestApp.a */; };
 		7E00CF6C13F2D08800D6F6F3 /* NSImage+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E00CF6A13F2D08800D6F6F3 /* NSImage+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E00CF6D13F2D08800D6F6F3 /* NSImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E00CF6B13F2D08800D6F6F3 /* NSImage+Additions.m */; };
 		7E00CF7313F2E62300D6F6F3 /* CTGradient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E00CF7113F2E62200D6F6F3 /* CTGradient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -657,6 +608,10 @@
 		7EF2B0F113CD797800422A74 /* UIColor+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EF2B0EF13CD797800422A74 /* UIColor+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EF2B0F213CD797800422A74 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF2B0F013CD797800422A74 /* UIColor+Additions.m */; };
 		7EF2B0FC13CD7D3400422A74 /* Primitives.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EF2B0FB13CD7D3400422A74 /* Primitives.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8213D1B5C1EB5E93307611AC /* libPods-LightcastTranslator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437DD953D3968FC741B1043D /* libPods-LightcastTranslator.a */; };
+		AE698A346BD984157635265C /* libPods-LightcastiTunes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DF3DDE2A8DE7687387AB /* libPods-LightcastiTunes.a */; };
+		AEABBF904CB016158918A452 /* libPods-Lightcast-MacOSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3F654BAD7A8812493CEDF /* libPods-Lightcast-MacOSX.a */; };
+		AF46A3A833EDB1DF3FCFD7AC /* libPods-Lightcast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8120721927645B692F341E5 /* libPods-Lightcast.a */; };
 		DFE77446189F90DE00A3FC6B /* LCloudBackup.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE77440189F90DE00A3FC6B /* LCloudBackup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE77447189F90DE00A3FC6B /* LCloudBackup.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE77440189F90DE00A3FC6B /* LCloudBackup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE77448189F90DE00A3FC6B /* LCloudBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE77441189F90DE00A3FC6B /* LCloudBackup.m */; };
@@ -785,6 +740,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00B4E4C6F64A6352E697D3E8 /* Pods-Lightcast-MacOSX.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast-MacOSX.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast-MacOSX/Pods-Lightcast-MacOSX.testing.xcconfig"; sourceTree = "<group>"; };
+		09C501AE4C7002447FFE0ABD /* Pods-LightcastiTunes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastiTunes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastiTunes/Pods-LightcastiTunes.debug.xcconfig"; sourceTree = "<group>"; };
 		0F068D55167CACE000E2C536 /* LWebServiceClient2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWebServiceClient2.h; sourceTree = "<group>"; };
 		0F068D56167CACE000E2C536 /* LWebServiceClient2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWebServiceClient2.m; sourceTree = "<group>"; };
 		0F068D60167CCDB900E2C536 /* LWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWebServices.h; sourceTree = "<group>"; };
@@ -1059,31 +1016,6 @@
 		0FC81EBC1681C3DF00D176C1 /* LUUIDHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUUIDHandler.m; sourceTree = "<group>"; };
 		0FC972C716AF838B00D1E8F6 /* LBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBadgeView.h; sourceTree = "<group>"; };
 		0FC972C816AF838C00D1E8F6 /* LBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBadgeView.m; sourceTree = "<group>"; };
-		0FCEE1ED1A73A07300DAB907 /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
-		0FCEE1EE1A73A07300DAB907 /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
-		0FCEE1EF1A73A07300DAB907 /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
-		0FCEE1F11A73A07300DAB907 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
-		0FCEE1F21A73A07300DAB907 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		0FCEE1F31A73A07300DAB907 /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
-		0FCEE1F41A73A07300DAB907 /* DDASLLogCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogCapture.m; sourceTree = "<group>"; };
-		0FCEE1F51A73A07300DAB907 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
-		0FCEE1F61A73A07300DAB907 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
-		0FCEE1F71A73A07300DAB907 /* DDAssertMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAssertMacros.h; sourceTree = "<group>"; };
-		0FCEE1F81A73A07300DAB907 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
-		0FCEE1F91A73A07300DAB907 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
-		0FCEE1FA1A73A07300DAB907 /* DDLegacyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLegacyMacros.h; sourceTree = "<group>"; };
-		0FCEE1FB1A73A07300DAB907 /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
-		0FCEE1FC1A73A07300DAB907 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
-		0FCEE1FD1A73A07300DAB907 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
-		0FCEE1FE1A73A07300DAB907 /* DDLogMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogMacros.h; sourceTree = "<group>"; };
-		0FCEE1FF1A73A07300DAB907 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
-		0FCEE2001A73A07300DAB907 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
-		0FCEE2021A73A07300DAB907 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
-		0FCEE2031A73A07300DAB907 /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		0FCEE2041A73A07300DAB907 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
-		0FCEE2051A73A07300DAB907 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
-		0FCEE2061A73A07300DAB907 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
-		0FCEE2071A73A07300DAB907 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
 		0FD10C9318A651E1007906A8 /* UIView+Explode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Explode.h"; sourceTree = "<group>"; };
 		0FD10C9418A651E1007906A8 /* UIView+Explode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Explode.m"; sourceTree = "<group>"; };
 		0FD2A8531851D59F0038E232 /* LStringObfuscator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LStringObfuscator.h; sourceTree = "<group>"; };
@@ -1143,6 +1075,9 @@
 		0FFACDF7136EA03A00A69849 /* LNotificationDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNotificationDispatcher.m; sourceTree = "<group>"; };
 		0FFACDFA136EBFBC00A69849 /* LDatabaseAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDatabaseAdapter.h; sourceTree = "<group>"; };
 		0FFACDFB136EBFBE00A69849 /* LDatabaseAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDatabaseAdapter.m; sourceTree = "<group>"; };
+		13E01488242ECF18711871B6 /* Pods-LightcastTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastTestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastTestApp/Pods-LightcastTestApp.release.xcconfig"; sourceTree = "<group>"; };
+		1F372300DE75D852717760C3 /* Pods-Lightcast.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast/Pods-Lightcast.testing.xcconfig"; sourceTree = "<group>"; };
+		1FA2642B70C849C3BB4A9A9C /* Pods-LightcastTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastTestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastTestApp/Pods-LightcastTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3623A0CD13E140DC0089273C /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		3623A0CE13E140DC0089273C /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		3623A0CF13E140DC0089273C /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -1160,8 +1095,11 @@
 		3623A0DE13E140DC0089273C /* ZipReadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipReadStream.m; sourceTree = "<group>"; };
 		3623A0DF13E140DC0089273C /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipWriteStream.h; sourceTree = "<group>"; };
 		3623A0E013E140DC0089273C /* ZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipWriteStream.m; sourceTree = "<group>"; };
+		37E50D8914E40EA31ECDBFBB /* Pods-LightcastiTunes.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastiTunes.testing.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastiTunes/Pods-LightcastiTunes.testing.xcconfig"; sourceTree = "<group>"; };
 		3FBC56771431D290008CD864 /* LightcastTranslator-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LightcastTranslator-Prefix.pch"; sourceTree = "<group>"; };
 		3FBC567B1431D29C008CD864 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		437DD953D3968FC741B1043D /* libPods-LightcastTranslator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LightcastTranslator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7577647AD56AD5E2F6EFD66A /* Pods-Lightcast-MacOSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast-MacOSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast-MacOSX/Pods-Lightcast-MacOSX.debug.xcconfig"; sourceTree = "<group>"; };
 		7E00CF6A13F2D08800D6F6F3 /* NSImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Additions.h"; sourceTree = "<group>"; };
 		7E00CF6B13F2D08800D6F6F3 /* NSImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Additions.m"; sourceTree = "<group>"; };
 		7E00CF7113F2E62200D6F6F3 /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGradient.h; sourceTree = "<group>"; };
@@ -1231,12 +1169,24 @@
 		7EF2B0EF13CD797800422A74 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
 		7EF2B0F013CD797800422A74 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
 		7EF2B0FB13CD7D3400422A74 /* Primitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Primitives.h; sourceTree = "<group>"; };
+		7FBBB0DE5A58F6726ED2E6FB /* Pods-LightcastTranslator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastTranslator.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastTranslator/Pods-LightcastTranslator.release.xcconfig"; sourceTree = "<group>"; };
+		9008081DCEFE086E75E5B524 /* Pods-Lightcast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast/Pods-Lightcast.release.xcconfig"; sourceTree = "<group>"; };
+		901080D0B74D52EEAA0B46AC /* Pods-Lightcast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast/Pods-Lightcast.debug.xcconfig"; sourceTree = "<group>"; };
+		941449462C670060FC606C44 /* Pods-LightcastiTunes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastiTunes.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastiTunes/Pods-LightcastiTunes.release.xcconfig"; sourceTree = "<group>"; };
+		99C8DF3DDE2A8DE7687387AB /* libPods-LightcastiTunes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LightcastiTunes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D360F2BD56B36BF7A778C90 /* Pods-LightcastTranslator.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastTranslator.testing.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastTranslator/Pods-LightcastTranslator.testing.xcconfig"; sourceTree = "<group>"; };
+		B2A3F654BAD7A8812493CEDF /* libPods-Lightcast-MacOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lightcast-MacOSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF629BAB609F816D1EC16CA9 /* Pods-Lightcast-MacOSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast-MacOSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast-MacOSX/Pods-Lightcast-MacOSX.release.xcconfig"; sourceTree = "<group>"; };
+		D221511AD8E693753B1D1A76 /* libPods-LightcastTestApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LightcastTestApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7EF4DCE54B1828187FB17AD /* Pods-LightcastTranslator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastTranslator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastTranslator/Pods-LightcastTranslator.debug.xcconfig"; sourceTree = "<group>"; };
 		DFE77440189F90DE00A3FC6B /* LCloudBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCloudBackup.h; sourceTree = "<group>"; };
 		DFE77441189F90DE00A3FC6B /* LCloudBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCloudBackup.m; sourceTree = "<group>"; };
 		DFE77442189F90DE00A3FC6B /* LCloudBackupDownloadDataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCloudBackupDownloadDataDelegate.h; sourceTree = "<group>"; };
 		DFE77443189F90DE00A3FC6B /* LCloudBackupLoadDataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCloudBackupLoadDataDelegate.h; sourceTree = "<group>"; };
 		DFE77444189F90DE00A3FC6B /* LCloudFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCloudFile.h; sourceTree = "<group>"; };
 		DFE77445189F90DE00A3FC6B /* LCloudFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCloudFile.m; sourceTree = "<group>"; };
+		F39847189F2A90B87708CE6C /* Pods-LightcastTestApp.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastTestApp.testing.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastTestApp/Pods-LightcastTestApp.testing.xcconfig"; sourceTree = "<group>"; };
+		F8120721927645B692F341E5 /* libPods-Lightcast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lightcast.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1250,6 +1200,7 @@
 				0FEF2C2517744893001631C9 /* UIKit.framework in Frameworks */,
 				0FEF2C231774488E001631C9 /* QuartzCore.framework in Frameworks */,
 				0FE9D7F31696EB16003B8672 /* libMagicKit-iOS.a in Frameworks */,
+				AF46A3A833EDB1DF3FCFD7AC /* libPods-Lightcast.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,6 +1220,7 @@
 				0FEF2C4B17745AD2001631C9 /* Foundation.framework in Frameworks */,
 				0FEF2C4A17745AC2001631C9 /* UIKit.framework in Frameworks */,
 				0F7F3B8416AF8AEF0073AF8B /* libLightcast.a in Frameworks */,
+				61DFA632450266EE76242974 /* libPods-LightcastTestApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1278,6 +1230,7 @@
 			files = (
 				0FAC498A178EBF9F0017D310 /* Foundation.framework in Frameworks */,
 				0FAC498C178EBF9F0017D310 /* UIKit.framework in Frameworks */,
+				AE698A346BD984157635265C /* libPods-LightcastiTunes.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1288,6 +1241,7 @@
 				0F0A12311B2968F3004C25E1 /* SBJson.framework in Frameworks */,
 				0FEF2C2E17744C45001631C9 /* CoreFoundation.framework in Frameworks */,
 				0FE9D7F61696EB20003B8672 /* MagicKit.framework in Frameworks */,
+				AEABBF904CB016158918A452 /* libPods-Lightcast-MacOSX.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1309,6 +1263,7 @@
 				0FEF2C34177458BA001631C9 /* QuartzCore.framework in Frameworks */,
 				0FEF2C32177458B3001631C9 /* CFNetwork.framework in Frameworks */,
 				0F427AEF16F30A3700300E2B /* libLightcast.a in Frameworks */,
+				8213D1B5C1EB5E93307611AC /* libPods-LightcastTranslator.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1378,6 +1333,7 @@
 				0F7F3B5F16AF8A820073AF8B /* LightcastTestApp */,
 				0F194C6E135C82B4002C7AB2 /* Frameworks */,
 				0F194C6D135C82B4002C7AB2 /* Products */,
+				499BFA9A06B523F87079A604 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1400,6 +1356,11 @@
 				0FEF2C47177459CA001631C9 /* Translator */,
 				0FEF2C2A17744AD6001631C9 /* iOS */,
 				0FEF2C2B17744ADE001631C9 /* MacOSX */,
+				F8120721927645B692F341E5 /* libPods-Lightcast.a */,
+				B2A3F654BAD7A8812493CEDF /* libPods-Lightcast-MacOSX.a */,
+				D221511AD8E693753B1D1A76 /* libPods-LightcastTestApp.a */,
+				437DD953D3968FC741B1043D /* libPods-LightcastTranslator.a */,
+				99C8DF3DDE2A8DE7687387AB /* libPods-LightcastiTunes.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1924,15 +1885,6 @@
 			name = API;
 			sourceTree = "<group>";
 		};
-		0F6A487D174B111200FDB0EB /* CocoaLumberjack */ = {
-			isa = PBXGroup;
-			children = (
-				0FCEE1EB1A73A07300DAB907 /* Classes */,
-			);
-			name = CocoaLumberjack;
-			path = 3rdParty/CocoaLumberjack;
-			sourceTree = "<group>";
-		};
 		0F7C29B3169B06BE0042E7FF /* GCD Timer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2221,54 +2173,6 @@
 			name = UUID;
 			sourceTree = "<group>";
 		};
-		0FCEE1EB1A73A07300DAB907 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				0FCEE1EC1A73A07300DAB907 /* CLI */,
-				0FCEE1EF1A73A07300DAB907 /* CocoaLumberjack.h */,
-				0FCEE1F11A73A07300DAB907 /* DDAbstractDatabaseLogger.h */,
-				0FCEE1F21A73A07300DAB907 /* DDAbstractDatabaseLogger.m */,
-				0FCEE1F31A73A07300DAB907 /* DDASLLogCapture.h */,
-				0FCEE1F41A73A07300DAB907 /* DDASLLogCapture.m */,
-				0FCEE1F51A73A07300DAB907 /* DDASLLogger.h */,
-				0FCEE1F61A73A07300DAB907 /* DDASLLogger.m */,
-				0FCEE1F71A73A07300DAB907 /* DDAssertMacros.h */,
-				0FCEE1F81A73A07300DAB907 /* DDFileLogger.h */,
-				0FCEE1F91A73A07300DAB907 /* DDFileLogger.m */,
-				0FCEE1FA1A73A07300DAB907 /* DDLegacyMacros.h */,
-				0FCEE1FB1A73A07300DAB907 /* DDLog+LOGV.h */,
-				0FCEE1FC1A73A07300DAB907 /* DDLog.h */,
-				0FCEE1FD1A73A07300DAB907 /* DDLog.m */,
-				0FCEE1FE1A73A07300DAB907 /* DDLogMacros.h */,
-				0FCEE1FF1A73A07300DAB907 /* DDTTYLogger.h */,
-				0FCEE2001A73A07300DAB907 /* DDTTYLogger.m */,
-				0FCEE2011A73A07300DAB907 /* Extensions */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		0FCEE1EC1A73A07300DAB907 /* CLI */ = {
-			isa = PBXGroup;
-			children = (
-				0FCEE1ED1A73A07300DAB907 /* CLIColor.h */,
-				0FCEE1EE1A73A07300DAB907 /* CLIColor.m */,
-			);
-			path = CLI;
-			sourceTree = "<group>";
-		};
-		0FCEE2011A73A07300DAB907 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0FCEE2021A73A07300DAB907 /* DDContextFilterLogFormatter.h */,
-				0FCEE2031A73A07300DAB907 /* DDContextFilterLogFormatter.m */,
-				0FCEE2041A73A07300DAB907 /* DDDispatchQueueLogFormatter.h */,
-				0FCEE2051A73A07300DAB907 /* DDDispatchQueueLogFormatter.m */,
-				0FCEE2061A73A07300DAB907 /* DDMultiFormatter.h */,
-				0FCEE2071A73A07300DAB907 /* DDMultiFormatter.m */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		0FD2A84F1851D5770038E232 /* Security */ = {
 			isa = PBXGroup;
 			children = (
@@ -2457,6 +2361,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		499BFA9A06B523F87079A604 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				901080D0B74D52EEAA0B46AC /* Pods-Lightcast.debug.xcconfig */,
+				9008081DCEFE086E75E5B524 /* Pods-Lightcast.release.xcconfig */,
+				1F372300DE75D852717760C3 /* Pods-Lightcast.testing.xcconfig */,
+				7577647AD56AD5E2F6EFD66A /* Pods-Lightcast-MacOSX.debug.xcconfig */,
+				BF629BAB609F816D1EC16CA9 /* Pods-Lightcast-MacOSX.release.xcconfig */,
+				00B4E4C6F64A6352E697D3E8 /* Pods-Lightcast-MacOSX.testing.xcconfig */,
+				1FA2642B70C849C3BB4A9A9C /* Pods-LightcastTestApp.debug.xcconfig */,
+				13E01488242ECF18711871B6 /* Pods-LightcastTestApp.release.xcconfig */,
+				F39847189F2A90B87708CE6C /* Pods-LightcastTestApp.testing.xcconfig */,
+				D7EF4DCE54B1828187FB17AD /* Pods-LightcastTranslator.debug.xcconfig */,
+				7FBBB0DE5A58F6726ED2E6FB /* Pods-LightcastTranslator.release.xcconfig */,
+				9D360F2BD56B36BF7A778C90 /* Pods-LightcastTranslator.testing.xcconfig */,
+				09C501AE4C7002447FFE0ABD /* Pods-LightcastiTunes.debug.xcconfig */,
+				941449462C670060FC606C44 /* Pods-LightcastiTunes.release.xcconfig */,
+				37E50D8914E40EA31ECDBFBB /* Pods-LightcastiTunes.testing.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7E0995F713D55E2D00A274D8 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -2533,7 +2459,6 @@
 			children = (
 				0FD83E20189FE59100993A0A /* NGAParallaxMotion */,
 				0F1EC00917720F5C00F2D6C1 /* SystemServices */,
-				0F6A487D174B111200FDB0EB /* CocoaLumberjack */,
 				0F8B5B8416B29947009ADC20 /* Base64 */,
 				7EB6A7F413D97F8E002C8325 /* ATMHud */,
 				3623A0CC13E140DC0089273C /* MiniZip */,
@@ -2796,21 +2721,6 @@
 				0F1EC07817720F6F00F2D6C1 /* SSProcessorInfo.h in Headers */,
 				0F1EC07E17720F6F00F2D6C1 /* SSUUID.h in Headers */,
 				0F1EC08417720F6F00F2D6C1 /* SystemServicesConstants.h in Headers */,
-				0FCEE2381A73A07300DAB907 /* DDMultiFormatter.h in Headers */,
-				0FCEE22C1A73A07300DAB907 /* DDTTYLogger.h in Headers */,
-				0FCEE21E1A73A07300DAB907 /* DDFileLogger.h in Headers */,
-				0FCEE2101A73A07300DAB907 /* DDAbstractDatabaseLogger.h in Headers */,
-				0FCEE2141A73A07300DAB907 /* DDASLLogCapture.h in Headers */,
-				0FCEE2301A73A07300DAB907 /* DDContextFilterLogFormatter.h in Headers */,
-				0FCEE2241A73A07300DAB907 /* DDLog+LOGV.h in Headers */,
-				0FCEE22A1A73A07300DAB907 /* DDLogMacros.h in Headers */,
-				0FCEE21C1A73A07300DAB907 /* DDAssertMacros.h in Headers */,
-				0FCEE2181A73A07300DAB907 /* DDASLLogger.h in Headers */,
-				0FCEE2221A73A07300DAB907 /* DDLegacyMacros.h in Headers */,
-				0FCEE2341A73A07300DAB907 /* DDDispatchQueueLogFormatter.h in Headers */,
-				0FCEE2261A73A07300DAB907 /* DDLog.h in Headers */,
-				0FCEE20C1A73A07300DAB907 /* CocoaLumberjack.h in Headers */,
-				0FCEE2081A73A07300DAB907 /* CLIColor.h in Headers */,
 				0F4D0A9C17AF80E00061CAED /* LCalendarView.h in Headers */,
 				0F4D0AAA17AF90DE0061CAED /* LCalendarGridView.h in Headers */,
 				0F99049A1BFE2967008298EC /* LValidatorUtils.h in Headers */,
@@ -2947,21 +2857,6 @@
 				0F7FE8EE16BFC47400FBEC00 /* NSWindow+Additions.h in Headers */,
 				0F6A48C7174B1AD200FDB0EB /* LCompressingLogFileManager.h in Headers */,
 				0F427B2916F3393200300E2B /* LI18nLocalizedStringsFile.h in Headers */,
-				0FCEE2231A73A07300DAB907 /* DDLegacyMacros.h in Headers */,
-				0FCEE2111A73A07300DAB907 /* DDAbstractDatabaseLogger.h in Headers */,
-				0FCEE22D1A73A07300DAB907 /* DDTTYLogger.h in Headers */,
-				0FCEE21D1A73A07300DAB907 /* DDAssertMacros.h in Headers */,
-				0FCEE2271A73A07300DAB907 /* DDLog.h in Headers */,
-				0FCEE2391A73A07300DAB907 /* DDMultiFormatter.h in Headers */,
-				0FCEE20D1A73A07300DAB907 /* CocoaLumberjack.h in Headers */,
-				0FCEE22B1A73A07300DAB907 /* DDLogMacros.h in Headers */,
-				0FCEE2191A73A07300DAB907 /* DDASLLogger.h in Headers */,
-				0FCEE2151A73A07300DAB907 /* DDASLLogCapture.h in Headers */,
-				0FCEE2251A73A07300DAB907 /* DDLog+LOGV.h in Headers */,
-				0FCEE21F1A73A07300DAB907 /* DDFileLogger.h in Headers */,
-				0FCEE2091A73A07300DAB907 /* CLIColor.h in Headers */,
-				0FCEE2311A73A07300DAB907 /* DDContextFilterLogFormatter.h in Headers */,
-				0FCEE2351A73A07300DAB907 /* DDDispatchQueueLogFormatter.h in Headers */,
 				0F4D0A8D17AEAA1B0061CAED /* LStringTranscoder.h in Headers */,
 				0F0C6BA81770735A008587E0 /* LDataSubmitter.h in Headers */,
 				DFE7744D189F90DE00A3FC6B /* LCloudBackupLoadDataDelegate.h in Headers */,
@@ -2985,11 +2880,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F194C8F135C82B5002C7AB2 /* Build configuration list for PBXNativeTarget "Lightcast" */;
 			buildPhases = (
+				F99C5B87B07DAA19F0FB428E /* [CP] Check Pods Manifest.lock */,
 				0F194C6A135C82B4002C7AB2 /* Headers */,
 				0F194C68135C82B4002C7AB2 /* Sources */,
 				0F194C69135C82B4002C7AB2 /* Frameworks */,
 				7E162EE313D1A6AB000FD54B /* Build an universal library */,
 				7E8BB6C313E103B0007CB4E0 /* Protect copied headers */,
+				056E285AD75F48D077535910 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3006,9 +2903,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F7F3B7D16AF8A820073AF8B /* Build configuration list for PBXNativeTarget "LightcastTestApp" */;
 			buildPhases = (
+				DB9E2AF4BE90C92934273A98 /* [CP] Check Pods Manifest.lock */,
 				0F7F3B5416AF8A820073AF8B /* Sources */,
 				0F7F3B5516AF8A820073AF8B /* Frameworks */,
 				0F7F3B5616AF8A820073AF8B /* Resources */,
+				E9141A60C546687D52503F78 /* [CP] Embed Pods Frameworks */,
+				969BAB8A9388E081927779FC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3024,11 +2924,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FAC4A44178EBF9F0017D310 /* Build configuration list for PBXNativeTarget "LightcastiTunes" */;
 			buildPhases = (
+				CE946830287B95DAF5BB6915 /* [CP] Check Pods Manifest.lock */,
 				0FAC48EA178EBF9F0017D310 /* Sources */,
 				0FAC4989178EBF9F0017D310 /* Frameworks */,
 				0FAC4990178EBF9F0017D310 /* Headers */,
 				0FAC4A42178EBF9F0017D310 /* Build an universal library */,
 				0FAC4A43178EBF9F0017D310 /* Protect copied headers */,
+				CBF2280BEC8D691098B46849 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3043,11 +2945,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E2C642B13F006D40092D661 /* Build configuration list for PBXNativeTarget "Lightcast-MacOSX" */;
 			buildPhases = (
+				07396FAF721558E0BE261D11 /* [CP] Check Pods Manifest.lock */,
 				7E2C640613F006D30092D661 /* Headers */,
 				7E2C640413F006D30092D661 /* Sources */,
 				7E2C640513F006D30092D661 /* Frameworks */,
 				7E2C64A113F009220092D661 /* Build an universal library */,
 				7E2C64A213F00FD90092D661 /* Protect copied headers */,
+				12B5C2D34F92D33AF790216E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3064,9 +2968,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E87D27313F93DDF003875EF /* Build configuration list for PBXNativeTarget "LightcastTranslator" */;
 			buildPhases = (
+				744E378E2134F16C1B37E20E /* [CP] Check Pods Manifest.lock */,
 				7E87D26413F93DDE003875EF /* Sources */,
 				7E87D26513F93DDE003875EF /* Frameworks */,
 				7E87D26613F93DDE003875EF /* CopyFiles */,
+				872A1F3EC83705BA17B3EE5B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3085,7 +2991,7 @@
 		0F194C63135C82B4002C7AB2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Nimasystems Ltd";
 			};
 			buildConfigurationList = 0F194C66135C82B4002C7AB2 /* Build configuration list for PBXProject "Lightcast" */;
@@ -3188,6 +3094,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		056E285AD75F48D077535910 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lightcast/Pods-Lightcast-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		07396FAF721558E0BE261D11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		0FAC4A42178EBF9F0017D310 /* Build an universal library */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -3215,6 +3151,36 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "#\n# Copyright 2009-2010 Facebook\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#    http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n\n# Protect the copied header files from being modified. This is done in an attempt to avoid\n# accidentally editing the copied headers.\n\n# Ignore whitespace characters in paths\nIFS=$'\\n'\n\ncd $TARGET_BUILD_DIR/${PUBLIC_HEADERS_FOLDER_PATH}\n\nchmod a-w *.h 2>> /dev/null\nchmod a-w private/*.h 2>> /dev/null\n                  \n                  exit 0\n";
+		};
+		12B5C2D34F92D33AF790216E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lightcast-MacOSX/Pods-Lightcast-MacOSX-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		744E378E2134F16C1B37E20E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		7E162EE313D1A6AB000FD54B /* Build an universal library */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3272,6 +3238,111 @@
 			shellPath = /bin/sh;
 			shellScript = "#\n# Copyright 2009-2010 Facebook\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#    http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n\n# Protect the copied header files from being modified. This is done in an attempt to avoid\n# accidentally editing the copied headers.\n\n# Ignore whitespace characters in paths\nIFS=$'\\n'\n\ncd $TARGET_BUILD_DIR/${PUBLIC_HEADERS_FOLDER_PATH}\n\nchmod a-w *.h 2>> /dev/null\nchmod a-w private/*.h 2>> /dev/null\n                  \n                  exit 0\n";
 		};
+		872A1F3EC83705BA17B3EE5B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LightcastTranslator/Pods-LightcastTranslator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		969BAB8A9388E081927779FC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LightcastTestApp/Pods-LightcastTestApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBF2280BEC8D691098B46849 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LightcastiTunes/Pods-LightcastiTunes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE946830287B95DAF5BB6915 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DB9E2AF4BE90C92934273A98 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E9141A60C546687D52503F78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LightcastTestApp/Pods-LightcastTestApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F99C5B87B07DAA19F0FB428E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -3294,14 +3365,12 @@
 				0F195033135D08A5002C7AB2 /* LImageView.m in Sources */,
 				0F19503B135D0907002C7AB2 /* LWebView.m in Sources */,
 				0F19503F135D091F002C7AB2 /* LYouTubeView.m in Sources */,
-				0FCEE2121A73A07300DAB907 /* DDAbstractDatabaseLogger.m in Sources */,
 				0F195043135D097C002C7AB2 /* LScrollView.m in Sources */,
 				0F19504E135D0B30002C7AB2 /* LViewController.m in Sources */,
 				0F195054135D10A9002C7AB2 /* UITabBarController+Additions.m in Sources */,
 				7E09960013D55E5A00A274D8 /* LApplicationUtils.m in Sources */,
 				7ED4E47F13DB5F9000224431 /* NSUserDefaults+Additions.m in Sources */,
 				0F195058135D1149002C7AB2 /* UITableView+Additions.m in Sources */,
-				0FCEE22E1A73A07300DAB907 /* DDTTYLogger.m in Sources */,
 				DFE77448189F90DE00A3FC6B /* LCloudBackup.m in Sources */,
 				0F19505C135D142D002C7AB2 /* UI-General.m in Sources */,
 				0F195061135D158F002C7AB2 /* UIWindow+Additions.m in Sources */,
@@ -3325,7 +3394,6 @@
 				0FBAF2E6136067A600BF3712 /* LPlugin.m in Sources */,
 				0F40066D1367817E00C5AC2A /* LConfiguration.m in Sources */,
 				0F4006711367AD5100C5AC2A /* LC.m in Sources */,
-				0FCEE20A1A73A07300DAB907 /* CLIColor.m in Sources */,
 				0F4006751367AE8A00C5AC2A /* LPluginManager.m in Sources */,
 				0F557C06136C43F40042F35B /* LVersionComparator.m in Sources */,
 				0F51E7F0136D9A32006F7DEC /* LStorage.m in Sources */,
@@ -3346,7 +3414,6 @@
 				0F2931EF137D23BD00CDB645 /* SQLParser.m in Sources */,
 				0FAD501E1389175D000AA26B /* LWindow.m in Sources */,
 				0FAD502313891A38000AA26B /* LCalendarMonthView.m in Sources */,
-				0FCEE23A1A73A07300DAB907 /* DDMultiFormatter.m in Sources */,
 				7EA4C86F13AB459D00026105 /* Reachability.m in Sources */,
 				7E2AC80313CCE0AD005F51F5 /* LAdvancedTabBarController.m in Sources */,
 				7EF2B0F213CD797800422A74 /* UIColor+Additions.m in Sources */,
@@ -3355,7 +3422,6 @@
 				7E9135AF13D061790052468C /* LDateTimeUtils.m in Sources */,
 				7EB6A7D313D86121002C8325 /* LiTunesImportExportPlugin.m in Sources */,
 				7EB6A80313D97F8E002C8325 /* ATMHud.m in Sources */,
-				0FCEE2201A73A07300DAB907 /* DDFileLogger.m in Sources */,
 				7EB6A80613D97F8E002C8325 /* ATMHudQueueItem.m in Sources */,
 				7EB6A80813D97F8E002C8325 /* ATMHudView.m in Sources */,
 				7EB6A80A13D97F8E002C8325 /* ATMProgressLayer.m in Sources */,
@@ -3365,8 +3431,6 @@
 				3623A0E213E140DC0089273C /* ioapi.c in Sources */,
 				3623A0E613E140DC0089273C /* unzip.c in Sources */,
 				3623A0E813E140DC0089273C /* zip.c in Sources */,
-				0FCEE2321A73A07300DAB907 /* DDContextFilterLogFormatter.m in Sources */,
-				0FCEE2161A73A07300DAB907 /* DDASLLogCapture.m in Sources */,
 				3623A0EB13E140DC0089273C /* FileInZipInfo.m in Sources */,
 				3623A0ED13E140DC0089273C /* ZipException.m in Sources */,
 				3623A0EF13E140DC0089273C /* ZipFile.m in Sources */,
@@ -3395,7 +3459,6 @@
 				0F4F41F0168436D2009B1824 /* LAppUpgrades.m in Sources */,
 				0F4F41F91684426F009B1824 /* LArchiver.m in Sources */,
 				0F4F424F1684632B009B1824 /* LCAppConfiguration.m in Sources */,
-				0FCEE21A1A73A07300DAB907 /* DDASLLogger.m in Sources */,
 				0FC4A71E168DBC1A0074E507 /* NSData+CommonCrypto.m in Sources */,
 				0FE9D6841696CB99003B8672 /* LUrlDownloader.m in Sources */,
 				0FE9D6D61696E669003B8672 /* LUrlDownloaderPostFile.m in Sources */,
@@ -3407,7 +3470,6 @@
 				0F7C29BC169B06CC0042E7FF /* LGCDTimer.m in Sources */,
 				0F7FDE0A169F4C6F0009F347 /* LFilteredNSDictionary.m in Sources */,
 				0F53506F16A148B3001DF460 /* LDelegateProxy.m in Sources */,
-				0FCEE2281A73A07300DAB907 /* DDLog.m in Sources */,
 				0F91473516A8EE4200E08821 /* LTableViewPullRefresh.m in Sources */,
 				0F91474C16A8F52B00E08821 /* LCoreTabBarController.m in Sources */,
 				0F91475616A8F55D00E08821 /* LCoreTabBarBackingLayer.m in Sources */,
@@ -3423,7 +3485,6 @@
 				0F427ADF16F3045400300E2B /* LI18nTranslationSourceParser.m in Sources */,
 				0F427AE716F3054300300E2B /* LI18nParsedString.m in Sources */,
 				0F427B2216F3274C00300E2B /* LI18nProjectCatalog.m in Sources */,
-				0FCEE2361A73A07300DAB907 /* DDDispatchQueueLogFormatter.m in Sources */,
 				0F427B2A16F3393200300E2B /* LI18nLocalizedStringsFile.m in Sources */,
 				0F7B5DBE170BE43800A1ED3C /* LUrlDownloaderCompressor.m in Sources */,
 				0F7B5DC9170BE44800A1ED3C /* LUrlDownloaderDecompressor.m in Sources */,
@@ -3486,14 +3547,12 @@
 				7E2C647A13F008710092D661 /* NSString+DB.m in Sources */,
 				0F427AAF16F2646A00300E2B /* i18n.m in Sources */,
 				7E2C647B13F008710092D661 /* SQLParser.m in Sources */,
-				0FCEE2171A73A07300DAB907 /* DDASLLogCapture.m in Sources */,
 				7E2C647C13F008710092D661 /* LDatabaseSchema.m in Sources */,
 				7E2C648B13F008710092D661 /* LLocalizationManager.m in Sources */,
 				7E2C647D13F008710092D661 /* LDatabaseAdapter.m in Sources */,
 				7E2C647E13F008710092D661 /* LSQLiteDatabaseAdapter.m in Sources */,
 				7E2C647F13F008710092D661 /* LNullDatabaseAdapter.m in Sources */,
 				7E2C648013F008710092D661 /* LDatabaseManager.m in Sources */,
-				0FCEE22F1A73A07300DAB907 /* DDTTYLogger.m in Sources */,
 				7E2C648113F008710092D661 /* LPlugin.m in Sources */,
 				0FBC504B16BD833400C7BAB7 /* LViewController.m in Sources */,
 				7E2C648213F008710092D661 /* LPluginManager.m in Sources */,
@@ -3501,13 +3560,10 @@
 				7E2C648413F008710092D661 /* LStorageAdapter.m in Sources */,
 				7E2C648513F008710092D661 /* LStorage.m in Sources */,
 				7E2C648713F008710092D661 /* LCacheManager.m in Sources */,
-				0FCEE2131A73A07300DAB907 /* DDAbstractDatabaseLogger.m in Sources */,
-				0FCEE2331A73A07300DAB907 /* DDContextFilterLogFormatter.m in Sources */,
 				7E2C648813F008710092D661 /* LVirtualFile.m in Sources */,
 				7E2C648913F008710092D661 /* LVirtualFSSchema.m in Sources */,
 				0FD83E4218A0CD9B00993A0A /* LURLDataDownloader.m in Sources */,
 				7E2C648A13F008710092D661 /* LVirtualFSPlugin.m in Sources */,
-				0FCEE20B1A73A07300DAB907 /* CLIColor.m in Sources */,
 				7E2C648D13F008710092D661 /* LCacheFIFO.m in Sources */,
 				0F7FE8AB16BF61F500FBEC00 /* Reachability.m in Sources */,
 				7E2C648E13F008710092D661 /* LRemoteError.m in Sources */,
@@ -3528,20 +3584,16 @@
 				0F99049D1BFE2967008298EC /* LValidatorUtils.m in Sources */,
 				7EE7919513FB95F60046000F /* NSUserDefaults+Additions.m in Sources */,
 				7E2C649F13F008710092D661 /* LWebServiceClient.m in Sources */,
-				0FCEE2211A73A07300DAB907 /* DDFileLogger.m in Sources */,
 				7EE7919413FB95F50046000F /* LApplicationUtils.m in Sources */,
-				0FCEE23B1A73A07300DAB907 /* DDMultiFormatter.m in Sources */,
 				7E9A9AD013F1722C002C3D7A /* FileInZipInfo.m in Sources */,
 				7E9A9AD313F17235002C3D7A /* ZipReadStream.m in Sources */,
 				7E9A9AD413F17237002C3D7A /* ZipWriteStream.m in Sources */,
 				7E9A9AD813F17243002C3D7A /* ioapi.c in Sources */,
 				7E9A9AD613F1723C002C3D7A /* unzip.c in Sources */,
-				0FCEE21B1A73A07300DAB907 /* DDASLLogger.m in Sources */,
 				7E9A9AD513F17239002C3D7A /* zip.c in Sources */,
 				7E3931FB140603C600F95F0C /* CAAnimation+Additions.m in Sources */,
 				7E9A9AD213F17232002C3D7A /* ZipFile.m in Sources */,
 				7E9A9AD113F1722F002C3D7A /* ZipException.m in Sources */,
-				0FCEE2291A73A07300DAB907 /* DDLog.m in Sources */,
 				7E00CF6D13F2D08800D6F6F3 /* NSImage+Additions.m in Sources */,
 				7E00CF7413F2E62300D6F6F3 /* CTGradient.m in Sources */,
 				7E00CF7813F2E69500D6F6F3 /* NSBezierPath+RoundedRect.m in Sources */,
@@ -3562,7 +3614,6 @@
 				0FC4A720168DBC1A0074E507 /* NSData+CommonCrypto.m in Sources */,
 				0FE9D6861696CB99003B8672 /* LUrlDownloader.m in Sources */,
 				0FE9D6D81696E669003B8672 /* LUrlDownloaderPostFile.m in Sources */,
-				0FCEE2371A73A07300DAB907 /* DDDispatchQueueLogFormatter.m in Sources */,
 				0FE9D8041697CD61003B8672 /* LNetworkUtils.m in Sources */,
 				0FE9D80D1697CFEF003B8672 /* LDeviceSystemInfo.m in Sources */,
 				0FD2A8581851D59F0038E232 /* LStringObfuscator.m in Sources */,
@@ -3646,18 +3697,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALTERNATE_GROUP = nogroup;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -3665,7 +3722,7 @@
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/iphoneos/include\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Lightcast;
@@ -3679,20 +3736,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALTERNATE_GROUP = nogroup;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEPLOYMENT_POSTPROCESSING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
 					NS_BLOCK_ASSERTIONS,
 					RELEASE,
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -3700,7 +3763,7 @@
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/iphoneos/include\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = Lightcast;
 				SDKROOT = iphoneos;
@@ -3711,6 +3774,7 @@
 		};
 		0F194C90135C82B5002C7AB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 901080D0B74D52EEAA0B46AC /* Pods-Lightcast.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PREFIX_HEADER = "Lightcast iOS/Lightcast-Prefix.pch";
@@ -3725,13 +3789,14 @@
 					"\"$(PUBLIC_HEADERS_FOLDER_PATH)/../SBJson\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Lightcast;
 			};
 			name = Debug;
 		};
 		0F194C91135C82B5002C7AB2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9008081DCEFE086E75E5B524 /* Pods-Lightcast.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PREFIX_HEADER = "Lightcast iOS/Lightcast-Prefix.pch";
@@ -3746,7 +3811,7 @@
 					"\"$(PUBLIC_HEADERS_FOLDER_PATH)/../SBJson\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Lightcast;
 				STRIP_INSTALLED_PRODUCT = YES;
 			};
@@ -3754,6 +3819,7 @@
 		};
 		0F7F3B7E16AF8A820073AF8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FA2642B70C849C3BB4A9A9C /* Pods-LightcastTestApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3769,8 +3835,8 @@
 				);
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "LightcastTestApp/LightcastTestApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nimasystems.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -3781,6 +3847,7 @@
 		};
 		0F7F3B7F16AF8A820073AF8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13E01488242ECF18711871B6 /* Pods-LightcastTestApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3795,9 +3862,12 @@
 				);
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "LightcastTestApp/LightcastTestApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nimasystems.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -3809,6 +3879,7 @@
 		};
 		0FAC4A45178EBF9F0017D310 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09C501AE4C7002447FFE0ABD /* Pods-LightcastiTunes.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PREFIX_HEADER = "Lightcast iOS/Lightcast-Prefix.pch";
@@ -3821,7 +3892,7 @@
 					"$(inherited)",
 					3rdParty,
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = LightcastiTunes;
 				PUBLIC_HEADERS_FOLDER_PATH = include/LightcastiTunes;
 			};
@@ -3829,6 +3900,7 @@
 		};
 		0FAC4A46178EBF9F0017D310 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 941449462C670060FC606C44 /* Pods-LightcastiTunes.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PREFIX_HEADER = "Lightcast iOS/Lightcast-Prefix.pch";
@@ -3841,7 +3913,7 @@
 					"$(inherited)",
 					3rdParty,
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = LightcastiTunes;
 				PUBLIC_HEADERS_FOLDER_PATH = include/LightcastiTunes;
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -3850,6 +3922,7 @@
 		};
 		0FAC4A47178EBF9F0017D310 /* Testing */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37E50D8914E40EA31ECDBFBB /* Pods-LightcastiTunes.testing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -3863,7 +3936,7 @@
 					"$(inherited)",
 					3rdParty,
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = LightcastiTunes;
 				PUBLIC_HEADERS_FOLDER_PATH = include/LightcastiTunes;
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -3874,20 +3947,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALTERNATE_GROUP = nogroup;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEPLOYMENT_POSTPROCESSING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
 					NS_BLOCK_ASSERTIONS,
 					RELEASE,
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -3895,7 +3974,7 @@
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/iphoneos/include\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = Lightcast;
 				SDKROOT = iphoneos;
@@ -3906,6 +3985,7 @@
 		};
 		0FEF2C6717746464001631C9 /* Testing */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F372300DE75D852717760C3 /* Pods-Lightcast.testing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -3921,7 +4001,7 @@
 					"\"$(PUBLIC_HEADERS_FOLDER_PATH)/../SBJson\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/iphoneos/include\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Lightcast;
 				STRIP_INSTALLED_PRODUCT = YES;
 			};
@@ -3929,6 +4009,7 @@
 		};
 		0FEF2C6817746464001631C9 /* Testing */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00B4E4C6F64A6352E697D3E8 /* Pods-Lightcast-MacOSX.testing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -3945,7 +4026,7 @@
 					"$(inherited)",
 					3rdParty,
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Lightcast;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -3954,6 +4035,7 @@
 		};
 		0FEF2C6917746464001631C9 /* Testing */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D360F2BD56B36BF7A778C90 /* Pods-LightcastTranslator.testing.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PREFIX_HEADER = "LightcastTranslator-Prefix.pch";
@@ -3964,7 +4046,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -3972,6 +4054,7 @@
 		};
 		0FEF2C6A17746464001631C9 /* Testing */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F39847189F2A90B87708CE6C /* Pods-LightcastTestApp.testing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3986,9 +4069,12 @@
 				);
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "LightcastTestApp/LightcastTestApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nimasystems.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -4000,6 +4086,7 @@
 		};
 		7E2C642C13F006D40092D661 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7577647AD56AD5E2F6EFD66A /* Pods-Lightcast-MacOSX.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -4015,7 +4102,7 @@
 					"$(inherited)",
 					3rdParty,
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Lightcast;
 				SDKROOT = macosx;
 			};
@@ -4023,6 +4110,7 @@
 		};
 		7E2C642D13F006D40092D661 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF629BAB609F816D1EC16CA9 /* Pods-Lightcast-MacOSX.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -4038,7 +4126,7 @@
 					"$(inherited)",
 					3rdParty,
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Lightcast;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -4047,6 +4135,7 @@
 		};
 		7E87D27413F93DDF003875EF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7EF4DCE54B1828187FB17AD /* Pods-LightcastTranslator.debug.xcconfig */;
 			buildSettings = {
 				GCC_PREFIX_HEADER = "LightcastTranslator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4057,7 +4146,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -4065,6 +4154,7 @@
 		};
 		7E87D27513F93DDF003875EF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FBBB0DE5A58F6726ED2E6FB /* Pods-LightcastTranslator.release.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PREFIX_HEADER = "LightcastTranslator-Prefix.pch";
@@ -4075,7 +4165,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
