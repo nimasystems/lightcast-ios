@@ -244,6 +244,12 @@ logFileManager=_logFileManager;
     }
 #endif
     
+#if TESTING || DEBUG
+    // console logging while testing / debugging
+    [DDLog addLogger:[DDTTYLogger sharedInstance]]; // TTY = Xcode console
+    [DDLog addLogger:[DDASLLogger sharedInstance]]; // ASL = Apple System Logs
+#endif
+    
     if (self.delegate)
     {
         if (self.delegate && [self.delegate respondsToSelector:@selector(willBeginInitialization:)])

@@ -7,7 +7,6 @@
 //
 
 #import "LUrlDownloaderPostFile.h"
-#import "MagicKit.h"
 
 NSString *const LUrlDownloaderPostFileDefaultMimetype = @"application/octet-stream";
 
@@ -86,6 +85,8 @@ actualData;
 
 - (NSString*)getMimetype
 {
+    // TODO restore this some day
+    /*
     __block NSMutableString *mime = [[NSMutableString alloc] init];
     
     // it seems GEMagicResult is not thread safe at all
@@ -111,7 +112,10 @@ actualData;
         [mime setString:LUrlDownloaderPostFileDefaultMimetype];
     }
     
-    return [mime autorelease];
+    
+    return [mime autorelease];*/
+    
+    return LUrlDownloaderPostFileDefaultMimetype;
 }
 
 - (long long)getDataSize

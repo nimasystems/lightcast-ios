@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Lightcast"
-  s.version      = "0.0.11"
+  s.version      = "0.0.14"
   s.summary      = "iOS utility framework"
 
   # This description is used to generate tags and improve search results.
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://git.nimasystems.com/lightcast-ios", :tag => "#{s.version}" }
+  s.source       = { :git => "https://git.nimasystems.com/lightcast-ios", :tag => s.version, :submodules => true }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -126,7 +126,7 @@ Pod::Spec.new do |s|
   s.frameworks = "Foundation", "CoreGraphics", "UIKit", "QuartzCore"
 
   # s.library   = "iconv"
-  s.libraries = "MagicKit-iOS"
+  #s.libraries = "MagicKit-iOS"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -138,6 +138,6 @@ Pod::Spec.new do |s|
   s.requires_arc = false
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  #s.dependency "CocoaLumberjack"
+  s.dependency "CocoaLumberjack"
 
 end
