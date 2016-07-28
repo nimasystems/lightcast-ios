@@ -7,6 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F00020B1D4A4DD1004C4155 /* SSAccelerometerInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001EE1D4A4DD1004C4155 /* SSAccelerometerInfo.h */; };
+		0F00020C1D4A4DD1004C4155 /* SSAccelerometerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0001EF1D4A4DD1004C4155 /* SSAccelerometerInfo.m */; };
+		0F00020D1D4A4DD1004C4155 /* SSAccessoryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F01D4A4DD1004C4155 /* SSAccessoryInfo.h */; };
+		0F00020E1D4A4DD1004C4155 /* SSAccessoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0001F11D4A4DD1004C4155 /* SSAccessoryInfo.m */; };
+		0F00020F1D4A4DD1004C4155 /* SSApplicationInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F21D4A4DD1004C4155 /* SSApplicationInfo.h */; };
+		0F0002101D4A4DD1004C4155 /* SSApplicationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0001F31D4A4DD1004C4155 /* SSApplicationInfo.m */; };
+		0F0002111D4A4DD1004C4155 /* SSBatteryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F41D4A4DD1004C4155 /* SSBatteryInfo.h */; };
+		0F0002121D4A4DD1004C4155 /* SSBatteryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0001F51D4A4DD1004C4155 /* SSBatteryInfo.m */; };
+		0F0002131D4A4DD1004C4155 /* SSCarrierInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F61D4A4DD1004C4155 /* SSCarrierInfo.h */; };
+		0F0002141D4A4DD1004C4155 /* SSCarrierInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0001F71D4A4DD1004C4155 /* SSCarrierInfo.m */; };
+		0F0002151D4A4DD1004C4155 /* SSDiskInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F81D4A4DD1004C4155 /* SSDiskInfo.h */; };
+		0F0002161D4A4DD1004C4155 /* SSDiskInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0001F91D4A4DD1004C4155 /* SSDiskInfo.m */; };
+		0F0002171D4A4DD1004C4155 /* SSHardwareInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001FA1D4A4DD1004C4155 /* SSHardwareInfo.h */; };
+		0F0002181D4A4DD1004C4155 /* SSHardwareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0001FB1D4A4DD1004C4155 /* SSHardwareInfo.m */; };
+		0F0002191D4A4DD1004C4155 /* SSJailbreakCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001FC1D4A4DD1004C4155 /* SSJailbreakCheck.h */; };
+		0F00021A1D4A4DD1004C4155 /* SSJailbreakCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0001FD1D4A4DD1004C4155 /* SSJailbreakCheck.m */; };
+		0F00021B1D4A4DD1004C4155 /* SSLocalizationInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001FE1D4A4DD1004C4155 /* SSLocalizationInfo.h */; };
+		0F00021C1D4A4DD1004C4155 /* SSLocalizationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0001FF1D4A4DD1004C4155 /* SSLocalizationInfo.m */; };
+		0F00021D1D4A4DD1004C4155 /* SSMemoryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002001D4A4DD1004C4155 /* SSMemoryInfo.h */; };
+		0F00021E1D4A4DD1004C4155 /* SSMemoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002011D4A4DD1004C4155 /* SSMemoryInfo.m */; };
+		0F00021F1D4A4DD1004C4155 /* SSNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002021D4A4DD1004C4155 /* SSNetworkInfo.h */; };
+		0F0002201D4A4DD1004C4155 /* SSNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002031D4A4DD1004C4155 /* SSNetworkInfo.m */; };
+		0F0002211D4A4DD1004C4155 /* SSProcessInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002041D4A4DD1004C4155 /* SSProcessInfo.h */; };
+		0F0002221D4A4DD1004C4155 /* SSProcessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002051D4A4DD1004C4155 /* SSProcessInfo.m */; };
+		0F0002231D4A4DD1004C4155 /* SSProcessorInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002061D4A4DD1004C4155 /* SSProcessorInfo.h */; };
+		0F0002241D4A4DD1004C4155 /* SSProcessorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002071D4A4DD1004C4155 /* SSProcessorInfo.m */; };
+		0F0002251D4A4DD1004C4155 /* SSUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002081D4A4DD1004C4155 /* SSUUID.h */; };
+		0F0002261D4A4DD1004C4155 /* SSUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002091D4A4DD1004C4155 /* SSUUID.m */; };
+		0F0002271D4A4DD1004C4155 /* SystemServicesConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00020A1D4A4DD1004C4155 /* SystemServicesConstants.h */; };
+		0F00022A1D4A4DDC004C4155 /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002281D4A4DDC004C4155 /* Base64.h */; };
+		0F00022B1D4A4DDC004C4155 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002291D4A4DDC004C4155 /* Base64.m */; };
+		0F00022E1D4A4DEC004C4155 /* defines-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00022C1D4A4DEC004C4155 /* defines-iOS.h */; };
+		0F0002301D4A4DF2004C4155 /* defines-MacOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00022D1D4A4DEC004C4155 /* defines-MacOSX.h */; };
+		0F0002331D4A4DFE004C4155 /* Exceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002311D4A4DFE004C4155 /* Exceptions.m */; };
+		0F0002341D4A4DFE004C4155 /* internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002321D4A4DFE004C4155 /* internal.h */; };
+		0F0002371D4A4E3E004C4155 /* Lightcast-MacOSX-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002361D4A4E3E004C4155 /* Lightcast-MacOSX-Prefix.pch */; };
+		0F0002391D4A4EF6004C4155 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0002381D4A4EF6004C4155 /* main.m */; };
 		0F068D57167CACE000E2C536 /* LWebServiceClient2.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F068D55167CACE000E2C536 /* LWebServiceClient2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F068D58167CACE000E2C536 /* LWebServiceClient2.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F068D55167CACE000E2C536 /* LWebServiceClient2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F068D59167CACE000E2C536 /* LWebServiceClient2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F068D56167CACE000E2C536 /* LWebServiceClient2.m */; };
@@ -94,42 +131,12 @@
 		0F19510B135D229A002C7AB2 /* LTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195109135D2294002C7AB2 /* LTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F19510C135D229A002C7AB2 /* LTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F19510A135D2297002C7AB2 /* LTabBarController.m */; };
 		0F19510E135D2559002C7AB2 /* Exceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19510D135D2558002C7AB2 /* Exceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F195117135D286B002C7AB2 /* Exceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F195115135D2869002C7AB2 /* Exceptions.m */; };
 		0F195122135D367F002C7AB2 /* NSFileManager+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195120135D367F002C7AB2 /* NSFileManager+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F195123135D367F002C7AB2 /* NSFileManager+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F195121135D367F002C7AB2 /* NSFileManager+Additions.m */; };
 		0F195127135D37D7002C7AB2 /* NSDictionary+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195125135D37D7002C7AB2 /* NSDictionary+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F195128135D37D7002C7AB2 /* NSDictionary+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F195126135D37D7002C7AB2 /* NSDictionary+Additions.m */; };
 		0F1EC02A17720F6F00F2D6C1 /* SystemServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC00A17720F6F00F2D6C1 /* SystemServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F1EC02C17720F6F00F2D6C1 /* SystemServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC00B17720F6F00F2D6C1 /* SystemServices.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC03017720F6F00F2D6C1 /* SSAccelerometerInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC00D17720F6F00F2D6C1 /* SSAccelerometerInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC03217720F6F00F2D6C1 /* SSAccelerometerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC00E17720F6F00F2D6C1 /* SSAccelerometerInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC03617720F6F00F2D6C1 /* SSAccessoryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC00F17720F6F00F2D6C1 /* SSAccessoryInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC03817720F6F00F2D6C1 /* SSAccessoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC01017720F6F00F2D6C1 /* SSAccessoryInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC03C17720F6F00F2D6C1 /* SSApplicationInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC01117720F6F00F2D6C1 /* SSApplicationInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC03E17720F6F00F2D6C1 /* SSApplicationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC01217720F6F00F2D6C1 /* SSApplicationInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC04217720F6F00F2D6C1 /* SSBatteryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC01317720F6F00F2D6C1 /* SSBatteryInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC04417720F6F00F2D6C1 /* SSBatteryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC01417720F6F00F2D6C1 /* SSBatteryInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC04817720F6F00F2D6C1 /* SSCarrierInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC01517720F6F00F2D6C1 /* SSCarrierInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC04A17720F6F00F2D6C1 /* SSCarrierInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC01617720F6F00F2D6C1 /* SSCarrierInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC04E17720F6F00F2D6C1 /* SSDiskInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC01717720F6F00F2D6C1 /* SSDiskInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC05017720F6F00F2D6C1 /* SSDiskInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC01817720F6F00F2D6C1 /* SSDiskInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC05417720F6F00F2D6C1 /* SSHardwareInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC01917720F6F00F2D6C1 /* SSHardwareInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC05617720F6F00F2D6C1 /* SSHardwareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC01A17720F6F00F2D6C1 /* SSHardwareInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC05A17720F6F00F2D6C1 /* SSJailbreakCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC01B17720F6F00F2D6C1 /* SSJailbreakCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC05C17720F6F00F2D6C1 /* SSJailbreakCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC01C17720F6F00F2D6C1 /* SSJailbreakCheck.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC06017720F6F00F2D6C1 /* SSLocalizationInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC01D17720F6F00F2D6C1 /* SSLocalizationInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC06217720F6F00F2D6C1 /* SSLocalizationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC01E17720F6F00F2D6C1 /* SSLocalizationInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC06617720F6F00F2D6C1 /* SSMemoryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC01F17720F6F00F2D6C1 /* SSMemoryInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC06817720F6F00F2D6C1 /* SSMemoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC02017720F6F00F2D6C1 /* SSMemoryInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC06C17720F6F00F2D6C1 /* SSNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC02117720F6F00F2D6C1 /* SSNetworkInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC06E17720F6F00F2D6C1 /* SSNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC02217720F6F00F2D6C1 /* SSNetworkInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC07217720F6F00F2D6C1 /* SSProcessInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC02317720F6F00F2D6C1 /* SSProcessInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC07417720F6F00F2D6C1 /* SSProcessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC02417720F6F00F2D6C1 /* SSProcessInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC07817720F6F00F2D6C1 /* SSProcessorInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC02517720F6F00F2D6C1 /* SSProcessorInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC07A17720F6F00F2D6C1 /* SSProcessorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC02617720F6F00F2D6C1 /* SSProcessorInfo.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC07E17720F6F00F2D6C1 /* SSUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC02717720F6F00F2D6C1 /* SSUUID.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F1EC08017720F6F00F2D6C1 /* SSUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EC02817720F6F00F2D6C1 /* SSUUID.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F1EC08417720F6F00F2D6C1 /* SystemServicesConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC02917720F6F00F2D6C1 /* SystemServicesConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F1EFA0D137A6AC6005D3388 /* LCellThreadingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EFA0B137A6AC6005D3388 /* LCellThreadingOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F1EFA0E137A6AC6005D3388 /* LCellThreadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EFA0C137A6AC6005D3388 /* LCellThreadingOperation.m */; };
 		0F2931EE137D23BD00CDB645 /* SQLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F2931EC137D23BD00CDB645 /* SQLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -247,10 +254,6 @@
 		0F874D5913711B58005858D1 /* LAdvancedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F874D5713711B58005858D1 /* LAdvancedTableViewController.m */; };
 		0F874D7A137122AA005858D1 /* LLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F874D78137122AA005858D1 /* LLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F874D7B137122AA005858D1 /* LLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F874D79137122AA005858D1 /* LLabel.m */; };
-		0F8B5B8716B29953009ADC20 /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F8B5B8516B29953009ADC20 /* Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F8B5B8816B29953009ADC20 /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F8B5B8516B29953009ADC20 /* Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F8B5B8916B29953009ADC20 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B5B8616B29953009ADC20 /* Base64.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0F8B5B8B16B29953009ADC20 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B5B8616B29953009ADC20 /* Base64.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		0F91473416A8EE4200E08821 /* LTableViewPullRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91473216A8EE4200E08821 /* LTableViewPullRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F91473516A8EE4200E08821 /* LTableViewPullRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F91473316A8EE4200E08821 /* LTableViewPullRefresh.m */; };
 		0F91474B16A8F52B00E08821 /* LCoreTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91474916A8F52B00E08821 /* LCoreTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -413,7 +416,6 @@
 		0FFACDF9136EA03A00A69849 /* LNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFACDF7136EA03A00A69849 /* LNotificationDispatcher.m */; };
 		0FFACDFC136EBFC000A69849 /* LDatabaseAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFACDFA136EBFBC00A69849 /* LDatabaseAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FFACDFD136EBFC000A69849 /* LDatabaseAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFACDFB136EBFBE00A69849 /* LDatabaseAdapter.m */; };
-		3FBC567D1431D29C008CD864 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC567B1431D29C008CD864 /* main.m */; };
 		61DFA632450266EE76242974 /* libPods-LightcastTestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D221511AD8E693753B1D1A76 /* libPods-LightcastTestApp.a */; };
 		7E00CF6C13F2D08800D6F6F3 /* NSImage+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E00CF6A13F2D08800D6F6F3 /* NSImage+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E00CF6D13F2D08800D6F6F3 /* NSImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E00CF6B13F2D08800D6F6F3 /* NSImage+Additions.m */; };
@@ -528,9 +530,6 @@
 		7E2C649D13F008710092D661 /* GeneralUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F194CCB135C8489002C7AB2 /* GeneralUtils.m */; };
 		7E2C649E13F008710092D661 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E08143B13E28D8900179008 /* Logging.m */; };
 		7E2C649F13F008710092D661 /* LWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EECD53713DB0A8D00AB9859 /* LWebServiceClient.m */; };
-		7E2C64A013F008710092D661 /* Exceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F195115135D2869002C7AB2 /* Exceptions.m */; };
-		7E2C650313F10E610092D661 /* defines-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E2C650213F10E610092D661 /* defines-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E2C650513F10E900092D661 /* defines-MacOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E2C650413F10E8F0092D661 /* defines-MacOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E3931F51406036700F95F0C /* CAAnimation+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E3931F31406036700F95F0C /* CAAnimation+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E3931F61406036700F95F0C /* CAAnimation+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E3931F41406036700F95F0C /* CAAnimation+Additions.m */; };
 		7E3931FB140603C600F95F0C /* CAAnimation+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E3931F41406036700F95F0C /* CAAnimation+Additions.m */; };
@@ -656,6 +655,45 @@
 /* Begin PBXFileReference section */
 		00B4E4C6F64A6352E697D3E8 /* Pods-Lightcast-MacOSX.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast-MacOSX.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast-MacOSX/Pods-Lightcast-MacOSX.testing.xcconfig"; sourceTree = "<group>"; };
 		09C501AE4C7002447FFE0ABD /* Pods-LightcastiTunes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastiTunes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastiTunes/Pods-LightcastiTunes.debug.xcconfig"; sourceTree = "<group>"; };
+		0F0001EE1D4A4DD1004C4155 /* SSAccelerometerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSAccelerometerInfo.h; path = "3rdParty/System Services/SSAccelerometerInfo.h"; sourceTree = "<group>"; };
+		0F0001EF1D4A4DD1004C4155 /* SSAccelerometerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSAccelerometerInfo.m; path = "3rdParty/System Services/SSAccelerometerInfo.m"; sourceTree = "<group>"; };
+		0F0001F01D4A4DD1004C4155 /* SSAccessoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSAccessoryInfo.h; path = "3rdParty/System Services/SSAccessoryInfo.h"; sourceTree = "<group>"; };
+		0F0001F11D4A4DD1004C4155 /* SSAccessoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSAccessoryInfo.m; path = "3rdParty/System Services/SSAccessoryInfo.m"; sourceTree = "<group>"; };
+		0F0001F21D4A4DD1004C4155 /* SSApplicationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSApplicationInfo.h; path = "3rdParty/System Services/SSApplicationInfo.h"; sourceTree = "<group>"; };
+		0F0001F31D4A4DD1004C4155 /* SSApplicationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSApplicationInfo.m; path = "3rdParty/System Services/SSApplicationInfo.m"; sourceTree = "<group>"; };
+		0F0001F41D4A4DD1004C4155 /* SSBatteryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSBatteryInfo.h; path = "3rdParty/System Services/SSBatteryInfo.h"; sourceTree = "<group>"; };
+		0F0001F51D4A4DD1004C4155 /* SSBatteryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSBatteryInfo.m; path = "3rdParty/System Services/SSBatteryInfo.m"; sourceTree = "<group>"; };
+		0F0001F61D4A4DD1004C4155 /* SSCarrierInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSCarrierInfo.h; path = "3rdParty/System Services/SSCarrierInfo.h"; sourceTree = "<group>"; };
+		0F0001F71D4A4DD1004C4155 /* SSCarrierInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSCarrierInfo.m; path = "3rdParty/System Services/SSCarrierInfo.m"; sourceTree = "<group>"; };
+		0F0001F81D4A4DD1004C4155 /* SSDiskInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSDiskInfo.h; path = "3rdParty/System Services/SSDiskInfo.h"; sourceTree = "<group>"; };
+		0F0001F91D4A4DD1004C4155 /* SSDiskInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSDiskInfo.m; path = "3rdParty/System Services/SSDiskInfo.m"; sourceTree = "<group>"; };
+		0F0001FA1D4A4DD1004C4155 /* SSHardwareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSHardwareInfo.h; path = "3rdParty/System Services/SSHardwareInfo.h"; sourceTree = "<group>"; };
+		0F0001FB1D4A4DD1004C4155 /* SSHardwareInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSHardwareInfo.m; path = "3rdParty/System Services/SSHardwareInfo.m"; sourceTree = "<group>"; };
+		0F0001FC1D4A4DD1004C4155 /* SSJailbreakCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSJailbreakCheck.h; path = "3rdParty/System Services/SSJailbreakCheck.h"; sourceTree = "<group>"; };
+		0F0001FD1D4A4DD1004C4155 /* SSJailbreakCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSJailbreakCheck.m; path = "3rdParty/System Services/SSJailbreakCheck.m"; sourceTree = "<group>"; };
+		0F0001FE1D4A4DD1004C4155 /* SSLocalizationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSLocalizationInfo.h; path = "3rdParty/System Services/SSLocalizationInfo.h"; sourceTree = "<group>"; };
+		0F0001FF1D4A4DD1004C4155 /* SSLocalizationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSLocalizationInfo.m; path = "3rdParty/System Services/SSLocalizationInfo.m"; sourceTree = "<group>"; };
+		0F0002001D4A4DD1004C4155 /* SSMemoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSMemoryInfo.h; path = "3rdParty/System Services/SSMemoryInfo.h"; sourceTree = "<group>"; };
+		0F0002011D4A4DD1004C4155 /* SSMemoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSMemoryInfo.m; path = "3rdParty/System Services/SSMemoryInfo.m"; sourceTree = "<group>"; };
+		0F0002021D4A4DD1004C4155 /* SSNetworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSNetworkInfo.h; path = "3rdParty/System Services/SSNetworkInfo.h"; sourceTree = "<group>"; };
+		0F0002031D4A4DD1004C4155 /* SSNetworkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSNetworkInfo.m; path = "3rdParty/System Services/SSNetworkInfo.m"; sourceTree = "<group>"; };
+		0F0002041D4A4DD1004C4155 /* SSProcessInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProcessInfo.h; path = "3rdParty/System Services/SSProcessInfo.h"; sourceTree = "<group>"; };
+		0F0002051D4A4DD1004C4155 /* SSProcessInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSProcessInfo.m; path = "3rdParty/System Services/SSProcessInfo.m"; sourceTree = "<group>"; };
+		0F0002061D4A4DD1004C4155 /* SSProcessorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProcessorInfo.h; path = "3rdParty/System Services/SSProcessorInfo.h"; sourceTree = "<group>"; };
+		0F0002071D4A4DD1004C4155 /* SSProcessorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSProcessorInfo.m; path = "3rdParty/System Services/SSProcessorInfo.m"; sourceTree = "<group>"; };
+		0F0002081D4A4DD1004C4155 /* SSUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSUUID.h; path = "3rdParty/System Services/SSUUID.h"; sourceTree = "<group>"; };
+		0F0002091D4A4DD1004C4155 /* SSUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSUUID.m; path = "3rdParty/System Services/SSUUID.m"; sourceTree = "<group>"; };
+		0F00020A1D4A4DD1004C4155 /* SystemServicesConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemServicesConstants.h; path = "3rdParty/System Services/SystemServicesConstants.h"; sourceTree = "<group>"; };
+		0F0002281D4A4DDC004C4155 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = 3rdParty/Base64/Base64.h; sourceTree = "<group>"; };
+		0F0002291D4A4DDC004C4155 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = 3rdParty/Base64/Base64.m; sourceTree = "<group>"; };
+		0F00022C1D4A4DEC004C4155 /* defines-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "defines-iOS.h"; path = "Lightcast iOS/defines-iOS.h"; sourceTree = "<group>"; };
+		0F00022D1D4A4DEC004C4155 /* defines-MacOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "defines-MacOSX.h"; path = "Lightcast iOS/defines-MacOSX.h"; sourceTree = "<group>"; };
+		0F0002311D4A4DFE004C4155 /* Exceptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Exceptions.m; path = "Lightcast iOS/Exceptions.m"; sourceTree = "<group>"; };
+		0F0002321D4A4DFE004C4155 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = internal.h; path = "Lightcast iOS/internal.h"; sourceTree = "<group>"; };
+		0F0002351D4A4E19004C4155 /* i18nParserConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = i18nParserConfig.plist; path = Resources/i18nParserConfig.plist; sourceTree = "<group>"; };
+		0F0002361D4A4E3E004C4155 /* Lightcast-MacOSX-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Lightcast-MacOSX-Prefix.pch"; path = "Lightcast iOS/Lightcast-MacOSX-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		0F0002381D4A4EF6004C4155 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LightcastTranslator/main.m; sourceTree = "<group>"; };
+		0F00023A1D4A4EFD004C4155 /* LightcastTranslator-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LightcastTranslator-Prefix.pch"; path = "LightcastTranslator/LightcastTranslator-Prefix.pch"; sourceTree = "<group>"; };
 		0F068D55167CACE000E2C536 /* LWebServiceClient2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWebServiceClient2.h; sourceTree = "<group>"; };
 		0F068D56167CACE000E2C536 /* LWebServiceClient2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWebServiceClient2.m; sourceTree = "<group>"; };
 		0F068D60167CCDB900E2C536 /* LWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWebServices.h; sourceTree = "<group>"; };
@@ -695,7 +733,6 @@
 		0F194CEF135C8542002C7AB2 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		0F194CF8135C8753002C7AB2 /* lightcast.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lightcast.bundle; sourceTree = "<group>"; };
 		0F194CFA135C87C0002C7AB2 /* Lightcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lightcast.h; path = "Lightcast iOS/Lightcast.h"; sourceTree = "<group>"; };
-		0F194FCF135CB17F002C7AB2 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Project.xcconfig; path = Configurations/Project.xcconfig; sourceTree = "<group>"; };
 		0F195026135D05B9002C7AB2 /* LView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LView.h; sourceTree = "<group>"; };
 		0F195027135D05B9002C7AB2 /* LView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LView.m; sourceTree = "<group>"; };
 		0F19502A135D0622002C7AB2 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = "Lightcast iOS/defines.h"; sourceTree = "<group>"; };
@@ -736,42 +773,12 @@
 		0F195109135D2294002C7AB2 /* LTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTabBarController.h; sourceTree = "<group>"; };
 		0F19510A135D2297002C7AB2 /* LTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTabBarController.m; sourceTree = "<group>"; };
 		0F19510D135D2558002C7AB2 /* Exceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Exceptions.h; path = "Lightcast iOS/Exceptions.h"; sourceTree = "<group>"; };
-		0F195115135D2869002C7AB2 /* Exceptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exceptions.m; sourceTree = "<group>"; };
 		0F195120135D367F002C7AB2 /* NSFileManager+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Additions.h"; sourceTree = "<group>"; };
 		0F195121135D367F002C7AB2 /* NSFileManager+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Additions.m"; sourceTree = "<group>"; };
 		0F195125135D37D7002C7AB2 /* NSDictionary+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Additions.h"; sourceTree = "<group>"; };
 		0F195126135D37D7002C7AB2 /* NSDictionary+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Additions.m"; sourceTree = "<group>"; };
 		0F1EC00A17720F6F00F2D6C1 /* SystemServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemServices.h; path = "3rdParty/System Services/SystemServices.h"; sourceTree = "<group>"; };
 		0F1EC00B17720F6F00F2D6C1 /* SystemServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SystemServices.m; path = "3rdParty/System Services/SystemServices.m"; sourceTree = "<group>"; };
-		0F1EC00D17720F6F00F2D6C1 /* SSAccelerometerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAccelerometerInfo.h; sourceTree = "<group>"; };
-		0F1EC00E17720F6F00F2D6C1 /* SSAccelerometerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAccelerometerInfo.m; sourceTree = "<group>"; };
-		0F1EC00F17720F6F00F2D6C1 /* SSAccessoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAccessoryInfo.h; sourceTree = "<group>"; };
-		0F1EC01017720F6F00F2D6C1 /* SSAccessoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAccessoryInfo.m; sourceTree = "<group>"; };
-		0F1EC01117720F6F00F2D6C1 /* SSApplicationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSApplicationInfo.h; sourceTree = "<group>"; };
-		0F1EC01217720F6F00F2D6C1 /* SSApplicationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSApplicationInfo.m; sourceTree = "<group>"; };
-		0F1EC01317720F6F00F2D6C1 /* SSBatteryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBatteryInfo.h; sourceTree = "<group>"; };
-		0F1EC01417720F6F00F2D6C1 /* SSBatteryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBatteryInfo.m; sourceTree = "<group>"; };
-		0F1EC01517720F6F00F2D6C1 /* SSCarrierInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCarrierInfo.h; sourceTree = "<group>"; };
-		0F1EC01617720F6F00F2D6C1 /* SSCarrierInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCarrierInfo.m; sourceTree = "<group>"; };
-		0F1EC01717720F6F00F2D6C1 /* SSDiskInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDiskInfo.h; sourceTree = "<group>"; };
-		0F1EC01817720F6F00F2D6C1 /* SSDiskInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDiskInfo.m; sourceTree = "<group>"; };
-		0F1EC01917720F6F00F2D6C1 /* SSHardwareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHardwareInfo.h; sourceTree = "<group>"; };
-		0F1EC01A17720F6F00F2D6C1 /* SSHardwareInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHardwareInfo.m; sourceTree = "<group>"; };
-		0F1EC01B17720F6F00F2D6C1 /* SSJailbreakCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSJailbreakCheck.h; sourceTree = "<group>"; };
-		0F1EC01C17720F6F00F2D6C1 /* SSJailbreakCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSJailbreakCheck.m; sourceTree = "<group>"; };
-		0F1EC01D17720F6F00F2D6C1 /* SSLocalizationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLocalizationInfo.h; sourceTree = "<group>"; };
-		0F1EC01E17720F6F00F2D6C1 /* SSLocalizationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLocalizationInfo.m; sourceTree = "<group>"; };
-		0F1EC01F17720F6F00F2D6C1 /* SSMemoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSMemoryInfo.h; sourceTree = "<group>"; };
-		0F1EC02017720F6F00F2D6C1 /* SSMemoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSMemoryInfo.m; sourceTree = "<group>"; };
-		0F1EC02117720F6F00F2D6C1 /* SSNetworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNetworkInfo.h; sourceTree = "<group>"; };
-		0F1EC02217720F6F00F2D6C1 /* SSNetworkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNetworkInfo.m; sourceTree = "<group>"; };
-		0F1EC02317720F6F00F2D6C1 /* SSProcessInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSProcessInfo.h; sourceTree = "<group>"; };
-		0F1EC02417720F6F00F2D6C1 /* SSProcessInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSProcessInfo.m; sourceTree = "<group>"; };
-		0F1EC02517720F6F00F2D6C1 /* SSProcessorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSProcessorInfo.h; sourceTree = "<group>"; };
-		0F1EC02617720F6F00F2D6C1 /* SSProcessorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSProcessorInfo.m; sourceTree = "<group>"; };
-		0F1EC02717720F6F00F2D6C1 /* SSUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSUUID.h; sourceTree = "<group>"; };
-		0F1EC02817720F6F00F2D6C1 /* SSUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSUUID.m; sourceTree = "<group>"; };
-		0F1EC02917720F6F00F2D6C1 /* SystemServicesConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemServicesConstants.h; sourceTree = "<group>"; };
 		0F1EFA0B137A6AC6005D3388 /* LCellThreadingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCellThreadingOperation.h; sourceTree = "<group>"; };
 		0F1EFA0C137A6AC6005D3388 /* LCellThreadingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCellThreadingOperation.m; sourceTree = "<group>"; };
 		0F2931EC137D23BD00CDB645 /* SQLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLParser.h; sourceTree = "<group>"; };
@@ -784,7 +791,6 @@
 		0F4006731367AE8100C5AC2A /* LPluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPluginManager.m; sourceTree = "<group>"; };
 		0F419D201680A03800C7057B /* LNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNumbers.h; sourceTree = "<group>"; };
 		0F419D211680A03800C7057B /* LNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNumbers.m; sourceTree = "<group>"; };
-		0F427AA716F2607700300E2B /* i18nParserConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = i18nParserConfig.plist; sourceTree = "<group>"; };
 		0F427AAC16F2646A00300E2B /* i18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = i18n.m; sourceTree = "<group>"; };
 		0F427ADB16F3045400300E2B /* LI18nTranslationSourceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LI18nTranslationSourceParser.h; sourceTree = "<group>"; };
 		0F427ADC16F3045400300E2B /* LI18nTranslationSourceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LI18nTranslationSourceParser.m; sourceTree = "<group>"; };
@@ -866,8 +872,6 @@
 		0F874D5713711B58005858D1 /* LAdvancedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAdvancedTableViewController.m; sourceTree = "<group>"; };
 		0F874D78137122AA005858D1 /* LLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLabel.h; sourceTree = "<group>"; };
 		0F874D79137122AA005858D1 /* LLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLabel.m; sourceTree = "<group>"; };
-		0F8B5B8516B29953009ADC20 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = 3rdParty/Base64/Base64/Base64.h; sourceTree = "<group>"; };
-		0F8B5B8616B29953009ADC20 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = 3rdParty/Base64/Base64/Base64.m; sourceTree = "<group>"; };
 		0F91473216A8EE4200E08821 /* LTableViewPullRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTableViewPullRefresh.h; sourceTree = "<group>"; };
 		0F91473316A8EE4200E08821 /* LTableViewPullRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTableViewPullRefresh.m; sourceTree = "<group>"; };
 		0F91474916A8F52B00E08821 /* LCoreTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCoreTabBarController.h; sourceTree = "<group>"; };
@@ -990,8 +994,6 @@
 		1F372300DE75D852717760C3 /* Pods-Lightcast.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast/Pods-Lightcast.testing.xcconfig"; sourceTree = "<group>"; };
 		1FA2642B70C849C3BB4A9A9C /* Pods-LightcastTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastTestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastTestApp/Pods-LightcastTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		37E50D8914E40EA31ECDBFBB /* Pods-LightcastiTunes.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastiTunes.testing.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastiTunes/Pods-LightcastiTunes.testing.xcconfig"; sourceTree = "<group>"; };
-		3FBC56771431D290008CD864 /* LightcastTranslator-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LightcastTranslator-Prefix.pch"; sourceTree = "<group>"; };
-		3FBC567B1431D29C008CD864 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		437DD953D3968FC741B1043D /* libPods-LightcastTranslator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LightcastTranslator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7577647AD56AD5E2F6EFD66A /* Pods-Lightcast-MacOSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast-MacOSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast-MacOSX/Pods-Lightcast-MacOSX.debug.xcconfig"; sourceTree = "<group>"; };
 		7E00CF6A13F2D08800D6F6F3 /* NSImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Additions.h"; sourceTree = "<group>"; };
@@ -1013,14 +1015,10 @@
 		7E2AC80213CCE0AD005F51F5 /* LAdvancedTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAdvancedTabBarController.m; sourceTree = "<group>"; };
 		7E2AC80413CCE0BA005F51F5 /* LAdvancedTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAdvancedTabBarController.h; sourceTree = "<group>"; };
 		7E2C640813F006D30092D661 /* libLightcast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLightcast.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E2C641113F006D40092D661 /* Lightcast-MacOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lightcast-MacOSX-Prefix.pch"; sourceTree = "<group>"; };
-		7E2C650213F10E610092D661 /* defines-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "defines-iOS.h"; sourceTree = "<group>"; };
-		7E2C650413F10E8F0092D661 /* defines-MacOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "defines-MacOSX.h"; sourceTree = "<group>"; };
 		7E3931F31406036700F95F0C /* CAAnimation+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+Additions.h"; sourceTree = "<group>"; };
 		7E3931F41406036700F95F0C /* CAAnimation+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+Additions.m"; sourceTree = "<group>"; };
 		7E6AE08A13CD8B9A0013857F /* LTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTabBar.h; sourceTree = "<group>"; };
 		7E6AE08B13CD8B9A0013857F /* LTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTabBar.m; sourceTree = "<group>"; };
-		7E6AE08F13CD92530013857F /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
 		7E6AE09113CD9F0B0013857F /* LTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTabBarItem.h; sourceTree = "<group>"; };
 		7E6AE09213CD9F0B0013857F /* LTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTabBarItem.m; sourceTree = "<group>"; };
 		7E6AE0A313CDF1670013857F /* LTabBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTabBarDelegate.h; sourceTree = "<group>"; };
@@ -1426,13 +1424,13 @@
 			isa = PBXGroup;
 			children = (
 				0F194CFA135C87C0002C7AB2 /* Lightcast.h */,
+				0F0002321D4A4DFE004C4155 /* internal.h */,
 				0F19502A135D0622002C7AB2 /* defines.h */,
-				7E2C650213F10E610092D661 /* defines-iOS.h */,
-				7E2C650413F10E8F0092D661 /* defines-MacOSX.h */,
+				0F00022C1D4A4DEC004C4155 /* defines-iOS.h */,
+				0F00022D1D4A4DEC004C4155 /* defines-MacOSX.h */,
 				0F19504F135D0BF0002C7AB2 /* debug.h */,
 				0F19510D135D2558002C7AB2 /* Exceptions.h */,
-				0F195115135D2869002C7AB2 /* Exceptions.m */,
-				7E6AE08F13CD92530013857F /* internal.h */,
+				0F0002311D4A4DFE004C4155 /* Exceptions.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -1441,7 +1439,6 @@
 			isa = PBXGroup;
 			children = (
 				0F427AA216F25FFD00300E2B /* i18n */,
-				0F194FCF135CB17F002C7AB2 /* Project.xcconfig */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -1580,46 +1577,37 @@
 			children = (
 				0F1EC00A17720F6F00F2D6C1 /* SystemServices.h */,
 				0F1EC00B17720F6F00F2D6C1 /* SystemServices.m */,
-				0F1EC00C17720F6F00F2D6C1 /* Utilities */,
+				0F0001EE1D4A4DD1004C4155 /* SSAccelerometerInfo.h */,
+				0F0001EF1D4A4DD1004C4155 /* SSAccelerometerInfo.m */,
+				0F0001F01D4A4DD1004C4155 /* SSAccessoryInfo.h */,
+				0F0001F11D4A4DD1004C4155 /* SSAccessoryInfo.m */,
+				0F0001F21D4A4DD1004C4155 /* SSApplicationInfo.h */,
+				0F0001F31D4A4DD1004C4155 /* SSApplicationInfo.m */,
+				0F0001F41D4A4DD1004C4155 /* SSBatteryInfo.h */,
+				0F0001F51D4A4DD1004C4155 /* SSBatteryInfo.m */,
+				0F0001F61D4A4DD1004C4155 /* SSCarrierInfo.h */,
+				0F0001F71D4A4DD1004C4155 /* SSCarrierInfo.m */,
+				0F0001F81D4A4DD1004C4155 /* SSDiskInfo.h */,
+				0F0001F91D4A4DD1004C4155 /* SSDiskInfo.m */,
+				0F0001FA1D4A4DD1004C4155 /* SSHardwareInfo.h */,
+				0F0001FB1D4A4DD1004C4155 /* SSHardwareInfo.m */,
+				0F0001FC1D4A4DD1004C4155 /* SSJailbreakCheck.h */,
+				0F0001FD1D4A4DD1004C4155 /* SSJailbreakCheck.m */,
+				0F0001FE1D4A4DD1004C4155 /* SSLocalizationInfo.h */,
+				0F0001FF1D4A4DD1004C4155 /* SSLocalizationInfo.m */,
+				0F0002001D4A4DD1004C4155 /* SSMemoryInfo.h */,
+				0F0002011D4A4DD1004C4155 /* SSMemoryInfo.m */,
+				0F0002021D4A4DD1004C4155 /* SSNetworkInfo.h */,
+				0F0002031D4A4DD1004C4155 /* SSNetworkInfo.m */,
+				0F0002041D4A4DD1004C4155 /* SSProcessInfo.h */,
+				0F0002051D4A4DD1004C4155 /* SSProcessInfo.m */,
+				0F0002061D4A4DD1004C4155 /* SSProcessorInfo.h */,
+				0F0002071D4A4DD1004C4155 /* SSProcessorInfo.m */,
+				0F0002081D4A4DD1004C4155 /* SSUUID.h */,
+				0F0002091D4A4DD1004C4155 /* SSUUID.m */,
+				0F00020A1D4A4DD1004C4155 /* SystemServicesConstants.h */,
 			);
 			name = SystemServices;
-			sourceTree = "<group>";
-		};
-		0F1EC00C17720F6F00F2D6C1 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				0F1EC02917720F6F00F2D6C1 /* SystemServicesConstants.h */,
-				0F1EC00D17720F6F00F2D6C1 /* SSAccelerometerInfo.h */,
-				0F1EC00E17720F6F00F2D6C1 /* SSAccelerometerInfo.m */,
-				0F1EC00F17720F6F00F2D6C1 /* SSAccessoryInfo.h */,
-				0F1EC01017720F6F00F2D6C1 /* SSAccessoryInfo.m */,
-				0F1EC01117720F6F00F2D6C1 /* SSApplicationInfo.h */,
-				0F1EC01217720F6F00F2D6C1 /* SSApplicationInfo.m */,
-				0F1EC01317720F6F00F2D6C1 /* SSBatteryInfo.h */,
-				0F1EC01417720F6F00F2D6C1 /* SSBatteryInfo.m */,
-				0F1EC01517720F6F00F2D6C1 /* SSCarrierInfo.h */,
-				0F1EC01617720F6F00F2D6C1 /* SSCarrierInfo.m */,
-				0F1EC01717720F6F00F2D6C1 /* SSDiskInfo.h */,
-				0F1EC01817720F6F00F2D6C1 /* SSDiskInfo.m */,
-				0F1EC01917720F6F00F2D6C1 /* SSHardwareInfo.h */,
-				0F1EC01A17720F6F00F2D6C1 /* SSHardwareInfo.m */,
-				0F1EC01B17720F6F00F2D6C1 /* SSJailbreakCheck.h */,
-				0F1EC01C17720F6F00F2D6C1 /* SSJailbreakCheck.m */,
-				0F1EC01D17720F6F00F2D6C1 /* SSLocalizationInfo.h */,
-				0F1EC01E17720F6F00F2D6C1 /* SSLocalizationInfo.m */,
-				0F1EC01F17720F6F00F2D6C1 /* SSMemoryInfo.h */,
-				0F1EC02017720F6F00F2D6C1 /* SSMemoryInfo.m */,
-				0F1EC02117720F6F00F2D6C1 /* SSNetworkInfo.h */,
-				0F1EC02217720F6F00F2D6C1 /* SSNetworkInfo.m */,
-				0F1EC02317720F6F00F2D6C1 /* SSProcessInfo.h */,
-				0F1EC02417720F6F00F2D6C1 /* SSProcessInfo.m */,
-				0F1EC02517720F6F00F2D6C1 /* SSProcessorInfo.h */,
-				0F1EC02617720F6F00F2D6C1 /* SSProcessorInfo.m */,
-				0F1EC02717720F6F00F2D6C1 /* SSUUID.h */,
-				0F1EC02817720F6F00F2D6C1 /* SSUUID.m */,
-			);
-			name = Utilities;
-			path = "3rdParty/System Services/Utilities";
 			sourceTree = "<group>";
 		};
 		0F40066913677DA900C5AC2A /* Base */ = {
@@ -1659,7 +1647,7 @@
 		0F427AA216F25FFD00300E2B /* i18n */ = {
 			isa = PBXGroup;
 			children = (
-				0F427AA716F2607700300E2B /* i18nParserConfig.plist */,
+				0F0002351D4A4E19004C4155 /* i18nParserConfig.plist */,
 			);
 			name = i18n;
 			sourceTree = "<group>";
@@ -1836,8 +1824,8 @@
 		0F8B5B8416B29947009ADC20 /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
-				0F8B5B8516B29953009ADC20 /* Base64.h */,
-				0F8B5B8616B29953009ADC20 /* Base64.m */,
+				0F0002281D4A4DDC004C4155 /* Base64.h */,
+				0F0002291D4A4DDC004C4155 /* Base64.m */,
 			);
 			name = Base64;
 			sourceTree = "<group>";
@@ -2171,7 +2159,7 @@
 		3FBC566E1431D1E5008CD864 /* LightcastTranslator */ = {
 			isa = PBXGroup;
 			children = (
-				3FBC567B1431D29C008CD864 /* main.m */,
+				0F0002381D4A4EF6004C4155 /* main.m */,
 				3FBC56701431D244008CD864 /* Supporting Files */,
 			);
 			name = LightcastTranslator;
@@ -2180,7 +2168,7 @@
 		3FBC56701431D244008CD864 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3FBC56771431D290008CD864 /* LightcastTranslator-Prefix.pch */,
+				0F00023A1D4A4EFD004C4155 /* LightcastTranslator-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2239,6 +2227,7 @@
 			isa = PBXGroup;
 			children = (
 				7E2C641013F006D30092D661 /* Supporting Files */,
+				0F0002361D4A4E3E004C4155 /* Lightcast-MacOSX-Prefix.pch */,
 			);
 			path = "Lightcast-MacOSX";
 			sourceTree = "<group>";
@@ -2246,7 +2235,6 @@
 		7E2C641013F006D30092D661 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7E2C641113F006D40092D661 /* Lightcast-MacOSX-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2362,6 +2350,8 @@
 				0F194CCC135C8489002C7AB2 /* GeneralUtils.h in Headers */,
 				0F194CD1135C8496002C7AB2 /* Logging.h in Headers */,
 				0F194CD6135C84AD002C7AB2 /* UIView+Additions.h in Headers */,
+				0F00021F1D4A4DD1004C4155 /* SSNetworkInfo.h in Headers */,
+				0F0002251D4A4DD1004C4155 /* SSUUID.h in Headers */,
 				0F194CDD135C84BD002C7AB2 /* UIViewController+Additions.h in Headers */,
 				0F194CE5135C8528002C7AB2 /* NSString+Additions.h in Headers */,
 				0F194CEB135C853A002C7AB2 /* NSArray+Additions.h in Headers */,
@@ -2369,6 +2359,7 @@
 				0F19502F135D083B002C7AB2 /* UI.h in Headers */,
 				0F195032135D08A5002C7AB2 /* LImageView.h in Headers */,
 				0F19503A135D0907002C7AB2 /* LWebView.h in Headers */,
+				0F00020D1D4A4DD1004C4155 /* SSAccessoryInfo.h in Headers */,
 				0F19503E135D091F002C7AB2 /* LYouTubeView.h in Headers */,
 				0F195042135D097C002C7AB2 /* LScrollView.h in Headers */,
 				0F19502D135D0812002C7AB2 /* Utilities.h in Headers */,
@@ -2378,10 +2369,12 @@
 				0F6A4877174B0BEC00FDB0EB /* NSNull+Additions.h in Headers */,
 				0F19505A135D1346002C7AB2 /* UI-General.h in Headers */,
 				0F194CF0135C8542002C7AB2 /* UIImage+Additions.h in Headers */,
+				0F0002231D4A4DD1004C4155 /* SSProcessorInfo.h in Headers */,
 				0F195050135D0BF0002C7AB2 /* debug.h in Headers */,
 				0F19502B135D0622002C7AB2 /* defines.h in Headers */,
 				0F195064135D194B002C7AB2 /* i18n.h in Headers */,
 				0F1950A1135D1AA8002C7AB2 /* UINavigationController+Additions.h in Headers */,
+				0F00022E1D4A4DEC004C4155 /* defines-iOS.h in Headers */,
 				0F1950A5135D1AF3002C7AB2 /* LNavigationController.h in Headers */,
 				0F1950A9135D1B42002C7AB2 /* NSMutableArray+Additions.h in Headers */,
 				0F1950B6135D1EFE002C7AB2 /* NSData+Additions.h in Headers */,
@@ -2404,6 +2397,7 @@
 				0FBAF2E5136067A600BF3712 /* LPlugin.h in Headers */,
 				0F40066C1367817E00C5AC2A /* LConfiguration.h in Headers */,
 				0F557C05136C43F40042F35B /* LVersionComparator.h in Headers */,
+				0F0002171D4A4DD1004C4155 /* SSHardwareInfo.h in Headers */,
 				0F4006701367AD5100C5AC2A /* LC.h in Headers */,
 				0F4006741367AE8A00C5AC2A /* LPluginManager.h in Headers */,
 				0F51E7EF136D9A32006F7DEC /* LStorage.h in Headers */,
@@ -2421,6 +2415,7 @@
 				0FB123A713716414001DFB2B /* LAdvancedTableViewCell.h in Headers */,
 				0FB123AB1371673D001DFB2B /* LDefaultTableViewCell.h in Headers */,
 				0FB1243613717E77001DFB2B /* LThreadedImageViewCell.h in Headers */,
+				0F0002131D4A4DD1004C4155 /* SSCarrierInfo.h in Headers */,
 				0F1EFA0D137A6AC6005D3388 /* LCellThreadingOperation.h in Headers */,
 				0F7857C0137AD35200155970 /* LCellLoadingDelegate.h in Headers */,
 				0F2931EE137D23BD00CDB645 /* SQLParser.h in Headers */,
@@ -2428,6 +2423,7 @@
 				0FAD501D1389175D000AA26B /* LWindow.h in Headers */,
 				0FAD502213891A38000AA26B /* LCalendarMonthView.h in Headers */,
 				7E2AC80113CCE04B005F51F5 /* LAdvancedTabBarControllerDelegate.h in Headers */,
+				0F0002211D4A4DD1004C4155 /* SSProcessInfo.h in Headers */,
 				7E2AC80513CCE0BA005F51F5 /* LAdvancedTabBarController.h in Headers */,
 				7EF2B0F113CD797800422A74 /* UIColor+Additions.h in Headers */,
 				7EF2B0FC13CD7D3400422A74 /* Primitives.h in Headers */,
@@ -2454,7 +2450,6 @@
 				7ED4E47E13DB5F9000224431 /* NSUserDefaults+Additions.h in Headers */,
 				7E3931F51406036700F95F0C /* CAAnimation+Additions.h in Headers */,
 				0F068D69167CD81A00E2C536 /* LWebServicesValidationError.h in Headers */,
-				7E2C650313F10E610092D661 /* defines-iOS.h in Headers */,
 				0F068D70167CD8DF00E2C536 /* LWebServicesDefines.h in Headers */,
 				0FA5D613167F58B400BD51EF /* LVars.h in Headers */,
 				0F82193D168267A9005BCC40 /* NSError+Additions.h in Headers */,
@@ -2475,6 +2470,7 @@
 				0F068D78167CD97F00E2C536 /* LWebServiceError.h in Headers */,
 				0F7C29C1169B078B0042E7FF /* LGCDTimerDelegate.h in Headers */,
 				0F53506D16A148B3001DF460 /* LDelegateProxy.h in Headers */,
+				0F00020B1D4A4DD1004C4155 /* SSAccelerometerInfo.h in Headers */,
 				0FE9D90516986953003B8672 /* LPreferences.h in Headers */,
 				0F91473416A8EE4200E08821 /* LTableViewPullRefresh.h in Headers */,
 				0F91474B16A8F52B00E08821 /* LCoreTabBarController.h in Headers */,
@@ -2484,35 +2480,25 @@
 				0F51D07016A90C1600ED899C /* UIViewController+LCoreTabBarControllerTab.h in Headers */,
 				0F427ADD16F3045400300E2B /* LI18nTranslationSourceParser.h in Headers */,
 				0F427AE516F3054300300E2B /* LI18nParsedString.h in Headers */,
+				0F00021B1D4A4DD1004C4155 /* SSLocalizationInfo.h in Headers */,
 				0F427B2816F3393200300E2B /* LI18nLocalizedStringsFile.h in Headers */,
 				0F91478016A8F63600E08821 /* LCoreTabBarView.h in Headers */,
+				0F00021D1D4A4DD1004C4155 /* SSMemoryInfo.h in Headers */,
+				0F0002271D4A4DD1004C4155 /* SystemServicesConstants.h in Headers */,
 				0F91478516A8F65100E08821 /* LCoreTabBarControllerTab.h in Headers */,
 				0F427B2016F3274C00300E2B /* LI18nProjectCatalog.h in Headers */,
 				0FC972C916AF838C00D1E8F6 /* LBadgeView.h in Headers */,
 				0F7B5DBC170BE43800A1ED3C /* LUrlDownloaderCompressor.h in Headers */,
 				0F7B5DC7170BE44800A1ED3C /* LUrlDownloaderDecompressor.h in Headers */,
+				0F00022A1D4A4DDC004C4155 /* Base64.h in Headers */,
 				0F169E491719A67100D744EE /* LReachabilityPlugin.h in Headers */,
+				0F0002111D4A4DD1004C4155 /* SSBatteryInfo.h in Headers */,
 				0F6A48C6174B1AD200FDB0EB /* LCompressingLogFileManager.h in Headers */,
 				0F0C6B9F17707301008587E0 /* LDataSubmitterPlugin.h in Headers */,
 				0F0C6BA71770735A008587E0 /* LDataSubmitter.h in Headers */,
 				0FA3BB7A16AA525A00FA5061 /* LUserDefaults.h in Headers */,
-				0F8B5B8716B29953009ADC20 /* Base64.h in Headers */,
+				0F00020F1D4A4DD1004C4155 /* SSApplicationInfo.h in Headers */,
 				0F1EC02A17720F6F00F2D6C1 /* SystemServices.h in Headers */,
-				0F1EC03017720F6F00F2D6C1 /* SSAccelerometerInfo.h in Headers */,
-				0F1EC03617720F6F00F2D6C1 /* SSAccessoryInfo.h in Headers */,
-				0F1EC03C17720F6F00F2D6C1 /* SSApplicationInfo.h in Headers */,
-				0F1EC04217720F6F00F2D6C1 /* SSBatteryInfo.h in Headers */,
-				0F1EC04817720F6F00F2D6C1 /* SSCarrierInfo.h in Headers */,
-				0F1EC04E17720F6F00F2D6C1 /* SSDiskInfo.h in Headers */,
-				0F1EC05417720F6F00F2D6C1 /* SSHardwareInfo.h in Headers */,
-				0F1EC05A17720F6F00F2D6C1 /* SSJailbreakCheck.h in Headers */,
-				0F1EC06017720F6F00F2D6C1 /* SSLocalizationInfo.h in Headers */,
-				0F1EC06617720F6F00F2D6C1 /* SSMemoryInfo.h in Headers */,
-				0F1EC06C17720F6F00F2D6C1 /* SSNetworkInfo.h in Headers */,
-				0F1EC07217720F6F00F2D6C1 /* SSProcessInfo.h in Headers */,
-				0F1EC07817720F6F00F2D6C1 /* SSProcessorInfo.h in Headers */,
-				0F1EC07E17720F6F00F2D6C1 /* SSUUID.h in Headers */,
-				0F1EC08417720F6F00F2D6C1 /* SystemServicesConstants.h in Headers */,
 				0F4D0A9C17AF80E00061CAED /* LCalendarView.h in Headers */,
 				0F4D0AAA17AF90DE0061CAED /* LCalendarGridView.h in Headers */,
 				0F99049A1BFE2967008298EC /* LValidatorUtils.h in Headers */,
@@ -2524,9 +2510,12 @@
 				DFE7744C189F90DE00A3FC6B /* LCloudBackupLoadDataDelegate.h in Headers */,
 				DFE77446189F90DE00A3FC6B /* LCloudBackup.h in Headers */,
 				DFE7744E189F90DE00A3FC6B /* LCloudFile.h in Headers */,
+				0F0002191D4A4DD1004C4155 /* SSJailbreakCheck.h in Headers */,
 				0FD10C9518A651E1007906A8 /* UIView+Explode.h in Headers */,
+				0F0002341D4A4DFE004C4155 /* internal.h in Headers */,
 				0FD83E3F18A0CD9B00993A0A /* LURLDataDownloader.h in Headers */,
 				0FE9D90D169869CF003B8672 /* LPreference.h in Headers */,
+				0F0002151D4A4DD1004C4155 /* SSDiskInfo.h in Headers */,
 				0F7FDE08169F4C6F0009F347 /* LFilteredNSDictionary.h in Headers */,
 				7E162F5113D1AE89000FD54B /* lightcast.bundle in Headers */,
 			);
@@ -2577,6 +2566,7 @@
 				0FBC4FCE16BD29DC00C7BAB7 /* LUUIDHandler.h in Headers */,
 				7E2C645213F0081F0092D661 /* LVirtualFSSchema.h in Headers */,
 				7E2C645313F0081F0092D661 /* LVirtualFSPlugin.h in Headers */,
+				0F0002301D4A4DF2004C4155 /* defines-MacOSX.h in Headers */,
 				7E2C645413F0081F0092D661 /* i18n.h in Headers */,
 				7E2C645613F0081F0092D661 /* UI.h in Headers */,
 				7E2C645813F0081F0092D661 /* LCacheProtocol.h in Headers */,
@@ -2604,7 +2594,6 @@
 				7E2C647113F0081F0092D661 /* defines.h in Headers */,
 				7E2C647213F0081F0092D661 /* debug.h in Headers */,
 				7E2C647313F0081F0092D661 /* Exceptions.h in Headers */,
-				7E2C650513F10E900092D661 /* defines-MacOSX.h in Headers */,
 				7EE7919613FB95FB0046000F /* LApplicationUtils.h in Headers */,
 				7E00CF6C13F2D08800D6F6F3 /* NSImage+Additions.h in Headers */,
 				7E00CF7313F2E62300D6F6F3 /* CTGradient.h in Headers */,
@@ -2640,6 +2629,7 @@
 				0F427B2116F3274C00300E2B /* LI18nProjectCatalog.h in Headers */,
 				0F427ADE16F3045400300E2B /* LI18nTranslationSourceParser.h in Headers */,
 				0F427AE616F3054300300E2B /* LI18nParsedString.h in Headers */,
+				0F0002371D4A4E3E004C4155 /* Lightcast-MacOSX-Prefix.pch in Headers */,
 				0F7B5DBD170BE43800A1ED3C /* LUrlDownloaderCompressor.h in Headers */,
 				0F7B5DC8170BE44800A1ED3C /* LUrlDownloaderDecompressor.h in Headers */,
 				0F7FDE09169F4C6F0009F347 /* LFilteredNSDictionary.h in Headers */,
@@ -2654,7 +2644,6 @@
 				DFE7744B189F90DE00A3FC6B /* LCloudBackupDownloadDataDelegate.h in Headers */,
 				0FD2A8561851D59F0038E232 /* LStringObfuscator.h in Headers */,
 				DFE77447189F90DE00A3FC6B /* LCloudBackup.h in Headers */,
-				0F8B5B8816B29953009ADC20 /* Base64.h in Headers */,
 				0FD83E4018A0CD9B00993A0A /* LURLDataDownloader.h in Headers */,
 				0FE3F68A16CA551900D14767 /* NSBundle+Additions.h in Headers */,
 				0F0C6BA017707301008587E0 /* LDataSubmitterPlugin.h in Headers */,
@@ -3112,6 +3101,7 @@
 				0F194CD7135C84AD002C7AB2 /* UIView+Additions.m in Sources */,
 				0F194CDE135C84BD002C7AB2 /* UIViewController+Additions.m in Sources */,
 				0F194CE6135C8528002C7AB2 /* NSString+Additions.m in Sources */,
+				0F00021A1D4A4DD1004C4155 /* SSJailbreakCheck.m in Sources */,
 				0F194CEC135C853A002C7AB2 /* NSArray+Additions.m in Sources */,
 				0F194CF1135C8542002C7AB2 /* UIImage+Additions.m in Sources */,
 				0F195029135D05B9002C7AB2 /* LView.m in Sources */,
@@ -3120,6 +3110,7 @@
 				0F195033135D08A5002C7AB2 /* LImageView.m in Sources */,
 				0F19503B135D0907002C7AB2 /* LWebView.m in Sources */,
 				0F19503F135D091F002C7AB2 /* LYouTubeView.m in Sources */,
+				0F0002181D4A4DD1004C4155 /* SSHardwareInfo.m in Sources */,
 				0F195043135D097C002C7AB2 /* LScrollView.m in Sources */,
 				0F19504E135D0B30002C7AB2 /* LViewController.m in Sources */,
 				0F195054135D10A9002C7AB2 /* UITabBarController+Additions.m in Sources */,
@@ -3130,14 +3121,15 @@
 				0F19505C135D142D002C7AB2 /* UI-General.m in Sources */,
 				0F195061135D158F002C7AB2 /* UIWindow+Additions.m in Sources */,
 				0F1950A2135D1AA8002C7AB2 /* UINavigationController+Additions.m in Sources */,
+				0F0002221D4A4DD1004C4155 /* SSProcessInfo.m in Sources */,
 				0F1950A6135D1AF3002C7AB2 /* LNavigationController.m in Sources */,
 				0F1950AA135D1B42002C7AB2 /* NSMutableArray+Additions.m in Sources */,
 				0F1950B7135D1EFE002C7AB2 /* NSData+Additions.m in Sources */,
 				0F1950BC135D1F58002C7AB2 /* NSDate+Additions.m in Sources */,
 				0F1950B2135D1C76002C7AB2 /* LLocalizationManager.m in Sources */,
 				0F19510C135D229A002C7AB2 /* LTabBarController.m in Sources */,
-				0F195117135D286B002C7AB2 /* Exceptions.m in Sources */,
 				0F195123135D367F002C7AB2 /* NSFileManager+Additions.m in Sources */,
+				0F0002161D4A4DD1004C4155 /* SSDiskInfo.m in Sources */,
 				0F195128135D37D7002C7AB2 /* NSDictionary+Additions.m in Sources */,
 				0FBAF1CD1360087D00BF3712 /* UIScreen+Additions.m in Sources */,
 				0FBAF26313600A9900BF3712 /* LCacheManager.m in Sources */,
@@ -3145,10 +3137,13 @@
 				0FBAF26F13600E3A00BF3712 /* LVirtualFSPlugin.m in Sources */,
 				0FBAF2D81360532200BF3712 /* LVirtualFile.m in Sources */,
 				0FBAF2DE13605FD500BF3712 /* LVirtualFSSchema.m in Sources */,
+				0F0002121D4A4DD1004C4155 /* SSBatteryInfo.m in Sources */,
+				0F0002331D4A4DFE004C4155 /* Exceptions.m in Sources */,
 				0FBAF2E6136067A600BF3712 /* LPlugin.m in Sources */,
 				0F40066D1367817E00C5AC2A /* LConfiguration.m in Sources */,
 				0F4006711367AD5100C5AC2A /* LC.m in Sources */,
 				0F4006751367AE8A00C5AC2A /* LPluginManager.m in Sources */,
+				0F0002101D4A4DD1004C4155 /* SSApplicationInfo.m in Sources */,
 				0F557C06136C43F40042F35B /* LVersionComparator.m in Sources */,
 				0F51E7F0136D9A32006F7DEC /* LStorage.m in Sources */,
 				0F51E7F4136D9A62006F7DEC /* LSystemObject.m in Sources */,
@@ -3160,6 +3155,7 @@
 				0FFACDFD136EBFC000A69849 /* LDatabaseAdapter.m in Sources */,
 				0F874D5913711B58005858D1 /* LAdvancedTableViewController.m in Sources */,
 				0F874D7B137122AA005858D1 /* LLabel.m in Sources */,
+				0F00020C1D4A4DD1004C4155 /* SSAccelerometerInfo.m in Sources */,
 				0FB123A3137152D4001DFB2B /* LTableViewController.m in Sources */,
 				0FB123A813716414001DFB2B /* LAdvancedTableViewCell.m in Sources */,
 				0FB123AC1371673D001DFB2B /* LDefaultTableViewCell.m in Sources */,
@@ -3169,6 +3165,7 @@
 				0FAD501E1389175D000AA26B /* LWindow.m in Sources */,
 				0FAD502313891A38000AA26B /* LCalendarMonthView.m in Sources */,
 				7EA4C86F13AB459D00026105 /* Reachability.m in Sources */,
+				0F0002201D4A4DD1004C4155 /* SSNetworkInfo.m in Sources */,
 				7E2AC80313CCE0AD005F51F5 /* LAdvancedTabBarController.m in Sources */,
 				7EF2B0F213CD797800422A74 /* UIColor+Additions.m in Sources */,
 				7E6AE08D13CD8B9A0013857F /* LTabBar.m in Sources */,
@@ -3184,6 +3181,7 @@
 				7EEBEE8D13E3C6FD00DDFB8E /* LRemoteDebuggingSubmitter.m in Sources */,
 				7E00CF8413F39F3700D6F6F3 /* CALayer+Additions.m in Sources */,
 				7E87D25F13F91349003875EF /* NSString+WebEntities.m in Sources */,
+				0F0002141D4A4DD1004C4155 /* SSCarrierInfo.m in Sources */,
 				7E87D28013FA1931003875EF /* LAlertPrompt.m in Sources */,
 				7E298CDB1402022300A8A93D /* NSData+Compression.m in Sources */,
 				0FD83CB9189EA29D00993A0A /* UITableView+Additons.m in Sources */,
@@ -3200,12 +3198,16 @@
 				0F4F424F1684632B009B1824 /* LCAppConfiguration.m in Sources */,
 				0FC4A71E168DBC1A0074E507 /* NSData+CommonCrypto.m in Sources */,
 				0FE9D6841696CB99003B8672 /* LUrlDownloader.m in Sources */,
+				0F00020E1D4A4DD1004C4155 /* SSAccessoryInfo.m in Sources */,
 				0FE9D6D61696E669003B8672 /* LUrlDownloaderPostFile.m in Sources */,
 				0FE9D8021697CD61003B8672 /* LNetworkUtils.m in Sources */,
 				0FE9D80B1697CFEF003B8672 /* LDeviceSystemInfo.m in Sources */,
 				0FE9D90716986953003B8672 /* LPreferences.m in Sources */,
+				0F0002261D4A4DD1004C4155 /* SSUUID.m in Sources */,
 				0FE9D90F169869CF003B8672 /* LPreference.m in Sources */,
 				0FE9D9171698722F003B8672 /* LNSUserDefaultsPreferences.m in Sources */,
+				0F00022B1D4A4DDC004C4155 /* Base64.m in Sources */,
+				0F00021E1D4A4DD1004C4155 /* SSMemoryInfo.m in Sources */,
 				0F7C29BC169B06CC0042E7FF /* LGCDTimer.m in Sources */,
 				0F7FDE0A169F4C6F0009F347 /* LFilteredNSDictionary.m in Sources */,
 				0F53506F16A148B3001DF460 /* LDelegateProxy.m in Sources */,
@@ -3218,11 +3220,12 @@
 				0FD2A8571851D59F0038E232 /* LStringObfuscator.m in Sources */,
 				0F91478B16A8F82800E08821 /* LCoreTabBarSelectionView.m in Sources */,
 				0F51D07116A90C1600ED899C /* UIViewController+LCoreTabBarControllerTab.m in Sources */,
+				0F0002241D4A4DD1004C4155 /* SSProcessorInfo.m in Sources */,
 				0FA3BB7C16AA525A00FA5061 /* LUserDefaults.m in Sources */,
 				0FC972CA16AF838C00D1E8F6 /* LBadgeView.m in Sources */,
-				0F8B5B8916B29953009ADC20 /* Base64.m in Sources */,
 				0F427ADF16F3045400300E2B /* LI18nTranslationSourceParser.m in Sources */,
 				0F427AE716F3054300300E2B /* LI18nParsedString.m in Sources */,
+				0F00021C1D4A4DD1004C4155 /* SSLocalizationInfo.m in Sources */,
 				0F427B2216F3274C00300E2B /* LI18nProjectCatalog.m in Sources */,
 				0F427B2A16F3393200300E2B /* LI18nLocalizedStringsFile.m in Sources */,
 				0F7B5DBE170BE43800A1ED3C /* LUrlDownloaderCompressor.m in Sources */,
@@ -3233,21 +3236,7 @@
 				0F0C6BA117707301008587E0 /* LDataSubmitterPlugin.m in Sources */,
 				0F0C6BA91770735A008587E0 /* LDataSubmitter.m in Sources */,
 				0F1EC02C17720F6F00F2D6C1 /* SystemServices.m in Sources */,
-				0F1EC03217720F6F00F2D6C1 /* SSAccelerometerInfo.m in Sources */,
-				0F1EC03817720F6F00F2D6C1 /* SSAccessoryInfo.m in Sources */,
-				0F1EC03E17720F6F00F2D6C1 /* SSApplicationInfo.m in Sources */,
-				0F1EC04417720F6F00F2D6C1 /* SSBatteryInfo.m in Sources */,
-				0F1EC04A17720F6F00F2D6C1 /* SSCarrierInfo.m in Sources */,
-				0F1EC05017720F6F00F2D6C1 /* SSDiskInfo.m in Sources */,
-				0F1EC05617720F6F00F2D6C1 /* SSHardwareInfo.m in Sources */,
-				0F1EC05C17720F6F00F2D6C1 /* SSJailbreakCheck.m in Sources */,
-				0F1EC06217720F6F00F2D6C1 /* SSLocalizationInfo.m in Sources */,
 				0F99049C1BFE2967008298EC /* LValidatorUtils.m in Sources */,
-				0F1EC06817720F6F00F2D6C1 /* SSMemoryInfo.m in Sources */,
-				0F1EC06E17720F6F00F2D6C1 /* SSNetworkInfo.m in Sources */,
-				0F1EC07417720F6F00F2D6C1 /* SSProcessInfo.m in Sources */,
-				0F1EC07A17720F6F00F2D6C1 /* SSProcessorInfo.m in Sources */,
-				0F1EC08017720F6F00F2D6C1 /* SSUUID.m in Sources */,
 				0F4D0A8E17AEAA1B0061CAED /* LStringTranscoder.m in Sources */,
 				0F4D0A9F17AF80E00061CAED /* LCalendarView.m in Sources */,
 				0F4D0AA517AF80E00061CAED /* LCalendarCellView.m in Sources */,
@@ -3333,7 +3322,6 @@
 				7E87D26013F91349003875EF /* NSString+WebEntities.m in Sources */,
 				7E298CDC1402022300A8A93D /* NSData+Compression.m in Sources */,
 				0F068D5B167CACE000E2C536 /* LWebServiceClient2.m in Sources */,
-				7E2C64A013F008710092D661 /* Exceptions.m in Sources */,
 				0F068D6D167CD81A00E2C536 /* LWebServicesValidationError.m in Sources */,
 				0F068D7C167CD97F00E2C536 /* LWebServiceError.m in Sources */,
 				0FA5D617167F58B400BD51EF /* LVars.m in Sources */,
@@ -3354,7 +3342,6 @@
 				0F7FDE0C169F4C6F0009F347 /* LFilteredNSDictionary.m in Sources */,
 				0F53507116A148B3001DF460 /* LDelegateProxy.m in Sources */,
 				0FA3BB7E16AA525A00FA5061 /* LUserDefaults.m in Sources */,
-				0F8B5B8B16B29953009ADC20 /* Base64.m in Sources */,
 				0F7FE8EF16BFC47400FBEC00 /* NSWindow+Additions.m in Sources */,
 				0FF5763A16C643A100E7B232 /* NSView+Additions.m in Sources */,
 				0FE3F68B16CA551900D14767 /* NSBundle+Additions.m in Sources */,
@@ -3378,7 +3365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FBC567D1431D29C008CD864 /* main.m in Sources */,
+				0F0002391D4A4EF6004C4155 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
