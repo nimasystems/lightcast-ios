@@ -188,4 +188,13 @@
 	return [arguments componentsJoinedByString:@"&"];
 }
 
+- (NSString*)jsonRepresentation {
+    NSError *err;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
+                                                       options:0
+                                                         error:&err];
+    NSString *str = !err && jsonData ? [[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] autorelease] : nil;
+    return str;
+}
+
 @end

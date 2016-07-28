@@ -45,4 +45,6 @@
  */
 @property (nonatomic, readonly) NSString* md5Hash;
 
+- (id)jsonRepresentation;
+
 @end

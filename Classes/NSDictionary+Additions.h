@@ -76,4 +76,6 @@
 - (float)floatFromSql:(id)aKey;
 - (NSString*)stringFromSql:(id)aKey;
 
+- (NSString*)jsonRepresentation;
+
 @end

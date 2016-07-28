@@ -124,4 +124,9 @@ static const unsigned long crc32table[] =
 	return NSMakeRange (NSNotFound, 0);
 }
 
+- (id)jsonRepresentation {
+    NSError *err = nil;
+    return [NSJSONSerialization JSONObjectWithData:self options:kNilOptions error:&err];
+}
+
 @end
