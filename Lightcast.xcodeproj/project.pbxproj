@@ -23,8 +23,6 @@
 		0F068D79167CD97F00E2C536 /* LWebServiceError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F068D76167CD97B00E2C536 /* LWebServiceError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F068D7A167CD97F00E2C536 /* LWebServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F068D77167CD97C00E2C536 /* LWebServiceError.m */; };
 		0F068D7C167CD97F00E2C536 /* LWebServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F068D77167CD97C00E2C536 /* LWebServiceError.m */; };
-		0F0A122E1B2968E7004C25E1 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0A12291B2968D6004C25E1 /* libsbjson-ios.a */; };
-		0F0A12311B2968F3004C25E1 /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0A12251B2968D6004C25E1 /* SBJson.framework */; };
 		0F0C6B9F17707301008587E0 /* LDataSubmitterPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0C6B9D17707301008587E0 /* LDataSubmitterPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F0C6BA017707301008587E0 /* LDataSubmitterPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0C6B9D17707301008587E0 /* LDataSubmitterPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F0C6BA117707301008587E0 /* LDataSubmitterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0C6B9E17707301008587E0 /* LDataSubmitterPlugin.m */; };
@@ -180,8 +178,6 @@
 		0F4F41F2168436D2009B1824 /* LAppUpgrades.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F41EF168436D2009B1824 /* LAppUpgrades.m */; };
 		0F4F41F71684426F009B1824 /* LArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F41F51684426F009B1824 /* LArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4F41F81684426F009B1824 /* LArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F41F51684426F009B1824 /* LArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F4F41F91684426F009B1824 /* LArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F41F61684426F009B1824 /* LArchiver.m */; };
-		0F4F41FB1684426F009B1824 /* LArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F41F61684426F009B1824 /* LArchiver.m */; };
 		0F4F424D1684632B009B1824 /* LCAppConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F424B1684632B009B1824 /* LCAppConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4F424E1684632B009B1824 /* LCAppConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F424B1684632B009B1824 /* LCAppConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4F424F1684632B009B1824 /* LCAppConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F424C1684632B009B1824 /* LCAppConfiguration.m */; };
@@ -341,8 +337,6 @@
 		0FD83CB7189EA29D00993A0A /* UITableView+Additons.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD83CB5189EA29D00993A0A /* UITableView+Additons.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FD83CB9189EA29D00993A0A /* UITableView+Additons.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD83CB6189EA29D00993A0A /* UITableView+Additons.m */; };
 		0FD83CBA189EA29D00993A0A /* UITableView+Additons.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD83CB6189EA29D00993A0A /* UITableView+Additons.m */; };
-		0FD83E26189FE5A300993A0A /* NGAParallaxMotion.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD83E24189FE5A300993A0A /* NGAParallaxMotion.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FD83E27189FE5A300993A0A /* NGAParallaxMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD83E25189FE5A300993A0A /* NGAParallaxMotion.m */; };
 		0FD83E3F18A0CD9B00993A0A /* LURLDataDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD83E3D18A0CD9B00993A0A /* LURLDataDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FD83E4018A0CD9B00993A0A /* LURLDataDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD83E3D18A0CD9B00993A0A /* LURLDataDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FD83E4118A0CD9B00993A0A /* LURLDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD83E3E18A0CD9B00993A0A /* LURLDataDownloader.m */; };
@@ -351,7 +345,6 @@
 		0FE3F68A16CA551900D14767 /* NSBundle+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE3F68816CA551900D14767 /* NSBundle+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FE3F68B16CA551900D14767 /* NSBundle+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3F68916CA551900D14767 /* NSBundle+Additions.m */; };
 		0FE735CC1D1BD71A006E048E /* LWebServicesDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA1A0C1C3AC27A00122524 /* LWebServicesDefines.m */; };
-		0FE735CD1D1BD747006E048E /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0A12251B2968D6004C25E1 /* SBJson.framework */; };
 		0FE9D6821696CB99003B8672 /* LUrlDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D6801696CB99003B8672 /* LUrlDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FE9D6831696CB99003B8672 /* LUrlDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D6801696CB99003B8672 /* LUrlDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FE9D6841696CB99003B8672 /* LUrlDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9D6811696CB99003B8672 /* LUrlDownloader.m */; };
@@ -420,14 +413,6 @@
 		0FFACDF9136EA03A00A69849 /* LNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFACDF7136EA03A00A69849 /* LNotificationDispatcher.m */; };
 		0FFACDFC136EBFC000A69849 /* LDatabaseAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFACDFA136EBFBC00A69849 /* LDatabaseAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FFACDFD136EBFC000A69849 /* LDatabaseAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFACDFB136EBFBE00A69849 /* LDatabaseAdapter.m */; };
-		3623A0E213E140DC0089273C /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0CE13E140DC0089273C /* ioapi.c */; };
-		3623A0E613E140DC0089273C /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0D213E140DC0089273C /* unzip.c */; };
-		3623A0E813E140DC0089273C /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0D413E140DC0089273C /* zip.c */; };
-		3623A0EB13E140DC0089273C /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0D813E140DC0089273C /* FileInZipInfo.m */; };
-		3623A0ED13E140DC0089273C /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0DA13E140DC0089273C /* ZipException.m */; };
-		3623A0EF13E140DC0089273C /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0DC13E140DC0089273C /* ZipFile.m */; };
-		3623A0F113E140DC0089273C /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0DE13E140DC0089273C /* ZipReadStream.m */; };
-		3623A0F313E140DC0089273C /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0E013E140DC0089273C /* ZipWriteStream.m */; };
 		3FBC567D1431D29C008CD864 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC567B1431D29C008CD864 /* main.m */; };
 		61DFA632450266EE76242974 /* libPods-LightcastTestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D221511AD8E693753B1D1A76 /* libPods-LightcastTestApp.a */; };
 		7E00CF6C13F2D08800D6F6F3 /* NSImage+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E00CF6A13F2D08800D6F6F3 /* NSImage+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -564,31 +549,9 @@
 		7E87D28013FA1931003875EF /* LAlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E87D27E13FA1931003875EF /* LAlertPrompt.m */; };
 		7E9135AF13D061790052468C /* LDateTimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9135AD13D061780052468C /* LDateTimeUtils.m */; };
 		7E9135B213D062D10052468C /* LDateTimeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9135B113D062D10052468C /* LDateTimeUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E9A9AD013F1722C002C3D7A /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0D813E140DC0089273C /* FileInZipInfo.m */; };
-		7E9A9AD113F1722F002C3D7A /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0DA13E140DC0089273C /* ZipException.m */; };
-		7E9A9AD213F17232002C3D7A /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0DC13E140DC0089273C /* ZipFile.m */; };
-		7E9A9AD313F17235002C3D7A /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0DE13E140DC0089273C /* ZipReadStream.m */; };
-		7E9A9AD413F17237002C3D7A /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0E013E140DC0089273C /* ZipWriteStream.m */; };
-		7E9A9AD513F17239002C3D7A /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0D413E140DC0089273C /* zip.c */; };
-		7E9A9AD613F1723C002C3D7A /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0D213E140DC0089273C /* unzip.c */; };
-		7E9A9AD813F17243002C3D7A /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3623A0CE13E140DC0089273C /* ioapi.c */; };
-		7E9A9AE213F17276002C3D7A /* ZipWriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 3623A0DF13E140DC0089273C /* ZipWriteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EA4C86E13AB459D00026105 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA4C86C13AB459D00026105 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EA4C86F13AB459D00026105 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4C86D13AB459D00026105 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7EB6A7D313D86121002C8325 /* LiTunesImportExportPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A7D113D86121002C8325 /* LiTunesImportExportPlugin.m */; };
-		7EB6A80213D97F8E002C8325 /* ATMHud.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A7F513D97F8E002C8325 /* ATMHud.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EB6A80313D97F8E002C8325 /* ATMHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A7F613D97F8E002C8325 /* ATMHud.m */; };
-		7EB6A80413D97F8E002C8325 /* ATMHudDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A7F713D97F8E002C8325 /* ATMHudDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EB6A80513D97F8E002C8325 /* ATMHudQueueItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A7F813D97F8E002C8325 /* ATMHudQueueItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EB6A80613D97F8E002C8325 /* ATMHudQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A7F913D97F8E002C8325 /* ATMHudQueueItem.m */; };
-		7EB6A80713D97F8E002C8325 /* ATMHudView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A7FA13D97F8E002C8325 /* ATMHudView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EB6A80813D97F8E002C8325 /* ATMHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A7FB13D97F8E002C8325 /* ATMHudView.m */; };
-		7EB6A80913D97F8E002C8325 /* ATMProgressLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A7FC13D97F8E002C8325 /* ATMProgressLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EB6A80A13D97F8E002C8325 /* ATMProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A7FD13D97F8E002C8325 /* ATMProgressLayer.m */; };
-		7EB6A80B13D97F8E002C8325 /* ATMSoundFX.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A7FE13D97F8E002C8325 /* ATMSoundFX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EB6A80C13D97F8E002C8325 /* ATMSoundFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A7FF13D97F8E002C8325 /* ATMSoundFX.m */; };
-		7EB6A80D13D97F8E002C8325 /* ATMTextLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A80013D97F8E002C8325 /* ATMTextLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EB6A80E13D97F8E002C8325 /* ATMTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A80113D97F8E002C8325 /* ATMTextLayer.m */; };
 		7EB6A82113D9931E002C8325 /* LiTunesImportExportPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A82013D9931E002C8325 /* LiTunesImportExportPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB6A82413D99360002C8325 /* LiTunesImportExportPluginDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A82213D99360002C8325 /* LiTunesImportExportPluginDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ED4E47E13DB5F9000224431 /* NSUserDefaults+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED4E47C13DB5F9000224431 /* NSUserDefaults+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -627,48 +590,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0F0A12241B2968D6004C25E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC12323D1391D5CC00131607;
-			remoteInfo = SBJson;
-		};
-		0F0A12261B2968D6004C25E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC1232521391D5CC00131607;
-			remoteInfo = SBJsonTests;
-		};
-		0F0A12281B2968D6004C25E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCC2626913920FC7003D9994;
-			remoteInfo = "sbjson-ios";
-		};
-		0F0A122A1B2968D6004C25E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCC2627313920FC7003D9994;
-			remoteInfo = "sbjson-iosTests";
-		};
-		0F0A122C1B2968DF004C25E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCC2626813920FC7003D9994;
-			remoteInfo = "sbjson-ios";
-		};
-		0F0A122F1B2968ED004C25E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BC12323C1391D5CC00131607;
-			remoteInfo = SBJson;
-		};
 		0F427AED16F30A2F00300E2B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F194C63135C82B4002C7AB2 /* Project object */;
@@ -682,13 +603,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0F194C6B135C82B4002C7AB2;
 			remoteInfo = Lightcast;
-		};
-		0FE735CE1D1BD74B006E048E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BC12323C1391D5CC00131607;
-			remoteInfo = SBJson;
 		};
 		0FE9D7EB1696EB08003B8672 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -753,7 +667,6 @@
 		0F08B7D716A659FE0093A9D6 /* LiTunesProductsRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiTunesProductsRequestDelegate.h; sourceTree = "<group>"; };
 		0F08B7D816A659FE0093A9D6 /* LiTunesProductsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiTunesProductsRequest.h; sourceTree = "<group>"; };
 		0F08B7D916A659FE0093A9D6 /* LiTunesProductsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiTunesProductsRequest.m; sourceTree = "<group>"; };
-		0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "3rdParty/json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
 		0F0C6B9D17707301008587E0 /* LDataSubmitterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDataSubmitterPlugin.h; sourceTree = "<group>"; };
 		0F0C6B9E17707301008587E0 /* LDataSubmitterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDataSubmitterPlugin.m; sourceTree = "<group>"; };
 		0F0C6BA51770735A008587E0 /* LDataSubmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDataSubmitter.h; sourceTree = "<group>"; };
@@ -1022,8 +935,6 @@
 		0FD2A8541851D59F0038E232 /* LStringObfuscator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LStringObfuscator.m; sourceTree = "<group>"; };
 		0FD83CB5189EA29D00993A0A /* UITableView+Additons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Additons.h"; sourceTree = "<group>"; };
 		0FD83CB6189EA29D00993A0A /* UITableView+Additons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Additons.m"; sourceTree = "<group>"; };
-		0FD83E24189FE5A300993A0A /* NGAParallaxMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NGAParallaxMotion.h; path = 3rdParty/NGAParallaxMotion/Classes/NGAParallaxMotion.h; sourceTree = "<group>"; };
-		0FD83E25189FE5A300993A0A /* NGAParallaxMotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NGAParallaxMotion.m; path = 3rdParty/NGAParallaxMotion/Classes/NGAParallaxMotion.m; sourceTree = "<group>"; };
 		0FD83E3D18A0CD9B00993A0A /* LURLDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LURLDataDownloader.h; sourceTree = "<group>"; };
 		0FD83E3E18A0CD9B00993A0A /* LURLDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LURLDataDownloader.m; sourceTree = "<group>"; };
 		0FE360EE16FD9B7200276475 /* lightcast_licenses.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = lightcast_licenses.bundle; path = Resources/lightcast_licenses.bundle; sourceTree = SOURCE_ROOT; };
@@ -1078,23 +989,6 @@
 		13E01488242ECF18711871B6 /* Pods-LightcastTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastTestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastTestApp/Pods-LightcastTestApp.release.xcconfig"; sourceTree = "<group>"; };
 		1F372300DE75D852717760C3 /* Pods-Lightcast.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightcast.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Lightcast/Pods-Lightcast.testing.xcconfig"; sourceTree = "<group>"; };
 		1FA2642B70C849C3BB4A9A9C /* Pods-LightcastTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastTestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastTestApp/Pods-LightcastTestApp.debug.xcconfig"; sourceTree = "<group>"; };
-		3623A0CD13E140DC0089273C /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		3623A0CE13E140DC0089273C /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		3623A0CF13E140DC0089273C /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		3623A0D213E140DC0089273C /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		3623A0D313E140DC0089273C /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		3623A0D413E140DC0089273C /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		3623A0D513E140DC0089273C /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		3623A0D713E140DC0089273C /* FileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileInZipInfo.h; sourceTree = "<group>"; };
-		3623A0D813E140DC0089273C /* FileInZipInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileInZipInfo.m; sourceTree = "<group>"; };
-		3623A0D913E140DC0089273C /* ZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipException.h; sourceTree = "<group>"; };
-		3623A0DA13E140DC0089273C /* ZipException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipException.m; sourceTree = "<group>"; };
-		3623A0DB13E140DC0089273C /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipFile.h; sourceTree = "<group>"; };
-		3623A0DC13E140DC0089273C /* ZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipFile.m; sourceTree = "<group>"; };
-		3623A0DD13E140DC0089273C /* ZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipReadStream.h; sourceTree = "<group>"; };
-		3623A0DE13E140DC0089273C /* ZipReadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipReadStream.m; sourceTree = "<group>"; };
-		3623A0DF13E140DC0089273C /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipWriteStream.h; sourceTree = "<group>"; };
-		3623A0E013E140DC0089273C /* ZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipWriteStream.m; sourceTree = "<group>"; };
 		37E50D8914E40EA31ECDBFBB /* Pods-LightcastiTunes.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightcastiTunes.testing.xcconfig"; path = "Pods/Target Support Files/Pods-LightcastiTunes/Pods-LightcastiTunes.testing.xcconfig"; sourceTree = "<group>"; };
 		3FBC56771431D290008CD864 /* LightcastTranslator-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LightcastTranslator-Prefix.pch"; sourceTree = "<group>"; };
 		3FBC567B1431D29C008CD864 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1141,19 +1035,6 @@
 		7EA4C86C13AB459D00026105 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		7EA4C86D13AB459D00026105 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		7EB6A7D113D86121002C8325 /* LiTunesImportExportPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiTunesImportExportPlugin.m; sourceTree = "<group>"; };
-		7EB6A7F513D97F8E002C8325 /* ATMHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMHud.h; sourceTree = "<group>"; };
-		7EB6A7F613D97F8E002C8325 /* ATMHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMHud.m; sourceTree = "<group>"; };
-		7EB6A7F713D97F8E002C8325 /* ATMHudDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMHudDelegate.h; sourceTree = "<group>"; };
-		7EB6A7F813D97F8E002C8325 /* ATMHudQueueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMHudQueueItem.h; sourceTree = "<group>"; };
-		7EB6A7F913D97F8E002C8325 /* ATMHudQueueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMHudQueueItem.m; sourceTree = "<group>"; };
-		7EB6A7FA13D97F8E002C8325 /* ATMHudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMHudView.h; sourceTree = "<group>"; };
-		7EB6A7FB13D97F8E002C8325 /* ATMHudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMHudView.m; sourceTree = "<group>"; };
-		7EB6A7FC13D97F8E002C8325 /* ATMProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMProgressLayer.h; sourceTree = "<group>"; };
-		7EB6A7FD13D97F8E002C8325 /* ATMProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMProgressLayer.m; sourceTree = "<group>"; };
-		7EB6A7FE13D97F8E002C8325 /* ATMSoundFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMSoundFX.h; sourceTree = "<group>"; };
-		7EB6A7FF13D97F8E002C8325 /* ATMSoundFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMSoundFX.m; sourceTree = "<group>"; };
-		7EB6A80013D97F8E002C8325 /* ATMTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMTextLayer.h; sourceTree = "<group>"; };
-		7EB6A80113D97F8E002C8325 /* ATMTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMTextLayer.m; sourceTree = "<group>"; };
 		7EB6A82013D9931E002C8325 /* LiTunesImportExportPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiTunesImportExportPlugin.h; sourceTree = "<group>"; };
 		7EB6A82213D99360002C8325 /* LiTunesImportExportPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiTunesImportExportPluginDelegate.h; sourceTree = "<group>"; };
 		7ED4E47C13DB5F9000224431 /* NSUserDefaults+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Additions.h"; sourceTree = "<group>"; };
@@ -1194,7 +1075,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F0A122E1B2968E7004C25E1 /* libsbjson-ios.a in Frameworks */,
 				0FEF2C291774499A001631C9 /* Foundation.framework in Frameworks */,
 				0FEF2C27177448AC001631C9 /* CoreGraphics.framework in Frameworks */,
 				0FEF2C2517744893001631C9 /* UIKit.framework in Frameworks */,
@@ -1238,7 +1118,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F0A12311B2968F3004C25E1 /* SBJson.framework in Frameworks */,
 				0FEF2C2E17744C45001631C9 /* CoreFoundation.framework in Frameworks */,
 				0FE9D7F61696EB20003B8672 /* MagicKit.framework in Frameworks */,
 				AEABBF904CB016158918A452 /* libPods-Lightcast-MacOSX.a in Frameworks */,
@@ -1249,7 +1128,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FE735CD1D1BD747006E048E /* SBJson.framework in Frameworks */,
 				0FEF2C4917745A09001631C9 /* CoreServices.framework in Frameworks */,
 				0FEF2C461774599F001631C9 /* AppKit.framework in Frameworks */,
 				0FEF2C4417745958001631C9 /* MagicKit.framework in Frameworks */,
@@ -1288,17 +1166,6 @@
 			name = Store;
 			sourceTree = "<group>";
 		};
-		0F0A121E1B2968D6004C25E1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0F0A12251B2968D6004C25E1 /* SBJson.framework */,
-				0F0A12271B2968D6004C25E1 /* SBJsonTests.octest */,
-				0F0A12291B2968D6004C25E1 /* libsbjson-ios.a */,
-				0F0A122B1B2968D6004C25E1 /* sbjson-iosTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0F0C6B99177072E5008587E0 /* DataSubmitter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1322,7 +1189,6 @@
 		0F194C61135C82B4002C7AB2 = {
 			isa = PBXGroup;
 			children = (
-				0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */,
 				0FE9D7E11696EB07003B8672 /* MagicKit.xcodeproj */,
 				0F194C71135C82B4002C7AB2 /* Lightcast iOS */,
 				7EB6A7EF13D97DDC002C8325 /* 3rd Party Libraries */,
@@ -2182,15 +2048,6 @@
 			name = Security;
 			sourceTree = "<group>";
 		};
-		0FD83E20189FE59100993A0A /* NGAParallaxMotion */ = {
-			isa = PBXGroup;
-			children = (
-				0FD83E24189FE5A300993A0A /* NGAParallaxMotion.h */,
-				0FD83E25189FE5A300993A0A /* NGAParallaxMotion.m */,
-			);
-			name = NGAParallaxMotion;
-			sourceTree = "<group>";
-		};
 		0FE3F68716CA550B00D14767 /* Bundles */ = {
 			isa = PBXGroup;
 			children = (
@@ -2311,39 +2168,6 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
-		3623A0CC13E140DC0089273C /* MiniZip */ = {
-			isa = PBXGroup;
-			children = (
-				3623A0CD13E140DC0089273C /* crypt.h */,
-				3623A0CE13E140DC0089273C /* ioapi.c */,
-				3623A0CF13E140DC0089273C /* ioapi.h */,
-				3623A0D213E140DC0089273C /* unzip.c */,
-				3623A0D313E140DC0089273C /* unzip.h */,
-				3623A0D413E140DC0089273C /* zip.c */,
-				3623A0D513E140DC0089273C /* zip.h */,
-			);
-			name = MiniZip;
-			path = 3rdParty/MiniZip;
-			sourceTree = "<group>";
-		};
-		3623A0D613E140DC0089273C /* Objective-Zip */ = {
-			isa = PBXGroup;
-			children = (
-				3623A0D713E140DC0089273C /* FileInZipInfo.h */,
-				3623A0D813E140DC0089273C /* FileInZipInfo.m */,
-				3623A0D913E140DC0089273C /* ZipException.h */,
-				3623A0DA13E140DC0089273C /* ZipException.m */,
-				3623A0DB13E140DC0089273C /* ZipFile.h */,
-				3623A0DC13E140DC0089273C /* ZipFile.m */,
-				3623A0DD13E140DC0089273C /* ZipReadStream.h */,
-				3623A0DE13E140DC0089273C /* ZipReadStream.m */,
-				3623A0DF13E140DC0089273C /* ZipWriteStream.h */,
-				3623A0E013E140DC0089273C /* ZipWriteStream.m */,
-			);
-			name = "Objective-Zip";
-			path = "3rdParty/Objective-Zip";
-			sourceTree = "<group>";
-		};
 		3FBC566E1431D1E5008CD864 /* LightcastTranslator */ = {
 			isa = PBXGroup;
 			children = (
@@ -2457,35 +2281,10 @@
 		7EB6A7EF13D97DDC002C8325 /* 3rd Party Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				0FD83E20189FE59100993A0A /* NGAParallaxMotion */,
 				0F1EC00917720F5C00F2D6C1 /* SystemServices */,
 				0F8B5B8416B29947009ADC20 /* Base64 */,
-				7EB6A7F413D97F8E002C8325 /* ATMHud */,
-				3623A0CC13E140DC0089273C /* MiniZip */,
-				3623A0D613E140DC0089273C /* Objective-Zip */,
 			);
 			name = "3rd Party Libraries";
-			sourceTree = "<group>";
-		};
-		7EB6A7F413D97F8E002C8325 /* ATMHud */ = {
-			isa = PBXGroup;
-			children = (
-				7EB6A7F513D97F8E002C8325 /* ATMHud.h */,
-				7EB6A7F613D97F8E002C8325 /* ATMHud.m */,
-				7EB6A7F713D97F8E002C8325 /* ATMHudDelegate.h */,
-				7EB6A7F813D97F8E002C8325 /* ATMHudQueueItem.h */,
-				7EB6A7F913D97F8E002C8325 /* ATMHudQueueItem.m */,
-				7EB6A7FA13D97F8E002C8325 /* ATMHudView.h */,
-				7EB6A7FB13D97F8E002C8325 /* ATMHudView.m */,
-				7EB6A7FC13D97F8E002C8325 /* ATMProgressLayer.h */,
-				7EB6A7FD13D97F8E002C8325 /* ATMProgressLayer.m */,
-				7EB6A7FE13D97F8E002C8325 /* ATMSoundFX.h */,
-				7EB6A7FF13D97F8E002C8325 /* ATMSoundFX.m */,
-				7EB6A80013D97F8E002C8325 /* ATMTextLayer.h */,
-				7EB6A80113D97F8E002C8325 /* ATMTextLayer.m */,
-			);
-			name = ATMHud;
-			path = 3rdParty/ATMHud;
 			sourceTree = "<group>";
 		};
 		7EEBEE8313E3C5B900DDFB8E /* Remote Debugging */ = {
@@ -2648,13 +2447,6 @@
 				7EEBEE8513E3C5D200DDFB8E /* RemoteDebugging.h in Headers */,
 				7EEBEE8813E3C5F100DDFB8E /* LRemoteError.h in Headers */,
 				7EEBEE8C13E3C6FD00DDFB8E /* LRemoteDebuggingSubmitter.h in Headers */,
-				7EB6A80213D97F8E002C8325 /* ATMHud.h in Headers */,
-				7EB6A80413D97F8E002C8325 /* ATMHudDelegate.h in Headers */,
-				7EB6A80513D97F8E002C8325 /* ATMHudQueueItem.h in Headers */,
-				7EB6A80713D97F8E002C8325 /* ATMHudView.h in Headers */,
-				7EB6A80913D97F8E002C8325 /* ATMProgressLayer.h in Headers */,
-				7EB6A80B13D97F8E002C8325 /* ATMSoundFX.h in Headers */,
-				7EB6A80D13D97F8E002C8325 /* ATMTextLayer.h in Headers */,
 				7E87D25D13F91349003875EF /* NSString+WebEntities.h in Headers */,
 				7E87D27F13FA1931003875EF /* LAlertPrompt.h in Headers */,
 				7E0995FF13D55E5A00A274D8 /* LApplicationUtils.h in Headers */,
@@ -2732,7 +2524,6 @@
 				DFE7744C189F90DE00A3FC6B /* LCloudBackupLoadDataDelegate.h in Headers */,
 				DFE77446189F90DE00A3FC6B /* LCloudBackup.h in Headers */,
 				DFE7744E189F90DE00A3FC6B /* LCloudFile.h in Headers */,
-				0FD83E26189FE5A300993A0A /* NGAParallaxMotion.h in Headers */,
 				0FD10C9518A651E1007906A8 /* UIView+Explode.h in Headers */,
 				0FD83E3F18A0CD9B00993A0A /* LURLDataDownloader.h in Headers */,
 				0FE9D90D169869CF003B8672 /* LPreference.h in Headers */,
@@ -2843,7 +2634,6 @@
 				0FE9D90616986953003B8672 /* LPreferences.h in Headers */,
 				0FE9D90E169869CF003B8672 /* LPreference.h in Headers */,
 				0F7C29BB169B06CC0042E7FF /* LGCDTimer.h in Headers */,
-				7E9A9AE213F17276002C3D7A /* ZipWriteStream.h in Headers */,
 				0F82193E168267A9005BCC40 /* NSError+Additions.h in Headers */,
 				0FE9D9161698722F003B8672 /* LNSUserDefaultsPreferences.h in Headers */,
 				0FF5763916C643A100E7B232 /* NSView+Additions.h in Headers */,
@@ -2891,7 +2681,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0F0A122D1B2968DF004C25E1 /* PBXTargetDependency */,
 				0FE9D7F21696EB11003B8672 /* PBXTargetDependency */,
 			);
 			name = Lightcast;
@@ -2956,7 +2745,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0F0A12301B2968ED004C25E1 /* PBXTargetDependency */,
 				0FE9D7F51696EB1C003B8672 /* PBXTargetDependency */,
 			);
 			name = "Lightcast-MacOSX";
@@ -2977,7 +2765,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0FE735CF1D1BD74B006E048E /* PBXTargetDependency */,
 				0F427AEE16F30A2F00300E2B /* PBXTargetDependency */,
 			);
 			name = LightcastTranslator;
@@ -3011,10 +2798,6 @@
 					ProductGroup = 0FE9D7E21696EB07003B8672 /* Products */;
 					ProjectRef = 0FE9D7E11696EB07003B8672 /* MagicKit.xcodeproj */;
 				},
-				{
-					ProductGroup = 0F0A121E1B2968D6004C25E1 /* Products */;
-					ProjectRef = 0F0A121D1B2968D6004C25E1 /* SBJson.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -3028,34 +2811,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0F0A12251B2968D6004C25E1 /* SBJson.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SBJson.framework;
-			remoteRef = 0F0A12241B2968D6004C25E1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0F0A12271B2968D6004C25E1 /* SBJsonTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SBJsonTests.octest;
-			remoteRef = 0F0A12261B2968D6004C25E1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0F0A12291B2968D6004C25E1 /* libsbjson-ios.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libsbjson-ios.a";
-			remoteRef = 0F0A12281B2968D6004C25E1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0F0A122B1B2968D6004C25E1 /* sbjson-iosTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "sbjson-iosTests.octest";
-			remoteRef = 0F0A122A1B2968D6004C25E1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		0FE9D7EC1696EB08003B8672 /* MagicKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -3382,7 +3137,6 @@
 				0F1950B2135D1C76002C7AB2 /* LLocalizationManager.m in Sources */,
 				0F19510C135D229A002C7AB2 /* LTabBarController.m in Sources */,
 				0F195117135D286B002C7AB2 /* Exceptions.m in Sources */,
-				0FD83E27189FE5A300993A0A /* NGAParallaxMotion.m in Sources */,
 				0F195123135D367F002C7AB2 /* NSFileManager+Additions.m in Sources */,
 				0F195128135D37D7002C7AB2 /* NSDictionary+Additions.m in Sources */,
 				0FBAF1CD1360087D00BF3712 /* UIScreen+Additions.m in Sources */,
@@ -3421,22 +3175,8 @@
 				7E6AE09413CD9F0B0013857F /* LTabBarItem.m in Sources */,
 				7E9135AF13D061790052468C /* LDateTimeUtils.m in Sources */,
 				7EB6A7D313D86121002C8325 /* LiTunesImportExportPlugin.m in Sources */,
-				7EB6A80313D97F8E002C8325 /* ATMHud.m in Sources */,
-				7EB6A80613D97F8E002C8325 /* ATMHudQueueItem.m in Sources */,
-				7EB6A80813D97F8E002C8325 /* ATMHudView.m in Sources */,
-				7EB6A80A13D97F8E002C8325 /* ATMProgressLayer.m in Sources */,
-				7EB6A80C13D97F8E002C8325 /* ATMSoundFX.m in Sources */,
-				7EB6A80E13D97F8E002C8325 /* ATMTextLayer.m in Sources */,
 				7EECD53913DB0A8D00AB9859 /* LWebServiceClient.m in Sources */,
-				3623A0E213E140DC0089273C /* ioapi.c in Sources */,
-				3623A0E613E140DC0089273C /* unzip.c in Sources */,
-				3623A0E813E140DC0089273C /* zip.c in Sources */,
-				3623A0EB13E140DC0089273C /* FileInZipInfo.m in Sources */,
-				3623A0ED13E140DC0089273C /* ZipException.m in Sources */,
-				3623A0EF13E140DC0089273C /* ZipFile.m in Sources */,
-				3623A0F113E140DC0089273C /* ZipReadStream.m in Sources */,
 				0FD83E4118A0CD9B00993A0A /* LURLDataDownloader.m in Sources */,
-				3623A0F313E140DC0089273C /* ZipWriteStream.m in Sources */,
 				DFE77450189F90DE00A3FC6B /* LCloudFile.m in Sources */,
 				0F427AAD16F2646A00300E2B /* i18n.m in Sources */,
 				7E08143C13E28D8900179008 /* Logging.m in Sources */,
@@ -3457,7 +3197,6 @@
 				0FC81EBE1681C3DF00D176C1 /* LUUIDHandler.m in Sources */,
 				0F82193F168267A9005BCC40 /* NSError+Additions.m in Sources */,
 				0F4F41F0168436D2009B1824 /* LAppUpgrades.m in Sources */,
-				0F4F41F91684426F009B1824 /* LArchiver.m in Sources */,
 				0F4F424F1684632B009B1824 /* LCAppConfiguration.m in Sources */,
 				0FC4A71E168DBC1A0074E507 /* NSData+CommonCrypto.m in Sources */,
 				0FE9D6841696CB99003B8672 /* LUrlDownloader.m in Sources */,
@@ -3585,15 +3324,7 @@
 				7EE7919513FB95F60046000F /* NSUserDefaults+Additions.m in Sources */,
 				7E2C649F13F008710092D661 /* LWebServiceClient.m in Sources */,
 				7EE7919413FB95F50046000F /* LApplicationUtils.m in Sources */,
-				7E9A9AD013F1722C002C3D7A /* FileInZipInfo.m in Sources */,
-				7E9A9AD313F17235002C3D7A /* ZipReadStream.m in Sources */,
-				7E9A9AD413F17237002C3D7A /* ZipWriteStream.m in Sources */,
-				7E9A9AD813F17243002C3D7A /* ioapi.c in Sources */,
-				7E9A9AD613F1723C002C3D7A /* unzip.c in Sources */,
-				7E9A9AD513F17239002C3D7A /* zip.c in Sources */,
 				7E3931FB140603C600F95F0C /* CAAnimation+Additions.m in Sources */,
-				7E9A9AD213F17232002C3D7A /* ZipFile.m in Sources */,
-				7E9A9AD113F1722F002C3D7A /* ZipException.m in Sources */,
 				7E00CF6D13F2D08800D6F6F3 /* NSImage+Additions.m in Sources */,
 				7E00CF7413F2E62300D6F6F3 /* CTGradient.m in Sources */,
 				7E00CF7813F2E69500D6F6F3 /* NSBezierPath+RoundedRect.m in Sources */,
@@ -3609,7 +3340,6 @@
 				0F419D261680A03800C7057B /* LNumbers.m in Sources */,
 				0F821941168267A9005BCC40 /* NSError+Additions.m in Sources */,
 				0F4F41F2168436D2009B1824 /* LAppUpgrades.m in Sources */,
-				0F4F41FB1684426F009B1824 /* LArchiver.m in Sources */,
 				0F4F42511684632B009B1824 /* LCAppConfiguration.m in Sources */,
 				0FC4A720168DBC1A0074E507 /* NSData+CommonCrypto.m in Sources */,
 				0FE9D6861696CB99003B8672 /* LUrlDownloader.m in Sources */,
@@ -3655,16 +3385,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0F0A122D1B2968DF004C25E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "sbjson-ios";
-			targetProxy = 0F0A122C1B2968DF004C25E1 /* PBXContainerItemProxy */;
-		};
-		0F0A12301B2968ED004C25E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SBJson;
-			targetProxy = 0F0A122F1B2968ED004C25E1 /* PBXContainerItemProxy */;
-		};
 		0F427AEE16F30A2F00300E2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7E2C640713F006D30092D661 /* Lightcast-MacOSX */;
@@ -3674,11 +3394,6 @@
 			isa = PBXTargetDependency;
 			target = 0F194C6B135C82B4002C7AB2 /* Lightcast */;
 			targetProxy = 0F7F3B8216AF8AEA0073AF8B /* PBXContainerItemProxy */;
-		};
-		0FE735CF1D1BD74B006E048E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SBJson;
-			targetProxy = 0FE735CE1D1BD74B006E048E /* PBXContainerItemProxy */;
 		};
 		0FE9D7F21696EB11003B8672 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

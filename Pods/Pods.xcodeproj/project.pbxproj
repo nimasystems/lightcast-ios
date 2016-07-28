@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A62CE79D756DC93B66FFEF5C4A98E73 /* Pods-LightcastiTunes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944AB541B50F1ABC71E678161FBB44B /* Pods-LightcastiTunes-dummy.m */; };
 		1A053A9179545C3E3B5027B6AD61E2CC /* Pods-LightcastTestApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD9547B605F5693A9DEB028BB7BD56 /* Pods-LightcastTestApp-dummy.m */; };
 		20E1AFFDF6C2421EA8F41FA14CA16D9C /* Pods-Lightcast-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC92014245003DF49749C3525C6B0E97 /* Pods-Lightcast-dummy.m */; };
 		23544CB2B9EA7331C7321BCD88671944 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B6669DD9DFCA4DA310C01E3382CC12 /* DDMultiFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -25,7 +26,6 @@
 		69DEF7BF46702906789AFE7044BB8879 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD99FCDF845B442B1B3F570D940FE /* DDASLLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		6A5FBB818186193F8F734E72BB036DF8 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC1117352B86A27F1B34547BDE01BC6 /* DDAbstractDatabaseLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		6EDE36A0D0352FE56F9964BD0B8A4703 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		6FB2FC3FDB7E5201BC7BA4D52C1B1BC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		703A0AB136CAA87C8CEA6FAC4B11D1B3 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D749143D5F49E3C9BD48FA7BB7165C /* DDLog.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		829EDC4783C56446F89ECE95CFF26558 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C70497B4B7900D0D0AC99FE8AB395C6 /* DDFileLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		8B246EE44CC8935873C074DF15CCAA2C /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = F9A095E75CC15921913AEFF327CA2D51 /* DDASLLogCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,8 +33,8 @@
 		A489AD9A8BE7DE3942B4831B70F3FBFE /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3674FFD7C40D6DC34AC17AB452D2D62A /* DDDispatchQueueLogFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		BE5802664FD26141143684972EE1ADF2 /* Pods-LightcastTranslator-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7608E0B2E5B6E8770B3D67E92D11C395 /* Pods-LightcastTranslator-dummy.m */; };
 		C53CCD44BDE244FE5B53CC6B5980B259 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		CC2B71F4C30BE5FE2D53F5BBA93B2617 /* Pods-LightcastiTunes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944AB541B50F1ABC71E678161FBB44B /* Pods-LightcastiTunes-dummy.m */; };
 		D477F8CFEFEEFE569B9F2C3D841FC206 /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E4B18696A542D02367C1B04D654FE7 /* DDLogMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D642FD72C5589BDDBCC9A743D8179968 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		D6EF740595408B267F7F08C2D1ECCD80 /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = BC4FEEADE0984F8E5187E582BA6E6D0B /* CocoaLumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBDB0AC0EACA3C06EC5F8B44320377D6 /* DDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A49738BC61B921C3DC5971268AE019 /* DDAbstractDatabaseLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E13AD6DB1AC8536497561B65BBC994BC /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A169AE9A71FE7D86D03E35AEE1FAC6F8 /* DDLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,6 +45,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		216744817C410D7C813B7B3ECC10EF5F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A45FC0A76A1A7FD7296334885E3E85E6;
+			remoteInfo = CocoaLumberjack;
+		};
 		386566FD1D8C813B141C4226169B2149 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -161,6 +168,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5C82391E138C5A763A5546106B6BE8BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D642FD72C5589BDDBCC9A743D8179968 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7F21537A660C5B918246A01F556BA925 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,14 +197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47C7946DF8DC91EDF2CDE5322D24FD5C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CF07EC5CCBA516EB97E225E6644E9511 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6FB2FC3FDB7E5201BC7BA4D52C1B1BC7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,16 +461,17 @@
 			productReference = 02508CBC884169964D1BFE879E1BF650 /* libPods-LightcastTestApp.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		498191A7C8851CBBC477949ABC561E81 /* Pods-LightcastiTunes */ = {
+		9A37E30F2FBC2DCB07C4F3A8BFF01611 /* Pods-LightcastiTunes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 922156D6446558286B9DFDFDE3440A1C /* Build configuration list for PBXNativeTarget "Pods-LightcastiTunes" */;
+			buildConfigurationList = 6F60999C5859385AD79FBD9E449542B0 /* Build configuration list for PBXNativeTarget "Pods-LightcastiTunes" */;
 			buildPhases = (
-				3817192FDF9277E77590A1B733822A31 /* Sources */,
-				CF07EC5CCBA516EB97E225E6644E9511 /* Frameworks */,
+				3BDBBFD9750EA5A42239DEFF924C1FF0 /* Sources */,
+				5C82391E138C5A763A5546106B6BE8BF /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8200368D5DF8D340EF04B6FAE1FBE557 /* PBXTargetDependency */,
 			);
 			name = "Pods-LightcastiTunes";
 			productName = "Pods-LightcastiTunes";
@@ -562,7 +570,7 @@
 				A45FC0A76A1A7FD7296334885E3E85E6 /* CocoaLumberjack */,
 				EAE54756D222CCA977749D16143531B6 /* Pods-Lightcast */,
 				B213D7EA3EFFDBCE006917BC0D31BAB9 /* Pods-Lightcast-MacOSX */,
-				498191A7C8851CBBC477949ABC561E81 /* Pods-LightcastiTunes */,
+				9A37E30F2FBC2DCB07C4F3A8BFF01611 /* Pods-LightcastiTunes */,
 				35B071A342DDD7529AB978B89C745455 /* Pods-LightcastTestApp */,
 				CEA5C9D8288A82883E22B79A6E06CABC /* Pods-LightcastTranslator */,
 			);
@@ -595,11 +603,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3817192FDF9277E77590A1B733822A31 /* Sources */ = {
+		3BDBBFD9750EA5A42239DEFF924C1FF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC2B71F4C30BE5FE2D53F5BBA93B2617 /* Pods-LightcastiTunes-dummy.m in Sources */,
+				0A62CE79D756DC93B66FFEF5C4A98E73 /* Pods-LightcastiTunes-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +650,12 @@
 			target = A45FC0A76A1A7FD7296334885E3E85E6 /* CocoaLumberjack */;
 			targetProxy = A8E22AFFF0A28BAD7BD27E1CC74899B7 /* PBXContainerItemProxy */;
 		};
+		8200368D5DF8D340EF04B6FAE1FBE557 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaLumberjack;
+			target = A45FC0A76A1A7FD7296334885E3E85E6 /* CocoaLumberjack */;
+			targetProxy = 216744817C410D7C813B7B3ECC10EF5F /* PBXContainerItemProxy */;
+		};
 		8EF2B2AEF060ED72CF9F6AD05CC4104F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CocoaLumberjack;
@@ -657,6 +671,27 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0307BEEC686E8AF9288266F984AC4EAF /* Testing */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F79CBF255D2AD82B5C22534E7ACEEA47 /* Pods-LightcastiTunes.testing.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Testing;
+		};
 		049114131CC96511B469439F97B8E7AC /* Testing */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E98861F0BC30E4CCCF66ADCB38A5AE2 /* Pods-Lightcast.testing.xcconfig */;
@@ -677,6 +712,48 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Testing;
+		};
+		0D6408460D6BB14243BDC874986381B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 329BD7EC31C3083754C293B5EA4A40BF /* Pods-LightcastiTunes.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		22F59598386DCA7DAE332A7B1D908DC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65803AD48EF377603550909FEFC2C0A0 /* Pods-LightcastiTunes.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
 		};
 		2ADF8E64C75AA492A2FB13C3D922EC8D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -841,27 +918,6 @@
 			};
 			name = Testing;
 		};
-		60BDE5C56B84D0DE273216351741B6EB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65803AD48EF377603550909FEFC2C0A0 /* Pods-LightcastiTunes.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		64662482EF1ABB9BE09048E1AEF5EEB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A545ADDA42B9C577F26075E5A0246AC /* CocoaLumberjack.xcconfig */;
@@ -903,27 +959,6 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
-		};
-		7B6E72ED302691F17BEAA38C2D1C0687 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 329BD7EC31C3083754C293B5EA4A40BF /* Pods-LightcastiTunes.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
 		};
 		9AD156B975252CD239AD7EF7E6EBAB68 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1029,27 +1064,6 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
-		};
-		CF124BE142BBC9E347169E88D97D3EE3 /* Testing */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F79CBF255D2AD82B5C22534E7ACEEA47 /* Pods-LightcastiTunes.testing.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Testing;
 		};
 		D78EB521D5BA1997D8CD7877F852703B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1195,22 +1209,22 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		6F60999C5859385AD79FBD9E449542B0 /* Build configuration list for PBXNativeTarget "Pods-LightcastiTunes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D6408460D6BB14243BDC874986381B2 /* Debug */,
+				22F59598386DCA7DAE332A7B1D908DC2 /* Release */,
+				0307BEEC686E8AF9288266F984AC4EAF /* Testing */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6F6B8F5BD495D7A4B8A05B7C13C70B83 /* Build configuration list for PBXNativeTarget "Pods-Lightcast-MacOSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9AD156B975252CD239AD7EF7E6EBAB68 /* Debug */,
 				CB2A1A444F827566EA8060AA6F862B08 /* Release */,
 				5A6B13121BD3240583EE67A358466B7E /* Testing */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		922156D6446558286B9DFDFDE3440A1C /* Build configuration list for PBXNativeTarget "Pods-LightcastiTunes" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7B6E72ED302691F17BEAA38C2D1C0687 /* Debug */,
-				60BDE5C56B84D0DE273216351741B6EB /* Release */,
-				CF124BE142BBC9E347169E88D97D3EE3 /* Testing */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
