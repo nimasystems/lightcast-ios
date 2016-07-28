@@ -31,6 +31,7 @@
  */
 
 #import "LAlertPrompt.h"
+#import "defines.h"
 
 @implementation LAlertPrompt
 

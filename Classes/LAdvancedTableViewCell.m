@@ -31,6 +31,7 @@
  */
 
 #import "LAdvancedTableViewCell.h"
+#import "defines.h"
 
 @implementation LAdvancedTableViewCell
 

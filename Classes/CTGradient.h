@@ -30,6 +30,8 @@
  * @version $Revision: 134 $
  */
 
+#ifdef TARGET_OSX
+
 typedef struct _CTGradientElement 
 {
 	CGFloat red, green, blue, alpha;
@@ -93,3 +95,5 @@ typedef enum  _CTBlendingMode
 - (void)radialFillRect:(NSRect)rect;								
 
 @end
+
+#endif

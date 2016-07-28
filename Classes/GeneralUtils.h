@@ -39,7 +39,7 @@
  * @return NSString The sha1 hashed string.
  * @deprecated To be used from [NSString sha1Hash]
  */
-+ (NSString *)sha1:(NSString *)str __LDEPRECATED_METHOD;
++ (NSString *)sha1:(NSString *)str;
 
 #ifdef TARGET_IOS	// iOS Target
 

@@ -7,7 +7,7 @@
  *
  */
 #import <Foundation/Foundation.h>
-#import <MagicKit/GEMagicKit.h>
+#import "GEMagicKit.h"
 
 @interface GEMagicKit ()
 

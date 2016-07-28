@@ -64,7 +64,7 @@
 #import <Lightcast/UIColor+Additions.h>
 #import <Lightcast/UIScreen+Additions.h>
 
-#import <Lightcast/NGAParallaxMotion.h>
+//#import <Lightcast/NGAParallaxMotion.h>
 
 #else	// Mac OSX Target
 

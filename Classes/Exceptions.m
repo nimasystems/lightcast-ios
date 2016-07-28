@@ -30,7 +30,8 @@
  * @version $Revision: 222 $
  */
 
-#include "Exceptions.h"
+#import "defines.h"
+#import "Exceptions.h"
 
 #if DEBUG && TARGET_OSX
 #include <assert.h>

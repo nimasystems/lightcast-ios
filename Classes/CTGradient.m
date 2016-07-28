@@ -30,6 +30,8 @@
  * @version $Revision: 272 $
  */
 
+#ifdef TARGET_OSX
+
 #import "CTGradient.h"
 
 @interface CTGradient(Private)
@@ -1315,3 +1317,5 @@ void resolveHSV(float *color1, float *color2)
 }
 
 @end
+
+#endif

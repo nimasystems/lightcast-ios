@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Lightcast"
-  s.version      = "0.0.1"
+  s.version      = "0.0.6"
   s.summary      = "iOS utility framework"
 
   # This description is used to generate tags and improve search results.
@@ -72,7 +72,6 @@ Pod::Spec.new do |s|
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
 
-
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Specify the location from where the source should be retrieved.
@@ -95,6 +94,14 @@ Pod::Spec.new do |s|
 
   s.public_header_files = "Classes/**/*.h"
 
+  s.subspec 'no-arc' do |sp|
+    sp.source_files = "Classes/Reachability.m", "3rdParty/Base64/Base64.m", "3rdParty/System\ Services/SystemServices.m"
+    sp.requires_arc = true
+    sp.compiler_flags = '-fobjc-arc'
+  end
+
+  s.ios.prefix_header_file = "Classes/Lightcast\ iOS-Prefix.pch"
+  s.osx.prefix_header_file = "Classes/Lightcast-MacOSX-Prefix.pch"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -116,10 +123,10 @@ Pod::Spec.new do |s|
   #
 
   # s.framework  = "SomeFramework"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
+  s.frameworks = "Foundation", "CoreGraphics", "UIKit", "QuartzCore"
 
   # s.library   = "iconv"
-  # s.libraries = "iconv", "xml2"
+  s.libraries = "MagicKit-iOS"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -128,9 +135,9 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # s.requires_arc = true
+  s.requires_arc = false
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # s.dependency "JSONKit", "~> 1.4"
+  s.dependency "CocoaLumberjack"
 
 end

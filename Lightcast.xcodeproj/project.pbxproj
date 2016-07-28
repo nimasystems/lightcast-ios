@@ -191,8 +191,6 @@
 		0F4F41E5168436AD009B1824 /* LAppUpgrades.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F41E4168436AD009B1824 /* LAppUpgrades.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4F41F0168436D2009B1824 /* LAppUpgrades.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F41EF168436D2009B1824 /* LAppUpgrades.m */; };
 		0F4F41F2168436D2009B1824 /* LAppUpgrades.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F41EF168436D2009B1824 /* LAppUpgrades.m */; };
-		0F4F41F71684426F009B1824 /* LArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F41F51684426F009B1824 /* LArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F4F41F81684426F009B1824 /* LArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F41F51684426F009B1824 /* LArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4F424D1684632B009B1824 /* LCAppConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F424B1684632B009B1824 /* LCAppConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4F424E1684632B009B1824 /* LCAppConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F424B1684632B009B1824 /* LCAppConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4F424F1684632B009B1824 /* LCAppConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F424C1684632B009B1824 /* LCAppConfiguration.m */; };
@@ -554,9 +552,6 @@
 		7E9135B213D062D10052468C /* LDateTimeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9135B113D062D10052468C /* LDateTimeUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EA4C86E13AB459D00026105 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA4C86C13AB459D00026105 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EA4C86F13AB459D00026105 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4C86D13AB459D00026105 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		7EB6A7D313D86121002C8325 /* LiTunesImportExportPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6A7D113D86121002C8325 /* LiTunesImportExportPlugin.m */; };
-		7EB6A82113D9931E002C8325 /* LiTunesImportExportPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A82013D9931E002C8325 /* LiTunesImportExportPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EB6A82413D99360002C8325 /* LiTunesImportExportPluginDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB6A82213D99360002C8325 /* LiTunesImportExportPluginDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ED4E47E13DB5F9000224431 /* NSUserDefaults+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED4E47C13DB5F9000224431 /* NSUserDefaults+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ED4E47F13DB5F9000224431 /* NSUserDefaults+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED4E47D13DB5F9000224431 /* NSUserDefaults+Additions.m */; };
 		7EE7919413FB95F50046000F /* LApplicationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0995FE13D55E5A00A274D8 /* LApplicationUtils.m */; };
@@ -808,8 +803,6 @@
 		0F4D0AA917AF90DE0061CAED /* LCalendarGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCalendarGridView.m; sourceTree = "<group>"; };
 		0F4F41E4168436AD009B1824 /* LAppUpgrades.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAppUpgrades.h; sourceTree = "<group>"; };
 		0F4F41EF168436D2009B1824 /* LAppUpgrades.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAppUpgrades.m; sourceTree = "<group>"; };
-		0F4F41F51684426F009B1824 /* LArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LArchiver.h; sourceTree = "<group>"; };
-		0F4F41F61684426F009B1824 /* LArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LArchiver.m; sourceTree = "<group>"; };
 		0F4F424B1684632B009B1824 /* LCAppConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCAppConfiguration.h; path = ../Classes/LCAppConfiguration.h; sourceTree = "<group>"; };
 		0F4F424C1684632B009B1824 /* LCAppConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCAppConfiguration.m; path = ../Classes/LCAppConfiguration.m; sourceTree = "<group>"; };
 		0F51D06E16A90C1600ED899C /* UIViewController+LCoreTabBarControllerTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LCoreTabBarControllerTab.h"; sourceTree = "<group>"; };
@@ -1027,9 +1020,6 @@
 		7E9135B113D062D10052468C /* LDateTimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDateTimeUtils.h; sourceTree = "<group>"; };
 		7EA4C86C13AB459D00026105 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		7EA4C86D13AB459D00026105 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		7EB6A7D113D86121002C8325 /* LiTunesImportExportPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiTunesImportExportPlugin.m; sourceTree = "<group>"; };
-		7EB6A82013D9931E002C8325 /* LiTunesImportExportPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiTunesImportExportPlugin.h; sourceTree = "<group>"; };
-		7EB6A82213D99360002C8325 /* LiTunesImportExportPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiTunesImportExportPluginDelegate.h; sourceTree = "<group>"; };
 		7ED4E47C13DB5F9000224431 /* NSUserDefaults+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Additions.h"; sourceTree = "<group>"; };
 		7ED4E47D13DB5F9000224431 /* NSUserDefaults+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Additions.m"; sourceTree = "<group>"; };
 		7EEBEE8413E3C5D200DDFB8E /* RemoteDebugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDebugging.h; sourceTree = "<group>"; };
@@ -1353,7 +1343,6 @@
 				0F7FDDF1169F4BEE0009F347 /* Filtered NSDictionary */,
 				0F7C29B3169B06BE0042E7FF /* GCD Timer */,
 				0FE9D8061697CFDC003B8672 /* Device System Info */,
-				0F4F41F416844261009B1824 /* Archiving */,
 				0F419D1C1680A02800C7057B /* Numbers */,
 				7EEBEE8313E3C5B900DDFB8E /* Remote Debugging */,
 				7EF2B0FA13CD7D2400422A74 /* Primitives */,
@@ -1677,15 +1666,6 @@
 			name = LCalendarView;
 			sourceTree = "<group>";
 		};
-		0F4F41F416844261009B1824 /* Archiving */ = {
-			isa = PBXGroup;
-			children = (
-				0F4F41F51684426F009B1824 /* LArchiver.h */,
-				0F4F41F61684426F009B1824 /* LArchiver.m */,
-			);
-			name = Archiving;
-			sourceTree = "<group>";
-		};
 		0F51E7EB136D9A0F006F7DEC /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1987,7 +1967,6 @@
 			children = (
 				0F0C6B99177072E5008587E0 /* DataSubmitter */,
 				0F169E431719A65500D744EE /* Reachability */,
-				7EB6A7CE13D85F13002C8325 /* ImportExport */,
 				0FBAF27113600FAA00BF3712 /* Cache Manager */,
 				0FBAF26B13600E0E00BF3712 /* Virtual File System */,
 			);
@@ -2254,16 +2233,6 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
-		7EB6A7CE13D85F13002C8325 /* ImportExport */ = {
-			isa = PBXGroup;
-			children = (
-				7EB6A82013D9931E002C8325 /* LiTunesImportExportPlugin.h */,
-				7EB6A7D113D86121002C8325 /* LiTunesImportExportPlugin.m */,
-				7EB6A82213D99360002C8325 /* LiTunesImportExportPluginDelegate.h */,
-			);
-			name = ImportExport;
-			sourceTree = "<group>";
-		};
 		7EB6A7EF13D97DDC002C8325 /* 3rd Party Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -2436,8 +2405,6 @@
 				0F0002431D4A4FBB004C4155 /* LCloudBackupDownloadDataDelegate.h in Headers */,
 				7E9135B213D062D10052468C /* LDateTimeUtils.h in Headers */,
 				7EA4C86E13AB459D00026105 /* Reachability.h in Headers */,
-				7EB6A82113D9931E002C8325 /* LiTunesImportExportPlugin.h in Headers */,
-				7EB6A82413D99360002C8325 /* LiTunesImportExportPluginDelegate.h in Headers */,
 				7E00CF8213F39F3700D6F6F3 /* CALayer+Additions.h in Headers */,
 				7EECD53813DB0A8D00AB9859 /* LWebServiceClient.h in Headers */,
 				0F068D61167CCDBA00E2C536 /* LWebServices.h in Headers */,
@@ -2459,7 +2426,6 @@
 				0F419D221680A03800C7057B /* LNumbers.h in Headers */,
 				0F4F41E5168436AD009B1824 /* LAppUpgrades.h in Headers */,
 				0FC81EBD1681C3DF00D176C1 /* LUUIDHandler.h in Headers */,
-				0F4F41F71684426F009B1824 /* LArchiver.h in Headers */,
 				0FC4A71C168DBC1A0074E507 /* NSData+CommonCrypto.h in Headers */,
 				0FE9D6D41696E669003B8672 /* LUrlDownloaderPostFile.h in Headers */,
 				0F4F424D1684632B009B1824 /* LCAppConfiguration.h in Headers */,
@@ -2611,7 +2577,6 @@
 				0F068D6A167CD81A00E2C536 /* LWebServicesValidationError.h in Headers */,
 				0FC4A71D168DBC1A0074E507 /* NSData+CommonCrypto.h in Headers */,
 				0F4F424E1684632B009B1824 /* LCAppConfiguration.h in Headers */,
-				0F4F41F81684426F009B1824 /* LArchiver.h in Headers */,
 				0FE9D6D51696E669003B8672 /* LUrlDownloaderPostFile.h in Headers */,
 				0FE9D6831696CB99003B8672 /* LUrlDownloader.h in Headers */,
 				0FE9D68A1696CBAE003B8672 /* LUrlDownloaderDelegate.h in Headers */,
@@ -3163,7 +3128,6 @@
 				7E6AE08D13CD8B9A0013857F /* LTabBar.m in Sources */,
 				7E6AE09413CD9F0B0013857F /* LTabBarItem.m in Sources */,
 				7E9135AF13D061790052468C /* LDateTimeUtils.m in Sources */,
-				7EB6A7D313D86121002C8325 /* LiTunesImportExportPlugin.m in Sources */,
 				7EECD53913DB0A8D00AB9859 /* LWebServiceClient.m in Sources */,
 				0FD83E4118A0CD9B00993A0A /* LURLDataDownloader.m in Sources */,
 				0F427AAD16F2646A00300E2B /* i18n.m in Sources */,
