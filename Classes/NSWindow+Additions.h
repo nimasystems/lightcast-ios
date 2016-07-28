@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 г. Nimasystems Ltd. All rights reserved.
 //
 
+#ifdef TARGET_OSX
+
 #import <Foundation/Foundation.h>
 
 @interface NSWindow(Additions)
@@ -15,3 +17,5 @@
 - (void)displayAlert:(NSString*)title description:(NSString*)description;
 
 @end
+
+#endif

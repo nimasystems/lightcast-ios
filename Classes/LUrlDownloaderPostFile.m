@@ -7,7 +7,7 @@
 //
 
 #import "LUrlDownloaderPostFile.h"
-#import <MagicKit/MagicKit.h>
+#import "MagicKit.h"
 
 NSString *const LUrlDownloaderPostFileDefaultMimetype = @"application/octet-stream";
 

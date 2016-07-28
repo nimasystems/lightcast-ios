@@ -30,6 +30,8 @@
  * @version $Revision: 275 $
  */
 
+#ifdef TARGET_OSX
+
 #import "NSColor+Additions.h"
 
 @implementation NSColor(Additions)
@@ -73,3 +75,5 @@
 }
 
 @end
+
+#endif

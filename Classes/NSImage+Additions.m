@@ -30,6 +30,8 @@
  * @version $Revision: 228 $
  */
 
+#ifdef TARGET_OSX
+
 #import "NSImage+Additions.h"
 #import "CTGradient.h"
 
@@ -90,3 +92,5 @@
 
 
 @end
+
+#endif

@@ -30,6 +30,8 @@
  * @version $Revision: 134 $
  */
 
+#ifdef TARGET_OSX
+
 #import "NSBezierPath+RoundedRect.h"
 
 @implementation NSBezierPath(RoundedRect)
@@ -51,3 +53,5 @@
 }
 
 @end
+
+#endif

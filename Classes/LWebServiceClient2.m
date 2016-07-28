@@ -10,7 +10,6 @@
 #import "LWebServicesDefines.h"
 #import "LWebServiceError.h"
 #import "LWebServicesValidationError.h"
-#import <SBJson/SBJsonParser.h>
 #import "LWebServicesDefines.h"
 
 @interface LWebServiceClient2(Private)
@@ -369,140 +368,119 @@ httpAuthPassword;
     }
     
     // parse the expected JSON response now
-    // SBJsonParser is weak-linked in Lightcast - verify if it is here!
-        
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
     id parserResult = nil;
     
-    if (!parser)
+    NSError *jsonParsingError = nil;
+    
+    @try
     {
+        NSError *err = nil;
+        parserResult = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:&err];
+        
+        if (err)
+        {
+            // check if the result is string FALSE - which means no results
+            NSString *tmp = [[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding] autorelease];
+            
+            if (![tmp isEqualToString:@"false"])
+            {
+                NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                [errorDetail setValue:[NSString stringWithFormat:LightcastLocalizedString(@"JSON Parsing Error: %@"), err] forKey:NSLocalizedDescriptionKey];
+                jsonParsingError = [NSError errorWithDomain:LERR_WEBSERVICES_DOMAIN code:LERR_WEBSERVICES_GENERAL_ERROR userInfo:errorDetail];
+                
+                lassert(false);
+                
+                if (error != NULL)
+                {
+                    *error = jsonParsingError;
+                }
+                
+                return NO;
+            }
+        }
+    }
+    @catch (NSException *e)
+    {
+        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+        [errorDetail setValue:[NSString stringWithFormat:LightcastLocalizedString(@"JSON Parsing Error: %@"), [e reason]] forKey:NSLocalizedDescriptionKey];
+        jsonParsingError = [NSError errorWithDomain:LERR_WEBSERVICES_DOMAIN code:LERR_WEBSERVICES_GENERAL_ERROR userInfo:errorDetail];
+        
+        lassert(false);
+        
         if (error != NULL)
         {
-            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-            [errorDetail setValue:LightcastLocalizedString(@"Cannot initialize JSON Parser") forKey:NSLocalizedDescriptionKey];
-            *error = [NSError errorWithDomain:LERR_WEBSERVICES_DOMAIN code:LERR_WEBSERVICES_GENERAL_ERROR userInfo:errorDetail];
+            *error = jsonParsingError;
         }
         
         return NO;
     }
     
-    @try
+    if (!parserResult)
     {
-        NSError *jsonParsingError = nil;
-        
-        @try
-        {
-            parserResult = [parser objectWithData:receivedData];
-
-            if (![NSString isNullOrEmpty:parser.error])
-            {
-                // check if the result is string FALSE - which means no results
-                NSString *tmp = [[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding] autorelease];
-                
-                if (![tmp isEqualToString:@"false"])
-                {
-                    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-                    [errorDetail setValue:[NSString stringWithFormat:LightcastLocalizedString(@"JSON Parsing Error: %@"), parser.error] forKey:NSLocalizedDescriptionKey];
-                    jsonParsingError = [NSError errorWithDomain:LERR_WEBSERVICES_DOMAIN code:LERR_WEBSERVICES_GENERAL_ERROR userInfo:errorDetail];
-                    
-                    lassert(false);
-                    
-                    if (error != NULL)
-                    {
-                        *error = jsonParsingError;
-                    }
-                    
-                    return NO;
-                }
-            }
-        }
-        @catch (NSException *e)
-        {
-            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-            [errorDetail setValue:[NSString stringWithFormat:LightcastLocalizedString(@"JSON Parsing Error: %@"), [e reason]] forKey:NSLocalizedDescriptionKey];
-            jsonParsingError = [NSError errorWithDomain:LERR_WEBSERVICES_DOMAIN code:LERR_WEBSERVICES_GENERAL_ERROR userInfo:errorDetail];
-            
-            lassert(false);
-            
-            if (error != NULL)
-            {
-                *error = jsonParsingError;
-            }
-            
-            return NO;
-        }
-        
-        if (!parserResult)
-        {
-            // no data decoded - not an error
-            return YES;
-        }
-        
-        // assign the response
-        if (response != NULL)
-        {
-            *response = [[parserResult copy] autorelease];
-        }
-        
-        NSDictionary *err = ([parserResult isKindOfClass:[NSDictionary class]] && [parserResult objectForKey:@"error"]) ? [parserResult objectForKey:@"error"] : nil;
-        
-        if (!err)
-        {
-            return YES;
-        }
-        
-        // yes - we have an error - try to parse it
-        if ([err isKindOfClass:[NSDictionary class]])
-        {
-            NSString *srvErrDomain = [err objectForKey:@"domain"];
-            NSString *srvErrMessage = [err objectForKey:@"message"];
-            NSString *srvErrException = [err objectForKey:@"exception"];
-            NSString *srvErrTrace = [err objectForKey:@"trace"];
-            NSInteger srvErrCode = [err objectForKey:@"code"] ? [[err objectForKey:@"code"] intValue] : 0;
-            NSString *srvErrExtraData = [err objectForKey:@"extra_data"];
-            
-            // parse the validation errors, if any
-            NSDictionary *srvValidationErrors = [err objectForKey:@"validation_errors"];
-            
-            NSMutableArray *allErrors = [[[NSMutableArray alloc] init] autorelease];
-            
-            if (srvValidationErrors)
-            {
-                lassert([srvValidationErrors isKindOfClass:[NSDictionary class]]);
-                
-                if ([srvValidationErrors isKindOfClass:[NSDictionary class]])
-                {
-                    for(NSString *key in srvValidationErrors)
-                    {
-                        NSString *v = [srvValidationErrors objectForKey:key];
-                        
-                        LWebServicesValidationError *err = [[[LWebServicesValidationError alloc] init] autorelease];
-                        err.fieldName = key;
-                        err.errorMessage = v;
-                        
-                        [allErrors addObject:err];
-                    }
-                }
-            }
-            
-            // create the error
-            LWebServiceError *ler = [[LWebServiceError alloc] initWithStampiiError:srvErrDomain errorMessage:srvErrMessage errorCode:srvErrCode];
-            ler.exceptionName = srvErrException;
-            ler.trace = srvErrTrace;
-            ler.extraData = srvErrExtraData;
-            ler.validationErrors = allErrors;
-            
-            if (error != NULL)
-            {
-                *error = ler;
-            }
-            
-            return NO;
-        }
+        // no data decoded - not an error
+        return YES;
     }
-    @finally
+    
+    // assign the response
+    if (response != NULL)
     {
-        L_RELEASE(parser);
+        *response = [[parserResult copy] autorelease];
+    }
+    
+    NSDictionary *err = ([parserResult isKindOfClass:[NSDictionary class]] && [parserResult objectForKey:@"error"]) ? [parserResult objectForKey:@"error"] : nil;
+    
+    if (!err)
+    {
+        return YES;
+    }
+    
+    // yes - we have an error - try to parse it
+    if ([err isKindOfClass:[NSDictionary class]])
+    {
+        NSString *srvErrDomain = [err objectForKey:@"domain"];
+        NSString *srvErrMessage = [err objectForKey:@"message"];
+        NSString *srvErrException = [err objectForKey:@"exception"];
+        NSString *srvErrTrace = [err objectForKey:@"trace"];
+        NSInteger srvErrCode = [err objectForKey:@"code"] ? [[err objectForKey:@"code"] intValue] : 0;
+        NSString *srvErrExtraData = [err objectForKey:@"extra_data"];
+        
+        // parse the validation errors, if any
+        NSDictionary *srvValidationErrors = [err objectForKey:@"validation_errors"];
+        
+        NSMutableArray *allErrors = [[[NSMutableArray alloc] init] autorelease];
+        
+        if (srvValidationErrors)
+        {
+            lassert([srvValidationErrors isKindOfClass:[NSDictionary class]]);
+            
+            if ([srvValidationErrors isKindOfClass:[NSDictionary class]])
+            {
+                for(NSString *key in srvValidationErrors)
+                {
+                    NSString *v = [srvValidationErrors objectForKey:key];
+                    
+                    LWebServicesValidationError *err = [[[LWebServicesValidationError alloc] init] autorelease];
+                    err.fieldName = key;
+                    err.errorMessage = v;
+                    
+                    [allErrors addObject:err];
+                }
+            }
+        }
+        
+        // create the error
+        LWebServiceError *ler = [[LWebServiceError alloc] initWithStampiiError:srvErrDomain errorMessage:srvErrMessage errorCode:srvErrCode];
+        ler.exceptionName = srvErrException;
+        ler.trace = srvErrTrace;
+        ler.extraData = srvErrExtraData;
+        ler.validationErrors = allErrors;
+        
+        if (error != NULL)
+        {
+            *error = ler;
+        }
+        
+        return NO;
     }
     
     return YES;

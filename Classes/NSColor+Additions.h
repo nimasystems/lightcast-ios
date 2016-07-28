@@ -30,6 +30,8 @@
  * @version $Revision: 275 $
  */
 
+#ifdef TARGET_OSX
+
 #define LRGBCOLOR(r,g,b) [NSColor colorWithCalibratedRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define LRGBACOLOR(r,g,b,a) [NSColor colorWithCalibratedRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)];
 
@@ -42,3 +44,5 @@
 + (NSColor*)randomColor;
 
 @end
+
+#endif

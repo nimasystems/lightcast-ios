@@ -30,6 +30,8 @@
  * @version $Revision: 227 $
  */
 
+#ifdef TARGET_OSX
+
 @interface NSImage(Additions)
 
 // Deprecated in favor of newCGImage to prevent LLDB warnings
@@ -40,3 +42,5 @@
 + (NSImage *)reflectedImage:(NSImage *)sourceImage amountReflected:(float)fraction;
 
 @end
+
+#endif

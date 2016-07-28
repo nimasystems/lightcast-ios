@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 г. Nimasystems Ltd. All rights reserved.
 //
 
+#ifdef TARGET_OSX
+
 #import <Foundation/Foundation.h>
 
 @interface NSView(Additions)
@@ -140,3 +142,5 @@
 - (NSImage*)imageSnapshot;
 
 @end
+
+#endif

@@ -30,8 +30,12 @@
  * @version $Revision: 134 $
  */
 
+#ifdef TARGET_OSX
+
 @interface NSBezierPath(RoundedRect)
 
 + (NSBezierPath *)bezierPathWithRect:(NSRect)aRect cornerRadius:(float)radius;
 
 @end
+
+#endif

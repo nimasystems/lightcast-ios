@@ -217,35 +217,12 @@ results=_results;
 			
 			return NO;
 		}
-		
+        
 		@try 
 		{
-			// SBJsonParser is weak-linked in Lightcast - verify if it is here!
-			
-			SBJsonParser *parser = [[SBJsonParser alloc] init];
-			id parserResult = nil;
-			
-			if (!parser)
-			{
-				if (error != NULL)
-				{
-					NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-					[errorDetail setValue:LightcastLocalizedString(@"Cannot initialize JSON Parser") forKey:NSLocalizedDescriptionKey];
-					*error = [NSError errorWithDomain:LERR_WEBSERVICES_DOMAIN code:LERR_WEBSERVICES_GENERAL_ERROR userInfo:errorDetail];
-				}
-				
-				return NO;
-			}
-			
-			@try 
-			{
-				parserResult = [parser objectWithData:_data];
-			}
-			@finally 
-			{
-				L_RELEASE(parser);
-			}
-			
+            NSError *err = nil;
+            id parserResult = [NSJSONSerialization JSONObjectWithData:_data options:kNilOptions error:&err];
+
 			// validate the returned object
 			if (!parserResult || ![parserResult objectForKey:@"error"] || ![parserResult objectForKey:@"result"])
 			{

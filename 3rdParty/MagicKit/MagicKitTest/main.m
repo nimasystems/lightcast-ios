@@ -24,7 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <MagicKit/MagicKit.h>
+#import "MagicKit.h"
 
 int main (int argc, const char * argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];

@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 г. Nimasystems Ltd. All rights reserved.
 //
 
+#ifdef TARGET_OSX
+
 #import "NSWindow+Additions.h"
 
 @implementation NSWindow(Additions)
@@ -30,3 +32,5 @@
 }
 
 @end
+
+#endif

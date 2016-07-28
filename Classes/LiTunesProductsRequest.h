@@ -8,7 +8,7 @@
 
 #import <StoreKit/StoreKit.h>
 #import <Foundation/Foundation.h>
-#import <LightcastiTunes/LiTunesProductsRequestDelegate.h>
+#import "LiTunesProductsRequestDelegate.h"
 
 extern NSString *LiTunesProductsRequestErrorDomain;
 
