@@ -96,26 +96,26 @@
 }
 
 - (NSString *)getStrWithNullValue:(id)aKey {
-	id obj = [self objectForKey:aKey];
+    id obj = [self objectForKey:aKey];
     
-	if (obj == NULL || !obj) return @"NULL"; else return [NSString stringWithFormat:@"'%@'",
+    if (obj == NULL || !obj) return @"NULL"; else return [NSString stringWithFormat:@"'%@'",
                                                           [(NSString *)obj addSlashes]];
 }
 
 - (NSString *)sqlString:(id)aKey {
-	return [self getStrWithNullValue: aKey];
+    return [self getStrWithNullValue: aKey];
 }
 
 - (int)sqlInt:(id)aKey {
-	return (![[self objectForKey: aKey] isEqual:[NSNull null]] || ![[self objectForKey: aKey] isKindOfClass:[NSNumber class]]) ? [[self objectForKey: aKey] intValue] : 0;
+    return (![[self objectForKey: aKey] isEqual:[NSNull null]] || ![[self objectForKey: aKey] isKindOfClass:[NSNumber class]]) ? [[self objectForKey: aKey] intValue] : 0;
 }
 
 - (float)sqlFloat:(id)aKey {
-	return (![[self objectForKey: aKey] isEqual:[NSNull null]] || ![[self objectForKey: aKey] isKindOfClass:[NSNumber class]]) ? [[self objectForKey: aKey] floatValue] : 0.0;
+    return (![[self objectForKey: aKey] isEqual:[NSNull null]] || ![[self objectForKey: aKey] isKindOfClass:[NSNumber class]]) ? [[self objectForKey: aKey] floatValue] : 0.0;
 }
 
 - (NSString *)sqlDate:(id)aKey {
-	return [self getStrWithNullValue: aKey];
+    return [self getStrWithNullValue: aKey];
 }
 
 - (int)intFromSql:(id)aKey {
@@ -132,60 +132,60 @@
 
 + (NSDictionary *)dictionaryWithFormEncodedString:(NSString *)encodedString
 {
-	if (!encodedString)
+    if (!encodedString)
     {
-		return nil;
-	}
+        return nil;
+    }
     
-	NSMutableDictionary *result = [NSMutableDictionary dictionary];
-	NSArray *pairs = [encodedString componentsSeparatedByString:@"&"];
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    NSArray *pairs = [encodedString componentsSeparatedByString:@"&"];
     
-	for (NSString *kvp in pairs)
+    for (NSString *kvp in pairs)
     {
-		if ([kvp length] == 0)
+        if ([kvp length] == 0)
         {
-			continue;
-		}
+            continue;
+        }
         
-		NSRange pos = [kvp rangeOfString:@"="];
-		NSString *key;
-		NSString *val;
+        NSRange pos = [kvp rangeOfString:@"="];
+        NSString *key;
+        NSString *val;
         
-		if (pos.location == NSNotFound)
+        if (pos.location == NSNotFound)
         {
-			key = [kvp stringByUnescapingFromURLQuery];
-			val = @"";
-		}
+            key = [kvp stringByUnescapingFromURLQuery];
+            val = @"";
+        }
         else
         {
-			key = [[kvp substringToIndex:pos.location] stringByUnescapingFromURLQuery];
-			val = [[kvp substringFromIndex:pos.location + pos.length] stringByUnescapingFromURLQuery];
-		}
+            key = [[kvp substringToIndex:pos.location] stringByUnescapingFromURLQuery];
+            val = [[kvp substringFromIndex:pos.location + pos.length] stringByUnescapingFromURLQuery];
+        }
         
-		if (!key || !val)
+        if (!key || !val)
         {
-			continue; // I'm sure this will bite my arse one day
-		}
+            continue; // I'm sure this will bite my arse one day
+        }
         
-		[result setObject:val forKey:key];
-	}
+        [result setObject:val forKey:key];
+    }
     
-	return result;
+    return result;
 }
 
 
 - (NSString *)stringWithFormEncodedComponents
 {
-	NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:[self count]];
+    NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:[self count]];
     
-	[self enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop)
-    {
-		[arguments addObject:[NSString stringWithFormat:@"%@=%@",
-							  [key stringByEscapingForURLQuery],
-							  [[object description] stringByEscapingForURLQuery]]];
-	}];
+    [self enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop)
+     {
+         [arguments addObject:[NSString stringWithFormat:@"%@=%@",
+                               [key stringByEscapingForURLQuery],
+                               [[object description] stringByEscapingForURLQuery]]];
+     }];
     
-	return [arguments componentsJoinedByString:@"&"];
+    return [arguments componentsJoinedByString:@"&"];
 }
 
 - (NSString*)jsonRepresentation {
@@ -194,7 +194,6 @@
                                                        options:0
                                                          error:&err];
     NSString *str = jsonData ? [[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] autorelease] : nil;
-    lassert(!err);
     return str;
 }
 
