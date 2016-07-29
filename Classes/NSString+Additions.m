@@ -104,37 +104,37 @@
 
 - (NSString *)stringByUnescapingFromURLQuery
 {
-	NSString *deplussed = [self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+    NSString *deplussed = [self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
     return [deplussed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (NSString *)stringByEscapingForURLQuery
 {
-	NSString *result = self;
+    NSString *result = self;
     
-	static CFStringRef leaveAlone = CFSTR(" ");
-	static CFStringRef toEscape = CFSTR("\n\r:/=,!$&'()*+;[]@#?%");
+    static CFStringRef leaveAlone = CFSTR(" ");
+    static CFStringRef toEscape = CFSTR("\n\r:/=,!$&'()*+;[]@#?%");
     
-	CFStringRef escapedStr = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, leaveAlone,
-																	 toEscape, kCFStringEncodingUTF8);
+    CFStringRef escapedStr = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, leaveAlone,
+                                                                     toEscape, kCFStringEncodingUTF8);
     
-	if (escapedStr)
+    if (escapedStr)
     {
-		NSMutableString *mutable = [NSMutableString stringWithString:(NSString *)escapedStr];
-		CFRelease(escapedStr);
+        NSMutableString *mutable = [NSMutableString stringWithString:(NSString *)escapedStr];
+        CFRelease(escapedStr);
         
-		[mutable replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutable length])];
-		result = mutable;
-	}
+        [mutable replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutable length])];
+        result = mutable;
+    }
     
-	return result;  
+    return result;  
 }
 
 - (NSString *)stringTrimmed {
-
-	NSString *trimmed = [self stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-	
-	return trimmed;
+    
+    NSString *trimmed = [self stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    return trimmed;
 }
 
 - (NSString *)trim {
@@ -198,83 +198,83 @@
 }
 
 - (NSString *)sha1Hash {
-	
-	unsigned char hashedChars[20];
-	
-	CC_SHA1([self UTF8String],
+    
+    unsigned char hashedChars[20];
+    
+    CC_SHA1([self UTF8String],
             (int)[self lengthOfBytesUsingEncoding:NSUTF8StringEncoding], 
             hashedChars);
-	
-	NSData * hashedData = [NSData dataWithBytes:hashedChars length:20];
-	
-	// may be a more optimized way to do this?
-	NSMutableString * tmp = [[NSMutableString stringWithFormat:@"%@", [hashedData description]] retain];
-	[tmp replaceOccurrencesOfString:@" " withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tmp length])];
-	[tmp deleteCharactersInRange:NSMakeRange([tmp length]-1, 1)];
-	[tmp deleteCharactersInRange:NSMakeRange(0, 1)];
-	
-	return [tmp autorelease];
+    
+    NSData * hashedData = [NSData dataWithBytes:hashedChars length:20];
+    
+    // may be a more optimized way to do this?
+    NSMutableString * tmp = [[NSMutableString stringWithFormat:@"%@", [hashedData description]] retain];
+    [tmp replaceOccurrencesOfString:@" " withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tmp length])];
+    [tmp deleteCharactersInRange:NSMakeRange([tmp length]-1, 1)];
+    [tmp deleteCharactersInRange:NSMakeRange(0, 1)];
+    
+    return [tmp autorelease];
 }
 
 - (NSString*)base64EncodedString {
-	return [self base64EncodedString];
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
 }
 
 - (NSString*)base64DecodedString {
-	return [self base64DecodedString];
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
 }
 
 // allow a-z, A-Z, 0-9 characters only
 - (NSString *)sanitizeToAlphaNumericalString {
-	
-	const unichar * buff[400];
-	
-	int y = 0;
-	
-	if ([self length] <= 400)
-	{
-		for (int i=0;i<[self length];i++)
-		{
-			unichar ch = [self characterAtIndex:i];
-			int myChar = (int)ch;
-			
-			if (!((myChar < 48) || (myChar > 122) || ((myChar > 57) && (myChar < 65)) || ((myChar > 90) && (myChar < 97))))
-			{
-				buff[y] = &ch;
+    
+    const unichar * buff[400];
+    
+    int y = 0;
+    
+    if ([self length] <= 400)
+    {
+        for (int i=0;i<[self length];i++)
+        {
+            unichar ch = [self characterAtIndex:i];
+            int myChar = (int)ch;
+            
+            if (!((myChar < 48) || (myChar > 122) || ((myChar > 57) && (myChar < 65)) || ((myChar > 90) && (myChar < 97))))
+            {
+                buff[y] = &ch;
                 
-				y++;
-			}
-		}
-	}
-	
-	NSString * tmp = [[NSString alloc] initWithCharacters:(const unichar *)buff length:y];
-	
-	return [tmp autorelease];
+                y++;
+            }
+        }
+    }
+    
+    NSString * tmp = [[NSString alloc] initWithCharacters:(const unichar *)buff length:y];
+    
+    return [tmp autorelease];
 }
 
 - (NSString *)stringByReplacingSubstring:(NSString *)substring
-							  withString:(NSString *)replaceString
+                              withString:(NSString *)replaceString
 {
-	NSMutableString * string = [NSMutableString stringWithString:self];
-	NSRange range;
-	
-	if (!replaceString || !substring) 
-	{ 
-		return self; 
-	}
-	
-	range = [string rangeOfString:substring];
-	
-	while (range.length)
-	{
-		[string replaceCharactersInRange:range withString:replaceString];
-		//range.location = range.location + range.length;
-		range.location = range.location + 1;
-		range.length = [string length] - range.location;
-		range = [string rangeOfString:substring options:0 range:range];
-	}
-	
-	return string;
+    NSMutableString * string = [NSMutableString stringWithString:self];
+    NSRange range;
+    
+    if (!replaceString || !substring) 
+    { 
+        return self; 
+    }
+    
+    range = [string rangeOfString:substring];
+    
+    while (range.length)
+    {
+        [string replaceCharactersInRange:range withString:replaceString];
+        //range.location = range.location + range.length;
+        range.location = range.location + 1;
+        range.length = [string length] - range.location;
+        range = [string rangeOfString:substring options:0 range:range];
+    }
+    
+    return string;
 }
 
 - (NSString*)stringByDeletingLastPathComponent:(NSString*)inputString {
@@ -293,7 +293,7 @@
 }
 
 - (NSString*)removedFileExtension {
-
+    
     NSString * result = self;
     NSInteger length = [self length];
     NSInteger index = 0;
@@ -337,12 +337,12 @@
 }
 
 - (BOOL)containsString:(NSString*)searchFor {
-	
-	if (!searchFor || ![searchFor length]) return NO;
-	
-	NSRange range = [self rangeOfString:searchFor options:NSCaseInsensitiveSearch];
-	
-	return (range.location != NSNotFound) ? YES : NO;
+    
+    if (!searchFor || ![searchFor length]) return NO;
+    
+    NSRange range = [self rangeOfString:searchFor options:NSCaseInsensitiveSearch];
+    
+    return (range.location != NSNotFound) ? YES : NO;
 }
 
 - (NSData *)dataFromHexRepresentation

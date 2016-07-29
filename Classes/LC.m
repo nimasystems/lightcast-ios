@@ -71,7 +71,7 @@ NSInteger const kLightcastDefaultLogRollingFrequency = 120; // 120 mins
 
 NSString *LightcastLocalizedString(NSString *key)
 {
-	return [[LC sharedLC].localizationManager localizedString:key];
+    return [[LC sharedLC].localizationManager localizedString:key];
 }
 
 // private class methods
@@ -124,7 +124,7 @@ logFileManager=_logFileManager;
         // by default we mark firstInstall to YES
         // callers must override it before initialization if it's not a first install
         firstInstall = YES;
-
+        
         // init the default localization manager and lc bundle
         NSString *bundlePath = [NSFileManager combinePaths:[[NSBundle mainBundle] resourcePath], kLightcastI18NBundleName, nil];
         lassert(bundlePath);
@@ -135,11 +135,11 @@ logFileManager=_logFileManager;
         lassert(localizationManager);
         
         /*if (!lightcastBundle || !localizationManager)
-        {
-            lassert(false);
-            L_RELEASE(self);
-            return nil;
-        }*/
+         {
+         lassert(false);
+         L_RELEASE(self);
+         return nil;
+         }*/
         
         // attach console logger
 #if DEBUG || TESTING
@@ -162,20 +162,20 @@ logFileManager=_logFileManager;
         _fileLogger = nil;
         
 #ifdef TARGET_IOS
-		// listen for low memory notifications
-		[[NSNotificationCenter defaultCenter] addObserver:self
-												 selector:@selector(applicationDidReceiveMemoryWarning:)
-													 name:UIApplicationDidReceiveMemoryWarningNotification
-												   object:nil];
+        // listen for low memory notifications
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidReceiveMemoryWarning:)
+                                                     name:UIApplicationDidReceiveMemoryWarningNotification
+                                                   object:nil];
 #endif
     }
     return self;
 }
 
 - (void)dealloc {
-	
-	[[NSNotificationCenter defaultCenter] removeObserver:self];	
-	
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];	
+    
     L_RELEASE(configuration);
     L_RELEASE(nd);
     L_RELEASE(systemObjects);
@@ -229,7 +229,7 @@ logFileManager=_logFileManager;
 
 - (void)initialize:(LCAppConfiguration*)aConfiguration notificationDispatcher:(LNotificationDispatcher*)dispatcher {
     
-	if (hasInitialized) return;
+    if (hasInitialized) return;
     
     if (self.isDebug) {
         LogWarn(@"---------------- WARNING: DEBUG MODE ENABLED! ----------------");
@@ -272,20 +272,20 @@ logFileManager=_logFileManager;
     }
     
     // initialize file logging if not already initialized
-if (!self.isDebug) {
-    if (!_fileLogger)
-    {
-        NSString *logFilePath = [self.config.documentsPath stringByAppendingPathComponent:@"Logs"];
-        NSError *err = nil;
-        BOOL loggerInitialized = [self initFileLogger:logFilePath error:&err];
-        
-        if (!loggerInitialized)
+    if (!self.isDebug) {
+        if (!_fileLogger)
         {
-            // fallback to NSLog here
-            NSLog(@"ERROR: Could not initialize logger: %@", err);
+            NSString *logFilePath = [self.config.documentsPath stringByAppendingPathComponent:@"Logs"];
+            NSError *err = nil;
+            BOOL loggerInitialized = [self initFileLogger:logFilePath error:&err];
+            
+            if (!loggerInitialized)
+            {
+                // fallback to NSLog here
+                NSLog(@"ERROR: Could not initialize logger: %@", err);
+            }
         }
     }
-}
     
     if (self.delegate)
     {
@@ -329,7 +329,7 @@ if (!self.isDebug) {
             [delegate didFinishInitializing:self];
         }
     }
-	
+    
     // notify everyone
     [nd postNotification:[LNotification notificationWithName:lnLightcastInitialized]];
 }
@@ -358,7 +358,7 @@ if (!self.isDebug) {
     }
     
     NSString *appLibraryPath = [[self.config.libraryPath stringByAppendingPathComponent:@"Application Support"]
-                      stringByAppendingPathComponent:[LApplicationUtils bundleIdentifier]];
+                                stringByAppendingPathComponent:[LApplicationUtils bundleIdentifier]];
     
     NSString *appCachesPath = [self.config.cachesPath stringByAppendingPathComponent:[LApplicationUtils bundleIdentifier]];
     
@@ -495,19 +495,19 @@ if (!self.isDebug) {
     LogInfo(@"Temporary folder reset (%@)", aConfiguration.temporaryPath);
     
     /*if (error != NULL)
-    {
-        *error = nil;
-    }
-    
-    // delete contents of the caches folder
-    folderWipedOut = [LApplicationUtils resetFolder:aConfiguration.cachesPath error:error];
-    
-    if (!folderWipedOut)
-    {
-        return NO;
-    }
-    
-    LogInfo(@"Caches folder reset (%@)", aConfiguration.cachesPath);*/
+     {
+     *error = nil;
+     }
+     
+     // delete contents of the caches folder
+     folderWipedOut = [LApplicationUtils resetFolder:aConfiguration.cachesPath error:error];
+     
+     if (!folderWipedOut)
+     {
+     return NO;
+     }
+     
+     LogInfo(@"Caches folder reset (%@)", aConfiguration.cachesPath);*/
     
     // wipe out user defaults
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -557,7 +557,7 @@ if (!self.isDebug) {
                 [self initSystemObject:objectName type:[systemLoadersOrder objectAtIndex:i]];
             }
         }
-      
+        
         int p = 0;
         
         // call: initialize
@@ -587,7 +587,7 @@ if (!self.isDebug) {
             }
         }
     }
-
+    
     LogDebug(@"Initializing system objects... DONE!");
 }
 
@@ -742,14 +742,14 @@ if (!self.isDebug) {
     LogInfo(@"LC: application didFinishLaunchingWithOptions: %@", launchOptions);
     
     // Initialize lightcast
-	// Changed to not initialize when app loads - so this can be done later!
+    // Changed to not initialize when app loads - so this can be done later!
     //[self initialize:nil];
-	
+    
     // notify listeners
     NSDictionary *obj = [NSDictionary dictionaryWithObjectsAndKeys:
                          launchOptions, @"launchOptions"
                          , nil];
-	// notify everyone
+    // notify everyone
     [nd postNotification:[LNotification notificationWithName:lnLightcastApplicationDidFinishLaunchingWithOptions object:obj]];
 }
 
@@ -823,7 +823,7 @@ if (!self.isDebug) {
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-     LogInfo(@"LC: application didRegisterForRemoteNotificationsWithDeviceToken: %@", deviceToken);
+    LogInfo(@"LC: application didRegisterForRemoteNotificationsWithDeviceToken: %@", deviceToken);
     
     // notify listeners
     NSDictionary *obj = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -863,10 +863,10 @@ if (!self.isDebug) {
 #pragma mark - Notifications
 
 - (void)applicationDidReceiveMemoryWarning:(NSNotification*)notification {
-
-	LogWarn(@"Lightcast: applicationDidReceiveMemoryWarning");
-	
-	// notify everyone
+    
+    LogWarn(@"Lightcast: applicationDidReceiveMemoryWarning");
+    
+    // notify everyone
     [nd postNotification:[LNotification notificationWithName:lnLightcastApplicationDidRegisterForRemoteNotifications object:notification.object]];
 }
 
@@ -900,16 +900,16 @@ if (!self.isDebug) {
 // TODO: Remove this - we have it now as a static method
 - (LCAppConfiguration*)defaultConfiguration {
     LCAppConfiguration *defaultConfiguration = [[[LCAppConfiguration alloc] initWithNameAndDeepValues:LIGHTCAST_NAME
-              deepValues:
-             [NSDictionary dictionaryWithObjectsAndKeys:
-              LC_VER, @"version",
-              [NSDictionary dictionaryWithObjectsAndKeys:
-               @"LDatabaseManager", LC_LOADER_NAME_DATABASE_MANAGER,
-               @"LStorage",         LC_LOADER_NAME_STORAGE,
-               @"LPluginManager",   LC_LOADER_NAME_PLUGIN_MANAGER,
-               nil
-               ], @"loaders",
-              nil]] autorelease];
+                                                                                           deepValues:
+                                                 [NSDictionary dictionaryWithObjectsAndKeys:
+                                                  LC_VER, @"version",
+                                                  [NSDictionary dictionaryWithObjectsAndKeys:
+                                                   @"LDatabaseManager", LC_LOADER_NAME_DATABASE_MANAGER,
+                                                   @"LStorage",         LC_LOADER_NAME_STORAGE,
+                                                   @"LPluginManager",   LC_LOADER_NAME_PLUGIN_MANAGER,
+                                                   nil
+                                                   ], @"loaders",
+                                                  nil]] autorelease];
     
     // set the default environment paths
     defaultConfiguration.documentsPath = [[NSFileManager defaultManager] documentsPath];
@@ -1033,7 +1033,7 @@ if (!self.isDebug) {
 #pragma mark - Singleton Pattern
 
 + (LC*)sharedLC {
-	@synchronized(self)
+    @synchronized(self)
     {
         if (sharedLC == nil) 
         {
