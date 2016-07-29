@@ -143,7 +143,7 @@ logFileManager=_logFileManager;
         
         // attach console logger
 #if DEBUG || TESTING
-        [self addConsoleLoggers];
+        [self addConsoleLoggers:NO];
 #endif
         
         self.buildType = LCAppBuildTypeRelease;
@@ -196,11 +196,23 @@ logFileManager=_logFileManager;
         
         if (_buildType == LCAppBuildTypeDebug ||
             _buildType == LCAppBuildTypeTesting) {
-            [self addConsoleLoggers];
             ddLogLevel = DDLogLevelVerbose;
+            
+            [self addConsoleLoggers:YES];
+            
+            if (_fileLogger) {
+                [DDLog removeLogger:_fileLogger];
+                [DDLog addLogger:_fileLogger withLevel:ddLogLevel];
+            }
         } else {
-            [self removeConsoleLoggers];
             ddLogLevel = DDLogLevelInfo;
+            
+            [self removeConsoleLoggers];
+            
+            if (_fileLogger) {
+                [DDLog removeLogger:_fileLogger];
+                [DDLog addLogger:_fileLogger withLevel:ddLogLevel];
+            }
         }
     }
 }
@@ -334,11 +346,15 @@ logFileManager=_logFileManager;
     [nd postNotification:[LNotification notificationWithName:lnLightcastInitialized]];
 }
 
-- (void)addConsoleLoggers {
-    if (!_consoleLoggersAdded) {
+- (void)addConsoleLoggers:(BOOL)force {
+    if (!_consoleLoggersAdded || force) {
+        if (force && _consoleLoggersAdded) {
+            [self removeConsoleLoggers];
+        }
+        
         _consoleLoggersAdded = YES;
-        [DDLog addLogger:[DDASLLogger sharedInstance]];
-        [DDLog addLogger:[DDTTYLogger sharedInstance]];
+        [DDLog addLogger:[DDASLLogger sharedInstance] withLevel:ddLogLevel];
+        [DDLog addLogger:[DDTTYLogger sharedInstance] withLevel:ddLogLevel];
     }
 }
 
@@ -443,7 +459,7 @@ logFileManager=_logFileManager;
         _fileLogger.rollingFrequency =   kLightcastDefaultLogRollingFrequency * 60;
         _fileLogger.logFileManager.maximumNumberOfLogFiles = kLightcastDefaultLogMaxRotatedFiles;
         
-        [DDLog addLogger:_fileLogger];
+        [DDLog addLogger:_fileLogger withLevel:ddLogLevel];
         
         LogInfo(@"File logger initialized");
     }
