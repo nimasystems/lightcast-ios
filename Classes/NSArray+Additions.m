@@ -36,16 +36,16 @@
 
 - (NSArray *)shuffled
 {
-	// create temporary autoreleased mutable array
-	NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:[self count]];
-	
-	for (id anObject in self)
-	{
-		NSUInteger randomPos = arc4random()%([tmpArray count]+1);
-		[tmpArray insertObject:anObject atIndex:randomPos];
-	}
-	
-	return [NSArray arrayWithArray:tmpArray];  // non-mutable autoreleased copy
+    // create temporary autoreleased mutable array
+    NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:[self count]];
+    
+    for (id anObject in self)
+    {
+        NSUInteger randomPos = arc4random()%([tmpArray count]+1);
+        [tmpArray insertObject:anObject atIndex:randomPos];
+    }
+    
+    return [NSArray arrayWithArray:tmpArray];  // non-mutable autoreleased copy
 }
 
 - (NSArray *)tableIndexes {
@@ -70,7 +70,7 @@
             }
         }
     }
-
+    
     return (NSArray*)result;
 }
 
@@ -80,7 +80,6 @@
                                                        options:0
                                                          error:&err];
     NSString *str = jsonData ? [[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] autorelease] : nil;
-    lassert(!err);
     return str;
 }
 
