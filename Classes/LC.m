@@ -121,6 +121,8 @@ logFileManager=_logFileManager;
         systemObjects = nil;
         delegate = nil;
         
+        ddLogLevel = DDLogLevelInfo;
+        
         // by default we mark firstInstall to YES
         // callers must override it before initialization if it's not a first install
         firstInstall = YES;
@@ -141,10 +143,8 @@ logFileManager=_logFileManager;
          return nil;
          }*/
         
-        // attach console logger
-#if DEBUG || TESTING
-        [self addConsoleLoggers:NO];
-#endif
+        // wipe out all loggers initially as they will be reconfigured below
+        [DDLog removeAllLoggers];
         
         self.buildType = LCAppBuildTypeRelease;
         
@@ -196,23 +196,17 @@ logFileManager=_logFileManager;
         
         if (_buildType == LCAppBuildTypeDebug ||
             _buildType == LCAppBuildTypeTesting) {
-            ddLogLevel = DDLogLevelVerbose;
-            
-            [self addConsoleLoggers:YES];
-            
-            if (_fileLogger) {
-                [DDLog removeLogger:_fileLogger];
-                [DDLog addLogger:_fileLogger withLevel:ddLogLevel];
-            }
+            ddLogLevel = DDLogLevelAll;
         } else {
             ddLogLevel = DDLogLevelInfo;
-            
-            [self removeConsoleLoggers];
-            
-            if (_fileLogger) {
-                [DDLog removeLogger:_fileLogger];
-                [DDLog addLogger:_fileLogger withLevel:ddLogLevel];
-            }
+        }
+        
+        // re-add the loggers with the new level
+        [self addConsoleLoggers:YES];
+        
+        if (_fileLogger) {
+            [DDLog removeLogger:_fileLogger];
+            [DDLog addLogger:_fileLogger withLevel:ddLogLevel];
         }
     }
 }
@@ -284,6 +278,7 @@ logFileManager=_logFileManager;
     }
     
     // initialize file logging if not already initialized
+    
     if (!self.isDebug) {
         if (!_fileLogger)
         {
@@ -348,12 +343,11 @@ logFileManager=_logFileManager;
 
 - (void)addConsoleLoggers:(BOOL)force {
     if (!_consoleLoggersAdded || force) {
-        if (force && _consoleLoggersAdded) {
-            [self removeConsoleLoggers];
-        }
+        
+        [self removeConsoleLoggers];
         
         _consoleLoggersAdded = YES;
-        [DDLog addLogger:[DDASLLogger sharedInstance] withLevel:ddLogLevel];
+        //[DDLog addLogger:[DDASLLogger sharedInstance] withLevel:ddLogLevel];
         [DDLog addLogger:[DDTTYLogger sharedInstance] withLevel:ddLogLevel];
     }
 }
@@ -361,7 +355,7 @@ logFileManager=_logFileManager;
 - (void)removeConsoleLoggers {
     if (_consoleLoggersAdded) {
         _consoleLoggersAdded = NO;
-        [DDLog removeLogger:[DDASLLogger sharedInstance]];
+        //[DDLog removeLogger:[DDASLLogger sharedInstance]];
         [DDLog removeLogger:[DDTTYLogger sharedInstance]];
     }
 }
@@ -443,6 +437,8 @@ logFileManager=_logFileManager;
     
     if (_logFileManager)
     {
+        NSArray *loggers = [DDLog allLoggers];
+        
         // compress log files
         // disabled until this is fixed!
         //[_logFileManager compressLogFiles];
