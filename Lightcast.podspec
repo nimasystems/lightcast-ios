@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Lightcast"
-  s.version      = "0.0.18"
+  s.version      = "0.0.20"
   s.summary      = "iOS utility framework"
 
   # This description is used to generate tags and improve search results.
@@ -127,7 +127,7 @@ Pod::Spec.new do |s|
 
   # s.library   = "iconv"
   #s.libraries = "MagicKit-iOS"
-
+  s.libraries = "sqlite3", "z"
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
