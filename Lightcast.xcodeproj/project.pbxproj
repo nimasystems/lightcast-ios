@@ -231,6 +231,185 @@
 		0FA5D617167F58B400BD51EF /* LVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5D612167F58B400BD51EF /* LVars.m */; };
 		0FAC498A178EBF9F0017D310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C281774499A001631C9 /* Foundation.framework */; };
 		0FAC498C178EBF9F0017D310 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEF2C2417744893001631C9 /* UIKit.framework */; };
+		0FB95C461D8937370098A5A9 /* LCloudBackup.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00023B1D4A4FBB004C4155 /* LCloudBackup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C471D8937370098A5A9 /* LCloudBackupDownloadDataDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00023D1D4A4FBB004C4155 /* LCloudBackupDownloadDataDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C481D8937370098A5A9 /* LCloudBackupLoadDataDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00023E1D4A4FBB004C4155 /* LCloudBackupLoadDataDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C491D8937370098A5A9 /* LCloudFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00023F1D4A4FBB004C4155 /* LCloudFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C4A1D8937370098A5A9 /* LNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFACDF2136E9E9200A69849 /* LNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C4B1D8937370098A5A9 /* LNotificationDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFACDF6136EA03A00A69849 /* LNotificationDispatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C4C1D8937370098A5A9 /* LConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F40066A1367817E00C5AC2A /* LConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C4D1D8937370098A5A9 /* LCAppConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F424B1684632B009B1824 /* LCAppConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C4E1D8937370098A5A9 /* LSystemObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F51E7F1136D9A60006F7DEC /* LSystemObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C4F1D8937370098A5A9 /* LC.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F40066E1367AD5000C5AC2A /* LC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C501D8937370098A5A9 /* LPreference.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D90B169869CF003B8672 /* LPreference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C511D8937370098A5A9 /* LPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D90316986953003B8672 /* LPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C521D8937370098A5A9 /* LNSUserDefaultsPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D9131698722E003B8672 /* LNSUserDefaultsPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C531D8937370098A5A9 /* NSString+DB.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF272136016DC00BF3712 /* NSString+DB.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C541D8937370098A5A9 /* SQLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F2931EC137D23BD00CDB645 /* SQLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C551D8937370098A5A9 /* LDatabaseSchemaProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CAD135C83F9002C7AB2 /* LDatabaseSchemaProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C561D8937370098A5A9 /* LDatabaseSchema.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF27713601A0500BF3712 /* LDatabaseSchema.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C571D8937370098A5A9 /* LDatabaseAdapterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF27B13601A3500BF3712 /* LDatabaseAdapterProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C581D8937370098A5A9 /* LDatabaseAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFACDFA136EBFBC00A69849 /* LDatabaseAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C591D8937370098A5A9 /* LSQLiteDatabaseAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CA7135C83DC002C7AB2 /* LSQLiteDatabaseAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C5A1D8937370098A5A9 /* LNullDatabaseAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F51E801136E19DA006F7DEC /* LNullDatabaseAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C5B1D8937370098A5A9 /* LDatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CB4135C843F002C7AB2 /* LDatabaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C5C1D8937370098A5A9 /* LPluginBehaviour.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF2D913605C3700BF3712 /* LPluginBehaviour.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C5D1D8937370098A5A9 /* LPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF2E31360679800BF3712 /* LPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C5E1D8937370098A5A9 /* LPluginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4006721367AE7900C5AC2A /* LPluginManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C5F1D8937370098A5A9 /* LDefaultStorageAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F51E7FD136DA408006F7DEC /* LDefaultStorageAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C601D8937370098A5A9 /* LStorageAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F51E7F6136D9CAC006F7DEC /* LStorageAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C611D8937370098A5A9 /* LStorageAdapterBehaviour.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F51E7FA136D9F45006F7DEC /* LStorageAdapterBehaviour.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C621D8937370098A5A9 /* LStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F51E7ED136D9A32006F7DEC /* LStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C631D8937370098A5A9 /* LDataSubmitterPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0C6B9D17707301008587E0 /* LDataSubmitterPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C641D8937370098A5A9 /* LDataSubmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0C6BA51770735A008587E0 /* LDataSubmitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C651D8937370098A5A9 /* LReachabilityPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F169E471719A67100D744EE /* LReachabilityPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C661D8937370098A5A9 /* LCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF25F13600A9900BF3712 /* LCacheManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C671D8937370098A5A9 /* LVirtualFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF2D51360532100BF3712 /* LVirtualFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C681D8937370098A5A9 /* LVirtualFSSchema.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF2DB13605FD200BF3712 /* LVirtualFSSchema.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C691D8937370098A5A9 /* LVirtualFSPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF26C13600E3A00BF3712 /* LVirtualFSPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C6A1D8937370098A5A9 /* LI18nParsedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F427AE316F3054200300E2B /* LI18nParsedString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C6B1D8937370098A5A9 /* LI18nTranslationSourceParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F427ADB16F3045400300E2B /* LI18nTranslationSourceParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C6C1D8937370098A5A9 /* LI18nProjectCatalog.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F427B1E16F3274B00300E2B /* LI18nProjectCatalog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C6D1D8937370098A5A9 /* LI18nLocalizedStringsFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F427B2616F3393000300E2B /* LI18nLocalizedStringsFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C6E1D8937370098A5A9 /* i18n.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195063135D194B002C7AB2 /* i18n.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C6F1D8937370098A5A9 /* LLocalizationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1950AF135D1C76002C7AB2 /* LLocalizationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C701D8937370098A5A9 /* LUrlDownloaderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D6881696CBAE003B8672 /* LUrlDownloaderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C711D8937370098A5A9 /* LUrlDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D6801696CB99003B8672 /* LUrlDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C721D8937370098A5A9 /* LUrlDownloaderPostFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D6D21696E669003B8672 /* LUrlDownloaderPostFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C731D8937370098A5A9 /* LUrlDownloaderCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B5DBA170BE43800A1ED3C /* LUrlDownloaderCompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C741D8937370098A5A9 /* LUrlDownloaderDecompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B5DC5170BE44800A1ED3C /* LUrlDownloaderDecompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C751D8937370098A5A9 /* LURLDataDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD83E3D18A0CD9B00993A0A /* LURLDataDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C761D8937370098A5A9 /* LCoreTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91474916A8F52B00E08821 /* LCoreTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C771D8937370098A5A9 /* LCoreTabBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91477E16A8F63500E08821 /* LCoreTabBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C781D8937370098A5A9 /* LCoreTabBarContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91475816A8F57400E08821 /* LCoreTabBarContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C791D8937370098A5A9 /* LCoreTabBarControllerTab.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91478316A8F64F00E08821 /* LCoreTabBarControllerTab.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C7A1D8937370098A5A9 /* LCoreTabBarBackingLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91475316A8F55D00E08821 /* LCoreTabBarBackingLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C7B1D8937370098A5A9 /* LCoreTabBarSelectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91478816A8F82700E08821 /* LCoreTabBarSelectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C7C1D8937370098A5A9 /* UIViewController+LCoreTabBarControllerTab.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F51D06E16A90C1600ED899C /* UIViewController+LCoreTabBarControllerTab.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C7D1D8937370098A5A9 /* LTableViewPullRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F91473216A8EE4200E08821 /* LTableViewPullRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C7E1D8937370098A5A9 /* LAdvancedTabBarControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E2AC80013CCE04B005F51F5 /* LAdvancedTabBarControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C7F1D8937370098A5A9 /* LAdvancedTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E2AC80413CCE0BA005F51F5 /* LAdvancedTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C801D8937370098A5A9 /* LTabBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6AE0A313CDF1670013857F /* LTabBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C811D8937370098A5A9 /* LTabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6AE08A13CD8B9A0013857F /* LTabBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C821D8937370098A5A9 /* LTabBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6AE09113CD9F0B0013857F /* LTabBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C831D8937370098A5A9 /* LCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4D0A9817AF80DF0061CAED /* LCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C841D8937370098A5A9 /* LCalendarGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4D0AA817AF90DD0061CAED /* LCalendarGridView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C851D8937370098A5A9 /* LCalendarCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4D0A9A17AF80DF0061CAED /* LCalendarCellView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C861D8937370098A5A9 /* LCalendarMonthView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAD502013891A38000AA26B /* LCalendarMonthView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C871D8937370098A5A9 /* LWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAD501B1389175D000AA26B /* LWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C881D8937370098A5A9 /* LCellLoadingDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7857BF137AD35000155970 /* LCellLoadingDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C891D8937370098A5A9 /* LAdvancedTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F874D5613711B58005858D1 /* LAdvancedTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C8A1D8937370098A5A9 /* LAdvancedTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB123A513716414001DFB2B /* LAdvancedTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C8B1D8937370098A5A9 /* LDefaultTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB123A91371673D001DFB2B /* LDefaultTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C8C1D8937370098A5A9 /* LThreadedImageViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB1243413717E75001DFB2B /* LThreadedImageViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C8D1D8937370098A5A9 /* LCellThreadingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EFA0B137A6AC6005D3388 /* LCellThreadingOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C8E1D8937370098A5A9 /* LViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19504B135D0B30002C7AB2 /* LViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C8F1D8937370098A5A9 /* LNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1950A3135D1AF1002C7AB2 /* LNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C901D8937370098A5A9 /* LTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195109135D2294002C7AB2 /* LTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C911D8937370098A5A9 /* LTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB123A0137152D4001DFB2B /* LTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C921D8937370098A5A9 /* LAlertPrompt.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E87D27D13FA1931003875EF /* LAlertPrompt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C931D8937370098A5A9 /* LView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195026135D05B9002C7AB2 /* LView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C941D8937370098A5A9 /* LImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195030135D08A4002C7AB2 /* LImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C951D8937370098A5A9 /* LWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195038135D0903002C7AB2 /* LWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C961D8937370098A5A9 /* LScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195040135D0972002C7AB2 /* LScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C971D8937370098A5A9 /* LYouTubeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19503C135D091A002C7AB2 /* LYouTubeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C981D8937370098A5A9 /* LBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC972C716AF838B00D1E8F6 /* LBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C991D8937370098A5A9 /* LLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F874D78137122AA005858D1 /* LLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C9A1D8937370098A5A9 /* UI.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19502E135D083B002C7AB2 /* UI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C9B1D8937370098A5A9 /* UI-General.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195059135D1336002C7AB2 /* UI-General.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C9C1D8937370098A5A9 /* LCacheProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF25E13600A9900BF3712 /* LCacheProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C9D1D8937370098A5A9 /* LCacheFIFO.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF26513600AA900BF3712 /* LCacheFIFO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C9E1D8937370098A5A9 /* LValidatorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9904981BFE2967008298EC /* LValidatorUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95C9F1D8937370098A5A9 /* LStringObfuscator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD2A8531851D59F0038E232 /* LStringObfuscator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA01D8937370098A5A9 /* LApplicationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E0995FD13D55E5A00A274D8 /* LApplicationUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA11D8937370098A5A9 /* NSError+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F82193B168267A9005BCC40 /* NSError+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA21D8937370098A5A9 /* LAppUpgrades.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F41E4168436AD009B1824 /* LAppUpgrades.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA31D8937370098A5A9 /* NSBundle+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE3F68816CA551900D14767 /* NSBundle+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA41D8937370098A5A9 /* NSUserDefaults+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED4E47C13DB5F9000224431 /* NSUserDefaults+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA51D8937370098A5A9 /* LUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA3BB7816AA525A00FA5061 /* LUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA61D8937370098A5A9 /* UIColor+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EF2B0EF13CD797800422A74 /* UIColor+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA71D8937370098A5A9 /* NSColor+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E00CF7A13F2E9EF00D6F6F3 /* NSColor+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA81D8937370098A5A9 /* UIImage+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CEE135C8542002C7AB2 /* UIImage+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CA91D8937370098A5A9 /* NSImage+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E00CF6A13F2D08800D6F6F3 /* NSImage+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CAA1D8937370098A5A9 /* CTGradient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E00CF7113F2E62200D6F6F3 /* CTGradient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CAB1D8937370098A5A9 /* NSBezierPath+RoundedRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E00CF7513F2E69500D6F6F3 /* NSBezierPath+RoundedRect.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CAC1D8937370098A5A9 /* CALayer+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E00CF8013F39F3500D6F6F3 /* CALayer+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CAD1D8937370098A5A9 /* CAAnimation+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E3931F31406036700F95F0C /* CAAnimation+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CAE1D8937370098A5A9 /* LDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F53506B16A148B3001DF460 /* LDelegateProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CAF1D8937370098A5A9 /* LFilteredNSDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7FDE06169F4C6F0009F347 /* LFilteredNSDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB01D8937370098A5A9 /* LGCDTimerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7C29C0169B078B0042E7FF /* LGCDTimerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB11D8937370098A5A9 /* LGCDTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7C29B8169B06CC0042E7FF /* LGCDTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB21D8937370098A5A9 /* LDeviceSystemInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D8071697CFEF003B8672 /* LDeviceSystemInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB31D8937370098A5A9 /* LNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F419D201680A03800C7057B /* LNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB41D8937370098A5A9 /* RemoteDebugging.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EEBEE8413E3C5D200DDFB8E /* RemoteDebugging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB51D8937370098A5A9 /* LRemoteError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EEBEE8613E3C5F100DDFB8E /* LRemoteError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB61D8937370098A5A9 /* LRemoteDebuggingSubmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EEBEE8A13E3C6FC00DDFB8E /* LRemoteDebuggingSubmitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB71D8937370098A5A9 /* Primitives.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EF2B0FB13CD7D3400422A74 /* Primitives.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB81D8937370098A5A9 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA4C86C13AB459D00026105 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CB91D8937370098A5A9 /* UIScreen+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FBAF1CA1360087D00BF3712 /* UIScreen+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CBA1D8937370098A5A9 /* NSDictionary+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195125135D37D7002C7AB2 /* NSDictionary+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CBB1D8937370098A5A9 /* NSFileManager+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195120135D367F002C7AB2 /* NSFileManager+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CBC1D8937370098A5A9 /* NSDate+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1950B9135D1F58002C7AB2 /* NSDate+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CBD1D8937370098A5A9 /* LDateTimeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9135B113D062D10052468C /* LDateTimeUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CBE1D8937370098A5A9 /* NSData+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1950B4135D1EFE002C7AB2 /* NSData+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CBF1D8937370098A5A9 /* NSData+Compression.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E298CD71402022300A8A93D /* NSData+Compression.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC01D8937370098A5A9 /* NSData+CommonCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC4A71A168DBC1A0074E507 /* NSData+CommonCrypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC11D8937370098A5A9 /* NSArray+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CE9135C853A002C7AB2 /* NSArray+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC21D8937370098A5A9 /* NSMutableArray+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1950A7135D1B40002C7AB2 /* NSMutableArray+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC31D8937370098A5A9 /* LVars.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA5D611167F58B400BD51EF /* LVars.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC41D8937370098A5A9 /* NSNull+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F6A4875174B0BEC00FDB0EB /* NSNull+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC51D8937370098A5A9 /* NSString+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CE3135C8528002C7AB2 /* NSString+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC61D8937370098A5A9 /* NSString+WebEntities.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E87D25B13F91349003875EF /* NSString+WebEntities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC71D8937370098A5A9 /* LVersionComparator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F557C03136C43F40042F35B /* LVersionComparator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC81D8937370098A5A9 /* LStringTranscoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4D0A8917AEAA1B0061CAED /* LStringTranscoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CC91D8937370098A5A9 /* LUUIDHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC81EBB1681C3DF00D176C1 /* LUUIDHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CCA1D8937370098A5A9 /* UIViewController+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CDB135C84BD002C7AB2 /* UIViewController+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CCB1D8937370098A5A9 /* UINavigationController+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19509F135D1A9D002C7AB2 /* UINavigationController+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CCC1D8937370098A5A9 /* UITabBarController+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195051135D10A7002C7AB2 /* UITabBarController+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CCD1D8937370098A5A9 /* UITableView+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F195055135D1145002C7AB2 /* UITableView+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CCE1D8937370098A5A9 /* UIView+Explode.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD10C9318A651E1007906A8 /* UIView+Explode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CCF1D8937370098A5A9 /* UIView+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CD4135C84AD002C7AB2 /* UIView+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD01D8937370098A5A9 /* NSView+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF5763716C643A100E7B232 /* NSView+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD11D8937370098A5A9 /* UITableView+Additons.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD83CB5189EA29D00993A0A /* UITableView+Additons.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD21D8937370098A5A9 /* UIWindow+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19505E135D158F002C7AB2 /* UIWindow+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD31D8937370098A5A9 /* NSWindow+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7FE8EC16BFC47400FBEC00 /* NSWindow+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD41D8937370098A5A9 /* GeneralUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CCA135C8489002C7AB2 /* GeneralUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD51D8937370098A5A9 /* NSURLRequest+SSLChecks.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EECD54D13DB2D6A00AB9859 /* NSURLRequest+SSLChecks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD61D8937370098A5A9 /* LNetworkUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE9D7FE1697CD61003B8672 /* LNetworkUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD71D8937370098A5A9 /* LCompressingLogFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F6A48C4174B1AD200FDB0EB /* LCompressingLogFileManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD81D8937370098A5A9 /* Logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CD0135C8496002C7AB2 /* Logging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CD91D8937370098A5A9 /* LWebServiceError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F068D76167CD97B00E2C536 /* LWebServiceError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CDA1D8937370098A5A9 /* LWebServicesValidationError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F068D67167CD81900E2C536 /* LWebServicesValidationError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CDB1D8937370098A5A9 /* LWebServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F068D60167CCDB900E2C536 /* LWebServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CDC1D8937370098A5A9 /* LWebServicesDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F068D6F167CD8DE00E2C536 /* LWebServicesDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CDD1D8937370098A5A9 /* LWebServiceClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EECD53613DB0A8D00AB9859 /* LWebServiceClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CDE1D8937370098A5A9 /* LWebServiceClient2.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F068D55167CACE000E2C536 /* LWebServiceClient2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CDF1D8937370098A5A9 /* SystemServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1EC00A17720F6F00F2D6C1 /* SystemServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE01D8937370098A5A9 /* SSAccelerometerInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001EE1D4A4DD1004C4155 /* SSAccelerometerInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE11D8937370098A5A9 /* SSAccessoryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F01D4A4DD1004C4155 /* SSAccessoryInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE21D8937370098A5A9 /* SSApplicationInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F21D4A4DD1004C4155 /* SSApplicationInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE31D8937370098A5A9 /* SSBatteryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F41D4A4DD1004C4155 /* SSBatteryInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE41D8937370098A5A9 /* SSCarrierInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F61D4A4DD1004C4155 /* SSCarrierInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE51D8937370098A5A9 /* SSDiskInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001F81D4A4DD1004C4155 /* SSDiskInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE61D8937370098A5A9 /* SSHardwareInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001FA1D4A4DD1004C4155 /* SSHardwareInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE71D8937370098A5A9 /* SSJailbreakCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001FC1D4A4DD1004C4155 /* SSJailbreakCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE81D8937370098A5A9 /* SSLocalizationInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0001FE1D4A4DD1004C4155 /* SSLocalizationInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CE91D8937370098A5A9 /* SSMemoryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002001D4A4DD1004C4155 /* SSMemoryInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CEA1D8937370098A5A9 /* SSNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002021D4A4DD1004C4155 /* SSNetworkInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CEB1D8937370098A5A9 /* SSProcessInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002041D4A4DD1004C4155 /* SSProcessInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CEC1D8937370098A5A9 /* SSProcessorInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002061D4A4DD1004C4155 /* SSProcessorInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CED1D8937370098A5A9 /* SSUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002081D4A4DD1004C4155 /* SSUUID.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CEE1D8937370098A5A9 /* SystemServicesConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00020A1D4A4DD1004C4155 /* SystemServicesConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CEF1D8937370098A5A9 /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002281D4A4DDC004C4155 /* Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CF01D8937370098A5A9 /* Lightcast.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F194CFA135C87C0002C7AB2 /* Lightcast.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CF11D8937370098A5A9 /* internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0002321D4A4DFE004C4155 /* internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CF21D8937370098A5A9 /* defines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19502A135D0622002C7AB2 /* defines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CF31D8937370098A5A9 /* defines-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00022C1D4A4DEC004C4155 /* defines-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CF41D8937370098A5A9 /* defines-MacOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F00022D1D4A4DEC004C4155 /* defines-MacOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CF51D8937370098A5A9 /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19504F135D0BF0002C7AB2 /* debug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CF61D8937370098A5A9 /* Exceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19510D135D2558002C7AB2 /* Exceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CF71D8937370098A5A9 /* AppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7F3B6816AF8A820073AF8B /* AppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB95CF81D8937370098A5A9 /* ViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7F3B7116AF8A820073AF8B /* ViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FBC4FCD16BD283F00C7BAB7 /* LAppUpgrades.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4F41E4168436AD009B1824 /* LAppUpgrades.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FBC4FCE16BD29DC00C7BAB7 /* LUUIDHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC81EBB1681C3DF00D176C1 /* LUUIDHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FBC504716BD833000C7BAB7 /* LViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F19504B135D0B30002C7AB2 /* LViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2025,6 +2204,185 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FB95C461D8937370098A5A9 /* LCloudBackup.h in Headers */,
+				0FB95C471D8937370098A5A9 /* LCloudBackupDownloadDataDelegate.h in Headers */,
+				0FB95C481D8937370098A5A9 /* LCloudBackupLoadDataDelegate.h in Headers */,
+				0FB95C491D8937370098A5A9 /* LCloudFile.h in Headers */,
+				0FB95C4A1D8937370098A5A9 /* LNotification.h in Headers */,
+				0FB95C4B1D8937370098A5A9 /* LNotificationDispatcher.h in Headers */,
+				0FB95C4C1D8937370098A5A9 /* LConfiguration.h in Headers */,
+				0FB95C4D1D8937370098A5A9 /* LCAppConfiguration.h in Headers */,
+				0FB95C4E1D8937370098A5A9 /* LSystemObject.h in Headers */,
+				0FB95C4F1D8937370098A5A9 /* LC.h in Headers */,
+				0FB95C501D8937370098A5A9 /* LPreference.h in Headers */,
+				0FB95C511D8937370098A5A9 /* LPreferences.h in Headers */,
+				0FB95C521D8937370098A5A9 /* LNSUserDefaultsPreferences.h in Headers */,
+				0FB95C531D8937370098A5A9 /* NSString+DB.h in Headers */,
+				0FB95C541D8937370098A5A9 /* SQLParser.h in Headers */,
+				0FB95C551D8937370098A5A9 /* LDatabaseSchemaProtocol.h in Headers */,
+				0FB95C561D8937370098A5A9 /* LDatabaseSchema.h in Headers */,
+				0FB95C571D8937370098A5A9 /* LDatabaseAdapterProtocol.h in Headers */,
+				0FB95C581D8937370098A5A9 /* LDatabaseAdapter.h in Headers */,
+				0FB95C591D8937370098A5A9 /* LSQLiteDatabaseAdapter.h in Headers */,
+				0FB95C5A1D8937370098A5A9 /* LNullDatabaseAdapter.h in Headers */,
+				0FB95C5B1D8937370098A5A9 /* LDatabaseManager.h in Headers */,
+				0FB95C5C1D8937370098A5A9 /* LPluginBehaviour.h in Headers */,
+				0FB95C5D1D8937370098A5A9 /* LPlugin.h in Headers */,
+				0FB95C5E1D8937370098A5A9 /* LPluginManager.h in Headers */,
+				0FB95C5F1D8937370098A5A9 /* LDefaultStorageAdapter.h in Headers */,
+				0FB95C601D8937370098A5A9 /* LStorageAdapter.h in Headers */,
+				0FB95C611D8937370098A5A9 /* LStorageAdapterBehaviour.h in Headers */,
+				0FB95C621D8937370098A5A9 /* LStorage.h in Headers */,
+				0FB95C631D8937370098A5A9 /* LDataSubmitterPlugin.h in Headers */,
+				0FB95C641D8937370098A5A9 /* LDataSubmitter.h in Headers */,
+				0FB95C651D8937370098A5A9 /* LReachabilityPlugin.h in Headers */,
+				0FB95C661D8937370098A5A9 /* LCacheManager.h in Headers */,
+				0FB95C671D8937370098A5A9 /* LVirtualFile.h in Headers */,
+				0FB95C681D8937370098A5A9 /* LVirtualFSSchema.h in Headers */,
+				0FB95C691D8937370098A5A9 /* LVirtualFSPlugin.h in Headers */,
+				0FB95C6A1D8937370098A5A9 /* LI18nParsedString.h in Headers */,
+				0FB95C6B1D8937370098A5A9 /* LI18nTranslationSourceParser.h in Headers */,
+				0FB95C6C1D8937370098A5A9 /* LI18nProjectCatalog.h in Headers */,
+				0FB95C6D1D8937370098A5A9 /* LI18nLocalizedStringsFile.h in Headers */,
+				0FB95C6E1D8937370098A5A9 /* i18n.h in Headers */,
+				0FB95C6F1D8937370098A5A9 /* LLocalizationManager.h in Headers */,
+				0FB95C701D8937370098A5A9 /* LUrlDownloaderDelegate.h in Headers */,
+				0FB95C711D8937370098A5A9 /* LUrlDownloader.h in Headers */,
+				0FB95C721D8937370098A5A9 /* LUrlDownloaderPostFile.h in Headers */,
+				0FB95C731D8937370098A5A9 /* LUrlDownloaderCompressor.h in Headers */,
+				0FB95C741D8937370098A5A9 /* LUrlDownloaderDecompressor.h in Headers */,
+				0FB95C751D8937370098A5A9 /* LURLDataDownloader.h in Headers */,
+				0FB95C761D8937370098A5A9 /* LCoreTabBarController.h in Headers */,
+				0FB95C771D8937370098A5A9 /* LCoreTabBarView.h in Headers */,
+				0FB95C781D8937370098A5A9 /* LCoreTabBarContainerView.h in Headers */,
+				0FB95C791D8937370098A5A9 /* LCoreTabBarControllerTab.h in Headers */,
+				0FB95C7A1D8937370098A5A9 /* LCoreTabBarBackingLayer.h in Headers */,
+				0FB95C7B1D8937370098A5A9 /* LCoreTabBarSelectionView.h in Headers */,
+				0FB95C7C1D8937370098A5A9 /* UIViewController+LCoreTabBarControllerTab.h in Headers */,
+				0FB95C7D1D8937370098A5A9 /* LTableViewPullRefresh.h in Headers */,
+				0FB95C7E1D8937370098A5A9 /* LAdvancedTabBarControllerDelegate.h in Headers */,
+				0FB95C7F1D8937370098A5A9 /* LAdvancedTabBarController.h in Headers */,
+				0FB95C801D8937370098A5A9 /* LTabBarDelegate.h in Headers */,
+				0FB95C811D8937370098A5A9 /* LTabBar.h in Headers */,
+				0FB95C821D8937370098A5A9 /* LTabBarItem.h in Headers */,
+				0FB95C831D8937370098A5A9 /* LCalendarView.h in Headers */,
+				0FB95C841D8937370098A5A9 /* LCalendarGridView.h in Headers */,
+				0FB95C851D8937370098A5A9 /* LCalendarCellView.h in Headers */,
+				0FB95C861D8937370098A5A9 /* LCalendarMonthView.h in Headers */,
+				0FB95C871D8937370098A5A9 /* LWindow.h in Headers */,
+				0FB95C881D8937370098A5A9 /* LCellLoadingDelegate.h in Headers */,
+				0FB95C891D8937370098A5A9 /* LAdvancedTableViewController.h in Headers */,
+				0FB95C8A1D8937370098A5A9 /* LAdvancedTableViewCell.h in Headers */,
+				0FB95C8B1D8937370098A5A9 /* LDefaultTableViewCell.h in Headers */,
+				0FB95C8C1D8937370098A5A9 /* LThreadedImageViewCell.h in Headers */,
+				0FB95C8D1D8937370098A5A9 /* LCellThreadingOperation.h in Headers */,
+				0FB95C8E1D8937370098A5A9 /* LViewController.h in Headers */,
+				0FB95C8F1D8937370098A5A9 /* LNavigationController.h in Headers */,
+				0FB95C901D8937370098A5A9 /* LTabBarController.h in Headers */,
+				0FB95C911D8937370098A5A9 /* LTableViewController.h in Headers */,
+				0FB95C921D8937370098A5A9 /* LAlertPrompt.h in Headers */,
+				0FB95C931D8937370098A5A9 /* LView.h in Headers */,
+				0FB95C941D8937370098A5A9 /* LImageView.h in Headers */,
+				0FB95C951D8937370098A5A9 /* LWebView.h in Headers */,
+				0FB95C961D8937370098A5A9 /* LScrollView.h in Headers */,
+				0FB95C971D8937370098A5A9 /* LYouTubeView.h in Headers */,
+				0FB95C981D8937370098A5A9 /* LBadgeView.h in Headers */,
+				0FB95C991D8937370098A5A9 /* LLabel.h in Headers */,
+				0FB95C9A1D8937370098A5A9 /* UI.h in Headers */,
+				0FB95C9B1D8937370098A5A9 /* UI-General.h in Headers */,
+				0FB95C9C1D8937370098A5A9 /* LCacheProtocol.h in Headers */,
+				0FB95C9D1D8937370098A5A9 /* LCacheFIFO.h in Headers */,
+				0FB95C9E1D8937370098A5A9 /* LValidatorUtils.h in Headers */,
+				0FB95C9F1D8937370098A5A9 /* LStringObfuscator.h in Headers */,
+				0FB95CA01D8937370098A5A9 /* LApplicationUtils.h in Headers */,
+				0FB95CA11D8937370098A5A9 /* NSError+Additions.h in Headers */,
+				0FB95CA21D8937370098A5A9 /* LAppUpgrades.h in Headers */,
+				0FB95CA31D8937370098A5A9 /* NSBundle+Additions.h in Headers */,
+				0FB95CA41D8937370098A5A9 /* NSUserDefaults+Additions.h in Headers */,
+				0FB95CA51D8937370098A5A9 /* LUserDefaults.h in Headers */,
+				0FB95CA61D8937370098A5A9 /* UIColor+Additions.h in Headers */,
+				0FB95CA71D8937370098A5A9 /* NSColor+Additions.h in Headers */,
+				0FB95CA81D8937370098A5A9 /* UIImage+Additions.h in Headers */,
+				0FB95CA91D8937370098A5A9 /* NSImage+Additions.h in Headers */,
+				0FB95CAA1D8937370098A5A9 /* CTGradient.h in Headers */,
+				0FB95CAB1D8937370098A5A9 /* NSBezierPath+RoundedRect.h in Headers */,
+				0FB95CAC1D8937370098A5A9 /* CALayer+Additions.h in Headers */,
+				0FB95CAD1D8937370098A5A9 /* CAAnimation+Additions.h in Headers */,
+				0FB95CAE1D8937370098A5A9 /* LDelegateProxy.h in Headers */,
+				0FB95CAF1D8937370098A5A9 /* LFilteredNSDictionary.h in Headers */,
+				0FB95CB01D8937370098A5A9 /* LGCDTimerDelegate.h in Headers */,
+				0FB95CB11D8937370098A5A9 /* LGCDTimer.h in Headers */,
+				0FB95CB21D8937370098A5A9 /* LDeviceSystemInfo.h in Headers */,
+				0FB95CB31D8937370098A5A9 /* LNumbers.h in Headers */,
+				0FB95CB41D8937370098A5A9 /* RemoteDebugging.h in Headers */,
+				0FB95CB51D8937370098A5A9 /* LRemoteError.h in Headers */,
+				0FB95CB61D8937370098A5A9 /* LRemoteDebuggingSubmitter.h in Headers */,
+				0FB95CB71D8937370098A5A9 /* Primitives.h in Headers */,
+				0FB95CB81D8937370098A5A9 /* Reachability.h in Headers */,
+				0FB95CB91D8937370098A5A9 /* UIScreen+Additions.h in Headers */,
+				0FB95CBA1D8937370098A5A9 /* NSDictionary+Additions.h in Headers */,
+				0FB95CBB1D8937370098A5A9 /* NSFileManager+Additions.h in Headers */,
+				0FB95CBC1D8937370098A5A9 /* NSDate+Additions.h in Headers */,
+				0FB95CBD1D8937370098A5A9 /* LDateTimeUtils.h in Headers */,
+				0FB95CBE1D8937370098A5A9 /* NSData+Additions.h in Headers */,
+				0FB95CBF1D8937370098A5A9 /* NSData+Compression.h in Headers */,
+				0FB95CC01D8937370098A5A9 /* NSData+CommonCrypto.h in Headers */,
+				0FB95CC11D8937370098A5A9 /* NSArray+Additions.h in Headers */,
+				0FB95CC21D8937370098A5A9 /* NSMutableArray+Additions.h in Headers */,
+				0FB95CC31D8937370098A5A9 /* LVars.h in Headers */,
+				0FB95CC41D8937370098A5A9 /* NSNull+Additions.h in Headers */,
+				0FB95CC51D8937370098A5A9 /* NSString+Additions.h in Headers */,
+				0FB95CC61D8937370098A5A9 /* NSString+WebEntities.h in Headers */,
+				0FB95CC71D8937370098A5A9 /* LVersionComparator.h in Headers */,
+				0FB95CC81D8937370098A5A9 /* LStringTranscoder.h in Headers */,
+				0FB95CC91D8937370098A5A9 /* LUUIDHandler.h in Headers */,
+				0FB95CCA1D8937370098A5A9 /* UIViewController+Additions.h in Headers */,
+				0FB95CCB1D8937370098A5A9 /* UINavigationController+Additions.h in Headers */,
+				0FB95CCC1D8937370098A5A9 /* UITabBarController+Additions.h in Headers */,
+				0FB95CCD1D8937370098A5A9 /* UITableView+Additions.h in Headers */,
+				0FB95CCE1D8937370098A5A9 /* UIView+Explode.h in Headers */,
+				0FB95CCF1D8937370098A5A9 /* UIView+Additions.h in Headers */,
+				0FB95CD01D8937370098A5A9 /* NSView+Additions.h in Headers */,
+				0FB95CD11D8937370098A5A9 /* UITableView+Additons.h in Headers */,
+				0FB95CD21D8937370098A5A9 /* UIWindow+Additions.h in Headers */,
+				0FB95CD31D8937370098A5A9 /* NSWindow+Additions.h in Headers */,
+				0FB95CD41D8937370098A5A9 /* GeneralUtils.h in Headers */,
+				0FB95CD51D8937370098A5A9 /* NSURLRequest+SSLChecks.h in Headers */,
+				0FB95CD61D8937370098A5A9 /* LNetworkUtils.h in Headers */,
+				0FB95CD71D8937370098A5A9 /* LCompressingLogFileManager.h in Headers */,
+				0FB95CD81D8937370098A5A9 /* Logging.h in Headers */,
+				0FB95CD91D8937370098A5A9 /* LWebServiceError.h in Headers */,
+				0FB95CDA1D8937370098A5A9 /* LWebServicesValidationError.h in Headers */,
+				0FB95CDB1D8937370098A5A9 /* LWebServices.h in Headers */,
+				0FB95CDC1D8937370098A5A9 /* LWebServicesDefines.h in Headers */,
+				0FB95CDD1D8937370098A5A9 /* LWebServiceClient.h in Headers */,
+				0FB95CDE1D8937370098A5A9 /* LWebServiceClient2.h in Headers */,
+				0FB95CDF1D8937370098A5A9 /* SystemServices.h in Headers */,
+				0FB95CE01D8937370098A5A9 /* SSAccelerometerInfo.h in Headers */,
+				0FB95CE11D8937370098A5A9 /* SSAccessoryInfo.h in Headers */,
+				0FB95CE21D8937370098A5A9 /* SSApplicationInfo.h in Headers */,
+				0FB95CE31D8937370098A5A9 /* SSBatteryInfo.h in Headers */,
+				0FB95CE41D8937370098A5A9 /* SSCarrierInfo.h in Headers */,
+				0FB95CE51D8937370098A5A9 /* SSDiskInfo.h in Headers */,
+				0FB95CE61D8937370098A5A9 /* SSHardwareInfo.h in Headers */,
+				0FB95CE71D8937370098A5A9 /* SSJailbreakCheck.h in Headers */,
+				0FB95CE81D8937370098A5A9 /* SSLocalizationInfo.h in Headers */,
+				0FB95CE91D8937370098A5A9 /* SSMemoryInfo.h in Headers */,
+				0FB95CEA1D8937370098A5A9 /* SSNetworkInfo.h in Headers */,
+				0FB95CEB1D8937370098A5A9 /* SSProcessInfo.h in Headers */,
+				0FB95CEC1D8937370098A5A9 /* SSProcessorInfo.h in Headers */,
+				0FB95CED1D8937370098A5A9 /* SSUUID.h in Headers */,
+				0FB95CEE1D8937370098A5A9 /* SystemServicesConstants.h in Headers */,
+				0FB95CEF1D8937370098A5A9 /* Base64.h in Headers */,
+				0FB95CF01D8937370098A5A9 /* Lightcast.h in Headers */,
+				0FB95CF11D8937370098A5A9 /* internal.h in Headers */,
+				0FB95CF21D8937370098A5A9 /* defines.h in Headers */,
+				0FB95CF31D8937370098A5A9 /* defines-iOS.h in Headers */,
+				0FB95CF41D8937370098A5A9 /* defines-MacOSX.h in Headers */,
+				0FB95CF51D8937370098A5A9 /* debug.h in Headers */,
+				0FB95CF61D8937370098A5A9 /* Exceptions.h in Headers */,
+				0FB95CF71D8937370098A5A9 /* AppDelegate.h in Headers */,
+				0FB95CF81D8937370098A5A9 /* ViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2883,7 +3241,7 @@
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/iphoneos/include\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Lightcast;
@@ -2924,7 +3282,7 @@
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/iphoneos/include\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = Lightcast;
 				SDKROOT = iphoneos;
@@ -3128,7 +3486,7 @@
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/include\"",
 					"\"$(PROJECT_TEMP_DIR)/../UninstalledProducts/iphoneos/include\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = Lightcast;
 				SDKROOT = iphoneos;
