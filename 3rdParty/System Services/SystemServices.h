@@ -6,289 +6,308 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
+#import "SSAccelerometerInfo.h"
+#import "SSAccessoryInfo.h"
+#import "SSApplicationInfo.h"
+#import "SSBatteryInfo.h"
+#import "SSCarrierInfo.h"
+#import "SSDiskInfo.h"
 #import "SSHardwareInfo.h"
 #import "SSJailbreakCheck.h"
-#import "SSProcessorInfo.h"
-#import "SSAccessoryInfo.h"
-
-#ifdef CORETELEPHONY_EXTERN_CLASS
-#import "SSCarrierInfo.h"
-#endif
-
-#import "SSBatteryInfo.h"
+#import "SSLocalizationInfo.h"
+#import "SSMemoryInfo.h"
 #import "SSNetworkInfo.h"
 #import "SSProcessInfo.h"
-#import "SSDiskInfo.h"
-#import "SSMemoryInfo.h"
-#import "SSAccelerometerInfo.h"
-#import "SSLocalizationInfo.h"
-#import "SSApplicationInfo.h"
+#import "SSProcessorInfo.h"
 #import "SSUUID.h"
 
 /* New Hardware Stuff, new accelerometer stuff, localization stuff, and application info */
 
 @interface SystemServices : NSObject
 
-// System Information
+// Shared Manager
++ (_Nonnull id)sharedServices;
 
-// Get all System Information (All Methods)
-+ (NSDictionary *)AllSystemInformation;
+// Parent ID for a certain PID
+- (int)parentPIDForProcess:(int)pid;
+
+// Properties
+
+/* All System Information in Dictionary Format */
+@property (nonatomic, readonly, nullable) NSDictionary *allSystemInformation;
 
 /* Hardware Information */
 
 // System Uptime (dd hh mm)
-+ (NSString *)SystemUptime;
+@property (nonatomic, readonly, nullable) NSString *systemsUptime;
 
 // Model of Device
-+ (NSString *)DeviceModel;
+@property (nonatomic, readonly, nullable) NSString *deviceModel;
 
 // Device Name
-+ (NSString *)DeviceName;
+@property (nonatomic, readonly, nullable) NSString *deviceName;
 
 // System Name
-+ (NSString *)SystemName;
+@property (nonatomic, readonly, nullable) NSString *systemName;
 
 // System Version
-+ (NSString *)SystemVersion;
+@property (nonatomic, readonly, nullable) NSString *systemsVersion;
 
-// System Device Type (iPhone1,0) (Formatted = iPhone 1)
-+ (NSString *)SystemDeviceTypeFormatted:(BOOL)formatted;
+// System Device Type (Not Formatted = iPhone1,0)
+@property (nonatomic, readonly, nullable) NSString *systemDeviceTypeNotFormatted;
+
+// System Device Type (Formatted = iPhone 1)
+@property (nonatomic, readonly, nullable) NSString *systemDeviceTypeFormatted;
 
 // Get the Screen Width (X)
-+ (NSInteger)ScreenWidth;
+@property (nonatomic, readonly) NSInteger screenWidth;
 
 // Get the Screen Height (Y)
-+ (NSInteger)ScreenHeight;
+@property (nonatomic, readonly) NSInteger screenHeight;
+
+// Get the Screen Brightness
+@property (nonatomic, readonly) float screenBrightness;
 
 // Multitasking enabled?
-+ (BOOL)MultitaskingEnabled;
+@property (nonatomic, readonly) BOOL multitaskingEnabled;
 
 // Proximity sensor enabled?
-+ (BOOL)ProximitySensorEnabled;
+@property (nonatomic, readonly) BOOL proximitySensorEnabled;
 
 // Debugger Attached?
-+ (BOOL)DebuggerAttached;
+@property (nonatomic, readonly) BOOL debuggerAttached;
 
 // Plugged In?
-+ (BOOL)PluggedIn;
+@property (nonatomic, readonly) BOOL pluggedIn;
 
 /* Jailbreak Check */
 
 // Jailbroken?
-+ (BOOL)Jailbroken;
+@property (nonatomic, readonly) int jailbroken;
 
 /* Processor Information */
 
 // Number of processors
-+ (NSInteger)NumberProcessors;
+@property (nonatomic, readonly) NSInteger numberProcessors;
 
 // Number of Active Processors
-+ (NSInteger)NumberActiveProcessors;
+@property (nonatomic, readonly) NSInteger numberActiveProcessors;
 
 // Processor Speed in MHz
-+ (NSInteger)ProcessorSpeed;
+@property (nonatomic, readonly) NSInteger processorSpeed;
 
 // Processor Bus Speed in MHz
-+ (NSInteger)ProcessorBusSpeed;
+@property (nonatomic, readonly) NSInteger processorBusSpeed;
 
-#ifdef EA_EXTERN_CLASS_AVAILABLE
 /* Accessory Information */
 
 // Are any accessories attached?
-+ (BOOL)AccessoriesAttached;
+@property (nonatomic, readonly) BOOL accessoriesAttached;
 
 // Are headphone attached?
-+ (BOOL)HeadphonesAttached;
+@property (nonatomic, readonly) BOOL headphonesAttached;
 
 // Number of attached accessories
-+ (NSInteger)NumberAttachedAccessories;
+@property (nonatomic, readonly) NSInteger numberAttachedAccessories;
 
 // Name of attached accessory/accessories (seperated by , comma's)
-+ (NSString *)NameAttachedAccessories;
-#endif
+@property (nonatomic, readonly, nullable) NSString *nameAttachedAccessories;
 
-#ifdef OPT_TELEPHONY
 /* Carrier Information */
 
 // Carrier Name
-+ (NSString *)CarrierName;
+@property (nonatomic, readonly, nullable) NSString *carrierName;
 
 // Carrier Country
-+ (NSString *)CarrierCountry;
+@property (nonatomic, readonly, nullable) NSString *carrierCountry;
 
 // Carrier Mobile Country Code
-+ (NSString *)CarrierMobileCountryCode;
+@property (nonatomic, readonly, nullable) NSString *carrierMobileCountryCode;
 
 // Carrier ISO Country Code
-+ (NSString *)CarrierISOCountryCode;
+@property (nonatomic, readonly, nullable) NSString *carrierISOCountryCode;
 
 // Carrier Mobile Network Code
-+ (NSString *)CarrierMobileNetworkCode;
+@property (nonatomic, readonly, nullable) NSString *carrierMobileNetworkCode;
 
 // Carrier Allows VOIP
-+ (BOOL)CarrierAllowsVOIP;
-#endif
+@property (nonatomic, readonly) BOOL carrierAllowsVOIP;
 
 /* Battery Information */
 
 // Battery Level
-+ (float)BatteryLevel;
+@property (nonatomic, readonly) float batteryLevel;
 
 // Charging?
-+ (BOOL)Charging;
+@property (nonatomic, readonly) BOOL charging;
 
 // Fully Charged?
-+ (BOOL)FullyCharged;
+@property (nonatomic, readonly) BOOL fullyCharged;
 
 /* Network Information */
 
 // Get Current IP Address
-+ (NSString *)CurrentIPAddress;
+@property (nonatomic, readonly, nullable) NSString *currentIPAddress;
 
 // Get Current MAC Address
-+ (NSString *)CurrentMACAddress;
+@property (nonatomic, readonly, nullable) NSString *currentMACAddress;
+
+// Get External IP Address
+@property (nonatomic, readonly, nullable) NSString *externalIPAddress;
 
 // Get Cell IP Address
-+ (NSString *)CellIPAddress;
+@property (nonatomic, readonly, nullable) NSString *cellIPAddress;
 
 // Get Cell MAC Address
-+ (NSString *)CellMACAddress;
+@property (nonatomic, readonly, nullable) NSString *cellMACAddress;
 
 // Get Cell Netmask Address
-+ (NSString *)CellNetmaskAddress;
+@property (nonatomic, readonly, nullable) NSString *cellNetmaskAddress;
 
 // Get Cell Broadcast Address
-+ (NSString *)CellBroadcastAddress;
+@property (nonatomic, readonly, nullable) NSString *cellBroadcastAddress;
 
 // Get WiFi IP Address
-+ (NSString *)WiFiIPAddress;
+@property (nonatomic, readonly, nullable) NSString *wiFiIPAddress;
 
 // Get WiFi MAC Address
-+ (NSString *)WiFiMACAddress;
+@property (nonatomic, readonly, nullable) NSString *wiFiMACAddress;
 
 // Get WiFi Netmask Address
-+ (NSString *)WiFiNetmaskAddress;
+@property (nonatomic, readonly, nullable) NSString *wiFiNetmaskAddress;
 
 // Get WiFi Broadcast Address
-+ (NSString *)WiFiBroadcastAddress;
+@property (nonatomic, readonly, nullable) NSString *wiFiBroadcastAddress;
+
+// Get WiFi Router Address
+@property (nonatomic, readonly, nullable) NSString *wiFiRouterAddress;
 
 // Connected to WiFi?
-+ (BOOL)ConnectedToWiFi;
+@property (nonatomic, readonly) BOOL connectedToWiFi;
 
 // Connected to Cellular Network?
-+ (BOOL)ConnectedToCellNetwork;
+@property (nonatomic, readonly) BOOL connectedToCellNetwork;
 
 /* Process Information */
 
 // Process ID
-+ (int)ProcessID;
+@property (nonatomic, readonly) int processID;
 
 // Process Name
-+ (NSString *)ProcessName;
+@property (nonatomic, readonly, nullable) NSString *processName;
 
 // Process Status
-+ (int)ProcessStatus;
+@property (nonatomic, readonly) int processStatus;
 
 // Parent Process ID
-+ (int)ParentPID;
-
-// Parent ID for a certain PID
-+ (int)ParentPIDForProcess:(int)pid;
+@property (nonatomic, readonly) int parentPID;
 
 // List of process information including PID's, Names, PPID's, and Status'
-+ (NSMutableArray *)ProcessesInformation;
+@property (nonatomic, readonly, nullable) NSMutableArray *processesInformation;
 
 /* Disk Information */
 
 // Total Disk Space
-+ (NSString *)DiskSpace;
+@property (nonatomic, readonly, nullable) NSString *diskSpace;
 
-// Total Free Disk Space
-+ (NSString *)FreeDiskSpace:(BOOL)inPercent;
+// Total Free Disk Space (Raw)
+@property (nonatomic, readonly, nullable) NSString *freeDiskSpaceinRaw;
 
-// Total Used Disk Space
-+ (NSString *)UsedDiskSpace:(BOOL)inPercent;
+// Total Free Disk Space (Percentage)
+@property (nonatomic, readonly, nullable) NSString *freeDiskSpaceinPercent;
+
+// Total Used Disk Space (Raw)
+@property (nonatomic, readonly, nullable) NSString *usedDiskSpaceinRaw;
+
+// Total Used Disk Space (Percentage)
+@property (nonatomic, readonly, nullable) NSString *usedDiskSpaceinPercent;
 
 // Get the total disk space in long format
-+ (long long)LongDiskSpace;
+@property (nonatomic, readonly) long long longDiskSpace;
 
 // Get the total free disk space in long format
-+ (long long)LongFreeDiskSpace;
+@property (nonatomic, readonly) long long longFreeDiskSpace;
 
 /* Memory Information */
 
 // Total Memory
-+ (double)TotalMemory;
+@property (nonatomic, readonly) double totalMemory;
 
-// Free Memory
-+ (double)FreeMemory:(BOOL)inPercent;
+// Free Memory (Raw)
+@property (nonatomic, readonly) double freeMemoryinRaw;
 
-// Used Memory
-+ (double)UsedMemory:(BOOL)inPercent;
+// Free Memory (Percent)
+@property (nonatomic, readonly) double freeMemoryinPercent;
 
-// Available Memory
-+ (double)AvailableMemory:(BOOL)inPercent;
+// Used Memory (Raw)
+@property (nonatomic, readonly) double usedMemoryinRaw;
 
-// Active Memory
-+ (double)ActiveMemory:(BOOL)inPercent;
+// Used Memory (Percent)
+@property (nonatomic, readonly) double usedMemoryinPercent;
 
-// Inactive Memory
-+ (double)InactiveMemory:(BOOL)inPercent;
+// Active Memory (Raw)
+@property (nonatomic, readonly) double activeMemoryinRaw;
 
-// Wired Memory
-+ (double)WiredMemory:(BOOL)inPercent;
+// Active Memory (Percent)
+@property (nonatomic, readonly) double activeMemoryinPercent;
 
-// Purgable Memory
-+ (double)PurgableMemory:(BOOL)inPercent;
+// Inactive Memory (Raw)
+@property (nonatomic, readonly) double inactiveMemoryinRaw;
+
+// Inactive Memory (Percent)
+@property (nonatomic, readonly) double inactiveMemoryinPercent;
+
+// Wired Memory (Raw)
+@property (nonatomic, readonly) double wiredMemoryinRaw;
+
+// Wired Memory (Percent)
+@property (nonatomic, readonly) double wiredMemoryinPercent;
+
+// Purgable Memory (Raw)
+@property (nonatomic, readonly) double purgableMemoryinRaw;
+
+// Purgable Memory (Percent)
+@property (nonatomic, readonly) double purgableMemoryinPercent;
 
 /* Accelerometer Information */
 
 // Device Orientation
-+ (UIInterfaceOrientation)DeviceOrientation;
-
-// Accelerometer X Value
-//+ (float)AccelerometerXValue;
-
-// Accelerometer Y Value
-//+ (float)AccelerometerYValue;
-
-// Accelerometer Z Value
-//+ (float)AccelerometerZValue;
+@property (nonatomic, readonly) UIInterfaceOrientation deviceOrientation;
 
 /* Localization Information */
 
 // Country
-+ (NSString *)Country;
-
-// Locale
-+ (NSString *)Locale;
+@property (nonatomic, readonly, nullable) NSString *country;
 
 // Language
-+ (NSString *)Language;
+@property (nonatomic, readonly, nullable) NSString *language;
 
 // TimeZone
-+ (NSString *)TimeZone;
+@property (nonatomic, readonly, nullable) NSString *timeZoneSS;
 
 // Currency Symbol
-+ (NSString *)Currency;
+@property (nonatomic, readonly, nullable) NSString *currency;
 
 /* Application Information */
 
 // Application Version
-+ (NSString *)ApplicationVersion;
+@property (nonatomic, readonly, nullable) NSString *applicationVersion;
 
 // Clipboard Content
-+ (NSString *)ClipboardContent;
+@property (nonatomic, readonly, nullable) NSString *clipboardContent;
 
 /* Universal Unique Identifiers */
 
 // Unique ID
-+ (NSString *)UniqueID;
+@property (nonatomic, readonly, nullable) NSString *uniqueID;
 
 // Device Signature
-+ (NSString *)DeviceSignature;
+@property (nonatomic, readonly, nullable) NSString *deviceSignature;
 
 // CFUUID
-+ (NSString *)CFUUID;
+@property (nonatomic, readonly, nullable) NSString *cfuuid;
+
+// CPU Usage
+@property (nonatomic, readonly) float cpuUsage;
 
 @end

@@ -6,22 +6,22 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#import "SystemServicesConstants.h"
+#import <Foundation/Foundation.h>
 
 @interface SSAccessoryInfo : NSObject
 
 // Accessory Information
 
 // Are any accessories attached?
-+ (BOOL)AccessoriesAttached;
++ (BOOL)accessoriesAttached;
 
 // Are headphone attached?
-+ (BOOL)HeadphonesAttached;
++ (BOOL)headphonesAttached;
 
 // Number of attached accessories
-+ (NSInteger)NumberAttachedAccessories;
++ (NSInteger)numberAttachedAccessories;
 
 // Name of attached accessory/accessories (seperated by , comma's)
-+ (NSString *)NameAttachedAccessories;
++ (nullable NSString *)nameAttachedAccessories;
 
 @end

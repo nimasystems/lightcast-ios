@@ -6,16 +6,18 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#ifdef OPT_TELEPHONY
-
 #import "SSCarrierInfo.h"
+
+// Core Telephony
+#import <CoreTelephony/CTCarrier.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
 @implementation SSCarrierInfo
 
 // Carrier Information
 
 // Carrier Name
-+ (NSString *)CarrierName {
++ (NSString *)carrierName {
     // Get the carrier name
     @try {
         // Get the Telephony Network Info
@@ -41,7 +43,7 @@
 }
 
 // Carrier Country
-+ (NSString *)CarrierCountry {
++ (NSString *)carrierCountry {
     // Get the country that the carrier is located in
     @try {
         // Get the locale
@@ -63,7 +65,7 @@
 }
 
 // Carrier Mobile Country Code
-+ (NSString *)CarrierMobileCountryCode {
++ (NSString *)carrierMobileCountryCode {
     // Get the carrier mobile country code
     @try {
         // Get the Telephony Network Info
@@ -89,7 +91,7 @@
 }
 
 // Carrier ISO Country Code
-+ (NSString *)CarrierISOCountryCode {
++ (NSString *)carrierISOCountryCode {
     // Get the carrier ISO country code
     @try {
         // Get the Telephony Network Info
@@ -115,7 +117,7 @@
 }
 
 // Carrier Mobile Network Code
-+ (NSString *)CarrierMobileNetworkCode {
++ (NSString *)carrierMobileNetworkCode {
     // Get the carrier mobile network code
     @try {
         // Get the Telephony Network Info
@@ -141,7 +143,7 @@
 }
 
 // Carrier Allows VOIP
-+ (BOOL)CarrierAllowsVOIP {
++ (BOOL)carrierAllowsVOIP {
     // Check if the carrier allows VOIP
     @try {
         // Get the Telephony Network Info
@@ -161,5 +163,3 @@
 }
 
 @end
-
-#endif

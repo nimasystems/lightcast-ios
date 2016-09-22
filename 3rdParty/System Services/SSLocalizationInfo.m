@@ -2,7 +2,7 @@
 //  SSLocalizationInfo.m
 //  SystemServicesDemo
 //
-//  Created by Kramer on 9/20/12.
+//  Created by Shmoopi LLC on 9/20/12.
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 // Localization Information
 
 // Country
-+ (NSString *)Country {
++ (NSString *)country {
     // Get the user's country
     @try {
         // Get the locale
@@ -34,30 +34,8 @@
     }
 }
 
-// Locale
-+ (NSString *)Locale {
-    // Get the user's locale/region
-    @try {
-        // Get the locale
-        NSLocale *Locale = [NSLocale currentLocale];
-        // Get the string value of the locale
-        NSString *Region = [NSString stringWithFormat:@"%@", [Locale localeIdentifier]];
-        // Check for validity
-        if (Region == nil || Region.length <= 0) {
-            // Error, invalid Region
-            return nil;
-        }
-        // Completed Successfully
-        return Region;
-    }
-    @catch (NSException *exception) {
-        // Error
-        return nil;
-    }
-}
-
 // Language
-+ (NSString *)Language {
++ (NSString *)language {
     // Get the user's language
     @try {
         // Get the list of languages
@@ -79,7 +57,7 @@
 }
 
 // TimeZone
-+ (NSString *)TimeZone {
++ (NSString *)timeZone {
     // Get the user's timezone
     @try {
         // Get the system timezone
@@ -101,7 +79,7 @@
 }
 
 // Currency Symbol
-+ (NSString *)Currency {
++ (NSString *)currency {
     // Get the user's currency
     @try {
         // Get the system currency

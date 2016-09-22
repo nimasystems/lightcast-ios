@@ -6,34 +6,31 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#import "SystemServicesConstants.h"
+#import <Foundation/Foundation.h>
 
 @interface SSMemoryInfo : NSObject
 
 // Memory Information
 
 // Total Memory
-+ (double)TotalMemory;
++ (double)totalMemory;
 
 // Free Memory
-+ (double)FreeMemory:(BOOL)inPercent;
++ (double)freeMemory:(BOOL)inPercent;
 
 // Used Memory
-+ (double)UsedMemory:(BOOL)inPercent;
-
-// Available Memory
-+ (double)AvailableMemory:(BOOL)inPercent;
++ (double)usedMemory:(BOOL)inPercent;
 
 // Active Memory
-+ (double)ActiveMemory:(BOOL)inPercent;
++ (double)activeMemory:(BOOL)inPercent;
 
 // Inactive Memory
-+ (double)InactiveMemory:(BOOL)inPercent;
++ (double)inactiveMemory:(BOOL)inPercent;
 
 // Wired Memory
-+ (double)WiredMemory:(BOOL)inPercent;
++ (double)wiredMemory:(BOOL)inPercent;
 
 // Purgable Memory
-+ (double)PurgableMemory:(BOOL)inPercent;
++ (double)purgableMemory:(BOOL)inPercent;
 
 @end

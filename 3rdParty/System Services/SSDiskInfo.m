@@ -8,16 +8,20 @@
 
 #import "SSDiskInfo.h"
 
+// Memory Info
+#define MB (1024*1024)
+#define GB (MB*1024)
+
 @implementation SSDiskInfo
 
 // Disk Information
 
 // Total Disk Space
-+ (NSString *)DiskSpace {
++ (NSString *)diskSpace {
     // Get the total disk space
 	@try {
         // Get the long total disk space
-        long long Space = [self LongDiskSpace];
+        long long Space = [self longDiskSpace];
 		        
         // Check to make sure it's valid
         if (Space <= 0) {
@@ -26,7 +30,7 @@
         }
         
         // Turn that long long into a string
-        NSString *DiskSpace = [self FormatMemory:Space];
+        NSString *DiskSpace = [self formatMemory:Space];
         
         // Check to make sure it's valid
         if (DiskSpace == nil || DiskSpace.length <= 0) {
@@ -44,11 +48,11 @@
 }
 
 // Total Free Disk Space
-+ (NSString *)FreeDiskSpace:(BOOL)inPercent {
++ (NSString *)freeDiskSpace:(BOOL)inPercent {
     // Get the total free disk space
 	@try {
         // Get the long size of free space
-        long long Space = [self LongFreeDiskSpace];
+        long long Space = [self longFreeDiskSpace];
         
         // Check to make sure it's valid
         if (Space <= 0) {
@@ -62,7 +66,7 @@
         // If the user wants the output in percentage
         if (inPercent) {
             // Get the total amount of space
-            long long TotalSpace = [self LongDiskSpace];
+            long long TotalSpace = [self longDiskSpace];
             // Make a float to get the percent of those values
             float PercentDiskSpace = (Space * 100) / TotalSpace;
             // Check it to make sure it's okay
@@ -74,7 +78,7 @@
             DiskSpace = [NSString stringWithFormat:@"%.f%%", PercentDiskSpace];
         } else {
             // Turn that long long into a string
-            DiskSpace = [self FormatMemory:Space];
+            DiskSpace = [self formatMemory:Space];
         }
         
         // Check to make sure it's valid
@@ -93,15 +97,15 @@
 }
 
 // Total Used Disk Space
-+ (NSString *)UsedDiskSpace:(BOOL)inPercent {
++ (NSString *)usedDiskSpace:(BOOL)inPercent {
     // Get the total used disk space
     @try {
         // Make a variable to hold the Used Disk Space
         long long UDS;
         // Get the long total disk space
-        long long TDS = [self LongDiskSpace];
+        long long TDS = [self longDiskSpace];
         // Get the long free disk space
-        long long FDS = [self LongFreeDiskSpace];
+        long long FDS = [self longFreeDiskSpace];
         
         // Make sure they're valid
         if (TDS <= 0 || FDS <= 0) {
@@ -134,7 +138,7 @@
             UsedDiskSpace = [NSString stringWithFormat:@"%.f%%", PercentUsedDiskSpace];
         } else {
             // Turn that long long into a string
-            UsedDiskSpace = [self FormatMemory:UDS];
+            UsedDiskSpace = [self formatMemory:UDS];
         }
         
         // Check to make sure it's valid
@@ -157,7 +161,7 @@
 #pragma mark - Disk Information Long Values
 
 // Get the total disk space in long format
-+ (long long)LongDiskSpace {
++ (long long)longDiskSpace {
     // Get the long long disk space    
 	@try {
         // Set up variables
@@ -190,7 +194,7 @@
 }
 
 // Get the total free disk space in long format
-+ (long long)LongFreeDiskSpace {
++ (long long)longFreeDiskSpace {
     // Get the long total free disk space	
 	@try {
         // Set up the variables
@@ -224,7 +228,7 @@
 #pragma mark - Memory Value Formatting
 
 // Format the memory to a string in GB, MB, or Bytes
-+ (NSString *)FormatMemory:(long long)Space {
++ (NSString *)formatMemory:(long long)Space {
 	// Format the long long disk space
 	@try {
         // Set up the string
@@ -241,7 +245,7 @@
 	    } else if (TotalMB >= 1)
 			FormattedBytes = [NSString stringWithFormat:@"%.2f MB", TotalMB];
 		else {
-			FormattedBytes = [self FormattedMemory:Space];
+			FormattedBytes = [self formattedMemory:Space];
 			FormattedBytes = [FormattedBytes stringByAppendingString:@" bytes"];
 		}
         
@@ -261,7 +265,7 @@
 }
 
 // Format bytes to a string
-+ (NSString *)FormattedMemory:(unsigned long long)Space {
++ (NSString *)formattedMemory:(unsigned long long)Space {
     // Format for bytes	
 	@try {
         // Set up the string variable

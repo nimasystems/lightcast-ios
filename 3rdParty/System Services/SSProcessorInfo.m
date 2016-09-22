@@ -8,12 +8,15 @@
 
 #import "SSProcessorInfo.h"
 
+// Sysctl
+#import <sys/sysctl.h>
+
 @implementation SSProcessorInfo
 
 // Processor Information
 
 // Number of processors
-+ (NSInteger)NumberProcessors {
++ (NSInteger)numberProcessors {
     // See if the process info responds to selector
     if ([[NSProcessInfo processInfo] respondsToSelector:@selector(processorCount)]) {
         // Get the number of processors
@@ -27,7 +30,7 @@
 }
 
 // Number of Active Processors
-+ (NSInteger)NumberActiveProcessors {
++ (NSInteger)numberActiveProcessors {
     // See if the process info responds to selector
     if ([[NSProcessInfo processInfo] respondsToSelector:@selector(activeProcessorCount)]) {
         // Get the number of active processors
@@ -41,26 +44,28 @@
 }
 
 // Processor Speed in MHz
-+ (NSInteger)ProcessorSpeed {
++ (NSInteger)processorSpeed {
     // Try to get the processor speed
 	@try {
         // Set the variables
-		size_t size;
-		int speed[2];
-		int final;
+        int hertz;
+        size_t size = sizeof(int);
+        int mib[2] = {CTL_HW, HW_CPU_FREQ};
         
-        // Find the speeds
-		speed[0] = CTL_HW;
-		speed[1] = HW_CPU_FREQ;
-		size = sizeof(final);
+        // Find the speed
+        sysctl(mib, 2, &hertz, &size, NULL, 0);
         
-        // Get the actual speed
-		sysctl(speed, 2, &final, &size, NULL, 0);
-		if (final > 0)
-			final /= 1000000;
-		
+        // Make sure it's not less than 0
+        if (hertz < 1) {
+            // Invalid value
+            return -1;
+        }
+        
+        // Divide the final speed by 1 million to get the speed in mhz
+		hertz /= 1000000;
+        
         // Return the result
-        return final;
+        return hertz;
 	}
 	@catch (NSException * ex) {
         // Unable to get the speed (return -1)
@@ -69,7 +74,7 @@
 }
 
 // Processor Bus Speed in MHz
-+ (NSInteger)ProcessorBusSpeed {
++ (NSInteger)processorBusSpeed {
     // Try to get the processor bus speed
 	@try {
         // Set the variables
@@ -86,6 +91,8 @@
 		sysctl(speed, 2, &final, &size, NULL, 0);
 		if (final > 0)
 			final /= 1000000;
+        else
+            return -1;
 		
         // Return the result
         return final;

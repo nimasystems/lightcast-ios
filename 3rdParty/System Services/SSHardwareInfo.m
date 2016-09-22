@@ -8,12 +8,20 @@
 
 #import "SSHardwareInfo.h"
 
+// UIKit
+#import <UIKit/UIKit.h>
+
+// sysctl
+#import <sys/sysctl.h>
+// utsname
+#import <sys/utsname.h>
+
 @implementation SSHardwareInfo
 
 // System Hardware Information
 
 // System Uptime (dd hh mm)
-+ (NSString *)SystemUptime {
++ (NSString *)systemUptime {
     // Set up the days/hours/minutes
     NSNumber *Days, *Hours, *Minutes;
     
@@ -25,13 +33,13 @@
     NSCalendar *Calendar = [NSCalendar currentCalendar];
 	// Create the Dates
     NSDate *Date = [[NSDate alloc] initWithTimeIntervalSinceNow:(0-UptimeInterval)];
-    unsigned int unitFlags = NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
+    unsigned int unitFlags = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
     NSDateComponents *Components = [Calendar components:unitFlags fromDate:Date toDate:[NSDate date]  options:0];
 	
     // Get the day, hour and minutes
-    Days = [NSNumber numberWithInteger:[Components day]];
-    Hours = [NSNumber numberWithInteger:[Components hour]];
-    Minutes = [NSNumber numberWithInteger:[Components minute]];
+    Days = [NSNumber numberWithLong:[Components day]];
+    Hours = [NSNumber numberWithLong:[Components hour]];
+    Minutes = [NSNumber numberWithLong:[Components minute]];
 	
     // Format the dates
 	NSString *Uptime = [NSString stringWithFormat:@"%@ %@ %@",
@@ -51,7 +59,7 @@
 }
 
 // Model of Device
-+ (NSString *)DeviceModel {
++ (NSString *)deviceModel {
     // Get the device model
     if ([[UIDevice currentDevice] respondsToSelector:@selector(model)]) {
         // Make a string for the device model
@@ -65,7 +73,7 @@
 }
 
 // Device Name
-+ (NSString *)DeviceName {
++ (NSString *)deviceName {
     // Get the current device name
     if ([[UIDevice currentDevice] respondsToSelector:@selector(name)]) {
         // Make a string for the device name
@@ -79,7 +87,7 @@
 }
 
 // System Name
-+ (NSString *)SystemName {
++ (NSString *)systemName {
     // Get the current system name
     if ([[UIDevice currentDevice] respondsToSelector:@selector(systemName)]) {
         // Make a string for the system name
@@ -93,7 +101,7 @@
 }
 
 // System Version
-+ (NSString *)SystemVersion {
++ (NSString *)systemVersion {
     // Get the current system version
     if ([[UIDevice currentDevice] respondsToSelector:@selector(systemVersion)]) {
         // Make a string for the system version
@@ -107,7 +115,7 @@
 }
 
 // System Device Type (iPhone1,0) (Formatted = iPhone 1)
-+ (NSString *)SystemDeviceTypeFormatted:(BOOL)formatted {
++ (NSString *)systemDeviceTypeFormatted:(BOOL)formatted {
     // Set up a Device Type String
     NSString *DeviceType;
     
@@ -126,6 +134,8 @@
             
             if ([DeviceType isEqualToString:@"i386"])
                 NewDeviceType = @"iPhone Simulator";
+            else if ([DeviceType isEqualToString:@"x86_64"])
+                NewDeviceType = @"iPhone Simulator";
             else if ([DeviceType isEqualToString:@"iPhone1,1"])
                 NewDeviceType = @"iPhone";
             else if ([DeviceType isEqualToString:@"iPhone1,2"])
@@ -135,21 +145,95 @@
             else if ([DeviceType isEqualToString:@"iPhone3,1"])
                 NewDeviceType = @"iPhone 4";
             else if ([DeviceType isEqualToString:@"iPhone4,1"])
-                NewDeviceType = @"iPhone 5";
+                NewDeviceType = @"iPhone 4S";
+            else if ([DeviceType isEqualToString:@"iPhone5,1"])
+                NewDeviceType = @"iPhone 5(GSM)";
+            else if ([DeviceType isEqualToString:@"iPhone5,2"])
+                NewDeviceType = @"iPhone 5(GSM+CDMA)";
+            else if ([DeviceType isEqualToString:@"iPhone5,3"])
+                NewDeviceType = @"iPhone 5c(GSM)";
+            else if ([DeviceType isEqualToString:@"iPhone5,4"])
+                NewDeviceType = @"iPhone 5c(GSM+CDMA)";
+            else if ([DeviceType isEqualToString:@"iPhone6,1"])
+                NewDeviceType = @"iPhone 5s(GSM)";
+            else if ([DeviceType isEqualToString:@"iPhone6,2"])
+                NewDeviceType = @"iPhone 5s(GSM+CDMA)";
+            else if ([DeviceType isEqualToString:@"iPhone7,1"])
+                NewDeviceType = @"iPhone 6 Plus";
+            else if ([DeviceType isEqualToString:@"iPhone7,2"])
+                NewDeviceType = @"iPhone 6";
+            else if ([DeviceType isEqualToString:@"iPhone8,1"])
+                NewDeviceType = @"iPhone 6s";
+            else if ([DeviceType isEqualToString:@"iPhone8,2"])
+                NewDeviceType = @"iPhone 6s Plus";
+            else if ([DeviceType isEqualToString:@"iPhone8,4"])
+                NewDeviceType = @"iPhone SE";
             else if ([DeviceType isEqualToString:@"iPod1,1"])
-                NewDeviceType = @"1st Gen iPod";
+                NewDeviceType = @"iPod Touch 1G";
             else if ([DeviceType isEqualToString:@"iPod2,1"])
-                NewDeviceType = @"2nd Gen iPod";
+                NewDeviceType = @"iPod Touch 2G";
             else if ([DeviceType isEqualToString:@"iPod3,1"])
-                NewDeviceType = @"3rd Gen iPod";
+                NewDeviceType = @"iPod Touch 3G";
+            else if ([DeviceType isEqualToString:@"iPod4,1"])
+                NewDeviceType = @"iPod Touch 4G";
+            else if ([DeviceType isEqualToString:@"iPod5,1"])
+                NewDeviceType = @"iPod Touch 5G";
+            else if ([DeviceType isEqualToString:@"iPod7,1"])
+                NewDeviceType = @"iPod Touch 6G";
             else if ([DeviceType isEqualToString:@"iPad1,1"])
                 NewDeviceType = @"iPad";
+            else if ([DeviceType isEqualToString:@"iPad2,1"])
+                NewDeviceType = @"iPad 2(WiFi)";
             else if ([DeviceType isEqualToString:@"iPad2,2"])
-                NewDeviceType = @"iPad 2";
+                NewDeviceType = @"iPad 2(GSM)";
+            else if ([DeviceType isEqualToString:@"iPad2,3"])
+                NewDeviceType = @"iPad 2(CDMA)";
+            else if ([DeviceType isEqualToString:@"iPad2,4"])
+                NewDeviceType = @"iPad 2(WiFi + New Chip)";
+            else if ([DeviceType isEqualToString:@"iPad2,5"])
+                NewDeviceType = @"iPad mini(WiFi)";
+            else if ([DeviceType isEqualToString:@"iPad2,6"])
+                NewDeviceType = @"iPad mini(GSM)";
+            else if ([DeviceType isEqualToString:@"iPad2,7"])
+                NewDeviceType = @"iPad mini(GSM+CDMA)";
+            else if ([DeviceType isEqualToString:@"iPad3,1"])
+                NewDeviceType = @"iPad 3(WiFi)";
+            else if ([DeviceType isEqualToString:@"iPad3,2"])
+                NewDeviceType = @"iPad 3(GSM+CDMA)";
+            else if ([DeviceType isEqualToString:@"iPad3,3"])
+                NewDeviceType = @"iPad 3(GSM)";
+            else if ([DeviceType isEqualToString:@"iPad3,4"])
+                NewDeviceType = @"iPad 4(WiFi)";
+            else if ([DeviceType isEqualToString:@"iPad3,5"])
+                NewDeviceType = @"iPad 4(GSM)";
+            else if ([DeviceType isEqualToString:@"iPad3,6"])
+                NewDeviceType = @"iPad 4(GSM+CDMA)";
             else if ([DeviceType isEqualToString:@"iPad3,3"])
                 NewDeviceType = @"New iPad";
+            else if ([DeviceType isEqualToString:@"iPad4,1"])
+                NewDeviceType = @"iPad Air(WiFi)";
+            else if ([DeviceType isEqualToString:@"iPad4,2"])
+                NewDeviceType = @"iPad Air(Cellular)";
             else if ([DeviceType isEqualToString:@"iPad4,4"])
-                NewDeviceType = @"iPad 4";
+                NewDeviceType = @"iPad mini 2(WiFi)";
+            else if ([DeviceType isEqualToString:@"iPad4,5"])
+                NewDeviceType = @"iPad mini 2(Cellular)";
+            else if ([DeviceType isEqualToString:@"iPad5,1"])
+                NewDeviceType = @"iPad mini 4(WiFi)";
+            else if ([DeviceType isEqualToString:@"iPad5,2"])
+                NewDeviceType = @"iPad mini 4(Cellular)";
+            else if ([DeviceType isEqualToString:@"iPad5,4"])
+                NewDeviceType = @"iPad Air 2(WiFi)";
+            else if ([DeviceType isEqualToString:@"iPad5,5"])
+                NewDeviceType = @"iPad Air 2(Cellular)";
+            else if ([DeviceType isEqualToString:@"iPad6,3"])
+                NewDeviceType = @"9.7-inch iPad Pro(WiFi)";
+            else if ([DeviceType isEqualToString:@"iPad6,4"])
+                NewDeviceType = @"9.7-inch iPad Pro(Cellular)";
+	    else if ([DeviceType isEqualToString:@"iPad6,7"])
+                NewDeviceType = @"12.9-inch iPad Pro(WiFi)";
+            else if ([DeviceType isEqualToString:@"iPad6,8"])
+                NewDeviceType = @"12.9-inch iPad Pro(Cellular)";
             else if ([DeviceType hasPrefix:@"iPad"])
                 NewDeviceType = @"iPad";
             
@@ -181,7 +265,7 @@
 }
 
 // Get the Screen Width (X)
-+ (NSInteger)ScreenWidth {
++ (NSInteger)screenWidth {
     // Get the screen width
     @try {
         // Screen bounds
@@ -204,7 +288,7 @@
 }
 
 // Get the Screen Height (Y)
-+ (NSInteger)ScreenHeight {
++ (NSInteger)screenHeight {
     // Get the screen height
     @try {
         // Screen bounds
@@ -226,8 +310,29 @@
     }
 }
 
+// Get the Screen Brightness
++ (float)screenBrightness {
+    // Get the screen brightness
+    @try {
+        // Brightness
+        float brightness = [UIScreen mainScreen].brightness;
+        // Verify validity
+        if (brightness < 0.0 || brightness > 1.0) {
+            // Invalid brightness
+            return -1;
+        }
+        
+        // Successful
+        return (brightness * 100);
+    }
+    @catch (NSException *exception) {
+        // Error
+        return -1;
+    }
+}
+
 // Multitasking enabled?
-+ (BOOL)MultitaskingEnabled {
++ (BOOL)multitaskingEnabled {
     // Is multitasking enabled?
     if ([[UIDevice currentDevice] respondsToSelector:@selector(isMultitaskingSupported)]) {
         // Create a bool
@@ -241,7 +346,7 @@
 }
 
 // Proximity sensor enabled?
-+ (BOOL)ProximitySensorEnabled {
++ (BOOL)proximitySensorEnabled {
     // Is the proximity sensor enabled?
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setProximityMonitoringEnabled:)]) {
         // Create a UIDevice variable
@@ -279,35 +384,43 @@
 }
 
 // Debugging attached?
-+ (BOOL)DebuggerAttached {
-    
-    // Set up the variables
-    size_t size = sizeof(struct kinfo_proc); struct kinfo_proc info;
-    int ret = 0, name[4];
-    memset(&info, 0, sizeof(struct kinfo_proc));
-    
-    // Get the process information
-    name[0] = CTL_KERN;
-    name[1] = KERN_PROC;
-    name[2] = KERN_PROC_PID; name[3] = getpid();
-    
-    // Check to make sure the variables are correct
-    if (ret == (sysctl(name, 4, &info, &size, NULL, 0))) {
-        // Sysctl() failed
-        // Return the output of sysctl
-        return ret;
++ (BOOL)debuggerAttached {
+    // Is the debugger attached?
+    @try {
+        // Set up the variables
+        size_t size = sizeof(struct kinfo_proc); struct kinfo_proc info;
+        int ret = 0, name[4];
+        memset(&info, 0, sizeof(struct kinfo_proc));
+        
+        // Get the process information
+        name[0] = CTL_KERN;
+        name[1] = KERN_PROC;
+        name[2] = KERN_PROC_PID; name[3] = getpid();
+        
+        // Check to make sure the variables are correct
+        if (ret == (sysctl(name, 4, &info, &size, NULL, 0))) {
+            // Sysctl() failed
+            // Return the output of sysctl
+            return ret;
+        }
+        
+        // Return whether or not we're being debugged
+        return (info.kp_proc.p_flag & P_TRACED) ? 1 : 0;
     }
-    
-    // Return whether or not we're being debugged
-    return (info.kp_proc.p_flag & P_TRACED) ? 1 : 0;
+    @catch (NSException *exception) {
+        // Error
+        return false;
+    }
 }
 
 // Plugged In?
-+ (BOOL)PluggedIn {
++ (BOOL)pluggedIn {
     // Is the device plugged in?
     if ([[UIDevice currentDevice] respondsToSelector:@selector(batteryState)]) {
         // Create a bool
         BOOL PluggedIn;
+        // Set the battery monitoring enabled
+        [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
         // Get the battery state
         UIDeviceBatteryState batteryState = [UIDevice currentDevice].batteryState;
         // Check if it's plugged in or finished charging

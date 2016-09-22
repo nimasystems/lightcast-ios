@@ -2,70 +2,82 @@
 //  SSUUID.m
 //  SystemServicesDemo
 //
-//  Created by Kramer on 9/21/12.
+//  Created by Shmoopi LLC on 9/21/12.
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
 #import "SSUUID.h"
+#import "SSHardwareInfo.h"
+#import "SSProcessorInfo.h"
+#import "SSNetworkInfo.h"
+#import "SSDiskInfo.h"
+#import "SSAccelerometerInfo.h"
+#import "SSLocalizationInfo.h"
+#import "SSMemoryInfo.h"
+#import "SSJailbreakCheck.h"
+#import "SSAccessoryInfo.h"
+#import "SSBatteryInfo.h"
 
 @implementation SSUUID
 
 // UDID Replacement Based on SystemServices Device Signature
 
 // Unique ID
-+ (NSString *)UniqueID {
++ (NSString *)uniqueID {
     // Get a Unique ID from the Device
     
     // Create a string
     NSString *UniqueIdentifier;
     
     // Get the Device Model
-    NSString *DeviceModel = [[[SSHardwareInfo DeviceModel] substringToIndex:1] capitalizedString];
+    NSString *DeviceModel = [[SSHardwareInfo deviceModel] capitalizedString];
+    DeviceModel = [[DeviceModel substringWithRange:NSMakeRange([DeviceModel length] - 1, 1)] capitalizedString];
     
     // Get the System Name
-    NSString *SystemName = [[[SSHardwareInfo SystemName] substringToIndex:1] capitalizedString];
+    NSString *SystemName = [[[SSHardwareInfo systemName] substringWithRange:NSMakeRange(2, 1)] capitalizedString];
     
     // Get the Device Type
-    NSString *DeviceType = [[[SSHardwareInfo SystemDeviceTypeFormatted:NO] substringToIndex:1] capitalizedString];
+    NSString *DeviceType = [[SSHardwareInfo systemDeviceTypeFormatted:NO] capitalizedString];
+    DeviceType = [DeviceType substringWithRange:NSMakeRange([DeviceType length] - 1, 1)];
     
     // Get the Screen Width
-    NSString *ScreenWidth = [[[NSString stringWithFormat:@"%ld", (long)[SSHardwareInfo ScreenWidth]] substringToIndex:1] capitalizedString];
+    NSString *ScreenWidth = [[[NSString stringWithFormat:@"%ld", (long)[SSHardwareInfo screenWidth]] substringToIndex:1] capitalizedString];
     
     // Get the Screen Height
-    NSString *ScreenHeight = [[[NSString stringWithFormat:@"%ld", (long)[SSHardwareInfo ScreenHeight]] substringToIndex:1] capitalizedString];
+    NSString *ScreenHeight = [[[NSString stringWithFormat:@"%ld", (long)[SSHardwareInfo screenHeight]] substringToIndex:1] capitalizedString];
     
     // Check if Multitasking is Enabled
-    NSString *MultitaskingEnabled = [[[NSString stringWithFormat:@"%d", [SSHardwareInfo MultitaskingEnabled]] substringToIndex:1] capitalizedString];
+    NSString *MultitaskingEnabled = [[[NSString stringWithFormat:@"%d", [SSHardwareInfo multitaskingEnabled]] substringToIndex:1] capitalizedString];
     
     // Check if the proximity sensor exists
-    NSString *ProximitySensorEnabled = [[[NSString stringWithFormat:@"%d", [SSHardwareInfo ProximitySensorEnabled]] substringToIndex:1] capitalizedString];
+    NSString *ProximitySensorEnabled = [[[NSString stringWithFormat:@"%d", [SSHardwareInfo proximitySensorEnabled]] substringToIndex:1] capitalizedString];
     
     // Get the number of processors
-    NSString *NumberProcessors = [[[NSString stringWithFormat:@"%ld", (long)[SSProcessorInfo NumberProcessors]] substringToIndex:1] capitalizedString];
+    NSString *NumberProcessors = [[[NSString stringWithFormat:@"%ld", (long)[SSProcessorInfo numberProcessors]] substringToIndex:1] capitalizedString];
     
     // Get the processor Speed
-    NSString *ProcessorSpeed = [[[NSString stringWithFormat:@"%ld", (long)[SSProcessorInfo ProcessorSpeed]] substringToIndex:1] capitalizedString];
-    
-    // Get the processor Bus Speed
-    NSString *ProcessorBusSpeed = [[[NSString stringWithFormat:@"%ld", (long)[SSProcessorInfo ProcessorBusSpeed]] substringToIndex:1] capitalizedString];
+    NSString *ProcessorSpeed = [[[NSString stringWithFormat:@"%ld", (long)[SSProcessorInfo processorSpeed]] substringToIndex:1] capitalizedString];
     
     // Get the Cell MAC Address
-    NSString *CellMACAddress = [[[SSNetworkInfo CellMACAddress] substringToIndex:1] capitalizedString];
+    NSString *CellMACAddress = [[[SSNetworkInfo cellMACAddress] substringToIndex:1] capitalizedString];
     
     // Get the WiFi MAC Address
-    NSString *WiFiMACAddress = [[[SSNetworkInfo WiFiMACAddress] substringToIndex:1] capitalizedString];
+    NSString *WiFiMACAddress = [[[SSNetworkInfo wiFiMACAddress] substringToIndex:1] capitalizedString];
+    
+    // Get the WiFi MAC Address different sector (5)
+    NSString *WiFiMACAddress2 = [[[SSNetworkInfo wiFiMACAddress] substringWithRange:NSMakeRange(4, 1)] capitalizedString];
+    
+    // Get the WiFi MAC Address different sector (10)
+    NSString *WiFiMACAddress3 = [[[SSNetworkInfo wiFiMACAddress] substringWithRange:NSMakeRange(9, 1)] capitalizedString];
     
     // Get the total disk space
-    NSString *TotalDiskSpace = [[[SSDiskInfo DiskSpace] substringToIndex:1] capitalizedString];
-    
-    // Get the total Memory
-    NSString *TotalMemory = [[[NSString stringWithFormat:@"%f", [SSMemoryInfo TotalMemory]] substringToIndex:1] capitalizedString];
+    NSString *TotalDiskSpace = [[[SSDiskInfo diskSpace] substringToIndex:1] capitalizedString];
     
     // Create a salt
     NSString *Salt = @"6";
     
     // Create an additional salt
-    NSString *Salty = @"7";
+    NSString *Salty = @"S";
     
     // Error check
     if (DeviceModel == nil || DeviceModel.length <= 0 || DeviceModel.length > 1 || [DeviceModel isEqualToString:@"-"]) {
@@ -104,10 +116,6 @@
         // Invalid String
         ProcessorSpeed = @"1";
     }
-    if (ProcessorBusSpeed == nil || ProcessorBusSpeed.length <= 0 || ProcessorBusSpeed.length > 1 || [ProcessorBusSpeed isEqualToString:@"-"]) {
-        // Invalid String
-        ProcessorBusSpeed = @"1";
-    }
     if (CellMACAddress == nil || CellMACAddress.length <= 0 || CellMACAddress.length > 1 || [CellMACAddress isEqualToString:@"-"]) {
         // Invalid String
         CellMACAddress = @"1";
@@ -116,17 +124,21 @@
         // Invalid String
         WiFiMACAddress = @"1";
     }
+    if (WiFiMACAddress2 == nil || WiFiMACAddress2.length <= 0 || WiFiMACAddress2.length > 1 || [WiFiMACAddress2 isEqualToString:@"-"]) {
+        // Invalid String
+        WiFiMACAddress2 = @"1";
+    }
+    if (WiFiMACAddress3 == nil || WiFiMACAddress3.length <= 0 || WiFiMACAddress3.length > 1 || [WiFiMACAddress3 isEqualToString:@"-"]) {
+        // Invalid String
+        WiFiMACAddress3 = @"1";
+    }
     if (TotalDiskSpace == nil || TotalDiskSpace.length <= 0 || TotalDiskSpace.length > 1 || [TotalDiskSpace isEqualToString:@"-"]) {
         // Invalid String
         TotalDiskSpace = @"1";
     }
-    if (TotalMemory == nil || TotalMemory.length <= 0 || TotalMemory.length > 1 || [TotalMemory isEqualToString:@"-"]) {
-        // Invalid String
-        TotalMemory = @"1";
-    }
     
     // Create the Unique ID Based on these Unchanging System Variables
-    UniqueIdentifier = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@", DeviceModel, SystemName, DeviceType, ScreenWidth, ScreenHeight, MultitaskingEnabled, ProximitySensorEnabled, NumberProcessors, ProcessorSpeed, ProcessorBusSpeed, CellMACAddress, WiFiMACAddress, TotalDiskSpace, TotalMemory, Salt, Salty];
+    UniqueIdentifier = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@", Salt, DeviceModel, SystemName, DeviceType, ScreenWidth, ScreenHeight, MultitaskingEnabled, ProximitySensorEnabled, NumberProcessors, ProcessorSpeed, CellMACAddress, WiFiMACAddress, WiFiMACAddress2, WiFiMACAddress3, TotalDiskSpace, Salty];
     
     // Check for errors
     if (UniqueIdentifier == nil || UniqueIdentifier.length <= 0 || UniqueIdentifier.length > 16) {
@@ -139,73 +151,59 @@
 }
 
 // Device Signature
-+ (NSString *)DeviceSignature {
++ (NSString *)deviceSignature {
     // Get a comprehensive device signature
     
     // Create a string
     NSString *DeviceSignature;
     
     // Get the System Version
-    NSString *SystemVersion = [NSString stringWithFormat:@"%d", [[SSHardwareInfo SystemVersion] intValue]];
+    NSString *SystemVersion = [NSString stringWithFormat:@"%d", [[SSHardwareInfo systemVersion] intValue]];
     
     // Get the Screen Height
-    NSString *ScreenHeight = [NSString stringWithFormat:@"%ld", (long)[SSHardwareInfo ScreenHeight]];
+    NSString *ScreenHeight = [NSString stringWithFormat:@"%ld", (long)[SSHardwareInfo screenHeight]];
     
     // Get the Screen Width
-    NSString *ScreenWidth = [NSString stringWithFormat:@"%ld", (long)[SSHardwareInfo ScreenWidth]];
+    NSString *ScreenWidth = [NSString stringWithFormat:@"%ld", (long)[SSHardwareInfo screenWidth]];
     
     // Plugged In
-    NSString *PluggedIn = [NSString stringWithFormat:@"%d", [SSHardwareInfo PluggedIn]];
+    NSString *PluggedIn = [NSString stringWithFormat:@"%d", [SSHardwareInfo pluggedIn]];
     
     // Jailbroken
-    NSString *Jailbroken = [NSString stringWithFormat:@"%d", [SSJailbreakCheck Jailbroken]];
+    NSString *Jailbroken = [NSString stringWithFormat:@"%d", [SSJailbreakCheck jailbroken]];
     
-#ifdef EA_EXTERN_CLASS_AVAILABLE
     // Headphones Attached
-    NSString *HeadphonesAttached = [NSString stringWithFormat:@"%d", [SSAccessoryInfo HeadphonesAttached]];
-#endif
+    NSString *HeadphonesAttached = [NSString stringWithFormat:@"%d", [SSAccessoryInfo headphonesAttached]];
     
     // Battery Level
-    NSString *BatteryLevel = [NSString stringWithFormat:@"%d", (int)[SSBatteryInfo BatteryLevel]];
+    NSString *BatteryLevel = [NSString stringWithFormat:@"%d", (int)[SSBatteryInfo batteryLevel]];
     
     // Fully Charged
-    NSString *FullyCharged = [NSString stringWithFormat:@"%d", [SSBatteryInfo FullyCharged]];
+    NSString *FullyCharged = [NSString stringWithFormat:@"%d", [SSBatteryInfo fullyCharged]];
     
     // Connected to WiFi
-    NSString *ConnectedtoWiFi = [NSString stringWithFormat:@"%d", [SSNetworkInfo ConnectedToWiFi]];
+    NSString *ConnectedtoWiFi = [NSString stringWithFormat:@"%d", [SSNetworkInfo connectedToWiFi]];
     
     // Device Orientation
-    NSString *DeviceOrientation = [NSString stringWithFormat:@"%ld", (long)[SSAccelerometerInfo DeviceOrientation]];
-    
-    // Accelerometer X Value
-    //NSString *AccelerometerXValue = [NSString stringWithFormat:@"%d", (int)[SSAccelerometerInfo AccelerometerXValue]];
-    
-    // Accelerometer Y Value
-    //NSString *AccelerometerYValue = [NSString stringWithFormat:@"%d", (int)[SSAccelerometerInfo AccelerometerYValue]];
-    
-    // Accelerometer Z Value
-    //NSString *AccelerometerZValue = [NSString stringWithFormat:@"%d", (int)[SSAccelerometerInfo AccelerometerXValue]];
+    NSString *DeviceOrientation = [NSString stringWithFormat:@"%ld", [SSAccelerometerInfo deviceOrientation]];
     
     // Country
-    NSString *Country = [[SSLocalizationInfo Country] substringToIndex:2];
+    NSString *Country = [[[SSLocalizationInfo country] substringToIndex:2] uppercaseString];
     
     // TimeZone
-    NSString *TimeZone = [[SSLocalizationInfo TimeZone] substringToIndex:2];
+    NSString *TimeZone = [[[SSLocalizationInfo timeZone] substringToIndex:2] uppercaseString];
     
     // Number Processors
-    NSString *NumberProcessors = [NSString stringWithFormat:@"%ld", (long)[SSProcessorInfo NumberProcessors]];
+    NSString *NumberProcessors = [NSString stringWithFormat:@"%ld", (long)[SSProcessorInfo numberProcessors]];
     
     // Processor Speed
-    NSString *_t1 = [NSString stringWithFormat:@"%ld", (long)[SSProcessorInfo ProcessorSpeed]];
-    NSString *ProcessorSpeed = [_t1 substringToIndex:([_t1 length] >= 3 ? 3 : [_t1 length])];
+    NSString *ProcessorSpeed = [NSString stringWithFormat:@"%ld", (long)[SSProcessorInfo processorSpeed]];
     
     // Total Disk Space
-    _t1 = [NSString stringWithFormat:@"%d", [[SSDiskInfo DiskSpace] intValue]];
-    NSString *TotalDiskSpace = [_t1 substringToIndex:([_t1 length] >= 3 ? 3 : [_t1 length])];
+    NSString *TotalDiskSpace = [NSString stringWithFormat:@"%d", [[SSDiskInfo diskSpace] intValue] ];
     
     // Total Memory
-    _t1 = [NSString stringWithFormat:@"%d", (int)[SSMemoryInfo TotalMemory]];
-    NSString *TotalMemory = [_t1 substringToIndex:([_t1 length] >= 3 ? 3 : [_t1 length])];
+    NSString *TotalMemory = [NSString stringWithFormat:@"%d", (int)[SSMemoryInfo totalMemory]];
     
     // Salt
     NSString *Salt = @"SS";
@@ -231,14 +229,10 @@
         // Invalid String
         Jailbroken = @"0";
     }
-    
-#ifdef EA_EXTERN_CLASS_AVAILABLE
     if (HeadphonesAttached == nil || HeadphonesAttached.length <= 0 || HeadphonesAttached.length > 1) {
         // Invalid String
         HeadphonesAttached = @"0";
     }
-#endif
-    
     if (BatteryLevel == nil || BatteryLevel.length <= 0 || [BatteryLevel rangeOfString:@"-"].location != NSNotFound) {
         // Invalid String
         BatteryLevel = @"00";
@@ -255,18 +249,6 @@
         // Invalid String
         DeviceOrientation = @"0";
     }
-    /*if (AccelerometerXValue == nil || AccelerometerXValue.length <= 0 || AccelerometerXValue.length > 3) {
-        // Invalid String
-        AccelerometerXValue = @"0";
-    }
-    if (AccelerometerYValue == nil || AccelerometerYValue.length <= 0 || AccelerometerYValue.length > 3) {
-        // Invalid String
-        AccelerometerYValue = @"0";
-    }
-    if (AccelerometerZValue == nil || AccelerometerZValue.length <= 0 || AccelerometerZValue.length > 3) {
-        // Invalid String
-        AccelerometerZValue = @"0";
-    }*/
     if (Country == nil || Country.length <= 0 || Country.length > 2) {
         // Invalid String
         Country = @"00";
@@ -292,10 +274,6 @@
         TotalMemory = @"000";
     }
     
-#ifndef EA_EXTERN_CLASS_AVAILABLE
-    NSString *HeadphonesAttached = @"";
-#endif
-    
     // Create the Device Signature based on the values
     DeviceSignature = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@", SystemVersion, ScreenHeight, ScreenWidth, PluggedIn, Jailbroken, HeadphonesAttached, BatteryLevel, FullyCharged, ConnectedtoWiFi, DeviceOrientation, Country, TimeZone, NumberProcessors, ProcessorSpeed, TotalDiskSpace, TotalMemory, Salt];
     
@@ -310,7 +288,7 @@
 }
 
 // CFUUID
-+ (NSString *)CFUUID {
++ (NSString *)cfuuid {
     // Create a new CFUUID (Unique, random ID number) (Always different)
     @try {
         // Create a new instance of CFUUID using CFUUIDCreate using the default allocator

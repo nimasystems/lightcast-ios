@@ -6,22 +6,26 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#ifdef EA_EXTERN_CLASS_AVAILABLE
-
 #import "SSAccessoryInfo.h"
+
+// Accessory Manager
+#import <ExternalAccessory/ExternalAccessory.h>
+
+// AVFoundation
+#import <AVFoundation/AVFoundation.h>
 
 @implementation SSAccessoryInfo
 
 // Accessory Information
 
 // Are any accessories attached?
-+ (BOOL)AccessoriesAttached {
++ (BOOL)accessoriesAttached {
     // Check if any accessories are connected
     @try {
         // Set up the accessory manger
         EAAccessoryManager *AccessoryManager = [EAAccessoryManager sharedAccessoryManager];
         // Get the number of accessories connected
-        int NumberOfAccessoriesConnected = [AccessoryManager.connectedAccessories count];
+        int NumberOfAccessoriesConnected = (int)[AccessoryManager.connectedAccessories count];
         // Check if there are any connected
         if (NumberOfAccessoriesConnected > 0) {
             // There are accessories connected
@@ -38,31 +42,25 @@
 }
 
 // Are headphone attached?
-+ (BOOL)HeadphonesAttached {
-    
-    // temp disabled
-    return NO;
-    
++ (BOOL)headphonesAttached {
     // Check if the headphones are connected
     @try {
-        // Set up the variables
-        UInt32 routeSize = sizeof (CFStringRef);
-        CFStringRef route;
-        AudioSessionGetProperty (kAudioSessionProperty_AudioRouteDescription, &routeSize, &route);
+        // Get the audiosession route information
+        AVAudioSessionRouteDescription *route = [[AVAudioSession sharedInstance] currentRoute];
         
-        // Get the route
-        NSString *routeStr = (__bridge NSString *)route;
-        // Get the range
-        NSRange headsetRange = [routeStr rangeOfString : @"Headset"];
-        
-        // Check if the headphones are plugged in
-        if(headsetRange.location != NSNotFound) {
-            // Headphones are found
-            return true;
-        } else {
-            // Headphones are not found
-            return false;
+        // Run through all the route outputs
+        for (AVAudioSessionPortDescription *desc in [route outputs]) {
+            
+            // Check if any of the ports are equal to the string headphones
+            if ([[desc portType] isEqualToString:AVAudioSessionPortHeadphones]) {
+                
+                // Return YES
+                return YES;
+            }
         }
+        
+        // No headphones attached
+        return NO;
     }
     @catch (NSException *exception) {
         // Error, return false
@@ -71,13 +69,13 @@
 }
 
 // Number of attached accessories
-+ (NSInteger)NumberAttachedAccessories {
++ (NSInteger)numberAttachedAccessories {
     // Get the number of attached accessories
     @try {
         // Set up the accessory manger
         EAAccessoryManager *AccessoryManager = [EAAccessoryManager sharedAccessoryManager];
         // Get the number of accessories connected
-        int NumberOfAccessoriesConnected = [AccessoryManager.connectedAccessories count];
+        int NumberOfAccessoriesConnected = (int)[AccessoryManager.connectedAccessories count];
         // Return how many accessories are attached
         return NumberOfAccessoriesConnected;
     }
@@ -88,7 +86,7 @@
 }
 
 // Name of attached accessory/accessories (seperated by , comma's)
-+ (NSString *)NameAttachedAccessories {
++ (NSString *)nameAttachedAccessories {
     // Get the name of the attached accessories
     @try {
         // Set up the accessory manger
@@ -96,7 +94,7 @@
         // Set up an accessory (for later use)
         EAAccessory *Accessory;
         // Get the number of accessories connected
-        int NumberOfAccessoriesConnected = [AccessoryManager.connectedAccessories count];
+        int NumberOfAccessoriesConnected = (int)[AccessoryManager.connectedAccessories count];
         
         // Check to make sure there are accessories connected
         if (NumberOfAccessoriesConnected > 0) {
@@ -142,5 +140,3 @@
 }
 
 @end
-
-#endif

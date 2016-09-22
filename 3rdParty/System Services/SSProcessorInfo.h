@@ -6,22 +6,23 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#import "SystemServicesConstants.h"
+#import <Foundation/Foundation.h>
 
+NS_CLASS_DEPRECATED_IOS(2_0, 9_0, "SSProcessorInfo is deprecated. Process information is no longer allowed in iOS 9")
 @interface SSProcessorInfo : NSObject
 
 // Processor Information
 
 // Number of processors
-+ (NSInteger)NumberProcessors;
++ (NSInteger)numberProcessors;
 
 // Number of Active Processors
-+ (NSInteger)NumberActiveProcessors;
++ (NSInteger)numberActiveProcessors;
 
 // Processor Speed in MHz
-+ (NSInteger)ProcessorSpeed;
++ (NSInteger)processorSpeed;
 
 // Processor Bus Speed in MHz
-+ (NSInteger)ProcessorBusSpeed;
++ (NSInteger)processorBusSpeed;
 
 @end

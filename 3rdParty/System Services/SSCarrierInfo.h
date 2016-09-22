@@ -6,32 +6,28 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#ifdef OPT_TELEPHONY
-
-#import "SystemServicesConstants.h"
+#import <Foundation/Foundation.h>
 
 @interface SSCarrierInfo : NSObject
 
 // Carrier Information
 
 // Carrier Name
-+ (NSString *)CarrierName;
++ (nullable NSString *)carrierName;
 
 // Carrier Country
-+ (NSString *)CarrierCountry;
++ (nullable NSString *)carrierCountry;
 
 // Carrier Mobile Country Code
-+ (NSString *)CarrierMobileCountryCode;
++ (nullable NSString *)carrierMobileCountryCode;
 
 // Carrier ISO Country Code
-+ (NSString *)CarrierISOCountryCode;
++ (nullable NSString *)carrierISOCountryCode;
 
 // Carrier Mobile Network Code
-+ (NSString *)CarrierMobileNetworkCode;
++ (nullable NSString *)carrierMobileNetworkCode;
 
 // Carrier Allows VOIP
-+ (BOOL)CarrierAllowsVOIP;
++ (BOOL)carrierAllowsVOIP;
 
 @end
-
-#endif

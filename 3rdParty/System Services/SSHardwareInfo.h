@@ -6,46 +6,49 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#import "SystemServicesConstants.h"
+#import <Foundation/Foundation.h>
 
 @interface SSHardwareInfo : NSObject
 
 // System Hardware Information
 
 // System Uptime (dd hh mm)
-+ (NSString *)SystemUptime;
++ (nullable NSString *)systemUptime;
 
 // Model of Device
-+ (NSString *)DeviceModel;
++ (nullable NSString *)deviceModel;
 
 // Device Name
-+ (NSString *)DeviceName;
++ (nullable NSString *)deviceName;
 
 // System Name
-+ (NSString *)SystemName;
++ (nullable NSString *)systemName;
 
 // System Version
-+ (NSString *)SystemVersion;
++ (nullable NSString *)systemVersion;
 
 // System Device Type (iPhone1,0) (Formatted = iPhone 1)
-+ (NSString *)SystemDeviceTypeFormatted:(BOOL)formatted;
++ (nullable NSString *)systemDeviceTypeFormatted:(BOOL)formatted;
 
 // Get the Screen Width (X)
-+ (NSInteger)ScreenWidth;
++ (NSInteger)screenWidth;
 
 // Get the Screen Height (Y)
-+ (NSInteger)ScreenHeight;
++ (NSInteger)screenHeight;
+
+// Get the Screen Brightness
++ (float)screenBrightness;
 
 // Multitasking enabled?
-+ (BOOL)MultitaskingEnabled;
++ (BOOL)multitaskingEnabled;
 
 // Proximity sensor enabled?
-+ (BOOL)ProximitySensorEnabled;
++ (BOOL)proximitySensorEnabled;
 
 // Debugger Attached?
-+ (BOOL)DebuggerAttached;
++ (BOOL)debuggerAttached;
 
 // Plugged In?
-+ (BOOL)PluggedIn;
++ (BOOL)pluggedIn;
 
 @end

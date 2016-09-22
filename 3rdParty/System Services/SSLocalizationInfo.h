@@ -2,29 +2,26 @@
 //  SSLocalizationInfo.h
 //  SystemServicesDemo
 //
-//  Created by Kramer on 9/20/12.
+//  Created by Shmoopi LLC on 9/20/12.
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#import "SystemServicesConstants.h"
+#import <Foundation/Foundation.h>
 
 @interface SSLocalizationInfo : NSObject
 
 // Localization Information
 
 // Country
-+ (NSString *)Country;
-
-// Locale
-+ (NSString *)Locale;
++ (nullable NSString *)country;
 
 // Language
-+ (NSString *)Language;
++ (nullable NSString *)language;
 
 // TimeZone
-+ (NSString *)TimeZone;
++ (nullable NSString *)timeZone;
 
 // Currency Symbol
-+ (NSString *)Currency;
++ (nullable NSString *)currency;
 
 @end

@@ -8,12 +8,15 @@
 
 #import "SSBatteryInfo.h"
 
+// UIKit
+#import <UIKit/UIKit.h>
+
 @implementation SSBatteryInfo
 
 // Battery Information
 
 // Battery Level
-+ (float)BatteryLevel {
++ (float)batteryLevel {
     // Find the battery level
     @try {
         // Get the device
@@ -45,7 +48,7 @@
 }
 
 // Charging?
-+ (BOOL)Charging {
++ (BOOL)charging {
     // Is the battery charging?
     @try {
         // Get the device
@@ -69,7 +72,7 @@
 }
 
 // Fully Charged?
-+ (BOOL)FullyCharged {
++ (BOOL)fullyCharged {
     // Is the battery fully charged?
     @try {
         // Get the device

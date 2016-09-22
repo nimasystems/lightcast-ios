@@ -6,25 +6,25 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#import "SystemServicesConstants.h"
+#import <Foundation/Foundation.h>
 
 @interface SSDiskInfo : NSObject
 
 // Disk Information
 
 // Total Disk Space
-+ (NSString *)DiskSpace;
++ (nullable NSString *)diskSpace;
 
 // Total Free Disk Space
-+ (NSString *)FreeDiskSpace:(BOOL)inPercent;
++ (nullable NSString *)freeDiskSpace:(BOOL)inPercent;
 
 // Total Used Disk Space
-+ (NSString *)UsedDiskSpace:(BOOL)inPercent;
++ (nullable NSString *)usedDiskSpace:(BOOL)inPercent;
 
 // Get the total disk space in long format
-+ (long long)LongDiskSpace;
++ (long long)longDiskSpace;
 
 // Get the total free disk space in long format
-+ (long long)LongFreeDiskSpace;
++ (long long)longFreeDiskSpace;
 
 @end

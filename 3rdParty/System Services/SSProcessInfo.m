@@ -8,12 +8,15 @@
 
 #import "SSProcessInfo.h"
 
+// sysctl
+#import <sys/sysctl.h>
+
 @implementation SSProcessInfo
 
 // Process Information
 
 // Process ID
-+ (int)ProcessID {
++ (int)processID {
     // Get the Process ID
     @try {
         // Get the PID
@@ -33,13 +36,13 @@
 }
 
 // Process Name
-+ (NSString *)ProcessName {
++ (NSString *)processName {
     // Get the process name
     @try {
         // Set up the variables
         struct kinfo_proc info;
         size_t length = sizeof(struct kinfo_proc);
-        int mib[4] = { CTL_KERN, KERN_PROC, KERN_PROC_PID, [self ProcessID] };
+        int mib[4] = { CTL_KERN, KERN_PROC, KERN_PROC_PID, [self processID] };
         
         if (sysctl(mib, 4, &info, &length, NULL, 0) < 0)
             // Unknown value
@@ -68,13 +71,13 @@
 }
 
 // Process Status
-+ (int)ProcessStatus {
++ (int)processStatus {
     // Get the process status
     @try {
         // Set up the variables
         struct kinfo_proc info;
         size_t length = sizeof(struct kinfo_proc);
-        int mib[4] = { CTL_KERN, KERN_PROC, KERN_PROC_PID, [self ProcessID] };
+        int mib[4] = { CTL_KERN, KERN_PROC, KERN_PROC_PID, [self processID] };
         
         if (sysctl(mib, 4, &info, &length, NULL, 0) < 0)
             // Unknown value
@@ -103,11 +106,11 @@
 }
 
 // Parent Process ID
-+ (int)ParentPID {
++ (int)parentPID {
     // Get the parent process ID
     @try {
         // Get the Parent PID
-        int ParentPID = [self ParentPIDForProcess:[self ProcessID]];
+        int ParentPID = [self parentPIDForProcess:[self processID]];
         
         // Check to make sure it's valid
         if (ParentPID <= 0) {
@@ -125,7 +128,7 @@
 }
 
 // Parent ID for a certain PID
-+ (int)ParentPIDForProcess:(int)pid {
++ (int)parentPIDForProcess:(int)pid {
     // Get the parent ID for a certain process
     @try {
         // Set up the variables
@@ -160,7 +163,7 @@
 }
 
 // List of process information including PID's, Names, PPID's, and Status'
-+ (NSMutableArray *)ProcessesInformation {
++ (NSMutableArray *)processesInformation {
     // Get the list of processes and all information about them
 	@try {
         // Make a new integer array holding all the kernel processes
@@ -194,7 +197,7 @@
         
         if (st == 0) {
             if (size % sizeof(struct kinfo_proc) == 0) {
-                int nprocess = (int)size / sizeof(struct kinfo_proc);
+                int nprocess = (int)(size / sizeof(struct kinfo_proc));
                 
                 if (nprocess) {
                     NSMutableArray *array = [[NSMutableArray alloc] init];
@@ -205,7 +208,7 @@
                         NSString *processName = [[NSString alloc] initWithFormat:@"%s", process[i].kp_proc.p_comm];
                         NSString *processPriority = [[NSString alloc] initWithFormat:@"%d", process[i].kp_proc.p_priority];
                         NSDate   *processStartDate = [NSDate dateWithTimeIntervalSince1970:process[i].kp_proc.p_un.__p_starttime.tv_sec];
-                        NSString       *processParentID = [[NSString alloc] initWithFormat:@"%d", [self ParentPIDForProcess:(int)process[i].kp_proc.p_pid]];
+                        NSString       *processParentID = [[NSString alloc] initWithFormat:@"%d", [self parentPIDForProcess:(int)process[i].kp_proc.p_pid]];
                         NSString       *processStatus = [[NSString alloc] initWithFormat:@"%d", (int)process[i].kp_proc.p_stat];
                         NSString       *processFlags = [[NSString alloc] initWithFormat:@"%d", (int)process[i].kp_proc.p_flag];
                         

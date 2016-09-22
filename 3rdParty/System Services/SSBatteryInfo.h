@@ -6,19 +6,19 @@
 //  Copyright (c) 2012 Shmoopi LLC. All rights reserved.
 //
 
-#import "SystemServicesConstants.h"
+#import <Foundation/Foundation.h>
 
 @interface SSBatteryInfo : NSObject
 
 // Battery Information
 
 // Battery Level
-+ (float)BatteryLevel;
++ (float)batteryLevel;
 
 // Charging?
-+ (BOOL)Charging;
++ (BOOL)charging;
 
 // Fully Charged?
-+ (BOOL)FullyCharged;
++ (BOOL)fullyCharged;
 
 @end
