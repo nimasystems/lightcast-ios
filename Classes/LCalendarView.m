@@ -13,7 +13,7 @@ CGFloat const kLCalendarViewMonthBarHeight = 37.0;
 CGFloat const kLCalendarViewWeekBarHeight = 32.0;
 
 @implementation LCalendarView {
-
+    
     UIView *_monthBar;
     UIButton *_monthName;
     UIView *_weekdayBar;
@@ -120,11 +120,11 @@ showsOnlyCurrentMonth;
         }
         
         [self.monthBar addSubview:_weekdayBar];
-
+        
         // gridview
-//        r = CGRectMake(0, _monthBar.frame.origin.y + _monthBar.frame.size.height,
-//                       self.bounds.size.width,
-//                       self.bounds.size.height - _monthBar.frame.size.height);
+        //        r = CGRectMake(0, _monthBar.frame.origin.y + _monthBar.frame.size.height,
+        //                       self.bounds.size.width,
+        //                       self.bounds.size.height - _monthBar.frame.size.height);
         
         r = CGRectMake(0, _monthBar.frame.origin.y + _monthBar.frame.size.height,
                        self.bounds.size.width,
@@ -184,14 +184,14 @@ showsOnlyCurrentMonth;
 }
 
 /*
-- (void)didMoveToSuperview
-{
-    // initialize the cells here
-    if (!self.gridView.cells)
-    {
-        [self initInternalViews];
-    }
-}*/
+ - (void)didMoveToSuperview
+ {
+ // initialize the cells here
+ if (!self.gridView.cells)
+ {
+ [self initInternalViews];
+ }
+ }*/
 
 - (void)layoutSubviews
 {
@@ -242,7 +242,7 @@ showsOnlyCurrentMonth;
         
         if (self.showsOnlyCurrentMonth)
         {
-            NSDateComponents *components = [self.calendar components: NSWeekdayCalendarUnit
+            NSDateComponents *components = [self.calendar components: NSCalendarUnitWeekday
                                                             fromDate: [self displayedMonthStartDate]];
             shift = components.weekday - self.calendar.firstWeekday;
             
@@ -304,7 +304,7 @@ showsOnlyCurrentMonth;
 {
     lassert(displayedDate);
     lassert(calendar);
-
+    
     L_RELEASE(selectedCell);
     _gridView.cells = nil;
     
@@ -315,12 +315,12 @@ showsOnlyCurrentMonth;
     
     NSDate *date = nil;
     
-    NSDateComponents *componentsToday = [self.calendar components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
+    NSDateComponents *componentsToday = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger todayYear = componentsToday.year;
     NSInteger todayMonth = componentsToday.month;
     NSInteger todayDay = componentsToday.day;
     
-    NSDateComponents *components = [self.calendar components:NSMonthCalendarUnit | NSYearCalendarUnit fromDate:self.displayedDate];
+    NSDateComponents *components = [self.calendar components:NSCalendarUnitMonth | NSCalendarUnitYear fromDate:self.displayedDate];
     NSInteger year = components.year;
     NSInteger month = components.month;
     //NSInteger day = components.day;
@@ -334,8 +334,8 @@ showsOnlyCurrentMonth;
     // Calculate shift
     [comps setDay:1];
     NSDate *firstDate = [cal dateFromComponents:comps];
-
-    NSDateComponents *componentsW = [self.calendar components:NSWeekdayCalendarUnit
+    
+    NSDateComponents *componentsW = [self.calendar components:NSCalendarUnitWeekday
                                                      fromDate:firstDate];
     NSInteger shift = componentsW.weekday - cal.firstWeekday;
     
@@ -345,17 +345,17 @@ showsOnlyCurrentMonth;
     }
     
     // current month days
-    NSRange range = [cal rangeOfUnit:NSDayCalendarUnit
-                              inUnit:NSMonthCalendarUnit
+    NSRange range = [cal rangeOfUnit:NSCalendarUnitDay
+                              inUnit:NSCalendarUnitMonth
                              forDate:[cal dateFromComponents:comps]];
     NSInteger days = range.length;
     
     // previous month days
     [comps setMonth:(month-1 < 1 ? 12 : month-1)];
     [comps setYear:(month-1 < 1 ? year-1 : year)];
-    NSRange rangePrev = [cal rangeOfUnit:NSDayCalendarUnit
-                              inUnit:NSMonthCalendarUnit
-                             forDate:[cal dateFromComponents:comps]];
+    NSRange rangePrev = [cal rangeOfUnit:NSCalendarUnitDay
+                                  inUnit:NSCalendarUnitMonth
+                                 forDate:[cal dateFromComponents:comps]];
     NSInteger daysPrev = rangePrev.length;
     
     // reset
@@ -363,7 +363,7 @@ showsOnlyCurrentMonth;
     [comps setYear:year];
     
     NSMutableArray *cells = [NSMutableArray array];
-
+    
     CGSize preferredCellSize = [self preferredCellSize];
     CGRect rectCellView = CGRectMake(0, 0, preferredCellSize.width, preferredCellSize.height);
     
@@ -376,7 +376,7 @@ showsOnlyCurrentMonth;
     NSInteger max = days + (matrixSize - (shift + days));
     NSInteger nextD = 0;
     NSInteger i = 0;
-
+    
     NSInteger cellIndex = 0;
     
     for(i=start;i<=max;i++)
@@ -400,7 +400,7 @@ showsOnlyCurrentMonth;
         
         // fetch from data source
         cell = [self.dataSource calendarView:self cellFrame:rectCellView cellForDate:date cellIndex:cellIndex];
-
+        
         if (cell)
         {
             cell.cellIndex = cellIndex;
@@ -450,7 +450,7 @@ showsOnlyCurrentMonth;
         
         // keep a cached copy of the components
         if (selectedDate) {
-            NSDateComponents *components = [self.calendar components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:self.selectedDate];
+            NSDateComponents *components = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:self.selectedDate];
             _selectedDateYear = components.year;
             _selectedDateMonth = components.month;
             _selectedDateDay = components.day;
@@ -613,21 +613,21 @@ showsOnlyCurrentMonth;
 
 - (NSUInteger)displayedYear
 {
-    NSDateComponents *components = [self.calendar components: NSYearCalendarUnit
+    NSDateComponents *components = [self.calendar components: NSCalendarUnitYear
                                                     fromDate: self.displayedDate];
     return components.year;
 }
 
 - (NSUInteger)displayedMonth
 {
-    NSDateComponents *components = [self.calendar components: NSMonthCalendarUnit
+    NSDateComponents *components = [self.calendar components: NSCalendarUnitMonth
                                                     fromDate: self.displayedDate];
     return components.month;
 }
 
 - (NSDate*)displayedMonthStartDate
 {
-    NSDateComponents *components = [self.calendar components: NSMonthCalendarUnit|NSYearCalendarUnit
+    NSDateComponents *components = [self.calendar components: NSCalendarUnitMonth|NSCalendarUnitYear
                                                     fromDate: self.displayedDate];
     components.day = 1;
     return [self.calendar dateFromComponents: components];

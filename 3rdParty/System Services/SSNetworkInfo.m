@@ -136,7 +136,7 @@
     {
         if(dst_sa->sa_family == AF_INET && !((rtm->rtm_flags & RTF_WASCLONED) && (rtm->rtm_parentflags & RTF_PRCLONING)))
         {
-            route = [[Route_Info alloc] initWithRtm:rtm];
+            route = [[[Route_Info alloc] initWithRtm:rtm] autorelease];
         }
     }
     

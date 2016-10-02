@@ -290,7 +290,9 @@ shadowColor;
 
 - (CGSize)sizeThatFits:(CGSize)size
 {
-    CGSize titleSize = ![NSString isNullOrEmpty:self.title] ? [self.title sizeWithFont:font] : CGSizeMake(0, 0);
+    CGSize titleSize = ![NSString isNullOrEmpty:self.title] ? [self.title sizeWithAttributes:@{
+                                                                                               NSFontAttributeName : font
+                                                                                               }] : CGSizeMake(0, 0);
     
     CGFloat width = titleSize.width;
     
@@ -328,7 +330,7 @@ shadowColor;
     {
         height = self.fixedHeight;
     }
-
+    
     return CGSizeMake(width, height);
 }
 
@@ -370,10 +372,12 @@ shadowColor;
         {
             [textColor_ set];
             
-            CGSize textSize = [self.title sizeWithFont:font];
+            CGSize textSize = [self.title sizeWithAttributes:@{
+                                                               NSFontAttributeName : font
+                                                               }];
             CGFloat titleYOffset = round((self.bounds.size.height - textSize.height) / 2);
             xOffset = (icon_) ? xOffset : round(self.bounds.size.width / 2 - textSize.width / 2);
-            [self.title drawAtPoint:CGPointMake(xOffset, titleYOffset) withFont:font];
+            [self.title drawAtPoint:CGPointMake(xOffset, titleYOffset) withAttributes:@{ NSFontAttributeName : font }];
         }
     }
     else if (self.textPosition == LCoreTabBarViewTextPositionBottom)
@@ -389,8 +393,10 @@ shadowColor;
             
             [textColor_ set];
             
-            CGSize textSize = [self.title sizeWithFont:font];
-            [self.title drawAtPoint:CGPointMake(round(self.bounds.size.width / 2 - textSize.width / 2), self.bounds.size.height - 15 + yOffset) withFont:font];
+            CGSize textSize = [self.title sizeWithAttributes:@{
+                                                               NSFontAttributeName : font
+                                                               }];
+            [self.title drawAtPoint:CGPointMake(round(self.bounds.size.width / 2 - textSize.width / 2), self.bounds.size.height - 15 + yOffset) withAttributes:@{ NSFontAttributeName : font }];
         }
     }
     

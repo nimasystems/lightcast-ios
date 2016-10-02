@@ -91,7 +91,7 @@ controllerDelegate;
                                        self.view.bounds.size.height - tabBar.frame.size.height);
     
     _innerView.frame = innerViewFrame;
-
+    
     [self.view addSubview:_innerView];
 }
 
@@ -257,7 +257,7 @@ controllerDelegate;
     
     if (shouldHide)
     {
-       // subviewFrm = self.view.bounds;
+        // subviewFrm = self.view.bounds;
         frHide = CGRectMake(0, self.view.bounds.size.height, tabBar.frame.size.width, tabBar.frame.size.height);
     }
     else
@@ -268,11 +268,11 @@ controllerDelegate;
                             tabBar.frame.size.height
                             );
         
-      /*  subviewFrm = CGRectMake(0, 0,
-                                           self.view.bounds.size.width,
-                                           self.view.bounds.size.height - tabBar.frame.size.height);*/
+        /*  subviewFrm = CGRectMake(0, 0,
+         self.view.bounds.size.width,
+         self.view.bounds.size.height - tabBar.frame.size.height);*/
     }
-
+    
     tabBar.frame = frHide;
     //_innerView.frame = subviewFrm;
     
@@ -474,10 +474,10 @@ controllerDelegate;
                 UIImage *selectedImg = nil;
                 
                 if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                    selectedImg = itm ? itm.finishedSelectedImage : nil;
+                    selectedImg = itm ? itm.image : nil;
                     selectedImg = selectedImg ? selectedImg : itm.selectedImage;
                 } else {
-                    selectedImg = itm ? itm.finishedSelectedImage : nil;
+                    selectedImg = itm ? itm.selectedImage : nil;
                 }
                 
                 tab = [[[LCoreTabBarControllerTab alloc] initWithTitle:title icon:img selectedIcon:selectedImg] autorelease];

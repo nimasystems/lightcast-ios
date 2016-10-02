@@ -134,12 +134,12 @@ currentDate;
         if (d)
         {
             dd = d;
-            components = [calendar components:NSHourCalendarUnit fromDate:d];
+            components = [calendar components:NSCalendarUnitHour fromDate:d];
         }
         else
         {
             dd = now;
-            components = [calendar components:NSHourCalendarUnit fromDate:now];
+            components = [calendar components:NSCalendarUnitHour fromDate:now];
         }
         
         day = [components day];

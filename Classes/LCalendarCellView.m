@@ -11,7 +11,7 @@
 CGFloat const kLCalendarCellViewLabelHeight = 17.0;
 
 @implementation LCalendarCellView {
-
+    
     UILabel *_dateLabel;
     NSUInteger _day;
 }
@@ -244,7 +244,7 @@ showsTouchEffect;
         
         if (date)
         {
-            NSDateComponents *components = [self.calendar components:NSDayCalendarUnit
+            NSDateComponents *components = [self.calendar components:NSCalendarUnitDay
                                                             fromDate:date];
             _day = components.day;
         }

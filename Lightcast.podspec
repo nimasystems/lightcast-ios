@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Lightcast"
-  s.version      = "0.0.20"
+  s.version      = "0.0.21"
   s.summary      = "iOS utility framework"
 
   # This description is used to generate tags and improve search results.

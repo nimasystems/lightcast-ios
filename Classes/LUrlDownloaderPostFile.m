@@ -77,6 +77,8 @@ actualData;
 {
     L_RELEASE(filename);
     L_RELEASE(data);
+    L_RELEASE(actualData);
+    L_RELEASE(mimetype);
     
     [super dealloc];
 }
@@ -87,33 +89,33 @@ actualData;
 {
     // TODO restore this some day
     /*
-    __block NSMutableString *mime = [[NSMutableString alloc] init];
-    
-    // it seems GEMagicResult is not thread safe at all
-    // this may cause severe locks!
-    // TODO: Remove this from here
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        @try
-        {
-            NSString *fn = [[filename copy] autorelease];
-            GEMagicResult *result = _isFile ? [GEMagicKit magicForFileAtPath:fn] : [GEMagicKit magicForData:data];
-            
-            [mime setString:result.mimeType];
-        }
-        @catch (NSException *e)
-        {
-            LogError(@"Unhandled exception while quering the GEMagicKit: %@", e);
-        }
-    });
-    
-    if ([NSString isNullOrEmpty:mime])
-    {
-        // fallback to default
-        [mime setString:LUrlDownloaderPostFileDefaultMimetype];
-    }
-    
-    
-    return [mime autorelease];*/
+     __block NSMutableString *mime = [[NSMutableString alloc] init];
+     
+     // it seems GEMagicResult is not thread safe at all
+     // this may cause severe locks!
+     // TODO: Remove this from here
+     dispatch_sync(dispatch_get_main_queue(), ^{
+     @try
+     {
+     NSString *fn = [[filename copy] autorelease];
+     GEMagicResult *result = _isFile ? [GEMagicKit magicForFileAtPath:fn] : [GEMagicKit magicForData:data];
+     
+     [mime setString:result.mimeType];
+     }
+     @catch (NSException *e)
+     {
+     LogError(@"Unhandled exception while quering the GEMagicKit: %@", e);
+     }
+     });
+     
+     if ([NSString isNullOrEmpty:mime])
+     {
+     // fallback to default
+     [mime setString:LUrlDownloaderPostFileDefaultMimetype];
+     }
+     
+     
+     return [mime autorelease];*/
     
     return LUrlDownloaderPostFileDefaultMimetype;
 }

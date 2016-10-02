@@ -27,25 +27,25 @@
     
     // Get the info about a process
     NSProcessInfo * processInfo = [NSProcessInfo processInfo];
-	// Get the uptime of the system
+    // Get the uptime of the system
     NSTimeInterval UptimeInterval = [processInfo systemUptime];
-	// Get the calendar
+    // Get the calendar
     NSCalendar *Calendar = [NSCalendar currentCalendar];
-	// Create the Dates
-    NSDate *Date = [[NSDate alloc] initWithTimeIntervalSinceNow:(0-UptimeInterval)];
+    // Create the Dates
+    NSDate *Date = [[[NSDate alloc] initWithTimeIntervalSinceNow:(0-UptimeInterval)] autorelease];
     unsigned int unitFlags = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
     NSDateComponents *Components = [Calendar components:unitFlags fromDate:Date toDate:[NSDate date]  options:0];
-	
+    
     // Get the day, hour and minutes
     Days = [NSNumber numberWithLong:[Components day]];
     Hours = [NSNumber numberWithLong:[Components hour]];
     Minutes = [NSNumber numberWithLong:[Components minute]];
-	
+    
     // Format the dates
-	NSString *Uptime = [NSString stringWithFormat:@"%@ %@ %@",
-                               [Days stringValue],
-                               [Hours stringValue],
-                               [Minutes stringValue]];
+    NSString *Uptime = [NSString stringWithFormat:@"%@ %@ %@",
+                        [Days stringValue],
+                        [Hours stringValue],
+                        [Minutes stringValue]];
     
     // Error checking
     if (!Uptime) {
@@ -230,7 +230,7 @@
                 NewDeviceType = @"9.7-inch iPad Pro(WiFi)";
             else if ([DeviceType isEqualToString:@"iPad6,4"])
                 NewDeviceType = @"9.7-inch iPad Pro(Cellular)";
-	    else if ([DeviceType isEqualToString:@"iPad6,7"])
+            else if ([DeviceType isEqualToString:@"iPad6,7"])
                 NewDeviceType = @"12.9-inch iPad Pro(WiFi)";
             else if ([DeviceType isEqualToString:@"iPad6,8"])
                 NewDeviceType = @"12.9-inch iPad Pro(Cellular)";

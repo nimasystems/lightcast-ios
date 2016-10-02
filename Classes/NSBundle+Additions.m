@@ -10,21 +10,4 @@
 
 @implementation NSBundle(Additions)
 
-- (BOOL)loadNibNamedL:(NSString *)nibName owner:(id)owner topLevelObjects:(NSArray **)topLevelObjects
-{
-    if (topLevelObjects != NULL)
-    {
-        *topLevelObjects = nil;
-    }
-    
-    if ([self respondsToSelector:@selector(loadNibNamed:owner:topLevelObjects:)])
-    {
-        return [self loadNibNamed:nibName owner:owner topLevelObjects:topLevelObjects];
-    }
-    else
-    {
-        return [NSBundle loadNibNamed:nibName owner:owner];
-    }
-}
-
 @end

@@ -16,6 +16,12 @@ NSString *const kLBadgeViewDefaultFontName = @"Helvetica-Bold";
 CGFloat const kLBadgeViewDefaultFontSize = 12.0;
 CGFloat const kLBadgeViewDefaultShadowOffset = 4.0;
 
+@interface LBadgeView()
+
+@property (nonatomic, retain) NSMutableParagraphStyle *badgeParagraphStyle;
+
+@end
+
 @implementation LBadgeView {
     
     CGColorRef _ccbackgroundColor;
@@ -43,11 +49,11 @@ textPaddingY;
     if (self)
     {
         super.backgroundColor = [UIColor clearColor];
-
+        
         cornerRadius = kLBadgeViewDefaultCornerRadius;
         
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-          borderWidth = kLBadgeViewDefaultBorderWidth;
+            borderWidth = kLBadgeViewDefaultBorderWidth;
         } else {
             borderWidth = kLBadgeViewDefaultBorderWidthIOS7;
         }
@@ -56,6 +62,10 @@ textPaddingY;
         textPaddingY = kLBadgeViewDefaultTextPadding - 1;
         
         self.userInteractionEnabled = YES;
+        
+        self.badgeParagraphStyle = [[[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+        self.badgeParagraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+        self.badgeParagraphStyle.alignment = NSTextAlignmentCenter;
         
         self.backgroundColor = [UIColor redColor];
         self.borderColor = [UIColor whiteColor];
@@ -73,6 +83,9 @@ textPaddingY;
     L_RELEASE(backgroundColor);
     L_RELEASE(borderColor);
     L_RELEASE(font);
+    L_RELEASE(textColor);
+    
+    self.badgeParagraphStyle = nil;
     
     if (_ccbackgroundColor != NULL)
     {
@@ -188,11 +201,14 @@ textPaddingY;
     
     CGFloat highPadd = textPaddingX > textPaddingY ? textPaddingX : textPaddingY;
     
-    CGSize necessarySize = [value sizeWithFont:self.font];
+    CGSize necessarySize = [value sizeWithAttributes:@{
+                                                       NSFontAttributeName : self.font
+                                                       }];
+    
     CGRect r = CGRectMake(0, 0,
                           necessarySize.width + self.borderWidth + highPadd + kLBadgeViewDefaultShadowOffset + 8,
                           necessarySize.height + self.borderWidth + highPadd + kLBadgeViewDefaultShadowOffset
-    );
+                          );
     
     self.size = r.size;
 }
@@ -222,7 +238,8 @@ textPaddingY;
     
     [textColor set];
     
-    [value drawInRect:rrect withFont:self.font lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
+    [value drawInRect:rrect withAttributes:@{ NSFontAttributeName : self.font,
+                                              NSParagraphStyleAttributeName: self.badgeParagraphStyle }];
 }
 
 - (void)drawBackground:(CGContextRef)context
@@ -231,29 +248,29 @@ textPaddingY;
     CGFloat pad = 4.0f;
     //CGFloat shadowOffset = kLBadgeViewShadowOffset;
     //CGRect rrect = CGRectInset(self.bounds, 4.0f, 6.0f);
-  
+    
     //CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
     //CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
     
     /*CGContextSaveGState(context);
-    
-    CGColorRef shadowColor = [[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.6f] CGColor];
-    //CGContextSaveGState(context);
-    CGContextSetShadowWithColor(context, CGSizeMake(0.0f, shadowOffset), 8.0f, shadowColor);
-    
-    CGContextSetFillColorWithColor(context, shadowColor);
-    
-    CGContextMoveToPoint(context, minx, midy);
-    CGContextAddArcToPoint(context, minx, miny, midx, miny, self.cornerRadius);
-    CGContextAddArcToPoint(context, maxx, miny, maxx, midy, self.cornerRadius);
-    CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, self.cornerRadius);
-    CGContextAddArcToPoint(context, minx, maxy, minx, midy, self.cornerRadius);
-    
-    CGContextClosePath(context);
-    
-    CGContextDrawPath(context, kCGPathFillStroke);
-    
-    CGContextRestoreGState(context);*/
+     
+     CGColorRef shadowColor = [[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.6f] CGColor];
+     //CGContextSaveGState(context);
+     CGContextSetShadowWithColor(context, CGSizeMake(0.0f, shadowOffset), 8.0f, shadowColor);
+     
+     CGContextSetFillColorWithColor(context, shadowColor);
+     
+     CGContextMoveToPoint(context, minx, midy);
+     CGContextAddArcToPoint(context, minx, miny, midx, miny, self.cornerRadius);
+     CGContextAddArcToPoint(context, maxx, miny, maxx, midy, self.cornerRadius);
+     CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, self.cornerRadius);
+     CGContextAddArcToPoint(context, minx, maxy, minx, midy, self.cornerRadius);
+     
+     CGContextClosePath(context);
+     
+     CGContextDrawPath(context, kCGPathFillStroke);
+     
+     CGContextRestoreGState(context);*/
     
     CGContextSaveGState(context);
     
@@ -274,7 +291,7 @@ textPaddingY;
     CGContextAddArcToPoint(context, maxx, miny, maxx, midy, self.cornerRadius);
     CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, self.cornerRadius);
     CGContextAddArcToPoint(context, minx, maxy, minx, midy, self.cornerRadius);
-
+    
     CGContextClosePath(context);
     
     CGContextDrawPath(context, kCGPathFillStroke);

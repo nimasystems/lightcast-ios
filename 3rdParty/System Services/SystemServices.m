@@ -633,11 +633,17 @@
 }
 
 - (NSString *)uniqueID {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [SSUUID uniqueID];
+#pragma clang diagnostic pop
 }
 
 - (NSString *)deviceSignature {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [SSUUID deviceSignature];
+#pragma clang diagnostic pop
 }
 
 - (NSString *)cfuuid {

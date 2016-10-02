@@ -66,25 +66,27 @@ UUID;
     L_RELEASE(primaryMacAddress);
     L_RELEASE(deviceName);
     L_RELEASE(deviceDescription);
+    L_RELEASE(UUID);
+    L_RELEASE(currentResolution);
     
     [super dealloc];
 }
 
 - (void)initDeviceOSInfo
 {
-	NSString * ret = nil;
-	
+    NSString * ret = nil;
+    
 #ifdef TARGET_IOS
-	
-	UIDevice * dev = [UIDevice currentDevice];
-	
-	ret = [NSString stringWithFormat:@"%@ %@", dev.model, dev.systemVersion];
+    
+    UIDevice * dev = [UIDevice currentDevice];
+    
+    ret = [NSString stringWithFormat:@"%@ %@", dev.model, dev.systemVersion];
     
 #else
-	
-	NSString * errorString = nil;
-	NSData *sysVerData = [[[NSData alloc] initWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"] autorelease];
-	
+    
+    NSString * errorString = nil;
+    NSData *sysVerData = [[[NSData alloc] initWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"] autorelease];
+    
     lassert(sysVerData);
     
     if (sysVerData)
@@ -102,16 +104,16 @@ UUID;
                    ];
         }
     }
-	
+    
 #endif
-	
+    
     lassert(![NSString isNullOrEmpty:ret]);
     
-	if (deviceDescription != ret)
-	{
-		L_RELEASE(deviceDescription);
-		deviceDescription = [ret retain];
-	}
+    if (deviceDescription != ret)
+    {
+        L_RELEASE(deviceDescription);
+        deviceDescription = [ret retain];
+    }
 }
 
 - (void)initPrimaryMacAddress
@@ -316,7 +318,7 @@ UUID;
 - (NSString*)getSystemName
 {
     NSString *systemName = nil;
-
+    
 #ifdef TARGET_IOS
     systemName = [[UIDevice currentDevice] systemName];
 #endif
@@ -379,7 +381,7 @@ UUID;
                     {
                         data = IORegistryEntryCreateCFProperty( serviceObj,
                                                                CFSTR( "device_type" ), kCFAllocatorDefault, 0 );
-
+                        
                         if (data != NULL)
                         {
                             rawdata = CFDataGetBytePtr(data);

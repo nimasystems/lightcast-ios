@@ -60,8 +60,8 @@ static dispatch_once_t LDateTimeUtilsSharedDateFormatterOnceToken = 0;
         [LDateTimeUtilsSharedDateFormatter setDateFormat:format];
         
         //if (fromTimezone) {
-            //NSInteger seconds = -[fromTimezone secondsFromGMTForDate:date];
-            //date = [NSDate dateWithTimeInterval:seconds sinceDate: date];
+        //NSInteger seconds = -[fromTimezone secondsFromGMTForDate:date];
+        //date = [NSDate dateWithTimeInterval:seconds sinceDate: date];
         //}
         
         NSTimeZone *tz = [NSTimeZone timeZoneWithName:@"UTC"];
@@ -82,7 +82,7 @@ static dispatch_once_t LDateTimeUtilsSharedDateFormatterOnceToken = 0;
         return 0;
     }
     
-    NSUInteger unitFlags = NSDayCalendarUnit;
+    NSUInteger unitFlags = NSCalendarUnitDay;
     NSCalendar* calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:unitFlags fromDate:dt1 toDate:dt2 options:0];
     NSInteger daysBetween = abs((int)[components day]);

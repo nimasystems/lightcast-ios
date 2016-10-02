@@ -103,15 +103,15 @@ NSString *LightcastLocalizedString(NSString *key);
     LNotificationDispatcher* nd;
     
     NSMutableDictionary * systemObjects;
-	
+    
     BOOL hasInitialized;
     BOOL firstInstall;
     
     id<LightcastDelegate> delegate;
-	
-	LPluginManager *plugins; // only a stub - to compile in 32-bit mode
-	LDatabaseManager *db; // only a stub - to compile in 32-bit mode
-	LStorage *storage; // only a stub - to compile in 32-bit mode
+    
+    LPluginManager *plugins; // only a stub - to compile in 32-bit mode
+    LDatabaseManager *db; // only a stub - to compile in 32-bit mode
+    LStorage *storage; // only a stub - to compile in 32-bit mode
     
     LAppUpgrades *appUpgrader;
 }
@@ -148,7 +148,6 @@ NSString *LightcastLocalizedString(NSString *key);
 
 - (BOOL)initFileLogger:(NSString*)logsDirectory error:(NSError**)error;
 - (BOOL)initFileLogger:(NSString*)logsDirectory compressLogs:(BOOL)compressLogs error:(NSError**)error;
-- (void)addConsoleLoggers;
 
 + (BOOL)resetAppData:(NSError**)error configuration:(LCAppConfiguration*)aConfiguration;
 

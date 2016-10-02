@@ -118,9 +118,6 @@ typedef enum
 
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLayoutSubviews;
-
-- (void)viewWillUnload;
-- (void)viewDidUnload;
 #endif
 
 @end

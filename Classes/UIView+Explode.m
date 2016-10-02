@@ -62,7 +62,7 @@ float randomFloat()
     CGRect originalFrame = self.layer.frame;
     CGRect originalBounds = self.layer.bounds;
     
-   
+    
     CGImageRef fullImage = [self imageFromLayer:self.layer].CGImage;
     
     //if its an image, set it to nil
@@ -109,7 +109,7 @@ float randomFloat()
     
     [self.layer setFrame:originalFrame];
     [self.layer setBounds:originalBounds];
-
+    
     
     self.layer.backgroundColor = [UIColor clearColor].CGColor;
     
@@ -127,7 +127,7 @@ float randomFloat()
         [moveAnim setTimingFunctions:timingFunctions];
         
         float r = randomFloat();
-
+        
         NSTimeInterval speed = 2.35*r;
         
         CAKeyframeAnimation *transformAnim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
@@ -146,9 +146,9 @@ float randomFloat()
         
         
         timingFunctions = [NSArray arrayWithObjects:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
-                                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn],
-                                    [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut], [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                                    nil];
+                           [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn],
+                           [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut], [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                           nil];
         [transformAnim setTimingFunctions:timingFunctions];
         transformAnim.fillMode = kCAFillModeForwards;
         transformAnim.removedOnCompletion = NO;
@@ -159,7 +159,7 @@ float randomFloat()
         opacityAnim.toValue = [NSNumber numberWithFloat:0.f];
         opacityAnim.removedOnCompletion = NO;
         opacityAnim.fillMode =kCAFillModeForwards;
-       
+        
         
         CAAnimationGroup *animGroup = [CAAnimationGroup animation];
         animGroup.animations = [NSArray arrayWithObjects:moveAnim,transformAnim,opacityAnim, nil];
@@ -235,7 +235,7 @@ float randomFloat()
     }
     
     [particlePath addQuadCurveToPoint:endPoint
-                     controlPoint:curvePoint];
+                         controlPoint:curvePoint];
     
     return particlePath;
     
@@ -244,5 +244,12 @@ float randomFloat()
 @end
 
 @implementation LPParticleLayer
+
+- (void)dealloc {
+    
+    L_RELEASE(_particlePath);
+    
+    [super dealloc];
+}
 
 @end

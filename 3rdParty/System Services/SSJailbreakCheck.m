@@ -265,12 +265,15 @@ enum {
 + (int)systemCheck {
     @try {
         // See if the system call can be used
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         if (system(0)) {
             // Jailbroken
             return KFSystem;
         } else
             // Not Jailbroken
             return NOTJAIL;
+#pragma clang diagnostic pop
     }
     @catch (NSException *exception) {
         // Not Jailbroken

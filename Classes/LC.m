@@ -184,6 +184,12 @@ logFileManager=_logFileManager;
     L_RELEASE(lightcastBundle);
     L_RELEASE(_fileLogger);
     L_RELEASE(_logFileManager);
+    L_RELEASE(db);
+    L_RELEASE(documentsPath);
+    L_RELEASE(plugins);
+    L_RELEASE(resourcesPath);
+    L_RELEASE(storage);
+    L_RELEASE(temporaryPath);
     
     [super dealloc];
 }
@@ -437,8 +443,6 @@ logFileManager=_logFileManager;
     
     if (_logFileManager)
     {
-        NSArray *loggers = [DDLog allLoggers];
-        
         // compress log files
         // disabled until this is fixed!
         //[_logFileManager compressLogFiles];

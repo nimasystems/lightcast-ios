@@ -86,18 +86,6 @@ activityProgressIsShown;
     viewControllerDelegate = nil;
     
 #ifdef TARGET_IOS
-    // Only iOS 6 and up
-    if (!_willUnload)
-    {
-        [self viewWillUnload];
-    }
-    
-    // Only iOS 6 and up
-    if (!_didUnload)
-    {
-        [self viewDidUnload];
-    }
-    
     self.activityHolderView = nil;
     self.activityIndicator = nil;
     self.waitingLabel = nil;
@@ -190,45 +178,6 @@ activityProgressIsShown;
     }
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Weverything"
-- (void)viewWillUnload
-{
-    /*
-     @deprecated
-     */
-    //[super viewWillUnload];
-    
-    if (viewControllerDelegate && [viewControllerDelegate respondsToSelector:@selector(viewControllerWillUnLoad:)])
-    {
-        [viewControllerDelegate viewControllerWillUnLoad:self];
-    }
-    
-    _willUnload = YES;
-}
-#pragma clang diagnostic pop
-
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Weverything"
-- (void)viewDidUnload
-{
-    /*
-     @deprecated
-     */
-    //[super viewDidUnload];
-    
-    isVisible = NO;
-    
-    if (viewControllerDelegate && [viewControllerDelegate respondsToSelector:@selector(viewControllerDidUnload:)])
-    {
-        [viewControllerDelegate viewControllerDidUnload:self];
-    }
-    
-    _didUnload = YES;
-}
-#pragma clang diagnostic pop
-
 #endif
 
 #pragma mark -
@@ -292,10 +241,10 @@ activityProgressIsShown;
     if (error && [error isKindOfClass:[LWebServiceError class]])
     {
         LWebServiceError *lerr = (LWebServiceError*)error;
-      /*
-#if DEBUG
-        errDescription = [NSString stringWithFormat:@"Web Service Error:\nDomain:%@\nException:%@", lerr.domain, lerr.exceptionName];
-#endif*/
+        /*
+         #if DEBUG
+         errDescription = [NSString stringWithFormat:@"Web Service Error:\nDomain:%@\nException:%@", lerr.domain, lerr.exceptionName];
+         #endif*/
         
         NSMutableArray *allVErrs = [[[NSMutableArray alloc] init] autorelease];
         
@@ -317,10 +266,10 @@ activityProgressIsShown;
             {
                 errDescription = [NSString stringWithFormat:@"%@\nValidation Errors:\n\n%@", errDescription, [allVErrs componentsJoinedByString:@"\n"]];
             }
-        /*
-#if DEBUG
-            errDescription = [NSString stringWithFormat:@"%@\nTrace:\n%@\n\nExtra data:\n%@", errDescription, lerr.trace, lerr.extraData];
-#endif*/
+            /*
+             #if DEBUG
+             errDescription = [NSString stringWithFormat:@"%@\nTrace:\n%@\n\nExtra data:\n%@", errDescription, lerr.trace, lerr.extraData];
+             #endif*/
         }
         else
         {
@@ -390,25 +339,25 @@ activityProgressIsShown;
     }
     
     _activityHolderView = [[UIView alloc] initWithFrame:CGRectMake(round(self.view.bounds.size.width / 2 - activityW / 2),
-                                                                  round(self.view.bounds.size.height / 2 - activityH / 2),
-                                                                  activityW,
-                                                                  activityH)];
-	_activityHolderView.backgroundColor =  self.progressBgColor;
-	_activityHolderView.clipsToBounds = YES;
+                                                                   round(self.view.bounds.size.height / 2 - activityH / 2),
+                                                                   activityW,
+                                                                   activityH)];
+    _activityHolderView.backgroundColor =  self.progressBgColor;
+    _activityHolderView.clipsToBounds = YES;
     _activityHolderView.layer.cornerRadius = 10;
     _activityHolderView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-
+    
     // show progress view
     _activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:iStyle] autorelease];
     [_activityIndicator sizeToFit];
-	_activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
-	UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-	[_activityIndicator setFrame:CGRectMake(round(_activityHolderView.bounds.size.width / 2 - _activityIndicator.frame.size.width / 2),
+    _activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    [_activityIndicator setFrame:CGRectMake(round(_activityHolderView.bounds.size.width / 2 - _activityIndicator.frame.size.width / 2),
                                             (onlyIndicatorShown ? (round(_activityHolderView.bounds.size.height / 2 - _activityIndicator.frame.size.height / 2)) : nextY),
                                             _activityIndicator.frame.size.width,
                                             _activityIndicator.frame.size.height)];
-	[_activityHolderView addSubview:_activityIndicator];
-	[_activityIndicator startAnimating];
+    [_activityHolderView addSubview:_activityIndicator];
+    [_activityIndicator startAnimating];
     //[self.view bringSubviewToFront:_activityIndicator];
     
     // show waiting label
@@ -423,14 +372,14 @@ activityProgressIsShown;
         _waitingLabel.textAlignment = UITextAlignmentCenter;
         
         CGSize constraintSize = CGSizeMake(indicatorSize.width, MAXFLOAT);
-        CGSize labelSize = [statusText sizeWithFont:self.progressFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+        CGRect labelSize = [statusText boundingRectWithSize:constraintSize options:0 attributes:@{ NSFontAttributeName : self.progressFont } context:nil];
         _waitingLabel.numberOfLines = 0;
         
         _waitingLabel.backgroundColor = [UIColor clearColor];
-        _waitingLabel.frame = CGRectMake(round(_activityHolderView.bounds.size.width / 2 - labelSize.width / 2),
+        _waitingLabel.frame = CGRectMake(round(_activityHolderView.bounds.size.width / 2 - labelSize.size.width / 2),
                                          nextY,
-                                         labelSize.width,
-                                         labelSize.height);
+                                         labelSize.size.width,
+                                         labelSize.size.height);
         _waitingLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
         UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         [_activityHolderView addSubview:_waitingLabel];
@@ -476,22 +425,22 @@ activityProgressIsShown;
                                                                   round(self.view.bounds.size.height / 2 - activityH / 2),
                                                                   activityW,
                                                                   activityH)];
-	_activityHolderView.backgroundColor =  self.progressBgColor;
-	_activityHolderView.clipsToBounds = YES;
+    _activityHolderView.backgroundColor =  self.progressBgColor;
+    _activityHolderView.clipsToBounds = YES;
     _activityHolderView.layer.cornerRadius = 10;
     _activityHolderView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-
+    
     // show progress view
     _activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:iStyle] autorelease];
     [_activityIndicator sizeToFit];
-	_activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
-	UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-	[_activityIndicator setFrame:CGRectMake(round(_activityHolderView.bounds.size.width / 2 - _activityIndicator.frame.size.width / 2),
+    _activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    [_activityIndicator setFrame:CGRectMake(round(_activityHolderView.bounds.size.width / 2 - _activityIndicator.frame.size.width / 2),
                                             (onlyIndicatorShown ? (round(_activityHolderView.bounds.size.height / 2 - _activityIndicator.frame.size.height / 2)) : nextY),
-                                           _activityIndicator.frame.size.width,
+                                            _activityIndicator.frame.size.width,
                                             _activityIndicator.frame.size.height)];
-	[_activityHolderView addSubview:_activityIndicator];
-	[_activityIndicator startAnimating];
+    [_activityHolderView addSubview:_activityIndicator];
+    [_activityIndicator startAnimating];
     //[self.view bringSubviewToFront:_activityIndicator];
     
     // show waiting label

@@ -15,8 +15,8 @@ NSString *const LUrlDownloaderCompressorErrorDomain = @"com.lightcast.urlDownloa
 
 @implementation LUrlDownloaderCompressor {
     
-	BOOL streamReady;
-	z_stream zStream;
+    BOOL streamReady;
+    z_stream zStream;
 }
 
 @synthesize
@@ -26,7 +26,7 @@ streamReady;
 
 + (id)compressor
 {
-	LUrlDownloaderCompressor *compressor = [[[self alloc] init] autorelease];
+    LUrlDownloaderCompressor *compressor = [[[self alloc] init] autorelease];
     
     if (!compressor)
     {
@@ -34,65 +34,65 @@ streamReady;
         return nil;
     }
     
-	[compressor setupStream];
+    [compressor setupStream];
     
-	return compressor;
+    return compressor;
 }
 
 - (void)dealloc
 {
-	if (streamReady)
+    if (streamReady)
     {
-		[self closeStream];
-	}
+        [self closeStream];
+    }
     
-	[super dealloc];
+    [super dealloc];
 }
 
 #pragma mark - Stream operations
 
 - (NSError *)setupStream
 {
-	if (streamReady)
+    if (streamReady)
     {
-		return nil;
-	}
+        return nil;
+    }
     
-	// Setup the inflate stream
-	zStream.zalloc = Z_NULL;
-	zStream.zfree = Z_NULL;
-	zStream.opaque = Z_NULL;
-	zStream.avail_in = 0;
-	zStream.next_in = 0;
-	int status = deflateInit2(&zStream, kLUrlDownloaderCompressorCompressionAmount, Z_DEFLATED, (15+16), 8, Z_DEFAULT_STRATEGY);
+    // Setup the inflate stream
+    zStream.zalloc = Z_NULL;
+    zStream.zfree = Z_NULL;
+    zStream.opaque = Z_NULL;
+    zStream.avail_in = 0;
+    zStream.next_in = 0;
+    int status = deflateInit2(&zStream, kLUrlDownloaderCompressorCompressionAmount, Z_DEFLATED, (15+16), 8, Z_DEFAULT_STRATEGY);
     
-	if (status != Z_OK)
+    if (status != Z_OK)
     {
-		return [[self class] deflateErrorWithCode:status];
-	}
+        return [[self class] deflateErrorWithCode:status];
+    }
     
-	streamReady = YES;
+    streamReady = YES;
     
-	return nil;
+    return nil;
 }
 
 - (NSError *)closeStream
 {
-	if (!streamReady)
+    if (!streamReady)
     {
-		return nil;
-	}
+        return nil;
+    }
     
-	// Close the deflate stream
-	streamReady = NO;
-	int status = deflateEnd(&zStream);
+    // Close the deflate stream
+    streamReady = NO;
+    int status = deflateEnd(&zStream);
     
-	if (status != Z_OK)
+    if (status != Z_OK)
     {
-		return [[self class] deflateErrorWithCode:status];
-	}
+        return [[self class] deflateErrorWithCode:status];
+    }
     
-	return nil;
+    return nil;
 }
 
 - (NSData *)compressBytes:(Bytef *)bytes length:(NSUInteger)length error:(NSError **)err shouldFinish:(BOOL)shouldFinish
@@ -102,54 +102,54 @@ streamReady;
         *err = nil;
     }
     
-	if (length == 0)
+    if (length == 0)
     {
         return nil;
     }
-	
-	NSUInteger halfLength = length/2;
-	
-	// We'll take a guess that the compressed data will fit in half the size of the original (ie the max to compress at once is half DATA_CHUNK_SIZE), if not, we'll increase it below
-	NSMutableData *outputData = [NSMutableData dataWithLength:length/2];
-	
-	int status;
-	
-	zStream.next_in = bytes;
-	zStream.avail_in = (unsigned int)length;
-	zStream.avail_out = 0;
     
-	NSInteger bytesProcessedAlready = zStream.total_out;
+    NSUInteger halfLength = length/2;
     
-	while (zStream.avail_out == 0)
+    // We'll take a guess that the compressed data will fit in half the size of the original (ie the max to compress at once is half DATA_CHUNK_SIZE), if not, we'll increase it below
+    NSMutableData *outputData = [NSMutableData dataWithLength:length/2];
+    
+    int status;
+    
+    zStream.next_in = bytes;
+    zStream.avail_in = (unsigned int)length;
+    zStream.avail_out = 0;
+    
+    NSInteger bytesProcessedAlready = zStream.total_out;
+    
+    while (zStream.avail_out == 0)
     {
-		if (zStream.total_out-bytesProcessedAlready >= [outputData length])
+        if (zStream.total_out-bytesProcessedAlready >= [outputData length])
         {
-			[outputData increaseLengthBy:halfLength];
-		}
-		
-		zStream.next_out = (Bytef*)[outputData mutableBytes] + zStream.total_out-bytesProcessedAlready;
-		zStream.avail_out = (unsigned int)([outputData length] - (zStream.total_out-bytesProcessedAlready));
-		status = deflate(&zStream, shouldFinish ? Z_FINISH : Z_NO_FLUSH);
-		
-		if (status == Z_STREAM_END)
+            [outputData increaseLengthBy:halfLength];
+        }
+        
+        zStream.next_out = (Bytef*)[outputData mutableBytes] + zStream.total_out-bytesProcessedAlready;
+        zStream.avail_out = (unsigned int)([outputData length] - (zStream.total_out-bytesProcessedAlready));
+        status = deflate(&zStream, shouldFinish ? Z_FINISH : Z_NO_FLUSH);
+        
+        if (status == Z_STREAM_END)
         {
-			break;
-		}
+            break;
+        }
         else if (status != Z_OK)
         {
-			if (err != NULL)
+            if (err != NULL)
             {
-				*err = [[self class] deflateErrorWithCode:status];
-			}
+                *err = [[self class] deflateErrorWithCode:status];
+            }
             
-			return nil;
-		}
-	}
+            return nil;
+        }
+    }
     
-	// Set real length
-	[outputData setLength: zStream.total_out-bytesProcessedAlready];
+    // Set real length
+    [outputData setLength: zStream.total_out-bytesProcessedAlready];
     
-	return outputData;
+    return outputData;
 }
 
 + (NSData *)compressData:(NSData*)uncompressedData error:(NSError **)err
@@ -159,20 +159,20 @@ streamReady;
         *err = nil;
     }
     
-	NSError *theError = nil;
-	NSData *outputData = [[LUrlDownloaderCompressor compressor] compressBytes:(Bytef *)[uncompressedData bytes] length:[uncompressedData length] error:&theError shouldFinish:YES];
+    NSError *theError = nil;
+    NSData *outputData = [[LUrlDownloaderCompressor compressor] compressBytes:(Bytef *)[uncompressedData bytes] length:[uncompressedData length] error:&theError shouldFinish:YES];
     
-	if (theError)
+    if (theError)
     {
-		if (err != NULL)
+        if (err != NULL)
         {
-			*err = theError;
-		}
+            *err = theError;
+        }
         
-		return nil;
-	}
+        return nil;
+    }
     
-	return outputData;
+    return outputData;
 }
 
 + (BOOL)compressDataFromFile:(NSString *)sourcePath toFile:(NSString *)destinationPath error:(NSError **)err
@@ -182,119 +182,121 @@ streamReady;
         *err = nil;
     }
     
-	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+    NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
     
-	// Create an empty file at the destination path
-	if (![fileManager createFileAtPath:destinationPath contents:[NSData data] attributes:nil])
+    // Create an empty file at the destination path
+    if (![fileManager createFileAtPath:destinationPath contents:[NSData data] attributes:nil])
     {
-		if (err != NULL)
+        if (err != NULL)
         {
-			*err = [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of %@ failed because we were to create a file at %@"),sourcePath,destinationPath],NSLocalizedDescriptionKey,nil]];
-		}
+            *err = [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of %@ failed because we were to create a file at %@"),sourcePath,destinationPath],NSLocalizedDescriptionKey,nil]];
+        }
         
-		return NO;
-	}
-	
-	// Ensure the source file exists
-	if (![fileManager fileExistsAtPath:sourcePath])
-    {
-		if (err != NULL)
-        {
-			*err = [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of %@ failed the file does not exist"),sourcePath],NSLocalizedDescriptionKey,nil]];
-		}
-        
-		return NO;
-	}
-	
-	UInt8 inputData[kLUrlDownloaderCompressorDataChunkSize];
-	NSData *outputData;
-	NSInteger readLength;
-	NSError *theError = nil;
-	
-	LUrlDownloaderCompressor *compressor = [LUrlDownloaderCompressor compressor];
-	
-	NSInputStream *inputStream = [NSInputStream inputStreamWithFileAtPath:sourcePath];
-	[inputStream open];
-	NSOutputStream *outputStream = [NSOutputStream outputStreamToFileAtPath:destinationPath append:NO];
-	[outputStream open];
-	
-    while ([compressor streamReady])
-    {
-		// Read some data from the file
-		readLength = [inputStream read:inputData maxLength:kLUrlDownloaderCompressorDataChunkSize];
-        
-		// Make sure nothing went wrong
-		if ([inputStream streamStatus] == NSStreamStatusError)
-        {
-			if (err != NULL)
-            {
-				*err = [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of %@ failed because we were unable to read from the source data file"),sourcePath],NSLocalizedDescriptionKey,[inputStream streamError],NSUnderlyingErrorKey,nil]];
-			}
-            
-			[compressor closeStream];
-            
-			return NO;
-		}
-        
-		// Have we reached the end of the input data?
-		if (!readLength)
-        {
-			break;
-		}
-		
-		// Attempt to deflate the chunk of data
-		outputData = [compressor compressBytes:inputData length:readLength error:&theError shouldFinish:readLength < kLUrlDownloaderCompressorDataChunkSize ];
-        
-		if (theError)
-        {
-			if (err != NULL)
-            {
-				*err = theError;
-			}
-            
-			[compressor closeStream];
-            
-			return NO;
-		}
-		
-		// Write the deflated data out to the destination file
-		[outputStream write:(const uint8_t *)[outputData bytes] maxLength:[outputData length]];
-		
-		// Make sure nothing went wrong
-		if ([inputStream streamStatus] == NSStreamStatusError)
-        {
-			if (err != NULL)
-            {
-				*err = [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of %@ failed because we were unable to write to the destination data file at %@"),sourcePath,destinationPath],NSLocalizedDescriptionKey,[outputStream streamError],NSUnderlyingErrorKey,nil]];
-            }
-            
-			[compressor closeStream];
-            
-			return NO;
-		}
+        return NO;
     }
     
-	[inputStream close];
-	[outputStream close];
-    
-	NSError *error = [compressor closeStream];
-    
-	if (error)
+    // Ensure the source file exists
+    if (![fileManager fileExistsAtPath:sourcePath])
     {
-		if (err != NULL)
+        if (err != NULL)
         {
-			*err = error;
-		}
+            *err = [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of %@ failed the file does not exist"),sourcePath],NSLocalizedDescriptionKey,nil]];
+        }
         
-		return NO;
-	}
+        return NO;
+    }
     
-	return YES;
+    UInt8 inputData[kLUrlDownloaderCompressorDataChunkSize];
+    NSData *outputData;
+    NSInteger readLength;
+    NSError *theError = nil;
+    
+    LUrlDownloaderCompressor *compressor = [LUrlDownloaderCompressor compressor];
+    
+    NSInputStream *inputStream = [NSInputStream inputStreamWithFileAtPath:sourcePath];
+    [inputStream open];
+    NSOutputStream *outputStream = [NSOutputStream outputStreamToFileAtPath:destinationPath append:NO];
+    [outputStream open];
+    
+    while ([compressor streamReady])
+    {
+        // Read some data from the file
+        readLength = [inputStream read:inputData maxLength:kLUrlDownloaderCompressorDataChunkSize];
+        
+        // Make sure nothing went wrong
+        if ([inputStream streamStatus] == NSStreamStatusError)
+        {
+            if (err != NULL)
+            {
+                *err = [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of %@ failed because we were unable to read from the source data file"),sourcePath],NSLocalizedDescriptionKey,[inputStream streamError],NSUnderlyingErrorKey,nil]];
+            }
+            
+            [compressor closeStream];
+            
+            return NO;
+        }
+        
+        // Have we reached the end of the input data?
+        if (!readLength)
+        {
+            break;
+        }
+        
+        // Attempt to deflate the chunk of data
+        outputData = [compressor compressBytes:inputData length:readLength error:&theError shouldFinish:readLength < kLUrlDownloaderCompressorDataChunkSize ];
+        
+        if (theError)
+        {
+            if (err != NULL)
+            {
+                *err = theError;
+            }
+            
+            [compressor closeStream];
+            
+            return NO;
+        }
+        
+        // Write the deflated data out to the destination file
+        if (outputData) {
+            [outputStream write:(const uint8_t *)[outputData bytes] maxLength:[outputData length]];
+        }
+        
+        // Make sure nothing went wrong
+        if ([inputStream streamStatus] == NSStreamStatusError)
+        {
+            if (err != NULL)
+            {
+                *err = [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of %@ failed because we were unable to write to the destination data file at %@"),sourcePath,destinationPath],NSLocalizedDescriptionKey,[outputStream streamError],NSUnderlyingErrorKey,nil]];
+            }
+            
+            [compressor closeStream];
+            
+            return NO;
+        }
+    }
+    
+    [inputStream close];
+    [outputStream close];
+    
+    NSError *error = [compressor closeStream];
+    
+    if (error)
+    {
+        if (err != NULL)
+        {
+            *err = error;
+        }
+        
+        return NO;
+    }
+    
+    return YES;
 }
 
 + (NSError *)deflateErrorWithCode:(int)code
 {
-	return [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of data failed with code %d"),code],NSLocalizedDescriptionKey,nil]];
+    return [NSError errorWithDomain:LUrlDownloaderCompressorErrorDomain code:LUrlDownloaderCompressorErrorCompression userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Compression of data failed with code %d"),code],NSLocalizedDescriptionKey,nil]];
 }
 
 @end

@@ -10,6 +10,4 @@
 
 @interface NSBundle(Additions)
 
-- (BOOL)loadNibNamedL:(NSString *)nibName owner:(id)owner topLevelObjects:(NSArray **)topLevelObjects;
-
 @end

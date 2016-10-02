@@ -50,8 +50,8 @@ static __inline__ CGFloat LRandomFloatBetween(CGFloat a, CGFloat b)
 static __inline__ CGPoint LRandomPointForSizeWithinRect(CGSize size, CGRect rect)
 {
     return CGPointMake(
-                        LRandomFloatBetween(rect.origin.x, (rect.origin.x + rect.size.width - size.width)), 
-                        LRandomFloatBetween(rect.origin.y, (rect.origin.y + rect.size.height - size.height)));
+                       LRandomFloatBetween(rect.origin.x, (rect.origin.x + rect.size.width - size.width)), 
+                       LRandomFloatBetween(rect.origin.y, (rect.origin.y + rect.size.height - size.height)));
 }
 
 static __inline__ CGRect LCenteredRectInRect(CGRect innerRect, CGRect outerRect)

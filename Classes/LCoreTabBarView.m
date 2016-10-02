@@ -74,6 +74,7 @@ badgeOffset;
     
     L_RELEASE(tabTitleFont);
     L_RELEASE(tabContainer);
+    L_RELEASE(tabItems);
     
     [super dealloc];
 }

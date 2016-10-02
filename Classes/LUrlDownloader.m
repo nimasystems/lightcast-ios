@@ -79,9 +79,9 @@ static dispatch_once_t _lUrlDownloaderSyncEvt;
  */
 static void LUrlDownloaderReadStreamClientCallBack(CFReadStreamRef stream, CFStreamEventType type, void *clientCallBackInfo)
 {
-	// callback the object
-	if (clientCallBackInfo == NULL || !clientCallBackInfo) return;
-	
+    // callback the object
+    if (clientCallBackInfo == NULL || !clientCallBackInfo) return;
+    
     @autoreleasepool
     {
         [((LUrlDownloader*)clientCallBackInfo) handleNetworkEvent:type];
@@ -180,7 +180,7 @@ allowCompressedResponse;
 
 - (id)initWithUrl:(NSURL*)aUrl timeout:(NSTimeInterval)aTimeout
 {
-     return [self initWithUrl:aUrl downloadTo:nil requestMethod:LUrlDownloadRequestMethodGet timeout:aTimeout];
+    return [self initWithUrl:aUrl downloadTo:nil requestMethod:LUrlDownloadRequestMethodGet timeout:aTimeout];
 }
 
 - (id)initWithUrl:(NSURL*)aUrl downloadTo:(NSString*)aDownloadPath
@@ -308,6 +308,7 @@ allowCompressedResponse;
     L_RELEASE(_startStopLock);
     L_RELEASE(_lastErrorLock);
     
+    L_RELEASE(receivedData);
     
 #ifdef TARGET_IOS
     [self changeIOSDeviceProgressIndicators:NO];
@@ -377,7 +378,7 @@ allowCompressedResponse;
     
     // Dispatch the stream events.
     switch (type)
-	{
+    {
         case kCFStreamEventHasBytesAvailable:
         {
             NSError *err = nil;
@@ -451,8 +452,8 @@ allowCompressedResponse;
             
             // create the error
             *error = [NSError errorWithDomainAndDescription:LUrlDownloaderErrorDomain
-                                                          errorCode:LUrlDownloaderErrorInvalidServerResponse
-                                               localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Could not read data from server (%d)"), cfError.error]];
+                                                  errorCode:LUrlDownloaderErrorInvalidServerResponse
+                                       localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Could not read data from server (%d)"), cfError.error]];
         }
         
         return NO;
@@ -488,7 +489,7 @@ allowCompressedResponse;
             CFRelease(_response);
             _response = nil;
         }
-
+        
         // parse the response and set headers / response code
         _response = (CFHTTPMessageRef)CFReadStreamCopyProperty(_stream, kCFStreamPropertyHTTPResponseHeader);
         
@@ -656,7 +657,7 @@ allowCompressedResponse;
                 }
             }
         }
-
+        
         _responseParsed = YES;
         
         return YES;
@@ -753,41 +754,41 @@ allowCompressedResponse;
     
     // Less than zero is an error
     /*if (bytesRead < 0)
-    {
-        if (downloadPath)
-        {
-            lassert(_fileHandle);
-            
-            // write any pending leftover data
-            NSError *writeErr = nil;
-            BOOL written = [self writeCurrentBufferDataToFile:&writeErr];
-            
-            if (!written)
-            {
-                if (error != NULL)
-                {
-                    *error = writeErr;
-                }
-                
-                return NO;
-            }
-        }
-        
-        CFStreamError cfError = CFReadStreamGetError(_stream);
-        
-        // create the error
-        NSError *err = [NSError errorWithDomainAndDescription:LUrlDownloaderErrorDomain
-                                                    errorCode:LUrlDownloaderErrorInvalidServerResponse
-                                         localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Could not read data from server (%d)"), cfError.error]];
-        
-        if (error != NULL)
-        {
-            *error = err;
-        }
-        
-        return NO;
-    }
-    else */
+     {
+     if (downloadPath)
+     {
+     lassert(_fileHandle);
+     
+     // write any pending leftover data
+     NSError *writeErr = nil;
+     BOOL written = [self writeCurrentBufferDataToFile:&writeErr];
+     
+     if (!written)
+     {
+     if (error != NULL)
+     {
+     *error = writeErr;
+     }
+     
+     return NO;
+     }
+     }
+     
+     CFStreamError cfError = CFReadStreamGetError(_stream);
+     
+     // create the error
+     NSError *err = [NSError errorWithDomainAndDescription:LUrlDownloaderErrorDomain
+     errorCode:LUrlDownloaderErrorInvalidServerResponse
+     localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Could not read data from server (%d)"), cfError.error]];
+     
+     if (error != NULL)
+     {
+     *error = err;
+     }
+     
+     return NO;
+     }
+     else */
     
     if (bytesRead > 0)
     {
@@ -880,25 +881,25 @@ allowCompressedResponse;
     }
     
     /*else if (bytesRead == 0)
-    {
-        // all data received - close the connection
-        if (CFReadStreamGetStatus(_stream) == kCFStreamStatusAtEnd)
-        {
-            if (shouldContinuePolling != NULL)
-            {
-                *shouldContinuePolling = NO;
-            }
-            
-            BOOL handledEnd = [self handleConnectionEnd:error];
-            
-            if (!handledEnd)
-            {
-                return NO;
-            }
-
-            return NO;
-        }
-    }*/
+     {
+     // all data received - close the connection
+     if (CFReadStreamGetStatus(_stream) == kCFStreamStatusAtEnd)
+     {
+     if (shouldContinuePolling != NULL)
+     {
+     *shouldContinuePolling = NO;
+     }
+     
+     BOOL handledEnd = [self handleConnectionEnd:error];
+     
+     if (!handledEnd)
+     {
+     return NO;
+     }
+     
+     return NO;
+     }
+     }*/
     
     if (shouldContinuePolling != NULL)
     {
@@ -966,18 +967,18 @@ allowCompressedResponse;
     lassert(_tmpWriteBuffer);
     
     /*if (![_tmpWriteBuffer length])
-    {
-        // file was never opened for writing - zero bytes
-        // create the error
-        NSError *err = [NSError errorWithDomainAndDescription:LUrlDownloaderErrorDomain errorCode:LUrlDownloaderErrorZeroBytesResponse localizedDescription:LightcastLocalizedString(@"Server did not return any data")];
-        
-        if (error != NULL)
-        {
-            *error = err;
-        }
-        
-        return NO;
-    }*/
+     {
+     // file was never opened for writing - zero bytes
+     // create the error
+     NSError *err = [NSError errorWithDomainAndDescription:LUrlDownloaderErrorDomain errorCode:LUrlDownloaderErrorZeroBytesResponse localizedDescription:LightcastLocalizedString(@"Server did not return any data")];
+     
+     if (error != NULL)
+     {
+     *error = err;
+     }
+     
+     return NO;
+     }*/
     
     // write any pending leftover data
     if (downloadPath)
@@ -1131,10 +1132,10 @@ allowCompressedResponse;
         if (error != NULL)
         {
             *error = [NSError errorWithDomainAndDescription:LUrlDownloaderErrorDomain
-                                                errorCode:LUrlDownloaderErrorInvalidServerResponse
-                                     localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Could not write downloaded data to disk: %@"), e.reason]];
+                                                  errorCode:LUrlDownloaderErrorInvalidServerResponse
+                                       localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Could not write downloaded data to disk: %@"), e.reason]];
         }
-   
+        
         return NO;
     }
     
@@ -1174,13 +1175,13 @@ allowCompressedResponse;
 - (BOOL)getIsResponseCompressed
 {
     NSString *encoding = [self.responseHeaders objectForKey:@"Content-Encoding"];
-	return encoding && [encoding rangeOfString:@"gzip"].location != NSNotFound;
+    return encoding && [encoding rangeOfString:@"gzip"].location != NSNotFound;
 }
 
 - (NSData*)getReceivedData
 {
     BOOL isCompressed = self.isResponseCompressed;
-
+    
     if (isCompressed)
     {
         if (!_isResponseDataDecompressed)
@@ -1212,7 +1213,7 @@ allowCompressedResponse;
             return _decompressedData;
         }
     }
-
+    
     // not a compressed response - return the actual data
     return _tmpWriteBuffer;
 }
@@ -1481,7 +1482,7 @@ allowCompressedResponse;
             return NO;
         }
     }
-       
+    
     // show the network indicators for iOS
 #ifdef TARGET_IOS
     [self changeIOSDeviceProgressIndicators:YES];
@@ -1536,12 +1537,12 @@ allowCompressedResponse;
             {
                 // Call timed out
                 err = [NSError errorWithDomainAndDescription:LUrlDownloaderErrorDomain
-                                                      errorCode:LUrlDownloaderErrorConnectionTimeout
-                                           localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Connection timeout (%f)"), newTimeout]];
+                                                   errorCode:LUrlDownloaderErrorConnectionTimeout
+                                        localizedDescription:[NSString stringWithFormat:LightcastLocalizedString(@"Connection timeout (%f)"), newTimeout]];
                 
                 break;
             }
-
+            
             // check stream status
             streamStatus = [self handleStreamStatus:&err];
             
@@ -1812,14 +1813,14 @@ allowCompressedResponse;
 
 - (NSData *)combinedMultipartPostData:(NSString *)boundaryValue
 {
-	NSMutableData * tmpData = [NSMutableData data];
-	NSData * bstrData = [[NSString stringWithFormat:@"-----------------------------%@", boundaryValue]
-						 dataUsingEncoding:NSUTF8StringEncoding];
-	
-	// first the POST params
-	for (NSString * key in postParams)
-	{
-		@autoreleasepool
+    NSMutableData * tmpData = [NSMutableData data];
+    NSData * bstrData = [[NSString stringWithFormat:@"-----------------------------%@", boundaryValue]
+                         dataUsingEncoding:NSUTF8StringEncoding];
+    
+    // first the POST params
+    for (NSString * key in postParams)
+    {
+        @autoreleasepool
         {
             NSString *val = [NSString stringWithFormat:@"%@", [postParams objectForKey:key]];
             
@@ -1838,24 +1839,24 @@ allowCompressedResponse;
             NSData * dta = [full dataUsingEncoding:NSUTF8StringEncoding];
             [tmpData appendData:dta];
         }
-	}
-	
-	// then - the FILES
-	NSInteger i = 0;
-	
-	for (LUrlDownloaderPostFile * file in postFiles)
-	{
+    }
+    
+    // then - the FILES
+    NSInteger i = 0;
+    
+    for (LUrlDownloaderPostFile * file in postFiles)
+    {
         if (![file isKindOfClass:[LUrlDownloaderPostFile class]])
         {
             lassert(false);
             continue;
         }
         
-		@try
-		{
-			@autoreleasepool
+        @try
+        {
+            @autoreleasepool
             {
-				NSData * fdta = [file getActualData];
+                NSData * fdta = [file getActualData];
                 
                 if (!fdta)
                 {
@@ -1867,38 +1868,38 @@ allowCompressedResponse;
                 NSString *mimetype = ![NSString isNullOrEmpty:file.mimetype] ? file.mimetype : @"application/binary";
                 
                 NSString * header = [NSString stringWithFormat:
-									 @"Content-Disposition: form-data; name=\"uploaded_file[%ld]\"; filename=\"%@\"",
-									 (long)i, [self urlEncodeValue:filename]];
-				NSString * full = [NSString stringWithFormat:@"%@\r\nContent-Type: %@", header, mimetype];
-				full = [NSString stringWithFormat:@"%@\r\nContent-Transfer-Encoding: binary\r\n\r\n", full];
-				
-				[tmpData appendData:bstrData];
-				[tmpData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-				
-				NSData * dta = [full dataUsingEncoding:NSUTF8StringEncoding];
-				[tmpData appendData:dta];
-				
-				// append the data of the file now
-				[tmpData appendData:fdta];
-				[tmpData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-				
-				LogDebug(@"Added file to request: %@, size: %ld", filename, (long)[fdta length]);
+                                     @"Content-Disposition: form-data; name=\"uploaded_file[%ld]\"; filename=\"%@\"",
+                                     (long)i, [self urlEncodeValue:filename]];
+                NSString * full = [NSString stringWithFormat:@"%@\r\nContent-Type: %@", header, mimetype];
+                full = [NSString stringWithFormat:@"%@\r\nContent-Transfer-Encoding: binary\r\n\r\n", full];
+                
+                [tmpData appendData:bstrData];
+                [tmpData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                
+                NSData * dta = [full dataUsingEncoding:NSUTF8StringEncoding];
+                [tmpData appendData:dta];
+                
+                // append the data of the file now
+                [tmpData appendData:fdta];
+                [tmpData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                
+                LogDebug(@"Added file to request: %@, size: %ld", filename, (long)[fdta length]);
             }
-			
-			i++;
-		}
-		@catch (NSException * e)
-		{
+            
+            i++;
+        }
+        @catch (NSException * e)
+        {
             LogError(@"Unhandled exception while preparing HTTP file for posting: %@", e);
             lassert(false);
-			continue;
-		}
-	}
-	
-	[tmpData appendData:bstrData];
-	[tmpData appendData:[@"-----------------------------" dataUsingEncoding:NSUTF8StringEncoding]];
-	
-	return tmpData;
+            continue;
+        }
+    }
+    
+    [tmpData appendData:bstrData];
+    [tmpData appendData:[@"-----------------------------" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    return tmpData;
 }
 
 - (NSString*)getPostStringForParams:(NSDictionary*)params
@@ -1983,9 +1984,9 @@ allowCompressedResponse;
             lassert(![NSString isNullOrEmpty:_multipartBoundaryValue1]);
             
             NSString *multipartContentTypeValue = [NSString stringWithFormat:
-                           @"multipart/form-data; boundary=---------------------------%@",
-                           _multipartBoundaryValue1
-                           ];
+                                                   @"multipart/form-data; boundary=---------------------------%@",
+                                                   _multipartBoundaryValue1
+                                                   ];
             
             [headers setValue:multipartContentTypeValue forKey:@"Content-Type"];
         }
