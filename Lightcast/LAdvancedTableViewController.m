@@ -91,7 +91,6 @@
             LogError(@"LAdvancedTableViewController requires a valid CellClassName which it will use to display the cells with! Crashing now :)");
             
             [self doesNotRecognizeSelector:_cmd];
-            L_RELEASE(self);
             return nil;
         }
         else 
@@ -104,7 +103,6 @@
                 LogError(@"LAdvancedTableViewController requires a valid CellClassName - descendant of LAdvancedTableViewCell and conforming to LAdvancedTableViewCellDescendant! Crashing now :)");
                 
                 [self doesNotRecognizeSelector:_cmd];
-                L_RELEASE(self);
                 return nil;
             }
             else
@@ -139,14 +137,14 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    L_RELEASE(_cellThreadData);
-    L_RELEASE(_queue);
-    L_RELEASE(_cellOptions);
-    L_RELEASE(_cellClassName);
-    L_RELEASE(_cellClass);
-    L_RELEASE(_noData);
-    L_RELEASE(_tableItems);
-    L_RELEASE(_progressView);
+    _cellThreadData = nil;
+    _queue = nil;
+    _cellOptions = nil;
+    _cellClassName = nil;
+    _cellClass = nil;
+    _noData = nil;
+    _tableItems = nil;
+    _progressView = nil;
 }
 
 #pragma mark -
@@ -300,7 +298,7 @@
     
     @synchronized(_tableItems)
     {
-        L_RELEASE(_tableItems);
+        _tableItems = nil;
         
         [self setTableItemsInternal:tmp];
     }

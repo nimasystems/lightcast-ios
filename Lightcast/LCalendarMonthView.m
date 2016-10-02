@@ -73,7 +73,7 @@ currentDate;
 }
 
 - (void)dealloc {
-    L_RELEASE(currentDate);
+    currentDate = nil;
 }
 
 #pragma mark -
@@ -108,7 +108,7 @@ currentDate;
 
 - (void)validateAndSetCurrentDate:(NSInteger)aDay month:(LCalendarMonth)aMonth year:(NSInteger)aYear {
     
-    L_RELEASE(currentDate);
+    currentDate = nil;
     day = 0;
     month = 0;
     year = 0;

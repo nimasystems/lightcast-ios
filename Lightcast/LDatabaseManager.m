@@ -74,9 +74,9 @@ mainAdapter=_mainAdapter;
         [self shutdownAdapter:adapter];
     }
     
-    L_RELEASE(_appDatabaseInstances);
-    L_RELEASE(_adapters);
-    L_RELEASE(_mainAdapter);
+    _appDatabaseInstances = nil;
+    _adapters = nil;
+    _mainAdapter = nil;
 }
 
 #pragma mark - LSystemObject derived
@@ -291,7 +291,7 @@ mainAdapter=_mainAdapter;
         
         if ([_mainAdapter isEqual:foundAdapter])
         {
-            L_RELEASE(_mainAdapter);
+            _mainAdapter = nil;
             
             LogInfo(@"Main db adapter shutdown");
         }
@@ -630,7 +630,7 @@ mainAdapter=_mainAdapter;
             }
             @finally 
             {
-                L_RELEASE(schemaUpgrader);
+                schemaUpgrader = nil;
             }
         }
         @catch (NSException *e) 

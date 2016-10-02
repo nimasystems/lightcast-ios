@@ -79,15 +79,15 @@ requestHeaders;
         _sendQueue = NULL;
     }
     
-    L_RELEASE(_activeSessionsLock);
+    _activeSessionsLock = nil;
     
-    L_RELEASE(_files);
-    L_RELEASE(_properties);
-    L_RELEASE(sessionKey);
+    _files = nil;
+    _properties = nil;
+    sessionKey = nil;
     
-    L_RELEASE(remoteUrl);
-    L_RELEASE(userAgent);
-    L_RELEASE(requestHeaders);
+    remoteUrl = nil;
+    userAgent = nil;
+    requestHeaders = nil;
 }
 
 #pragma mark - Sending
@@ -137,7 +137,6 @@ requestHeaders;
     // assign the key
     if (sessionKey_ != self.sessionKey)
     {
-        L_RELEASE(sessionKey);
         sessionKey = [sessionKey_ copy];
     }
     
@@ -470,7 +469,7 @@ requestHeaders;
     }
     @finally
     {
-        L_RELEASE(downloader);
+        downloader = nil;
     }
     
     

@@ -72,8 +72,8 @@
 }
 
 - (void)dealloc {
-    L_RELEASE(_tabBar);
-    L_RELEASE(_viewControllers);
+    _tabBar = nil;
+    _viewControllers = nil;
     _selectedViewController = nil;
     _delegate = nil;
 }

@@ -85,14 +85,14 @@ arrayFilesInICloud;
     downloadDataDelegate = nil;
     
     @synchronized(_queryLock) {
-        L_RELEASE(queryFile);
+        queryFile = nil;
     }
     
-    L_RELEASE(arrayFilesInICloud);
-    L_RELEASE(tempPath);
-    L_RELEASE(_uploadFile);
-    L_RELEASE(_uploadFiles);
-    L_RELEASE(_queryLock);
+    arrayFilesInICloud = nil;
+    tempPath = nil;
+    _uploadFile = nil;
+    _uploadFiles = nil;
+    _queryLock = nil;
 }
 
 #pragma mark - Setters / Getters
@@ -267,7 +267,7 @@ arrayFilesInICloud;
         }
         
         @synchronized(_queryLock) {
-            L_RELEASE(queryFile);
+            queryFile = nil;
         }
         
         _isUploading = YES;
@@ -550,7 +550,7 @@ arrayFilesInICloud;
         }
         
         @synchronized(_queryLock) {
-            L_RELEASE(queryFile);
+            queryFile = nil;
         }
         
         _isUploading = YES;
@@ -808,7 +808,7 @@ arrayFilesInICloud;
         arrayFilesInICloud = _downloadFiles;
         
         @synchronized(_queryLock) {
-            L_RELEASE(queryFile);
+            queryFile = nil;
         }
     }
     @catch (NSException *exception)

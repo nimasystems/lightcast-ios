@@ -31,7 +31,6 @@ state;
     {
         if (!productIds_ || ![productIds_ count])
         {
-            L_RELEASE(self);
             lassert(false);
             return nil;
         }
@@ -51,12 +50,12 @@ state;
     {
         _request.delegate = nil;
         [_request cancel];
-        L_RELEASE(_request);
+        _request = nil;
     }
     
-    L_RELEASE(productIds);
-    L_RELEASE(iTunesProducts);
-    L_RELEASE(invalidITunesProducts);
+    productIds = nil;
+    iTunesProducts = nil;
+    invalidITunesProducts = nil;
 }
 
 #pragma mark - SKProductsRequestDelegate methods
@@ -67,7 +66,7 @@ state;
         if (_request) {
             _request.delegate = nil;
             [_request cancel];
-            L_RELEASE(_request);
+            _request = nil;
         }
         
         if (delegate && [delegate respondsToSelector:@selector(requestDidFinish:)])
@@ -91,7 +90,7 @@ state;
         if (_request) {
             _request.delegate = nil;
             [_request cancel];
-            L_RELEASE(_request);
+            _request = nil;
         }
         
         if (delegate && [delegate respondsToSelector:@selector(requestDidFinish:)])
@@ -147,13 +146,11 @@ state;
         // set ids
         if (products != iTunesProducts)
         {
-            L_RELEASE(iTunesProducts);
             iTunesProducts = [products copy];
         }
         
         if (invalidProducts != invalidITunesProducts)
         {
-            L_RELEASE(invalidITunesProducts);
             invalidITunesProducts = [invalidProducts copy];
         }
         

@@ -201,7 +201,6 @@ allowCompressedResponse;
     {
         if (!aUrl || !aRequestMethod || !aTimeout || !aBufferSize)
         {
-            L_RELEASE(self);
             lassert(false);
             return nil;
         }
@@ -277,39 +276,38 @@ allowCompressedResponse;
         _httpAuth = NULL;
     }
     
-    L_RELEASE(url);
-    L_RELEASE(downloadPath);
-    L_RELEASE(cookies);
-    L_RELEASE(userAgent);
-    L_RELEASE(responseHeaders);
-    L_RELEASE(pathToDownloadedFile);
-    L_RELEASE(lastError);
-    L_RELEASE(postData);
-    L_RELEASE(postParams);
-    L_RELEASE(requestHeaders);
-    L_RELEASE(postFiles);
-    L_RELEASE(_currentUrl);
-    L_RELEASE(_preparedPostData);
-    L_RELEASE(_preparedRequestHeaders);
-    L_RELEASE(responseDescription);
-    L_RELEASE(responseContentType);
-    L_RELEASE(_fileHandle);
-    L_RELEASE(_redirectUrls);
-    L_RELEASE(runLoop);
-    L_RELEASE(_runLoop);
-    L_RELEASE(_tmpWriteBuffer);
-    L_RELEASE(_decompressedData);
-    L_RELEASE(_lastTimeRead);
-    L_RELEASE(requestIfModifiedSince);
-    L_RELEASE(_multipartBoundaryValue1);
-    L_RELEASE(requestLocale);
-    L_RELEASE(httpAuthUsername);
-    L_RELEASE(httpAuthPassword);
+    url = nil;
+    downloadPath = nil;
+    cookies = nil;
+    userAgent = nil;
+    responseHeaders = nil;
+    pathToDownloadedFile = nil;
+    lastError = nil;
+    postData = nil;
+    postParams = nil;
+    requestHeaders = nil;
+    postFiles = nil;
+    _currentUrl = nil;
+    _preparedPostData = nil;
+    _preparedRequestHeaders = nil;
+    responseDescription = nil;
+    responseContentType = nil;
+    _fileHandle = nil;
+    _redirectUrls = nil;
+    runLoop = nil;
+    _runLoop = nil;
+    _tmpWriteBuffer = nil;
+    _decompressedData = nil;
+    _lastTimeRead = nil;
+    requestIfModifiedSince = nil;
+    _multipartBoundaryValue1 = nil;
+    requestLocale = nil;
+    httpAuthUsername = nil;
+    httpAuthPassword = nil;
     
-    L_RELEASE(_startStopLock);
-    L_RELEASE(_lastErrorLock);
-    
-    L_RELEASE(receivedData);
+    _startStopLock = nil;
+    _lastErrorLock = nil;
+    receivedData = nil;
     
 #ifdef TARGET_IOS
     [self changeIOSDeviceProgressIndicators:NO];
@@ -497,7 +495,6 @@ allowCompressedResponse;
             
             if (_responseHeaders != responseHeaders)
             {
-                L_RELEASE(responseHeaders);
                 responseHeaders = [_responseHeaders copy];
             }
             
@@ -529,7 +526,6 @@ allowCompressedResponse;
             
             if (_responseDescription != responseDescription)
             {
-                L_RELEASE(responseDescription);
                 responseDescription = [_responseDescription copy];
             }
             
@@ -1119,7 +1115,6 @@ allowCompressedResponse;
         bytesWritten += [_tmpWriteBuffer length];
         
         // clear the temp buffer
-        L_RELEASE(_tmpWriteBuffer);
         _tmpWriteBuffer = [[NSMutableData alloc] init];
         //[_tmpWriteBuffer setData:nil];
     }
@@ -1147,11 +1142,11 @@ allowCompressedResponse;
         [self writeCurrentBufferDataToFile:nil];
         
         [_fileHandle closeFile];
-        L_RELEASE(_fileHandle);
+        _fileHandle = nil;
         
         lassert(bytesWritten == bytesDownloaded);
         
-        L_RELEASE(_tmpWriteBuffer);
+        _tmpWriteBuffer = nil;
         _tmpWriteBuffer = [[NSMutableData alloc] init];
         //[_tmpWriteBuffer setData:nil];
     }
@@ -1233,10 +1228,11 @@ allowCompressedResponse;
     [self setDownloadState:LUrlDownloadStateNotRunning];
     
     // reset vars to initial state
-    L_RELEASE(lastError);
-    L_RELEASE(pathToDownloadedFile);
-    L_RELEASE(_preparedPostData);
-    L_RELEASE(_multipartBoundaryValue1);
+    lastError = nil;
+    pathToDownloadedFile = nil;
+    _preparedPostData = nil;
+    _multipartBoundaryValue1 = nil;
+    
     isCancelled = NO;
     progress = 0;
     _totalInternalRedirects = 0;
@@ -1306,16 +1302,15 @@ allowCompressedResponse;
     responseLength = 0;
     bytesDownloaded = 0;
     responseCode = 0;
-    L_RELEASE(responseContentType);
-    L_RELEASE(responseHeaders);
-    L_RELEASE(responseDescription);
     
-    //[_tmpWriteBuffer setData:nil];
+    responseContentType = nil;
+    responseHeaders = nil;
+    responseDescription = nil;
+    _tmpWriteBuffer = nil;
     
-    L_RELEASE(_tmpWriteBuffer);
     _tmpWriteBuffer = [[NSMutableData alloc] init];
     
-    L_RELEASE(_decompressedData);
+    _decompressedData = nil;
     _isResponseDataDecompressed = NO;
     
     NSRunLoop *rl = runLoop ? runLoop : [NSRunLoop currentRunLoop];
@@ -2085,7 +2080,6 @@ allowCompressedResponse;
         // set the last error
         if (lastError != error)
         {
-            L_RELEASE(lastError);
             lastError = [error copy];
         }
     }

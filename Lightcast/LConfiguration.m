@@ -110,9 +110,9 @@ subnodes;
 }
 
 - (void)dealloc {
-    L_RELEASE(name);
-    L_RELEASE(values);
-    L_RELEASE(subnodes);
+    name = nil;
+    values = nil;
+    subnodes = nil;
 }
 
 #pragma mark -

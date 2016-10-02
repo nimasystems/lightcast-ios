@@ -76,7 +76,6 @@ lastError;
         
         if (!_adapter || !_identifier)
         {
-            L_RELEASE(self);
             return nil;
         }
     }
@@ -88,10 +87,10 @@ lastError;
 }
 
 - (void)dealloc {
-    L_RELEASE(_schemaVersions);
-    L_RELEASE(_adapter);
-    L_RELEASE(_identifier);
-    L_RELEASE(lastError);
+    _schemaVersions = nil;
+    _adapter = nil;
+    _identifier = nil;
+    lastError = nil;
 }
 
 #pragma mark - Schema Operations
@@ -482,7 +481,6 @@ lastError;
             }
         }
         
-        L_RELEASE(_schemaVersions);
         _schemaVersions = [NSArray arrayWithArray:tmp];
         
         /*if (_schemaVersions && [_schemaVersions count])

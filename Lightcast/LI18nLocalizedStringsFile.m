@@ -22,7 +22,7 @@ strings;
 
 - (void)dealloc
 {
-    L_RELEASE(strings);
+    strings = nil;
 }
 
 #pragma mark - File Operations
@@ -40,7 +40,7 @@ strings;
         return NO;
     }
     
-    L_RELEASE(strings);
+    strings = nil;
     
     // TODO: Redevelop this by custom parsing
     

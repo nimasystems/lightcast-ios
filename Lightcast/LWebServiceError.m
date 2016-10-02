@@ -42,11 +42,11 @@ validationErrors;
 
 - (void)dealloc
 {
-    L_RELEASE(apiDomainName);
-    L_RELEASE(trace);
-    L_RELEASE(exceptionName);
-    L_RELEASE(extraData);
-    L_RELEASE(validationErrors);
+    apiDomainName = nil;
+    trace = nil;
+    exceptionName = nil;
+    extraData = nil;
+    validationErrors = nil;
 }
 
 #pragma mark -

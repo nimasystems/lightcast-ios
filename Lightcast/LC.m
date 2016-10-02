@@ -30,6 +30,10 @@
  * @version $Revision: 342 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LC.h"
 #import "LSQLiteDatabaseAdapter.h"
 #import "LPluginManager.h"
@@ -183,20 +187,20 @@ logFileManager=_logFileManager;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];	
     
-    L_RELEASE(configuration);
-    L_RELEASE(nd);
-    L_RELEASE(systemObjects);
-    L_RELEASE(appUpgrader);
-    L_RELEASE(localizationManager);
-    L_RELEASE(lightcastBundle);
-    L_RELEASE(_fileLogger);
-    L_RELEASE(_logFileManager);
-    L_RELEASE(db);
-    L_RELEASE(documentsPath);
-    L_RELEASE(plugins);
-    L_RELEASE(resourcesPath);
-    L_RELEASE(storage);
-    L_RELEASE(temporaryPath);
+    configuration = nil;
+    nd = nil;
+    systemObjects = nil;
+    appUpgrader = nil;
+    localizationManager = nil;
+    lightcastBundle = nil;
+    _fileLogger = nil;
+    _logFileManager = nil;
+    db = nil;
+    documentsPath = nil;
+    plugins = nil;
+    resourcesPath = nil;
+    storage = nil;
+    temporaryPath = nil;
 }
 
 #pragma mark - Getters / Setters
@@ -549,7 +553,6 @@ logFileManager=_logFileManager;
     // inform of the status change
     [self informDelegateOfInitializationStageChange:LCInitializationStageSystemObjects statusMessage:LightcastLocalizedString(@"Initializing system objects")];
     
-    L_RELEASE(systemObjects);
     systemObjects = [[NSMutableDictionary alloc] init];
     
     NSDictionary *objects = [self.config get:@"loaders"];

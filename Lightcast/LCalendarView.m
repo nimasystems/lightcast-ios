@@ -152,14 +152,14 @@ showsOnlyCurrentMonth;
     dataSource = nil;
     delegate = nil;
     
-    L_RELEASE(calendar);
-    L_RELEASE(selectedDate);
-    L_RELEASE(displayedDate);
-    L_RELEASE(_dateFormatter);
-    L_RELEASE(selectedCell);
-    L_RELEASE(weekdayBarFont);
-    L_RELEASE(weekdayBarTextColor);
-    L_RELEASE(_reusableCells);
+    calendar = nil;
+    selectedDate = nil;
+    displayedDate = nil;
+    _dateFormatter = nil;
+    selectedCell = nil;
+    weekdayBarFont = nil;
+    weekdayBarTextColor = nil;
+    _reusableCells = nil;
 }
 
 #pragma mark - View Related
@@ -303,7 +303,7 @@ showsOnlyCurrentMonth;
     lassert(displayedDate);
     lassert(calendar);
     
-    L_RELEASE(selectedCell);
+    selectedCell = nil;
     _gridView.cells = nil;
     
     if (!self.dataSource)
@@ -443,7 +443,6 @@ showsOnlyCurrentMonth;
 {
     if (![selectedDate isEqual:selectedDate_])
     {
-        L_RELEASE(selectedDate);
         selectedDate = [selectedDate_ copy];
         
         // keep a cached copy of the components
@@ -596,7 +595,7 @@ showsOnlyCurrentMonth;
         showsOnlyCurrentMonth = showsOnlyCurrentMonth_;
         
         // reset the cells as the month may have changed
-        L_RELEASE(selectedCell);
+        selectedCell = nil;
         self.gridView.cells = nil;
         self.selectedDate = nil;
         

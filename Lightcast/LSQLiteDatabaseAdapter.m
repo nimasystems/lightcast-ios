@@ -72,7 +72,6 @@ threadingMode;
     {
         if ([NSString isNullOrEmpty:aConnectionString])
         {
-            L_RELEASE(self);
             lassert(false);
             return nil;
         }
@@ -96,8 +95,8 @@ threadingMode;
     [self close];
     
     //L_RELEASE(_transactionLock);
-    L_RELEASE(dataSource);
-    L_RELEASE(_attachedDatabases);
+    dataSource = nil;
+    _attachedDatabases = nil;
     //L_RELEASE(_attachedDatabasesLock);
 }
 

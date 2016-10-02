@@ -62,9 +62,9 @@ controllerDelegate;
     controllerDelegate = nil;
     selectedViewController = nil;
     
-    L_RELEASE(tabBar);
-    L_RELEASE(_innerView);
-    L_RELEASE(viewControllers);
+    tabBar = nil;
+    _innerView = nil;
+    viewControllers = nil;
 }
 
 #pragma mark - View Related
@@ -360,7 +360,7 @@ controllerDelegate;
         if (viewControllers)
         {
             [_innerView removeAllSubviews];
-            L_RELEASE(viewControllers);
+            viewControllers = nil;
         }
         
         viewControllers = [viewControllers_ copy];

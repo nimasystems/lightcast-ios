@@ -79,8 +79,8 @@ delegate=_delegate;
 
 - (void)dealloc {
     
-    L_RELEASE(_items);
-    L_RELEASE(_innerView);
+    _items = nil;
+    _innerView = nil;
     _delegate = nil;
 }
 

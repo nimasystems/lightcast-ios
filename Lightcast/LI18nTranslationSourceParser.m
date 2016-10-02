@@ -37,9 +37,9 @@ parsedStrings;
 
 - (void)dealloc
 {
-    L_RELEASE(patterns);
-    L_RELEASE(sourceString);
-    L_RELEASE(parsedStrings);
+    patterns = nil;
+    sourceString = nil;
+    parsedStrings = nil;
 }
 
 #pragma mark - Parsing
@@ -74,7 +74,7 @@ parsedStrings;
         return YES;
     }
     
-    L_RELEASE(parsedStrings);
+    parsedStrings = nil;
     
     // walk each regex and find translations
     NSMutableArray *ret1 = [[NSMutableArray alloc] init];

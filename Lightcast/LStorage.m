@@ -58,7 +58,7 @@ NSString *const lnStorageInitialized = @"notifications.StorageInitialized";
 }
 
 - (void)dealloc {
-    L_RELEASE(adapter);
+    adapter = nil;
 }
 
 #pragma mark - 

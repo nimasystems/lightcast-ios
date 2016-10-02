@@ -96,24 +96,24 @@ httpAuthPassword;
 
 - (void)dealloc
 {
-    L_RELEASE(hostname);
-    L_RELEASE(lastModifiedCheckDate);
-    L_RELEASE(requestLocale);
-    L_RELEASE(requestHeaders);
-    L_RELEASE(requestCookies);
-    L_RELEASE(userAgent);
-    L_RELEASE(requestStartTime);
-    L_RELEASE(requestEndTime);
-    L_RELEASE(responseMimetype);
-    L_RELEASE(requestPostFiles);
-    L_RELEASE(httpAuthUsername);
-    L_RELEASE(httpAuthPassword);
+    hostname = nil;
+    lastModifiedCheckDate = nil;
+    requestLocale = nil;
+    requestHeaders = nil;
+    requestCookies = nil;
+    userAgent = nil;
+    requestStartTime = nil;
+    requestEndTime = nil;
+    responseMimetype = nil;
+    requestPostFiles = nil;
+    httpAuthUsername = nil;
+    httpAuthPassword = nil;
     
-    L_RELEASE(requestUri);
-    L_RELEASE(_serviceUrl);
-    L_RELEASE(_params);
+    requestUri = nil;
+    _serviceUrl = nil;
+    _params = nil;
     
-    L_RELEASE(urlDownloader);
+    urlDownloader = nil;
 }
 
 #pragma mark -
@@ -212,7 +212,7 @@ httpAuthPassword;
     
     lassert(url_ != nil);
     
-    L_RELEASE(urlDownloader);
+    urlDownloader = nil;
     
     // set method
     BOOL isPost = (requesType == LWebServiceClientRequestTypePost);
@@ -292,7 +292,6 @@ httpAuthPassword;
     
     if (responseMimetype != urlDownloader.responseContentType)
     {
-        L_RELEASE(responseMimetype);
         responseMimetype = urlDownloader.responseContentType;
     }
     

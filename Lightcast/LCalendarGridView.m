@@ -33,8 +33,8 @@ cells;
 
 - (void)dealloc
 {
-    L_RELEASE(cellBorderColor);
-    L_RELEASE(cells);
+    cellBorderColor = nil;
+    cells = nil;
 }
 
 #pragma mark - Getters / Setters

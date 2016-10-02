@@ -30,10 +30,6 @@
  * @version $Revision: 183 $
  */
 
-#if !__has_feature(objc_arc)
-#error This library requires automatic reference counting
-#endif
-
 // all preprocessor macros
 #import "defines.h"
 

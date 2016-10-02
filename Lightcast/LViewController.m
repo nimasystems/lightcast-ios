@@ -92,11 +92,10 @@ activityProgressIsShown;
     self.activityIndicator = nil;
     self.waitingLabel = nil;
     
-    L_RELEASE(_activityHolderView);
-    
-    L_RELEASE(progressFont);
-    L_RELEASE(progressColor);
-    L_RELEASE(progressBgColor);
+    _activityHolderView = nil;
+    progressFont = nil;
+    progressColor = nil;
+    progressBgColor = nil;
     
 #endif
 }
@@ -487,7 +486,7 @@ activityProgressIsShown;
     _activityIndicator = nil;
     _waitingLabel = nil;
     
-    L_RELEASE(_activityHolderView);
+    _activityHolderView = nil;
     
     activityProgressIsShown = NO;
 }

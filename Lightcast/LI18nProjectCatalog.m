@@ -35,7 +35,6 @@ matchPatterns;
         if ([NSString isNullOrEmpty:projectBaseDir])
         {
             lassert(false);
-            L_RELEASE(self);
             return nil;
         }
         
@@ -55,12 +54,12 @@ matchPatterns;
 
 - (void)dealloc
 {
-    L_RELEASE(baseDir);
-    L_RELEASE(bundleName);
-    L_RELEASE(fileExtensions);
-    L_RELEASE(skippedItems);
-    L_RELEASE(matchPatterns);
-    L_RELEASE(_fm);
+    baseDir = nil;
+    bundleName = nil;
+    fileExtensions = nil;
+    skippedItems = nil;
+    matchPatterns = nil;
+    _fm = nil;
 }
 
 #pragma mark - Config

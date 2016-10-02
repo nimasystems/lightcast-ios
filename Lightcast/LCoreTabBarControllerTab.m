@@ -71,16 +71,16 @@ shadowColor;
 
 - (void)dealloc;
 {
-    L_RELEASE(font);
-    L_RELEASE(textColor);
-    L_RELEASE(selectedTextColor);
-    L_RELEASE(badgeValue);
-    L_RELEASE(icon);
-    L_RELEASE(selectedIcon);
-    L_RELEASE(title);
-    L_RELEASE(executeBlock);
-    L_RELEASE(shadowColor);
-    L_RELEASE(badgeView);
+    font = nil;
+    textColor = nil;
+    selectedTextColor = nil;
+    badgeValue = nil;
+    icon = nil;
+    selectedIcon = nil;
+    title = nil;
+    executeBlock = nil;
+    shadowColor = nil;
+    badgeView = nil;
 }
 
 + (LCoreTabBarControllerTab*)tabItemWithTitle:(NSString*)title icon:(UIImage*)icon
@@ -173,7 +173,7 @@ shadowColor;
         if (badgeView) {
             badgeView.delegate = nil;
             [badgeView removeFromSuperview];
-            L_RELEASE(badgeView);
+            badgeView = nil;
         }
         
         badgeView = badgeView_;
@@ -188,7 +188,6 @@ shadowColor;
 {
     if (badgeValue_ != badgeValue)
     {
-        L_RELEASE(badgeValue);
         badgeValue = [badgeValue_ copy];
         
         if ([NSString isNullOrEmpty:badgeValue])

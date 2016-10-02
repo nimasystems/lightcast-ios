@@ -35,7 +35,6 @@ NSString *const kLNSUserDefaultsPreferencesEncodingSeparatorSlashed = @"::";
     {
         if (!userDefaults)
         {
-            L_RELEASE(self);
             lassert(false);
             return nil;
         }
@@ -58,7 +57,7 @@ NSString *const kLNSUserDefaultsPreferencesEncodingSeparatorSlashed = @"::";
         [_ud synchronize];
     }
     
-    L_RELEASE(_ud);
+    _ud = nil;
 }
 
 #pragma mark - Abstract methods

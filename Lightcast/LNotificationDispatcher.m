@@ -49,7 +49,7 @@ static LNotificationDispatcher * sharedND = nil;
 }
 
 - (void)dealloc {
-    L_RELEASE(nd);
+    nd = nil;
 }
 
 #pragma mark -

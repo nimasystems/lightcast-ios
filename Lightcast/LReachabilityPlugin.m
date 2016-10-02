@@ -27,8 +27,7 @@
 {
     if ([super initialize:aConfiguration notificationDispatcher:aDispatcher error:error])
     {
-        // set the default config
-        L_RELEASE(configuration);
+        configuration = nil;
         
         if (aConfiguration)
         {

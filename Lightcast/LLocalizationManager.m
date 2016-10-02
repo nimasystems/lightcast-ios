@@ -58,7 +58,7 @@ bundle;
 
 - (void)dealloc
 {
-    L_RELEASE(bundle);
+    bundle = nil;
 }
 
 #pragma mark - Localization

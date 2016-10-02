@@ -33,8 +33,8 @@ count;
 {
     [self detachAllDelegates];
     
-    L_RELEASE(_delegates);
-    L_RELEASE(_delegatesLock);
+    _delegates = nil;
+    _delegatesLock = nil;
 }
 
 #pragma mark - Delegate setting / unsetting methods

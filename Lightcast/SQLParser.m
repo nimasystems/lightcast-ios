@@ -79,7 +79,7 @@ sqlItems;
 
 - (void)dealloc
 {
-    L_RELEASE(sqlItems);
+    sqlItems = nil;
 }
 
 + (id)sqlParserWithFileContents:(NSString*)filename {

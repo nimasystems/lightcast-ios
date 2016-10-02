@@ -180,7 +180,7 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
 {
     @synchronized(self)
     {
-        L_RELEASE(luuidHandlerUUID);
+        luuidHandlerUUID = nil;
         
         // Build a query
         CFMutableDictionaryRef query = CreateKeychainQueryDictionary();
@@ -221,7 +221,6 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
 {
     if (luuidHandlerAccessGroup != accessGroup)
     {
-        L_RELEASE(luuidHandlerAccessGroup);
         luuidHandlerAccessGroup = accessGroup;
     }
 }

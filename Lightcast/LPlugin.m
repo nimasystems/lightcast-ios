@@ -51,7 +51,6 @@ pluginName;
         if (![self conformsToProtocol:@protocol(LPluginBehaviour)])
         {
             [self doesNotRecognizeSelector:_cmd];
-            L_RELEASE(self);
             return nil;
         }
         
@@ -66,7 +65,7 @@ pluginName;
 }
 
 - (void)dealloc {
-    L_RELEASE(pluginName);
+    pluginName = nil;
 }
 
 #pragma mark - 

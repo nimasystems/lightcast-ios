@@ -59,11 +59,11 @@ callStackSymbols;
 
 - (void)dealloc {
     
-    L_RELEASE(error);
-    L_RELEASE(exception);
-    L_RELEASE(callStackReturnAddresses);
-    L_RELEASE(callStackSymbols);
-    L_RELEASE(annotation);
+    error = nil;
+    exception = nil;
+    callStackReturnAddresses = nil;
+    callStackSymbols = nil;
+    annotation = nil;
 }
 
 @end

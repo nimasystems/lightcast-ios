@@ -70,12 +70,12 @@ fullPath;
 }
 
 - (void)dealloc {
-    L_RELEASE(pathToVfs);
-    L_RELEASE(fileName);
-    L_RELEASE(dirHash);
-    L_RELEASE(fileHash);
-    L_RELEASE(fileType);
-    L_RELEASE(createdOn);
+    pathToVfs = nil;
+    fileName = nil;
+    dirHash = nil;
+    fileHash = nil;
+    fileType = nil;
+    createdOn = nil;
 }
 
 #pragma mark -

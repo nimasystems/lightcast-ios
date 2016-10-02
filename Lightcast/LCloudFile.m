@@ -31,10 +31,10 @@ formatFile;
 
 - (void)dealloc
 {
-    L_RELEASE(filename);
-    L_RELEASE(iCloudPath);
-    L_RELEASE(filePathInApp);
-    L_RELEASE(formatFile);
+    filename = nil;
+    iCloudPath = nil;
+    filePathInApp = nil;
+    formatFile = nil;
 }
 
 @end

@@ -49,7 +49,6 @@ adapterName;
         if (![self conformsToProtocol:@protocol(LStorageAdapterBehaviour)])
         {
             [self doesNotRecognizeSelector:_cmd];
-            L_RELEASE(self);
             return nil;
         }
         
@@ -67,7 +66,7 @@ adapterName;
 
 - (void)dealloc {
     [self sync];
-    L_RELEASE(adapterName);
+    adapterName = nil;
 }
 
 #pragma mark -

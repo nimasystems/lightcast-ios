@@ -72,9 +72,9 @@ badgeOffset;
 {
     self.delegate = nil;
     
-    L_RELEASE(tabTitleFont);
-    L_RELEASE(tabContainer);
-    L_RELEASE(tabItems);
+    tabTitleFont = nil;
+    tabContainer = nil;
+    tabItems = nil;
 }
 
 #pragma mark - View Related

@@ -79,11 +79,11 @@ textPaddingY;
 {
     delegate = nil;
     
-    L_RELEASE(value);
-    L_RELEASE(backgroundColor);
-    L_RELEASE(borderColor);
-    L_RELEASE(font);
-    L_RELEASE(textColor);
+    value = nil;
+    backgroundColor = nil;
+    borderColor = nil;
+    font = nil;
+    textColor = nil;
     
     self.badgeParagraphStyle = nil;
     
@@ -109,7 +109,6 @@ textPaddingY;
 {
     if (value != value_)
     {
-        L_RELEASE(value);
         value = [value_ copy];
         
         [self setNeedsDisplay];

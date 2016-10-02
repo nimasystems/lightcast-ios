@@ -78,9 +78,8 @@ results=_results;
 }
 
 - (void)dealloc {
-    
-    L_RELEASE(_hostname);
-    L_RELEASE(_response);
+    _hostname = nil;
+    _response = nil;
     
     [self reset];
 }
@@ -134,12 +133,12 @@ results=_results;
 }
 
 - (void)reset {
-    L_RELEASE(_results);
-    L_RELEASE(_request);
-    L_RELEASE(_data);
-    L_RELEASE(_lastError);
-    L_RELEASE(_serviceName);
-    L_RELEASE(_methodName);
+    _results = nil;
+    _request = nil;
+    _data = nil;
+    _lastError = nil;
+    _serviceName = nil;
+    _methodName = nil;
     
     _response = nil;
 }
@@ -288,7 +287,7 @@ results=_results;
     }
     @finally 
     {
-        L_RELEASE(_request);
+        _request = nil;
     }
     
     return YES;
@@ -330,7 +329,7 @@ results=_results;
     }
     @finally 
     {
-        L_RELEASE(tmpArr);
+        tmpArr = nil;
     }
     
     NSString *str = [NSString stringWithFormat:@"%@://%@/?service=%@&method=%@%@",

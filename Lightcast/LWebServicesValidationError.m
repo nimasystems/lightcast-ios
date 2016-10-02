@@ -19,8 +19,8 @@ errorMessage;
 
 - (void)dealloc
 {
-    L_RELEASE(fieldName);
-    L_RELEASE(errorMessage);
+    fieldName = nil;
+    errorMessage = nil;
 }
 
 #pragma mark -

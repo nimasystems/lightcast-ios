@@ -45,11 +45,11 @@ cachesPath;
 
 - (void)dealloc
 {
-    L_RELEASE(resourcesPath);
-    L_RELEASE(documentsPath);
-    L_RELEASE(temporaryPath);
-    L_RELEASE(libraryPath);
-    L_RELEASE(cachesPath);
+    resourcesPath = nil;
+    documentsPath = nil;
+    temporaryPath = nil;
+    libraryPath = nil;
+    cachesPath = nil;
 }
 
 #pragma mark - Helpers

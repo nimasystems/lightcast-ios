@@ -25,7 +25,6 @@ timeout;
     self = [super init];
     if (self) {
         if (!url_) {
-            L_RELEASE(self);
             lassert(false);
             return nil;
         }
@@ -43,10 +42,10 @@ timeout;
 
 - (void)dealloc {
     
-    L_RELEASE(url);
-    L_RELEASE(downloadedUrl);
-    L_RELEASE(cacheDir);
-    L_RELEASE(downloader);
+    url = nil;
+    downloadedUrl = nil;
+    cacheDir = nil;
+    downloader = nil;
 }
 
 + (LURLDataDownloader*)downloadedUrlData:(NSURL*)url cacheDir:(NSString*)cacheDir {

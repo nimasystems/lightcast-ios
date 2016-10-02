@@ -67,8 +67,8 @@ count;
 }
 
 - (void)dealloc {
-    L_RELEASE(plugins);
-    L_RELEASE(db);
+    plugins = nil;
+    db = nil;
 }
 
 #pragma mark -
@@ -111,7 +111,7 @@ count;
         }
         @finally 
         {
-            L_RELEASE(schemaUpgrader);
+            schemaUpgrader = nil;
         }
         
         LogInfo(@"Plugin database schema upgrade complete");

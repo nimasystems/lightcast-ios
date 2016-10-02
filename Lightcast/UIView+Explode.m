@@ -247,7 +247,7 @@ float randomFloat()
 
 - (void)dealloc {
     
-    L_RELEASE(_particlePath);
+    _particlePath = nil;
 }
 
 @end

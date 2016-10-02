@@ -27,7 +27,6 @@ secure=_secure;
     {
         if (!hostname)
         {
-            L_RELEASE(self);
             return nil;
         }
         
@@ -41,8 +40,7 @@ secure=_secure;
 }
 
 - (void)dealloc {
-    
-    L_RELEASE(_hostname);
+    _hostname = nil;
 }
 
 #pragma mark - Submitting

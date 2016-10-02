@@ -19,9 +19,9 @@ value;
 
 - (void)dealloc
 {
-    L_RELEASE(key);
-    L_RELEASE(value);
-    L_RELEASE(comment);
+    key = nil;
+    value = nil;
+    comment = nil;
 }
 
 #pragma mark - Helpers

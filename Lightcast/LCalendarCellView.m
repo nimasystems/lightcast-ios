@@ -92,17 +92,17 @@ showsTouchEffect;
 - (void)dealloc
 {
     delegate = nil;
-    L_RELEASE(date);
-    L_RELEASE(calendar);
+    date = nil;
+    calendar = nil;
     
-    L_RELEASE(defaultBgColor);
-    L_RELEASE(defaultLabelTextColor);
-    L_RELEASE(selectedLabelTextColor);
-    L_RELEASE(selectedBgColor);
-    L_RELEASE(otherMonthBgColor);
-    L_RELEASE(otherMonthLabelTextColor);
-    L_RELEASE(todayBgColor);
-    L_RELEASE(todayLabelTextColor);
+    defaultBgColor = nil;
+    defaultLabelTextColor = nil;
+    selectedLabelTextColor = nil;
+    selectedBgColor = nil;
+    otherMonthBgColor = nil;
+    otherMonthLabelTextColor = nil;
+    todayBgColor = nil;
+    todayLabelTextColor = nil;
 }
 
 #pragma mark - Touches
@@ -235,7 +235,6 @@ showsTouchEffect;
 {
     if (date != date_)
     {
-        L_RELEASE(date);
         date = [date_ copy];
         
         _day = 0;

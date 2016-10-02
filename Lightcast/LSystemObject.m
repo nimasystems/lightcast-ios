@@ -54,8 +54,8 @@ defaultConfiguration;
 
 - (void)dealloc {
     
-    L_RELEASE(configuration);
-    L_RELEASE(nd);
+    configuration = nil;
+    nd = nil;
 }
 
 - (BOOL)initialize:(LCAppConfiguration*)aConfiguration notificationDispatcher:(LNotificationDispatcher*)aDispatcher error:(NSError**)error {

@@ -36,7 +36,7 @@
 
 - (NSArray*)allSavedKeys
 {
-	return [[self dictionaryRepresentation] allKeys];
+    return [[self dictionaryRepresentation] allKeys];
 }
 
 - (void)setMainBundleSettingsDefaults
@@ -86,7 +86,7 @@
     // set them in the standard user defaults
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
     
-    L_RELEASE(appDefaults);
+    appDefaults = nil;
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }

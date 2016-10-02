@@ -71,9 +71,9 @@ handled;
 
 - (void)dealloc {
     
-    L_RELEASE(name);
-    L_RELEASE(object);
-    L_RELEASE(returnValue);
+    name = nil;
+    object = nil;
+    returnValue = nil;
 }
 
 + (id)notificationWithName:(NSString*)aName {

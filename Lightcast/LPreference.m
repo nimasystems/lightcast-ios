@@ -43,7 +43,6 @@ value;
     {
         if ([NSString isNullOrEmpty:aCategory] || [NSString isNullOrEmpty:aKey])
         {
-            L_RELEASE(self);
             lassert(false);
             return nil;
         }
@@ -63,9 +62,9 @@ value;
 
 - (void)dealloc
 {
-    L_RELEASE(category);
-    L_RELEASE(key);
-    L_RELEASE(value);
+    category = nil;
+    key = nil;
+    value = nil;
 }
 
 #pragma mark - NSCopying

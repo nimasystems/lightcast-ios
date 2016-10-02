@@ -59,7 +59,6 @@ NSInteger const kSecondsYear     =   31556926;
     
     NSString* formattedTime = [formatter stringFromDate:[NSDate date]];
     NSDate* date = [formatter dateFromString:formattedTime];
-    L_RELEASE(formatter);
     
     return date;
 }
@@ -77,7 +76,6 @@ NSInteger const kSecondsYear     =   31556926;
     
     NSString* formattedTime = [formatter stringFromDate:self];
     NSDate* date = [formatter dateFromString:formattedTime];
-    L_RELEASE(formatter);
     
     return date;
 }

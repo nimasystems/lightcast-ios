@@ -48,7 +48,7 @@
 }
 
 - (void)dealloc {
-    L_RELEASE(ud);
+    ud = nil;
 }
 
 #pragma mark -

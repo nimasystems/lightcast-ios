@@ -43,8 +43,8 @@ filterDelegate;
 {
     filterDelegate = nil;
     
-    L_RELEASE(_unfilteredDictionary);
-    L_RELEASE(_filteredDictionary);
+    _unfilteredDictionary = nil;
+    _filteredDictionary = nil;
 }
 
 #pragma mark - Getters / Setters
@@ -70,7 +70,7 @@ filterDelegate;
         return;
     }
     
-    L_RELEASE(_filteredDictionary);
+    _filteredDictionary = nil;
     
     // inform the delegate
     if (filterDelegate && [filterDelegate respondsToSelector:@selector(filteredNSDictionaryDidResetFilter:)])
@@ -100,7 +100,6 @@ filterDelegate;
     
     if (filteredDictionary_ != _filteredDictionary)
     {
-        L_RELEASE(_filteredDictionary);
         _filteredDictionary = [NSDictionary dictionaryWithDictionary:filteredDictionary_];
     }
     

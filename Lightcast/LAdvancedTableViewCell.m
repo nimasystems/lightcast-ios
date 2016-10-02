@@ -79,10 +79,10 @@ threadData;
     
     cellLoadingDelegate = nil;
     
-    L_RELEASE(data);
-    L_RELEASE(options);
-    L_RELEASE(threadData);
-    L_RELEASE(cellIndexPath);
+    data = nil;
+    options = nil;
+    threadData = nil;
+    cellIndexPath = nil;
 }
 
 - (void)setThreadData_:(NSDictionary*)threadData_ {
@@ -172,7 +172,7 @@ threadData;
         [cellLoadingDelegate didFinishLoading:cellIndexPath returnedObject:returnedObject];
     }
     
-    L_RELEASE(cellIndexPath);
+    cellIndexPath = nil;
     cellLoadingDelegate = nil;
 }
 

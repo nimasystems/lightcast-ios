@@ -63,11 +63,11 @@ UUID;
 
 - (void)dealloc
 {
-    L_RELEASE(primaryMacAddress);
-    L_RELEASE(deviceName);
-    L_RELEASE(deviceDescription);
-    L_RELEASE(UUID);
-    L_RELEASE(currentResolution);
+    primaryMacAddress = nil;
+    deviceName = nil;
+    deviceDescription = nil;
+    UUID = nil;
+    currentResolution = nil;
 }
 
 - (void)initDeviceOSInfo
@@ -115,7 +115,7 @@ UUID;
 
 - (void)initPrimaryMacAddress
 {
-    L_RELEASE(primaryMacAddress);
+    primaryMacAddress = nil;
     
     int                 mgmtInfoBase[6];
     char                *msgBuffer = NULL;

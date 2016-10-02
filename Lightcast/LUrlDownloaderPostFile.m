@@ -29,7 +29,6 @@ actualData;
     self = [super init];
     if (self)
     {
-        L_RELEASE(self);
         lassert(false);
     }
     return self;
@@ -44,7 +43,6 @@ actualData;
         
         if ([NSString isNullOrEmpty:aFilename])
         {
-            L_RELEASE(self);
             lassert(false);
             return nil;
         }
@@ -63,7 +61,6 @@ actualData;
         
         if (!someData || ![someData length])
         {
-            L_RELEASE(self);
             lassert(false);
             return nil;
         }
@@ -75,10 +72,10 @@ actualData;
 
 - (void)dealloc
 {
-    L_RELEASE(filename);
-    L_RELEASE(data);
-    L_RELEASE(actualData);
-    L_RELEASE(mimetype);
+    filename = nil;
+    data = nil;
+    actualData = nil;
+    mimetype = nil;
 }
 
 #pragma mark - Getters / Setters

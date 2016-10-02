@@ -99,8 +99,7 @@ const NSString * cacheManagerDefaultBackend = @"LCacheFIFO";
 }
 
 - (void)dealloc {
-    
-    L_RELEASE(cacheBackend);
+    cacheBackend = nil;
 }
 
 #pragma mark - Singleton Pattern

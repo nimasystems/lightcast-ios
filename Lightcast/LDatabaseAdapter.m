@@ -50,7 +50,6 @@ adapterDispatchQueue;
     {
         if ([NSString isNullOrEmpty:aConnectionString])
         {
-            L_RELEASE(self);
             lassert(false);
             return nil;
         }

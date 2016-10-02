@@ -43,7 +43,7 @@ NSString *const lnThreadedImageCellDefaultLocalImageKey = @"constant.lnThreadedI
 - (void)dealloc {
     
     //L_RELEASE(lbl);
-    L_RELEASE(progressView);
+    progressView = nil;
 }
 
 - (UIImage*)defaultImage {

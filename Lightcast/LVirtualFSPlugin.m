@@ -71,9 +71,9 @@ basePath;
 
 - (void)dealloc
 {
-    L_RELEASE(basePath);
-    L_RELEASE(currentDir);
-    L_RELEASE(db);
+    basePath = nil;
+    currentDir = nil;
+    db = nil;
 }
 
 - (BOOL)initialize:(LCAppConfiguration*)aConfiguration notificationDispatcher:(LNotificationDispatcher*)aDispatcher error:(NSError**)error {
@@ -81,7 +81,7 @@ basePath;
     if ([super initialize:aConfiguration notificationDispatcher:aDispatcher error:error])
     {
         // set the default config
-        L_RELEASE(configuration);
+        configuration = nil;
         
         if (aConfiguration)
         {
@@ -104,7 +104,7 @@ basePath;
         }
         
         // set the base path
-        L_RELEASE(basePath);
+        basePath = nil;
         //NSString * rPath = [[NSFileManager defaultManager] documentsPath]; old logic with documents path
         
         NSString * rPath = [LC sharedLC].documentsPath;
@@ -799,7 +799,7 @@ basePath;
 
 - (void)initCurrentDirAndCounters {
     
-    L_RELEASE(currentDir);
+    currentDir = nil;
     filesCountInCurrentDir = 0;
     
     // fetch the last file's dir hash

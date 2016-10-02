@@ -51,8 +51,7 @@ selectionAnimationDuration;
 - (void)dealloc
 {
     self.selectionView = nil;
-    
-    L_RELEASE(tabItems);
+    tabItems = nil;
 }
 
 #pragma mark - Getters / Setters
