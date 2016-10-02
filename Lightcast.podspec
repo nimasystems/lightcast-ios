@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Lightcast"
-  s.version      = "0.0.23"
+  s.version      = "0.0.25"
   s.summary      = "iOS utility framework"
 
   # This description is used to generate tags and improve search results.
@@ -67,7 +67,7 @@ Pod::Spec.new do |s|
   # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "7.0"
+  s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.6"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
@@ -89,19 +89,19 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}", "3rdParty/**/*.{h,m}"
+  s.source_files  = "Lightcast", "Lightcast/**/*.{h,m}", "Lightcast/3rdParty/**/*.{h,m}"
   #s.exclude_files = "Classes/Exclude"
 
-  s.public_header_files = "Classes/**/*.h", "3rdParty/Base64/*.h", "3rdParty/System\ Services/*.h"
+  s.public_header_files = "Lightcast/**/*.h", "Lightcast/3rdParty/Base64/*.h", "Lightcast/3rdParty/System\ Services/*.h"
 
-  s.subspec 'no-arc' do |sp|
-    sp.source_files = "Classes/Reachability.m", "3rdParty/Base64/Base64.m", "3rdParty/System\ Services/SystemServices.m"
-    sp.requires_arc = true
-    sp.compiler_flags = '-fobjc-arc'
-  end
+  #s.subspec 'no-arc' do |sp|
+  #  sp.source_files = "Classes/Reachability.m", "3rdParty/Base64/Base64.m", "3rdParty/System\ Services/SystemServices.m"
+  #  sp.requires_arc = true
+  #  sp.compiler_flags = '-fobjc-arc'
+  #end
 
-  s.ios.prefix_header_file = "Classes/Lightcast\ iOS-Prefix.pch"
-  s.osx.prefix_header_file = "Classes/Lightcast-MacOSX-Prefix.pch"
+  s.ios.prefix_header_file = "Lightcast/Lightcast\ iOS-Prefix.pch"
+  s.osx.prefix_header_file = "Lightcast/Lightcast-MacOSX-Prefix.pch"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -135,7 +135,7 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  s.requires_arc = false
+  s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency "CocoaLumberjack"

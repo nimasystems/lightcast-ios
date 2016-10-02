@@ -104,6 +104,10 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
  */
 #ifndef LOGGER_DISABLED
 
+#ifndef LOG_ASYNC_ENABLED
+#define LOG_ASYNC_ENABLED YES
+#endif
+
 #define DDLog2Error(frmt, ...)   LOG_MAYBE(NO,                ddLogLevel, DDLogFlagError,   0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 #define DDLog2Warn(frmt, ...)    LOG_MAYBE(LOG_ASYNC_ENABLED, ddLogLevel, DDLogFlagWarning, 0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 #define DDLog2Info(frmt, ...)    LOG_MAYBE(LOG_ASYNC_ENABLED, ddLogLevel, DDLogFlagInfo,    0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
