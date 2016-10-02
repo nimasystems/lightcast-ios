@@ -11,7 +11,7 @@
  * PURPOSE.  See the LICENSE.txt file for more information.
  *
  * You should have received a copy of LICENSE.txt file along with this
- * program; if not, write to:
+ * program; if notb, write to:
  * NIMASYSTEMS LTD 
  * Plovdiv, Bulgaria
  * ZIP Code: 4000
@@ -30,23 +30,28 @@
  * @version $Revision: 183 $
  */
 
+/*
+ #if !__has_feature(objc_arc)
+ #error This library requires automatic reference counting
+ #endif*/
+
 // all preprocessor macros
-#import <Lightcast/defines.h>
+#import "defines.h"
 
 // exceptions handling
-#import <Lightcast/Exceptions.h>
+#import "Exceptions.h"
 
 // Logging
-#import <Lightcast/Logging.h>
+#import "Logging.h"
 
 // Utilities
-#import <Lightcast/Utilities.h>
+#import "Utilities.h"
 
 // UI
-#import <Lightcast/UI.h>
+#import "UI.h"
 
 // i18n
-#import <Lightcast/i18n.h>
+#import "i18n.h"
 
 // Lightcast Controller
-#import <Lightcast/LC.h>
+#import "LC.h"

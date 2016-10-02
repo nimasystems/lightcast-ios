@@ -33,6 +33,8 @@
 #import "LViewController.h"
 #import "LWebServiceError.h"
 #import "LWebServicesValidationError.h"
+#import "GeneralUtils.h"
+#import "UIView+Additions.h"
 
 #ifdef DEBUG
 //#define LVIEWCONTROLLER_EXTRA_DEBUG

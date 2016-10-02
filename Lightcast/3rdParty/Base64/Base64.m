@@ -62,7 +62,7 @@
     long long maxOutputLength = (inputLength / 4 + 1) * 3;
     NSMutableData *outputData = [NSMutableData dataWithLength:maxOutputLength];
     unsigned char *outputBytes = (unsigned char *)[outputData mutableBytes];
-
+    
     int accumulator = 0;
     long long outputLength = 0;
     unsigned char accumulated[] = {0, 0, 0, 0};

@@ -35,6 +35,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "Base64.h"
 #import "NSString+Additions.h"
+#import "LVars.h"
 
 @implementation NSString(LAdditions)
 

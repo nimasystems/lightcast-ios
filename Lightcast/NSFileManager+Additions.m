@@ -31,6 +31,7 @@
  */
 
 #import "NSFileManager+Additions.h"
+#import "LApplicationUtils.h"
 
 @implementation NSFileManager(LAdditions)
 
@@ -84,19 +85,19 @@
 
 - (NSString*)documentsPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *documentsPath = [paths objectAtIndex:0];
     return documentsPath;
 }
 
 - (NSString*)libraryPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-	NSString *libraryPath = [paths objectAtIndex:0];
+    NSString *libraryPath = [paths objectAtIndex:0];
     return libraryPath;
 }
 
 - (NSString*)cachesPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-	NSString *libraryPath = [paths objectAtIndex:0];
+    NSString *libraryPath = [paths objectAtIndex:0];
     return libraryPath;
 }
 
@@ -107,22 +108,22 @@
 }
 
 - (NSString*)resourcePath {
-	return [[NSBundle mainBundle] resourcePath];
+    return [[NSBundle mainBundle] resourcePath];
 }
 
 - (NSString *)temporaryPath {
-	
+    
 #ifdef TARGET_OSX
-	// an alternative to the NSTemporaryDirectory
-	NSString * path = nil;
-	NSArray * paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-	
-	if ([paths count]) 
-	{
-		NSString * bundleName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    // an alternative to the NSTemporaryDirectory
+    NSString * path = nil;
+    NSArray * paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    
+    if ([paths count]) 
+    {
+        NSString * bundleName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
         
         path = [[[paths objectAtIndex:0] stringByAppendingPathComponent:bundleName] stringByAppendingString:@"/"];
-	}
+    }
     
     return path;
 #endif
@@ -148,21 +149,21 @@
 }
 
 - (BOOL)internalRemoveFolderWithRecursion:(NSString *)folderName error:(NSError**)error {
-	
+    
     if (error != NULL)
     {
         *error = nil;
     }
     
-	BOOL res = YES;
-	
-	NSArray * items = [self contentsOfDirectoryAtPath:folderName error:error];
-	
-	if ([items count])
-	{
-		for (NSString * k in items) 
-		{
-			if (error != NULL)
+    BOOL res = YES;
+    
+    NSArray * items = [self contentsOfDirectoryAtPath:folderName error:error];
+    
+    if ([items count])
+    {
+        for (NSString * k in items) 
+        {
+            if (error != NULL)
             {
                 *error = nil;
             }
@@ -222,12 +223,12 @@
                     }
                 }
             }
-			
-			if (!res) break;
-		}
-	}
+            
+            if (!res) break;
+        }
+    }
     
-	return res;
+    return res;
 }
 
 - (BOOL)folderExists:(NSString*)folder
@@ -249,46 +250,46 @@
     }
     
     if (folderName == nil) return NO;
-	
-	BOOL res = [self internalRemoveFolderWithRecursion:folderName error:error];
-	
-	if (!res)
-	{
-		return NO;
-	}
-	
-	// delete the folder itself, if NOT empty
-	if (!onlyEmptyTopFolder)
-	{
+    
+    BOOL res = [self internalRemoveFolderWithRecursion:folderName error:error];
+    
+    if (!res)
+    {
+        return NO;
+    }
+    
+    // delete the folder itself, if NOT empty
+    if (!onlyEmptyTopFolder)
+    {
         if (error != NULL)
         {
             *error = nil;
         }
         
-		res = [self removeItemAtPath:folderName error:error];
-		
-		if (!res)
-		{
-			return NO;
-		}
-	}
-	
-	return res;
+        res = [self removeItemAtPath:folderName error:error];
+        
+        if (!res)
+        {
+            return NO;
+        }
+    }
+    
+    return res;
 }
 
 - (BOOL)removeFolderRecursively:(NSString *)folderName emptyTopFolder:(BOOL)onlyEmptyTopFolder {
-	return [self removeFolderRecursively:folderName emptyTopFolder:onlyEmptyTopFolder error:nil];
+    return [self removeFolderRecursively:folderName emptyTopFolder:onlyEmptyTopFolder error:nil];
 }
 
 - (NSString*)formattedFileSize:(NSInteger)fileSize {
-	NSString * str = nil;
-	
-	if (fileSize < 1) str = @""; else
-		if (fileSize < 1024) str = [NSString stringWithFormat:LightcastLocalizedString(@"%d bytes"), fileSize]; else
-			if ((fileSize > 1024) && (fileSize < 1048576)) str = [NSString stringWithFormat:LightcastLocalizedString(@"%d KB"), fileSize/1024]; else
-				if (fileSize > 1048576) str = [NSString stringWithFormat:LightcastLocalizedString(@"%d MB"), fileSize/1048576];
-	
-	return str;
+    NSString * str = nil;
+    
+    if (fileSize < 1) str = @""; else
+        if (fileSize < 1024) str = [NSString stringWithFormat:LightcastLocalizedString(@"%d bytes"), fileSize]; else
+            if ((fileSize > 1024) && (fileSize < 1048576)) str = [NSString stringWithFormat:LightcastLocalizedString(@"%d KB"), fileSize/1024]; else
+                if (fileSize > 1048576) str = [NSString stringWithFormat:LightcastLocalizedString(@"%d MB"), fileSize/1048576];
+    
+    return str;
 }
 
 + (NSString*)folderContentsDescription:(NSString*)pathToFolder
@@ -365,7 +366,7 @@
     {
         *error = nil;
     }
-
+    
 #ifdef TARGET_IOS
     if (!SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.1")) {
         return YES;

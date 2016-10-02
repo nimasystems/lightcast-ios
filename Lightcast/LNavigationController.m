@@ -31,6 +31,7 @@
  */
 
 #import "LNavigationController.h"
+#import "UI-General.h"
 
 @implementation LNavigationController
 

@@ -36,6 +36,7 @@
 #import "LSystemObject.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
+#import "LApplicationUtils.h"
 
 static LC *sharedLC = nil;
 

@@ -31,7 +31,8 @@
  */
 
 #import "NSDictionary+Additions.h"
-
+#import "LDateTimeUtils.h"
+#import "LVars.h"
 
 @implementation NSDictionary(LAdditions)
 

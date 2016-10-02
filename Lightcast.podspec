@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Lightcast"
-  s.version      = "0.0.25"
+  s.version      = "0.0.28"
   s.summary      = "iOS utility framework"
 
   # This description is used to generate tags and improve search results.
@@ -93,6 +93,8 @@ Pod::Spec.new do |s|
   #s.exclude_files = "Classes/Exclude"
 
   s.public_header_files = "Lightcast/**/*.h", "Lightcast/3rdParty/Base64/*.h", "Lightcast/3rdParty/System\ Services/*.h"
+
+  s.compiler_flags = '-fno-objc-arc'
 
   #s.subspec 'no-arc' do |sp|
   #  sp.source_files = "Classes/Reachability.m", "3rdParty/Base64/Base64.m", "3rdParty/System\ Services/SystemServices.m"

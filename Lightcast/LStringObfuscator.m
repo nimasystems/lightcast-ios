@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 г. Nimasystems Ltd. All rights reserved.
 //
 
+#import <CommonCrypto/CommonDigest.h>
 #import "LStringObfuscator.h"
 
 @implementation LStringObfuscator

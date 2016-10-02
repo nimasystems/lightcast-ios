@@ -35,6 +35,7 @@
 #import "LVirtualFile.h"
 #import "LC.h"
 #import "LVirtualFSSchema.h"
+#import "LDateTimeUtils.h"
 
 NSString *const LVirtualFSPluginErrorDomain = LERR_DOMAIN_VIRTUALFS;
 
@@ -87,19 +88,19 @@ basePath;
         {
             configuration = [aConfiguration retain];
         }
-      
+        
         // check the database
         db = [[LC sharedLC].db retain];
         
         if (!db)
         {
             if (error != NULL)
-			{
-				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				[errorDetail setValue:LightcastLocalizedString(@"VFS requires a database") forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_CANT_INITIALIZE userInfo:errorDetail];
-			}
-			
+            {
+                NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                [errorDetail setValue:LightcastLocalizedString(@"VFS requires a database") forKey:NSLocalizedDescriptionKey];
+                *error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_CANT_INITIALIZE userInfo:errorDetail];
+            }
+            
             return NO;
         }
         
@@ -118,7 +119,7 @@ basePath;
         
         LogInfo(@"VFS module started with base path: %@", basePath);
     }
-	
+    
     return YES;
 }
 
@@ -145,21 +146,21 @@ basePath;
              pluginRequirements:(NSArray**)pluginRequirements
 {
     /**minLightcastVer = @"1.0";
-    *maxLightcastVer = @"1.0";
-    *pluginRequirements = [NSArray arrayWithObjects:
-                           [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"non_existing_module", @"name",
-                            @"1.3", @"min",
-                            @"4.4.4.1", @"max"
-                            , nil]
-                           , nil];*/
-
+     *maxLightcastVer = @"1.0";
+     *pluginRequirements = [NSArray arrayWithObjects:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+     @"non_existing_module", @"name",
+     @"1.3", @"min",
+     @"4.4.4.1", @"max"
+     , nil]
+     , nil];*/
+    
     return NO;
 }
 
 - (id<LDatabaseSchemaProtocol>)databaseSchemaInstance
 {
-	return [[[LVirtualFSSchema alloc] init] autorelease];
+    return [[[LVirtualFSSchema alloc] init] autorelease];
 }
 
 #pragma mark -
@@ -167,7 +168,7 @@ basePath;
 
 - (LVirtualFile *)importFileWithData:(NSData*)data
                             filename:(NSString*)filename
-						   extension:(NSString*)extension
+                           extension:(NSString*)extension
                       resourceValues:(NSDictionary*)resourceValues
                                error:(NSError**)error
 {
@@ -348,7 +349,7 @@ basePath;
 
 - (LVirtualFile *)importFileWithData:(NSData*)data
                             filename:(NSString*)filename 
-						   extension:(NSString*)extension
+                           extension:(NSString*)extension
                                error:(NSError**)error
 {
     return [self importFileWithData:data filename:filename extension:extension resourceValues:nil error:error];
@@ -606,13 +607,13 @@ basePath;
         lassert(false);
         
         if (error != NULL)
-		{
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:[NSString stringWithFormat:@"%@: %@ (%@)", LightcastLocalizedString(@"Cannot create file:"),
-								   [e description], pathToFile] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:LERR_DOMAIN_VIRTUALFS code:LERR_PLUGIN_VFS_FILE_CREATE_ERROR userInfo:errorDetail];
-		}
-		
+        {
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:[NSString stringWithFormat:@"%@: %@ (%@)", LightcastLocalizedString(@"Cannot create file:"),
+                                   [e description], pathToFile] forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:LERR_DOMAIN_VIRTUALFS code:LERR_PLUGIN_VFS_FILE_CREATE_ERROR userInfo:errorDetail];
+        }
+        
         return nil;
     }
     
@@ -639,7 +640,7 @@ basePath;
     // fill the object and return it
     
     if (!db) return nil;
-	if (!fileId) return nil;
+    if (!fileId) return nil;
     
     LVirtualFile * f = nil;
     
@@ -651,12 +652,12 @@ basePath;
         
         if (![res count])
         {
-			if (error != NULL)
-			{
-				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				[errorDetail setValue:LightcastLocalizedString(@"File not found") forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:LERR_DOMAIN_VIRTUALFS code:LERR_PLUGIN_VFS_FILE_NOT_FOUND userInfo:errorDetail];
-			}
+            if (error != NULL)
+            {
+                NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                [errorDetail setValue:LightcastLocalizedString(@"File not found") forKey:NSLocalizedDescriptionKey];
+                *error = [NSError errorWithDomain:LERR_DOMAIN_VIRTUALFS code:LERR_PLUGIN_VFS_FILE_NOT_FOUND userInfo:errorDetail];
+            }
             
             return nil;
         }
@@ -679,12 +680,12 @@ basePath;
     @catch (NSException * e)
     {
         if (error != NULL)
-		{
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:[NSString stringWithFormat:@"%@: %@", LightcastLocalizedString(@"Cannot load file:"), [e description]] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:LERR_DOMAIN_VIRTUALFS code:LERR_PLUGIN_VFS_FILE__LOAD_ERROR userInfo:errorDetail];
-		}
-		
+        {
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:[NSString stringWithFormat:@"%@: %@", LightcastLocalizedString(@"Cannot load file:"), [e description]] forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:LERR_DOMAIN_VIRTUALFS code:LERR_PLUGIN_VFS_FILE__LOAD_ERROR userInfo:errorDetail];
+        }
+        
         return nil;
     }
     
@@ -737,13 +738,13 @@ basePath;
     @catch (NSException* e) 
     {
         if (error != NULL)
-		{
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:[NSString stringWithFormat:@"%@: %@", LightcastLocalizedString(@"Cannot remove file:"), [e description]] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:LERR_DOMAIN_VIRTUALFS code:LERR_PLUGIN_VFS_FILE__REMOVE_ERROR userInfo:errorDetail];
-		}
-		
-		return NO;
+        {
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:[NSString stringWithFormat:@"%@: %@", LightcastLocalizedString(@"Cannot remove file:"), [e description]] forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:LERR_DOMAIN_VIRTUALFS code:LERR_PLUGIN_VFS_FILE__REMOVE_ERROR userInfo:errorDetail];
+        }
+        
+        return NO;
     }
     
     return YES;
@@ -754,7 +755,7 @@ basePath;
     NSString * sql = @"SELECT \
     (SELECT Count(filesystem.file_id) FROM filesystem) AS total_files,\
     (SELECT SUM(filesystem.filesize) FROM filesystem) AS total_filesize";
-
+    
     NSArray * res = [db executeQuery:sql];
     
     if (![res count]) return nil;
@@ -860,16 +861,16 @@ basePath;
 
 - (NSString *)randomHash {
     
-	//long seed = (long) [[NSDate date] timeIntervalSince1970];
-	//float ref1 = (((seed= 1664525*seed + 1013904223)>>16) / (float)0x10000);
-	//float ref2 = (((seed= 1664525*seed + 1013904223)>>16) / (float)0x10000);
-	//float randNum1 = ref1 * 74;
-	//float randNum2 = ref2 * 74;
-	
-	int randNum1 = arc4random();
-	int randNum2 = arc4random();
-	
-	NSString * str = [NSString stringWithFormat:@"%d-%d", randNum1, randNum2];
+    //long seed = (long) [[NSDate date] timeIntervalSince1970];
+    //float ref1 = (((seed= 1664525*seed + 1013904223)>>16) / (float)0x10000);
+    //float ref2 = (((seed= 1664525*seed + 1013904223)>>16) / (float)0x10000);
+    //float randNum1 = ref1 * 74;
+    //float randNum2 = ref2 * 74;
+    
+    int randNum1 = arc4random();
+    int randNum2 = arc4random();
+    
+    NSString * str = [NSString stringWithFormat:@"%d-%d", randNum1, randNum2];
     str = str.md5Hash;
     
     return str;
