@@ -134,18 +134,18 @@ enum {
 // UIApplication CanOpenURL Check
 + (int)urlCheck {
     @try {
-#if !(defined(__has_feature) && __has_feature(attribute_availability_app_extension))
         // Create a fake url for cydia
         NSURL *FakeURL = [NSURL URLWithString:CYDIAPACKAGE];
         // Return whether or not cydia's openurl item exists
         if ([[UIApplication sharedApplication] canOpenURL:FakeURL])
             return KFOpenURL;
-#endif
+        else
+            return NOTJAIL;
     }
     @catch (NSException *exception) {
         // Error, return false
+        return NOTJAIL;
     }
-    return NOTJAIL;
 }
 
 // Cydia Check
@@ -265,15 +265,12 @@ enum {
 + (int)systemCheck {
     @try {
         // See if the system call can be used
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         if (system(0)) {
             // Jailbroken
             return KFSystem;
         } else
             // Not Jailbroken
             return NOTJAIL;
-#pragma clang diagnostic pop
     }
     @catch (NSException *exception) {
         // Not Jailbroken
