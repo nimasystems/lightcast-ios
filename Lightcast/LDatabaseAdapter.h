@@ -39,7 +39,7 @@ extern NSString* const LSQLDateTimeFormat;
 
 @interface LDatabaseAdapter : NSObject<LDatabaseAdapterProtocol>
 
-@property (assign, readonly) dispatch_queue_t adapterDispatchQueue;
+@property (strong, readonly) dispatch_queue_t adapterDispatchQueue;
 
 - (id)initWithConnectionString:(NSString*)aConnectionString;
 - (id)initWithConnectionString:(NSString*)aConnectionString dispatchQueue:(dispatch_queue_t)queue;

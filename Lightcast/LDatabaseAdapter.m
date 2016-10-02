@@ -92,7 +92,7 @@ adapterDispatchQueue;
     if (adapterDispatchQueue)
     {
         dispatch_sync(adapterDispatchQueue, ^{});
-        adapterDispatchQueue = NULL;
+        adapterDispatchQueue = nil;
     }
 }
 

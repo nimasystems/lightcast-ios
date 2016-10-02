@@ -1,4 +1,4 @@
-/*
+x/*
  * Lightcast for iOS Framework
  * Copyright (C) 2007-2011 Nimasystems Ltd
  *
