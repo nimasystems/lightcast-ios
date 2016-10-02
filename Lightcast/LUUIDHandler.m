@@ -60,7 +60,7 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
         CFUUIDRef uuidRef = CFUUIDCreate(NULL);
         CFStringRef uuidStringRef = CFUUIDCreateString(NULL, uuidRef);
         CFRelease(uuidRef);
-        uuid = (__bridge NSString *)uuidStringRef;
+        uuid = CFBridgingRelease(uuidStringRef);
         
         return uuid;
     }
