@@ -221,9 +221,9 @@ CGFloat LKeyboardHeightForOrientation(UIInterfaceOrientation orientation) {
 
 void LAlert(NSString* message) {
     
-    UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:LightcastLocalizedString(@"Alert")
-                                                     message:message delegate:nil
-                                           cancelButtonTitle:LightcastLocalizedString(@"OK")
-                                           otherButtonTitles:nil] autorelease];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:LightcastLocalizedString(@"Alert")
+                                                    message:message delegate:nil
+                                          cancelButtonTitle:LightcastLocalizedString(@"OK")
+                                          otherButtonTitles:nil];
     [alert show];
 }

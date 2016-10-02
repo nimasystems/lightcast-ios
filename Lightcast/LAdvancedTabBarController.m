@@ -32,7 +32,11 @@
 
 #import "LAdvancedTabBarController.h"
 
-@interface LAdvancedTabBarController(Private)
+@interface LAdvancedTabBarController()
+
+@property (nonatomic, strong) LTabBar *tabBar;
+@property (nonatomic, assign) CGSize viewControllerInset;
+@property (nonatomic, assign) LAdvancedTabBarControllerTabPosition position;
 
 - (void)reloadTabBarItems;
 - (CGRect)tabBarFrameForPosition:(LAdvancedTabBarControllerTabPosition)position;
@@ -45,14 +49,6 @@
 @end
 
 @implementation LAdvancedTabBarController
-
-@synthesize
-viewControllers=_viewControllers,
-selectedViewController=_selectedViewController,
-selectedIndex=_selectedIndex,
-tabBarPosition=_position,
-delegate=_delegate,
-viewControllerFrameInset=_viewControllerFrameInset;
 
 #pragma mark - Initialization / Finalization
 
@@ -80,7 +76,6 @@ viewControllerFrameInset=_viewControllerFrameInset;
     L_RELEASE(_viewControllers);
     _selectedViewController = nil;
     _delegate = nil;
-    [super dealloc];
 }
 
 #pragma mark - View Related
@@ -122,12 +117,12 @@ viewControllerFrameInset=_viewControllerFrameInset;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-	[super viewWillDisappear:animated];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-	[super viewDidDisappear:animated];
+    [super viewDidDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -147,7 +142,6 @@ viewControllerFrameInset=_viewControllerFrameInset;
 - (void)setViewControllers:(NSArray*)viewControllers {
     if (viewControllers != _viewControllers)
     {
-        [_viewControllers release];
         _viewControllers = [viewControllers copy];
         
         _selectedIndex = 0;
@@ -310,40 +304,33 @@ viewControllerFrameInset=_viewControllerFrameInset;
     // workout view controllers and create TabBarItems from their prefs
     NSMutableArray *tabItems = [[NSMutableArray alloc] init];
     
-    @try 
+    for(UIViewController*ctrl in _viewControllers)
     {
-        for(UIViewController*ctrl in _viewControllers)
+        if (![ctrl isKindOfClass:[UIViewController class]])
         {
-            if (![ctrl isKindOfClass:[UIViewController class]])
-            {
-                LogError(@"LAdvancedTabBarController: invalid object set in viewControllers. Skipping it.");
-                continue;
-            }
-            
-            UITabBarItem *itm = ctrl.tabBarItem;
-            
-            if (!itm) 
-            {
-                continue;
-            }
-            
-            [tabItems addObject:itm];
+            LogError(@"LAdvancedTabBarController: invalid object set in viewControllers. Skipping it.");
+            continue;
         }
         
-        LogDebug(@"LAdvancedTabBarController: Got %d tab bar items from view controllers", (int)[tabItems count]);
+        UITabBarItem *itm = ctrl.tabBarItem;
         
-        // check if there are any at all
-        if (![tabItems count]) 
+        if (!itm)
         {
-            return;
+            continue;
         }
         
-        _tabBar.items = [NSArray arrayWithArray:tabItems];
+        [tabItems addObject:itm];
     }
-    @finally 
+    
+    LogDebug(@"LAdvancedTabBarController: Got %d tab bar items from view controllers", (int)[tabItems count]);
+    
+    // check if there are any at all
+    if (![tabItems count])
     {
-        [tabItems release];
+        return;
     }
+    
+    _tabBar.items = [NSArray arrayWithArray:tabItems];
 }
 
 - (CGRect)tabBarFrameForPosition:(LAdvancedTabBarControllerTabPosition)position {

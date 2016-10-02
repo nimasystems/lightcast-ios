@@ -55,9 +55,9 @@ shadowColor;
         
         [self addTarget:self action:@selector(itemTapped) forControlEvents:UIControlEventTouchUpInside];
         
-        font = [[UIFont boldSystemFontOfSize:12.] retain];
+        font = [UIFont boldSystemFontOfSize:12.];
         margin = kLCoreTabBarControllerTabDefaultTabMargin;
-        textColor = [[UIColor whiteColor] retain];
+        textColor = [UIColor whiteColor];
         
         badgeOffset = CGSizeMake(5, 0);
     }
@@ -81,19 +81,17 @@ shadowColor;
     L_RELEASE(executeBlock);
     L_RELEASE(shadowColor);
     L_RELEASE(badgeView);
-    
-    [super dealloc];
 }
 
 + (LCoreTabBarControllerTab*)tabItemWithTitle:(NSString*)title icon:(UIImage*)icon
 {
-    LCoreTabBarControllerTab * tabItem = [[[LCoreTabBarControllerTab alloc] initWithTitle:title icon:icon] autorelease];
+    LCoreTabBarControllerTab * tabItem = [[LCoreTabBarControllerTab alloc] initWithTitle:title icon:icon];
     return tabItem;
 }
 
 + (LCoreTabBarControllerTab*)tabItemWithTitle:(NSString*)title icon:(UIImage*)icon selectedIcon:(UIImage*)selectedIcon
 {
-    LCoreTabBarControllerTab * tabItem = [[[LCoreTabBarControllerTab alloc] initWithTitle:title icon:icon selectedIcon:selectedIcon] autorelease];
+    LCoreTabBarControllerTab * tabItem = [[LCoreTabBarControllerTab alloc] initWithTitle:title icon:icon selectedIcon:selectedIcon];
     return tabItem;
 }
 
@@ -144,8 +142,7 @@ shadowColor;
 {
     if (font != font_)
     {
-        L_RELEASE(font);
-        font = [font_ retain];
+        font = font_;
         
         [self setNeedsDisplay];
     }
@@ -155,8 +152,7 @@ shadowColor;
 {
     if (textColor != color_)
     {
-        L_RELEASE(textColor);
-        textColor = [color_ retain];
+        textColor = color_;
         
         [self setNeedsDisplay];
     }
@@ -166,8 +162,7 @@ shadowColor;
 {
     if (selectedTextColor != color_)
     {
-        L_RELEASE(selectedTextColor);
-        selectedTextColor = [color_ retain];
+        selectedTextColor = color_;
         
         [self setNeedsDisplay];
     }
@@ -181,7 +176,7 @@ shadowColor;
             L_RELEASE(badgeView);
         }
         
-        badgeView = [badgeView_ retain];
+        badgeView = badgeView_;
         badgeView.delegate = self;
         [self addSubview:badgeView];
         
@@ -258,8 +253,7 @@ shadowColor;
 {
     if (shadowColor_ != shadowColor)
     {
-        L_RELEASE(shadowColor);
-        shadowColor = [shadowColor_ retain];
+        shadowColor = shadowColor_;
         
         [self setNeedsDisplay];
     }

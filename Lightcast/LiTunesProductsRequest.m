@@ -36,7 +36,7 @@ state;
             return nil;
         }
         
-        productIds = [productIds_ retain];
+        productIds = productIds_;
         iTunesProducts = nil;
         invalidITunesProducts = nil;
     }
@@ -57,8 +57,6 @@ state;
     L_RELEASE(productIds);
     L_RELEASE(iTunesProducts);
     L_RELEASE(invalidITunesProducts);
-    
-    [super dealloc];
 }
 
 #pragma mark - SKProductsRequestDelegate methods
@@ -84,7 +82,7 @@ state;
     if (request == _request)
     {
         state = LiTunesProductsRequestStateError;
-
+        
         if (delegate && [delegate respondsToSelector:@selector(request:didFailReceivingProductsWithError:)])
         {
             [delegate request:self didFailReceivingProductsWithError:error];
@@ -111,7 +109,7 @@ state;
         if (!response)
         {
             state = LiTunesProductsRequestStateError;
-
+            
             // inform the delegate
             if (delegate)
             {

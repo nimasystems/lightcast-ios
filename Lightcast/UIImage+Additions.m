@@ -105,357 +105,355 @@
 }
 
 - (UIImage *)resizedImage:(ImageResizeType)resizeType width:(float)width height:(float)height {
-	
-	// get the current size
-	float aw = self.size.width;
-	float ah = self.size.height;
-	
-	if (!aw || !ah) return nil;
-	
-	width = !width ? aw : width;
-	height = !height ? ah : height;
-	
-	float newW = 0;
-	float newH = 0;
-	
-	UIImage * ret = nil;
-	
-	// set the size
-	switch (resizeType) 
-	{
-		case resizeWithConstraints:
-		{
-			// with preserving the ratio width/height up to the maximums
-			
-			float imgRatio = aw / ah;
-			float maxRatio = width / height;
-			
-			if(imgRatio < maxRatio)
-			{
-				imgRatio = height / ah;
-				newW = imgRatio * aw;
-				newH = height;
-			}
-			else
-			{
-				imgRatio = width / aw;
-				newH = imgRatio * ah;
-				newW = width;
-			}
-			
-			break;
-		}
-		default:
-		{
-			// resizeImageAsSpecified
-			
-			newW = width;
-			newH = height;
-			
-			break;
-		}
-	}
-	
-	if (aw < newW && ah < newH)
-	{
-		newW = aw;
-		newH = ah;
-	}
-	
-	// size is the same - no resize necessary
-	if (newW == aw && newH == ah)
-	{
-		LogDebug(@"No resize necessary - new image size will be the same");
-		return self;
-	}
-	
-	LogDebug(@"Resizing image to new size: %fx%f", newW, newH);
-	
-	@try 
-	{
-		CGRect rect = CGRectMake(0.0, 0.0, newW, newH);
-		UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-		[self drawInRect:rect];
-		ret = UIGraphicsGetImageFromCurrentImageContext();
-		UIGraphicsEndImageContext();
-	}
-	@catch (NSException * e) 
-	{
-		LogError(@"Error resizing image: resizeType: %d, width: %f, height: %f: %@", resizeType, width, height, [e description]);
-		
-		ret = nil;
-	}
-	
-	return ret;
+    
+    // get the current size
+    float aw = self.size.width;
+    float ah = self.size.height;
+    
+    if (!aw || !ah) return nil;
+    
+    width = !width ? aw : width;
+    height = !height ? ah : height;
+    
+    float newW = 0;
+    float newH = 0;
+    
+    UIImage * ret = nil;
+    
+    // set the size
+    switch (resizeType) 
+    {
+        case resizeWithConstraints:
+        {
+            // with preserving the ratio width/height up to the maximums
+            
+            float imgRatio = aw / ah;
+            float maxRatio = width / height;
+            
+            if(imgRatio < maxRatio)
+            {
+                imgRatio = height / ah;
+                newW = imgRatio * aw;
+                newH = height;
+            }
+            else
+            {
+                imgRatio = width / aw;
+                newH = imgRatio * ah;
+                newW = width;
+            }
+            
+            break;
+        }
+        default:
+        {
+            // resizeImageAsSpecified
+            
+            newW = width;
+            newH = height;
+            
+            break;
+        }
+    }
+    
+    if (aw < newW && ah < newH)
+    {
+        newW = aw;
+        newH = ah;
+    }
+    
+    // size is the same - no resize necessary
+    if (newW == aw && newH == ah)
+    {
+        LogDebug(@"No resize necessary - new image size will be the same");
+        return self;
+    }
+    
+    LogDebug(@"Resizing image to new size: %fx%f", newW, newH);
+    
+    @try 
+    {
+        CGRect rect = CGRectMake(0.0, 0.0, newW, newH);
+        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+        [self drawInRect:rect];
+        ret = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    @catch (NSException * e) 
+    {
+        LogError(@"Error resizing image: resizeType: %d, width: %f, height: %f: %@", resizeType, width, height, [e description]);
+        
+        ret = nil;
+    }
+    
+    return ret;
 }
 
 - (UIImage *)resizedImage:(CGSize)newSize
 {
-	UIImage * ret = nil;
-
-	@try 
-	{
-		CGRect rect = CGRectMake(0.0, 0.0, newSize.width, newSize.height);
-		UIGraphicsBeginImageContext(rect.size);
-		[self drawInRect:rect];
-		ret = UIGraphicsGetImageFromCurrentImageContext();
-		UIGraphicsEndImageContext();
-	}
-	@catch (NSException * e) 
-	{
-		ret = nil;
-	}
-	
-	return ret;
+    UIImage * ret = nil;
+    
+    @try 
+    {
+        CGRect rect = CGRectMake(0.0, 0.0, newSize.width, newSize.height);
+        UIGraphicsBeginImageContext(rect.size);
+        [self drawInRect:rect];
+        ret = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    @catch (NSException * e) 
+    {
+        ret = nil;
+    }
+    
+    return ret;
 }
 
 - (UIImage *)imageFlippedHorizontally {
-	
-	UIImage * ret = nil;
-	
-	CGRect rect = CGRectMake(0.0, 0.0, self.size.width, self.size.height);
-	UIGraphicsBeginImageContext(rect.size);
-	
-	[self drawInRect:rect];
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextTranslateCTM(context, 0, self.size.height);
-	CGContextScaleCTM(context, -1.0, 1.0); 
-	
-	CGContextDrawImage(context, CGRectMake(0, 0, self.size.width, self.size.height), [self CGImage]);
-	
-	ret = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	
-	return ret;
+    
+    UIImage * ret = nil;
+    
+    CGRect rect = CGRectMake(0.0, 0.0, self.size.width, self.size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    
+    [self drawInRect:rect];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextTranslateCTM(context, 0, self.size.height);
+    CGContextScaleCTM(context, -1.0, 1.0); 
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, self.size.width, self.size.height), [self CGImage]);
+    
+    ret = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return ret;
 }
 
 - (UIImage *)imageFlippedVertically {
-	UIImage * ret = nil;
-	
-	CGRect rect = CGRectMake(0.0, 0.0, self.size.width, self.size.height);
-	UIGraphicsBeginImageContext(rect.size);
-	
-	[self drawInRect:rect];
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextTranslateCTM(context, 0, self.size.height);
-	CGContextScaleCTM(context, -1.0, 1.0);    
-	
-	CGContextDrawImage(context, CGRectMake(0, 0, self.size.width, self.size.height), [self CGImage]);
-	
-	ret = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	
-	return ret;
+    UIImage * ret = nil;
+    
+    CGRect rect = CGRectMake(0.0, 0.0, self.size.width, self.size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    
+    [self drawInRect:rect];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextTranslateCTM(context, 0, self.size.height);
+    CGContextScaleCTM(context, -1.0, 1.0);    
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, self.size.width, self.size.height), [self CGImage]);
+    
+    ret = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return ret;
 }
 
 -(UIImage *)imageAtRect:(CGRect)rect
 {
-	
-	CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
-	UIImage* subImage = [UIImage imageWithCGImage: imageRef];
-	CGImageRelease(imageRef);
-	
-	return subImage;
-	
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
+    UIImage* subImage = [UIImage imageWithCGImage: imageRef];
+    CGImageRelease(imageRef);
+    
+    return subImage;
+    
 }
 
 - (UIImage *)imageByScalingProportionallyToMinimumSize:(CGSize)targetSize {
-	
-	UIImage *sourceImage = self;
-	UIImage *newImage = nil;
-	
-	CGSize imageSize = sourceImage.size;
-	CGFloat width = imageSize.width;
-	CGFloat height = imageSize.height;
-	
-	CGFloat targetWidth = targetSize.width;
-	CGFloat targetHeight = targetSize.height;
-	
-	CGFloat scaleFactor = 0.0;
-	CGFloat scaledWidth = targetWidth;
-	CGFloat scaledHeight = targetHeight;
-	
-	CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
-	
-	if (CGSizeEqualToSize(imageSize, targetSize) == NO) {
-		
-		CGFloat widthFactor = targetWidth / width;
-		CGFloat heightFactor = targetHeight / height;
-		
-		if (widthFactor > heightFactor) 
-			scaleFactor = widthFactor;
-		else
-			scaleFactor = heightFactor;
-		
-		scaledWidth  = width * scaleFactor;
-		scaledHeight = height * scaleFactor;
-		
-		// center the image
-		
-		if (widthFactor > heightFactor) {
-			thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5; 
-		} else if (widthFactor < heightFactor) {
-			thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
-		}
-	}
-	
-	
-	// this is actually the interesting part:
-	
-	UIGraphicsBeginImageContext(targetSize);
-	
-	CGRect thumbnailRect = CGRectZero;
-	thumbnailRect.origin = thumbnailPoint;
-	thumbnailRect.size.width  = scaledWidth;
-	thumbnailRect.size.height = scaledHeight;
-	
-	[sourceImage drawInRect:thumbnailRect];
-	
-	newImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	
-	if(newImage == nil) NSLog(@"could not scale image");
-	
-	
-	return newImage ;
+    
+    UIImage *sourceImage = self;
+    UIImage *newImage = nil;
+    
+    CGSize imageSize = sourceImage.size;
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    
+    CGFloat targetWidth = targetSize.width;
+    CGFloat targetHeight = targetSize.height;
+    
+    CGFloat scaleFactor = 0.0;
+    CGFloat scaledWidth = targetWidth;
+    CGFloat scaledHeight = targetHeight;
+    
+    CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
+    
+    if (CGSizeEqualToSize(imageSize, targetSize) == NO) {
+        
+        CGFloat widthFactor = targetWidth / width;
+        CGFloat heightFactor = targetHeight / height;
+        
+        if (widthFactor > heightFactor) 
+            scaleFactor = widthFactor;
+        else
+            scaleFactor = heightFactor;
+        
+        scaledWidth  = width * scaleFactor;
+        scaledHeight = height * scaleFactor;
+        
+        // center the image
+        
+        if (widthFactor > heightFactor) {
+            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5; 
+        } else if (widthFactor < heightFactor) {
+            thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
+        }
+    }
+    
+    
+    // this is actually the interesting part:
+    
+    UIGraphicsBeginImageContext(targetSize);
+    
+    CGRect thumbnailRect = CGRectZero;
+    thumbnailRect.origin = thumbnailPoint;
+    thumbnailRect.size.width  = scaledWidth;
+    thumbnailRect.size.height = scaledHeight;
+    
+    [sourceImage drawInRect:thumbnailRect];
+    
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    if(newImage == nil) NSLog(@"could not scale image");
+    
+    
+    return newImage ;
 }
 
 
 - (UIImage *)imageByScalingProportionallyToSize:(CGSize)targetSize {
-	
-	UIImage *sourceImage = self;
-	UIImage *newImage = nil;
-	
-	CGSize imageSize = sourceImage.size;
-	CGFloat width = imageSize.width;
-	CGFloat height = imageSize.height;
-	
-	CGFloat targetWidth = targetSize.width;
-	CGFloat targetHeight = targetSize.height;
-	
-	CGFloat scaleFactor = 0.0;
-	CGFloat scaledWidth = targetWidth;
-	CGFloat scaledHeight = targetHeight;
-	
-	CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
-	
-	if (CGSizeEqualToSize(imageSize, targetSize) == NO) {
-		
-		CGFloat widthFactor = targetWidth / width;
-		CGFloat heightFactor = targetHeight / height;
-		
-		if (widthFactor < heightFactor) 
-			scaleFactor = widthFactor;
-		else
-			scaleFactor = heightFactor;
-		
-		scaledWidth  = width * scaleFactor;
-		scaledHeight = height * scaleFactor;
-		
-		// center the image
-		
-		if (widthFactor < heightFactor) {
-			thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5; 
-		} else if (widthFactor > heightFactor) {
-			thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
-		}
-	}
-	
-	
-	// this is actually the interesting part:
-	
-	UIGraphicsBeginImageContext(targetSize);
-	
-	CGRect thumbnailRect = CGRectZero;
-	thumbnailRect.origin = thumbnailPoint;
-	thumbnailRect.size.width  = scaledWidth;
-	thumbnailRect.size.height = scaledHeight;
-	
-	[sourceImage drawInRect:thumbnailRect];
-	
-	newImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	
-	if(newImage == nil) NSLog(@"could not scale image");
-	
-	
-	return newImage ;
+    
+    UIImage *sourceImage = self;
+    UIImage *newImage = nil;
+    
+    CGSize imageSize = sourceImage.size;
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    
+    CGFloat targetWidth = targetSize.width;
+    CGFloat targetHeight = targetSize.height;
+    
+    CGFloat scaleFactor = 0.0;
+    CGFloat scaledWidth = targetWidth;
+    CGFloat scaledHeight = targetHeight;
+    
+    CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
+    
+    if (CGSizeEqualToSize(imageSize, targetSize) == NO) {
+        
+        CGFloat widthFactor = targetWidth / width;
+        CGFloat heightFactor = targetHeight / height;
+        
+        if (widthFactor < heightFactor) 
+            scaleFactor = widthFactor;
+        else
+            scaleFactor = heightFactor;
+        
+        scaledWidth  = width * scaleFactor;
+        scaledHeight = height * scaleFactor;
+        
+        // center the image
+        
+        if (widthFactor < heightFactor) {
+            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5; 
+        } else if (widthFactor > heightFactor) {
+            thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
+        }
+    }
+    
+    
+    // this is actually the interesting part:
+    
+    UIGraphicsBeginImageContext(targetSize);
+    
+    CGRect thumbnailRect = CGRectZero;
+    thumbnailRect.origin = thumbnailPoint;
+    thumbnailRect.size.width  = scaledWidth;
+    thumbnailRect.size.height = scaledHeight;
+    
+    [sourceImage drawInRect:thumbnailRect];
+    
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    if(newImage == nil) NSLog(@"could not scale image");
+    
+    
+    return newImage ;
 }
 
 
 - (UIImage *)imageByScalingToSize:(CGSize)targetSize {
-	
-	UIImage *sourceImage = self;
-	UIImage *newImage = nil;
-	
-	//   CGSize imageSize = sourceImage.size;
-	//   CGFloat width = imageSize.width;
-	//   CGFloat height = imageSize.height;
-	
-	CGFloat targetWidth = targetSize.width;
-	CGFloat targetHeight = targetSize.height;
-	
-	//   CGFloat scaleFactor = 0.0;
-	CGFloat scaledWidth = targetWidth;
-	CGFloat scaledHeight = targetHeight;
-	
-	CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
-	
-	// this is actually the interesting part:
-	
-	UIGraphicsBeginImageContext(targetSize);
-	
-	CGRect thumbnailRect = CGRectZero;
-	thumbnailRect.origin = thumbnailPoint;
-	thumbnailRect.size.width  = scaledWidth;
-	thumbnailRect.size.height = scaledHeight;
-	
-	[sourceImage drawInRect:thumbnailRect];
-	
-	newImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	
-	if(newImage == nil) NSLog(@"could not scale image");
-	
-	
-	return newImage ;
+    
+    UIImage *sourceImage = self;
+    UIImage *newImage = nil;
+    
+    //   CGSize imageSize = sourceImage.size;
+    //   CGFloat width = imageSize.width;
+    //   CGFloat height = imageSize.height;
+    
+    CGFloat targetWidth = targetSize.width;
+    CGFloat targetHeight = targetSize.height;
+    
+    //   CGFloat scaleFactor = 0.0;
+    CGFloat scaledWidth = targetWidth;
+    CGFloat scaledHeight = targetHeight;
+    
+    CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
+    
+    // this is actually the interesting part:
+    
+    UIGraphicsBeginImageContext(targetSize);
+    
+    CGRect thumbnailRect = CGRectZero;
+    thumbnailRect.origin = thumbnailPoint;
+    thumbnailRect.size.width  = scaledWidth;
+    thumbnailRect.size.height = scaledHeight;
+    
+    [sourceImage drawInRect:thumbnailRect];
+    
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    if(newImage == nil) NSLog(@"could not scale image");
+    
+    
+    return newImage ;
 }
 
 
 - (UIImage *)imageRotatedByRadians:(CGFloat)radians
 {
-	return [self imageRotatedByDegrees:[UIImage radiansToDegrees:radians]];
+    return [self imageRotatedByDegrees:[UIImage radiansToDegrees:radians]];
 }
 
 - (UIImage *)imageRotatedByDegrees:(CGFloat)degrees 
 {   
-	// calculate the size of the rotated view's containing box for our drawing space
-	UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.size.width, self.size.height)];
-	CGAffineTransform t = CGAffineTransformMakeRotation([UIImage degreesToRadians:degrees]);
-	rotatedViewBox.transform = t;
-	CGSize rotatedSize = rotatedViewBox.frame.size;
-	[rotatedViewBox release];
-	
-	// Create the bitmap context
-	UIGraphicsBeginImageContext(rotatedSize);
-	CGContextRef bitmap = UIGraphicsGetCurrentContext();
-	
-	// Move the origin to the middle of the image so we will rotate and scale around the center.
-	CGContextTranslateCTM(bitmap, rotatedSize.width/2, rotatedSize.height/2);
-	
-	//   // Rotate the image context
-	CGContextRotateCTM(bitmap, [UIImage degreesToRadians:degrees]);
-	
-	// Now, draw the rotated/scaled image into the context
-	CGContextScaleCTM(bitmap, 1.0, -1.0);
-	CGContextDrawImage(bitmap, CGRectMake(-self.size.width / 2, -self.size.height / 2, self.size.width, self.size.height), [self CGImage]);
-	
-	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	return newImage;
-	
+    // calculate the size of the rotated view's containing box for our drawing space
+    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.size.width, self.size.height)];
+    CGAffineTransform t = CGAffineTransformMakeRotation([UIImage degreesToRadians:degrees]);
+    rotatedViewBox.transform = t;
+    CGSize rotatedSize = rotatedViewBox.frame.size;
+    
+    // Create the bitmap context
+    UIGraphicsBeginImageContext(rotatedSize);
+    CGContextRef bitmap = UIGraphicsGetCurrentContext();
+    
+    // Move the origin to the middle of the image so we will rotate and scale around the center.
+    CGContextTranslateCTM(bitmap, rotatedSize.width/2, rotatedSize.height/2);
+    
+    //   // Rotate the image context
+    CGContextRotateCTM(bitmap, [UIImage degreesToRadians:degrees]);
+    
+    // Now, draw the rotated/scaled image into the context
+    CGContextScaleCTM(bitmap, 1.0, -1.0);
+    CGContextDrawImage(bitmap, CGRectMake(-self.size.width / 2, -self.size.height / 2, self.size.width, self.size.height), [self CGImage]);
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 // Creates a mask that makes the outer edges transparent and everything else opaque

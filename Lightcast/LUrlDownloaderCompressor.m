@@ -26,7 +26,7 @@ streamReady;
 
 + (id)compressor
 {
-    LUrlDownloaderCompressor *compressor = [[[self alloc] init] autorelease];
+    LUrlDownloaderCompressor *compressor = [[self alloc] init];
     
     if (!compressor)
     {
@@ -45,8 +45,6 @@ streamReady;
     {
         [self closeStream];
     }
-    
-    [super dealloc];
 }
 
 #pragma mark - Stream operations
@@ -182,7 +180,7 @@ streamReady;
         *err = nil;
     }
     
-    NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
     
     // Create an empty file at the destination path
     if (![fileManager createFileAtPath:destinationPath contents:[NSData data] attributes:nil])

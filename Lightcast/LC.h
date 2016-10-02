@@ -97,24 +97,7 @@ NSString *LightcastLocalizedString(NSString *key);
 
 @end
 
-@interface LC : NSObject {
-    
-    LCAppConfiguration * configuration;
-    LNotificationDispatcher* nd;
-    
-    NSMutableDictionary * systemObjects;
-    
-    BOOL hasInitialized;
-    BOOL firstInstall;
-    
-    id<LightcastDelegate> delegate;
-    
-    LPluginManager *plugins; // only a stub - to compile in 32-bit mode
-    LDatabaseManager *db; // only a stub - to compile in 32-bit mode
-    LStorage *storage; // only a stub - to compile in 32-bit mode
-    
-    LAppUpgrades *appUpgrader;
-}
+@interface LC : NSObject
 
 @property (nonatomic, assign) id<LightcastDelegate> delegate;
 @property (nonatomic, retain, readonly) LCAppConfiguration * config;

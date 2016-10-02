@@ -41,25 +41,14 @@ typedef enum
     tabPositionTop = 1
 } LAdvancedTabBarControllerTabPosition;
 
-@interface LAdvancedTabBarController : LViewController <LTabBarDelegate> {
-    
-    
-    LTabBar *_tabBar;
-    
-    CGSize _viewControllerInset;
-    NSArray *_viewControllers;
-    UIViewController *_selectedViewController;
-    NSInteger _selectedIndex;
-    id<LAdvancedTabBarControllerDelegate>_delegate;
-    LAdvancedTabBarControllerTabPosition _position;
-}
+@interface LAdvancedTabBarController : LViewController <LTabBarDelegate>
 
-@property(nonatomic,retain,setter = setViewControllers:) NSArray *viewControllers;
+@property(nonatomic,strong,setter = setViewControllers:) NSArray *viewControllers;
 
 @property(nonatomic,assign) UIViewController *selectedViewController;
-@property(nonatomic) NSInteger selectedIndex;
-@property(nonatomic, setter = setViewControllerInset:) CGSize viewControllerFrameInset;
-@property(nonatomic, setter = setTabBarPosition:) LAdvancedTabBarControllerTabPosition tabBarPosition;
+@property(nonatomic, assign) NSInteger selectedIndex;
+@property(nonatomic, assign, setter = setViewControllerInset:) CGSize viewControllerFrameInset;
+@property(nonatomic, assign, setter = setTabBarPosition:) LAdvancedTabBarControllerTabPosition tabBarPosition;
 @property(nonatomic,assign,getter = getTabBarTabsAlignment, setter = setTabBarTabsAlignment:) LTabBarTabsAlignment tabBarTabsAlignment;
 @property(nonatomic,assign,getter = getTabBarItemSize, setter = setTabBarItemSize:) CGSize tabBarItemSize;
 @property(nonatomic,assign,getter = getTabBarItemPadding, setter = setTabBarItemPadding:) CGFloat tabBarItemPadding;

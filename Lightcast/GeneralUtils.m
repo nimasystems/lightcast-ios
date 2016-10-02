@@ -45,23 +45,23 @@
     NSData * hashedData = [NSData dataWithBytes:hashedChars length:20];
     
     // may be a more optimized way to do this?xwwwxwwwww
-    NSMutableString * tmp = [[NSMutableString stringWithFormat:@"%@", [hashedData description]] retain];
+    NSMutableString * tmp = [NSMutableString stringWithFormat:@"%@", [hashedData description]];
     [tmp replaceOccurrencesOfString:@" " withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tmp length])];
     [tmp deleteCharactersInRange:NSMakeRange([tmp length]-1, 1)];
     [tmp deleteCharactersInRange:NSMakeRange(0, 1)];
     
-    return [tmp autorelease];
+    return tmp;
 }
 
 #ifdef TARGET_IOS	// iOS Target
 
 + (void)displayMessage:(NSString *)title description:(NSString *)description buttonTitle:(NSString *)buttonTitle delegate:(id)delegate {
     
-    UIAlertView * errorAlert = [[[UIAlertView alloc] initWithTitle:(![NSString isNullOrEmpty:title] ? title : @"")
-                                                           message:(![NSString isNullOrEmpty:description] ? description : @"")
-                                                          delegate:delegate 
-                                                 cancelButtonTitle:(![NSString isNullOrEmpty:buttonTitle] ? buttonTitle : @"OK")
-                                                 otherButtonTitles:nil] autorelease];
+    UIAlertView * errorAlert = [[UIAlertView alloc] initWithTitle:(![NSString isNullOrEmpty:title] ? title : @"")
+                                                          message:(![NSString isNullOrEmpty:description] ? description : @"")
+                                                         delegate:delegate 
+                                                cancelButtonTitle:(![NSString isNullOrEmpty:buttonTitle] ? buttonTitle : @"OK")
+                                                otherButtonTitles:nil];
     [errorAlert show];
 }
 

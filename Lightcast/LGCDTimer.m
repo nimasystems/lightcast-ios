@@ -41,8 +41,6 @@
 {
     self.timerDelegate = nil;
     [self stop];
-    
-    [super dealloc];
 }
 
 
@@ -69,7 +67,6 @@
 {
     if (!self.isRunning && _timer) {
         dispatch_source_cancel(_timer);
-        dispatch_release(_timer);
         _timer = nil;
         self.isRunning = NO;
     }

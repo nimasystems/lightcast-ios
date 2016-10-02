@@ -35,53 +35,53 @@
 @implementation NSString(WebEntities)
 
 - (NSString*)urlEncode {
-	return [self urlEncoded];
+    return [self urlEncoded];
 }
 
 - (NSString*)urlDecode {
-	return [self urlDecoded];
+    return [self urlDecoded];
 }
 
 - (NSString*)urlEncoded {
-	
-	if (!self || ![self length] || [self isEqual:[NSNull null]]) return nil;
-	
-	NSString *encodedStr = nil;
-	CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, NULL, CFSTR("!$&'()*+,-./:;=?@_~"), kCFStringEncodingUTF8);
-	NSString *outs = nil;
-	
-	@try 
-	{
-		encodedStr = (NSString*)encoded;
-		outs = [[NSString alloc] initWithString:(NSString*)encoded];
-	}
-	@finally 
-	{
-		CFRelease(encoded);
-	}
-	
-	return [outs autorelease];
+    
+    if (!self || ![self length] || [self isEqual:[NSNull null]]) return nil;
+    
+    NSString *encodedStr = nil;
+    CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, NULL, CFSTR("!$&'()*+,-./:;=?@_~"), kCFStringEncodingUTF8);
+    NSString *outs = nil;
+    
+    @try 
+    {
+        encodedStr = (__bridge NSString*)encoded;
+        outs = [[NSString alloc] initWithString:(__bridge NSString*)encoded];
+    }
+    @finally 
+    {
+        CFRelease(encoded);
+    }
+    
+    return outs;
 }
 
 - (NSString*)urlDecoded {
-	
-	if (!self || ![self length] || [self isEqual:[NSNull null]]) return nil;
-	
-	NSString *decodedStr = nil;
-	CFStringRef decoded = CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault, (CFStringRef)self, CFSTR("!$&'()*+,-./:;=?@_~"), kCFStringEncodingUTF8);
-	NSString *outs = nil;
-	
-	@try 
-	{
-		decodedStr = (NSString*)decoded;
-		outs = [[NSString alloc] initWithString:(NSString*)decoded];
-	}
-	@finally 
-	{
-		CFRelease(decoded);
-	}
-	
-	return [outs autorelease];
+    
+    if (!self || ![self length] || [self isEqual:[NSNull null]]) return nil;
+    
+    NSString *decodedStr = nil;
+    CFStringRef decoded = CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault, (CFStringRef)self, CFSTR("!$&'()*+,-./:;=?@_~"), kCFStringEncodingUTF8);
+    NSString *outs = nil;
+    
+    @try 
+    {
+        decodedStr = (__bridge NSString*)decoded;
+        outs = [[NSString alloc] initWithString:(__bridge NSString*)decoded];
+    }
+    @finally 
+    {
+        CFRelease(decoded);
+    }
+    
+    return outs;
 }
 
 @end

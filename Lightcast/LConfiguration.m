@@ -33,10 +33,7 @@
 #import "LConfiguration.h"
 
 // private class
-@interface LConfiguration(Private)
-
-- (LConfiguration*)_subnodeDeep:(LConfiguration**)parent lookIn:(NSArray*)lookupArray nextIndex:(NSInteger)nextIndex autocreateMissingNodes:(BOOL)autocreateMissingNodes;
-- (NSString *)replaceConstantsForConfigValue:(NSString*)configValue;
+@interface LConfiguration()
 
 @end
 
@@ -60,7 +57,7 @@ subnodes;
     self = [super init];
     if (self)
     {
-        name = [aName retain];
+        name = aName;
         values = [[NSMutableDictionary alloc] init];
         subnodes = [[NSMutableArray alloc] init];
         
@@ -77,9 +74,9 @@ subnodes;
     self = [super init];
     if (self)
     {
-        name = [[aDecoder decodeObjectForKey:@"name"] retain];
-        values = [[aDecoder decodeObjectForKey:@"values"] retain];
-        subnodes = [[aDecoder decodeObjectForKey:@"subnodes"] retain];
+        name = [aDecoder decodeObjectForKey:@"name"];
+        values = [aDecoder decodeObjectForKey:@"values"];
+        subnodes = [aDecoder decodeObjectForKey:@"subnodes"];
     }
     return self;
 }
@@ -116,7 +113,6 @@ subnodes;
     L_RELEASE(name);
     L_RELEASE(values);
     L_RELEASE(subnodes);
-    [super dealloc];
 }
 
 #pragma mark -
@@ -142,11 +138,9 @@ subnodes;
     }
     
     NSString * outStr = [NSString stringWithFormat:@"\n(cfg node) : %@:\nValues: %@\n\nSubnodes:\t\t%@", 
-                      name,
-                      values,
-                      subnodesDescr];
-
-    [subnodesDescr release];
+                         name,
+                         values,
+                         subnodesDescr];
     
     return outStr;
 }
@@ -189,7 +183,7 @@ subnodes;
     // check if it is a deep-looking key or a normal one
     NSArray * tmp = [aName componentsSeparatedByString:LC_CONFIG_HOLDER_DEEP_CFG_SEPARATOR];
     
-    tree = [self _subnodeDeep:&self lookIn:tmp nextIndex:0 autocreateMissingNodes:shouldCreateIfMissing];
+    tree = [self _subnodeDeep:self lookIn:tmp nextIndex:0 autocreateMissingNodes:shouldCreateIfMissing];
     
     return tree;
 }
@@ -204,7 +198,7 @@ subnodes;
     BOOL has = NO;
     
     NSArray * tmp = [aName componentsSeparatedByString:LC_CONFIG_HOLDER_DEEP_CFG_SEPARATOR];
-    LConfiguration *tree = [self _subnodeDeep:&self lookIn:tmp nextIndex:0 autocreateMissingNodes:NO];
+    LConfiguration *tree = [self _subnodeDeep:self lookIn:tmp nextIndex:0 autocreateMissingNodes:NO];
     
     has = (tree != nil);
     
@@ -242,7 +236,6 @@ subnodes;
         // deep
         NSIndexSet * idxSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(0, [tmp count]-1)];
         NSArray * tmp2 = [tmp objectsAtIndexes:idxSet];
-        [idxSet release];
         
         NSString * valueKey = [tmp objectAtIndex:[tmp count]-1];
         
@@ -297,7 +290,6 @@ subnodes;
         // deep
         NSIndexSet * idxSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(0, [tmp count]-1)];
         NSArray * tmp2 = [tmp objectsAtIndexes:idxSet];
-        [idxSet release];
         
         NSString * valueKey = [tmp objectAtIndex:[tmp count]-1];
         
@@ -344,7 +336,7 @@ subnodes;
 #pragma mark Private Methods
 
 
-- (LConfiguration*)_subnodeDeep:(LConfiguration**)parent lookIn:(NSArray*)lookupArray nextIndex:(NSInteger)nextIndex autocreateMissingNodes:(BOOL)autocreateMissingNodes {
+- (LConfiguration*)_subnodeDeep:(LConfiguration*)parent lookIn:(NSArray*)lookupArray nextIndex:(NSInteger)nextIndex autocreateMissingNodes:(BOOL)autocreateMissingNodes {
     
     // check the index
     if (!lookupArray) return nil;
@@ -352,7 +344,7 @@ subnodes;
     
     NSString * lookupStr = [lookupArray objectAtIndex:nextIndex];
     
-    for (LConfiguration * obj in (*parent).subnodes)
+    for (LConfiguration * obj in parent.subnodes)
     {
         if ([obj.name isEqualToString:lookupStr])
         {
@@ -363,7 +355,7 @@ subnodes;
             }
             else 
             {
-                return [self _subnodeDeep:&obj lookIn:lookupArray nextIndex:nextIndex+1 autocreateMissingNodes:autocreateMissingNodes];
+                return [self _subnodeDeep:obj lookIn:lookupArray nextIndex:nextIndex+1 autocreateMissingNodes:autocreateMissingNodes];
             }
         }
     }
@@ -374,8 +366,7 @@ subnodes;
     if (autocreateMissingNodes)
     {
         newHolder = [[LConfiguration alloc] initWithName:lookupStr];
-        [*parent addSubnode:newHolder];
-        [newHolder release];
+        [parent addSubnode:newHolder];
     }
     
     // if we are at the end return the object, otherwise recurse
@@ -385,7 +376,7 @@ subnodes;
     }
     else
     {
-        return [self _subnodeDeep:&newHolder lookIn:lookupArray nextIndex:nextIndex+1 autocreateMissingNodes:autocreateMissingNodes];
+        return [self _subnodeDeep:newHolder lookIn:lookupArray nextIndex:nextIndex+1 autocreateMissingNodes:autocreateMissingNodes];
     }
     
     return nil;

@@ -62,14 +62,14 @@ threadingMode;
 
 - (id)init
 {
-	return [self initWithConnectionString:nil];
+    return [self initWithConnectionString:nil];
 }
 
 - (id)initWithConnectionString:(NSString*)aConnectionString
 {
-	self = [super initWithConnectionString:aConnectionString];
-	if (self)
-	{
+    self = [super initWithConnectionString:aConnectionString];
+    if (self)
+    {
         if ([NSString isNullOrEmpty:aConnectionString])
         {
             L_RELEASE(self);
@@ -82,25 +82,23 @@ threadingMode;
         
         //_transactionLock = [[NSLock alloc] init];
         
-		busyRetryTimeout = LSQLiteDatabaseAdapterDefaultBusyRetryTimeout;
-		
+        busyRetryTimeout = LSQLiteDatabaseAdapterDefaultBusyRetryTimeout;
+        
         dataSource = [aConnectionString copy];
-	}
-	return self;
+    }
+    return self;
 }
 
 - (void)dealloc
 {
     [self detachAllDatabases:nil];
     
-	[self close];
+    [self close];
     
     //L_RELEASE(_transactionLock);
     L_RELEASE(dataSource);
     L_RELEASE(_attachedDatabases);
     //L_RELEASE(_attachedDatabasesLock);
-    
-	[super dealloc];
 }
 
 #pragma mark - Abstract methods
@@ -195,12 +193,12 @@ threadingMode;
 
 - (NSInteger)getErrorCode
 {
-	return sqlite3_errcode(_db);
+    return sqlite3_errcode(_db);
 }
 
 - (NSString*)getErrorMessage
 {
-	return [NSString stringWithFormat:@"%s", sqlite3_errmsg(_db)];
+    return [NSString stringWithFormat:@"%s", sqlite3_errmsg(_db)];
 }
 
 - (NSString*)getDatabaseVersion
@@ -327,7 +325,7 @@ threadingMode;
     }
     
     // make a copy as the original one will mutate
-    NSMutableArray *cp = [[_attachedDatabases copy] autorelease];
+    NSMutableArray *cp = [_attachedDatabases copy];
     
     NSInteger i = 0;
     
@@ -384,7 +382,7 @@ threadingMode;
         ret = NO;
         
         // make a copy as the original one will mutate
-        NSMutableArray *cp = [[_attachedDatabases copy] autorelease];
+        NSMutableArray *cp = [_attachedDatabases copy];
         
         for(NSDictionary *attDb in cp)
         {
@@ -477,8 +475,8 @@ threadingMode;
         
         if (error != NULL) {
             *error = [NSError errorWithDomainAndDescription:LSQLiteDatabaseAdapterErrorDomain
-                                                          errorCode:LSQLiteDatabaseAdapterErrorGeneric
-                                               localizedDescription:msg];
+                                                  errorCode:LSQLiteDatabaseAdapterErrorGeneric
+                                       localizedDescription:msg];
             return NO;
         }
     }
@@ -576,7 +574,7 @@ threadingMode;
         
         if (rc == SQLITE_OK)
         {
-             _db = nil;
+            _db = nil;
             return;
         }
         else if (rc == SQLITE_BUSY || rc == SQLITE_IOERR_BLOCKED)
@@ -630,7 +628,7 @@ threadingMode;
     {
         return nil;
     }
- 
+    
     // strip the ! from the query if set
     if ([sql startsWith:@"!"])
     {
@@ -638,7 +636,7 @@ threadingMode;
     }
     
     BOOL dispatchSuccess = NO;
-    NSMutableArray *results = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *results = [[NSMutableArray alloc] init];
     
     //LogDebug(@"QUERY: %@", sql_);
     
@@ -667,7 +665,7 @@ threadingMode;
         
         while ([self _hasData:sqlStmt])
         {
-            NSMutableDictionary *dictionary = [[[NSMutableDictionary alloc] init] autorelease];
+            NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
             
             for (i = 0; i < columnCount; ++i)
             {
@@ -744,7 +742,7 @@ threadingMode;
     
     if (error != NULL)
     {
-        *error = [[dispatchErr copy] autorelease];
+        *error = [dispatchErr copy];
     }
     
     return dispatchSuccess;
@@ -774,7 +772,7 @@ threadingMode;
 }
 
 - (BOOL)executeTransactionalBlock:(BOOL (^)(LSQLiteDatabaseAdapter *adapter, NSError **error))block error:(NSError**)error {
-
+    
     if (error != NULL) {
         *error = nil;
     }
@@ -836,7 +834,7 @@ threadingMode;
     };
     
     if (_inTransactionalBlock) {
-       ret = block(self, &err);
+        ret = block(self, &err);
     } else {
         dispatch_sync(self.adapterDispatchQueue, b);
     }
@@ -886,6 +884,8 @@ threadingMode;
         BOOL ret = YES;
         NSError *err = nil;
         
+        NSString *statement2 = nil;
+        
         for(NSString *statement in statements)
         {
             BOOL softErrors = NO;
@@ -894,11 +894,13 @@ threadingMode;
             if ([statement startsWith:@"!"])
             {
                 softErrors = YES;
-                statement = [statement substringFromIndex:1];
+                statement2 = [statement substringFromIndex:1];
+            } else {
+                statement2 = statement;
             }
             
             err = nil;
-            res = [self _executeNonQuery:statement error:&err];
+            res = [self _executeNonQuery:statement2 error:&err];
             
             if (softErrors && !res) {
                 lassert(false);
@@ -913,7 +915,7 @@ threadingMode;
                 if (error != NULL && err)
                 {
                     *error = [NSError errorWithDomain:err.domain code:err.code userInfo:[NSDictionary
-                                                                                                   dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Error while executing sql statement in transaction (%@): %@"), statement, err.localizedDescription], NSLocalizedDescriptionKey, nil]];
+                                                                                         dictionaryWithObjectsAndKeys:[NSString stringWithFormat:LLocalizedString(@"Error while executing sql statement in transaction (%@): %@"), statement2, err.localizedDescription], NSLocalizedDescriptionKey, nil]];
                 }
                 
                 break;
@@ -1018,10 +1020,10 @@ threadingMode;
         softErrors = YES;
         sql = [sql substringFromIndex:1];
     }
-  
+    
     NSError *err = nil;
     
-	BOOL ret = [self _executeNonQuery:sql error:&err];
+    BOOL ret = [self _executeNonQuery:sql error:&err];
     
     if (!ret && softErrors)
     {
@@ -1040,21 +1042,21 @@ threadingMode;
 
 - (BOOL)_executeStatement:(NSString*)sql, ...
 {
-	return [self _executeStatement:nil sql:sql];
+    return [self _executeStatement:nil sql:sql];
 }
 
 /*
-- (BOOL)commit:(NSError**)error
-{
-    __block NSError *err = nil;
-    __block BOOL ret = NO;
-    
-    dispatch_sync(self.adapterDispatchQueue, ^{
-        ret = [self _commit:&err];
-    });
-    
-    return ret;
-}*/
+ - (BOOL)commit:(NSError**)error
+ {
+ __block NSError *err = nil;
+ __block BOOL ret = NO;
+ 
+ dispatch_sync(self.adapterDispatchQueue, ^{
+ ret = [self _commit:&err];
+ });
+ 
+ return ret;
+ }*/
 
 - (BOOL)_commit:(NSError**)error
 {
@@ -1065,76 +1067,76 @@ threadingMode;
 }
 
 /*- (BOOL)rollback:(NSError**)error
-{
-    __block NSError *err = nil;
-    __block BOOL ret = NO;
-    
-    dispatch_sync(self.adapterDispatchQueue, ^{
-        ret = [self _rollback:&err];
-    });
-    
-    return ret;
-}*/
+ {
+ __block NSError *err = nil;
+ __block BOOL ret = NO;
+ 
+ dispatch_sync(self.adapterDispatchQueue, ^{
+ ret = [self _rollback:&err];
+ });
+ 
+ return ret;
+ }*/
 
 - (BOOL)_rollback:(NSError**)error
 {
-	BOOL ret = [self _executeNonQuery:@"ROLLBACK TRANSACTION;" error:error];
+    BOOL ret = [self _executeNonQuery:@"ROLLBACK TRANSACTION;" error:error];
     
     //[_transactionLock unlock];
     return ret;
 }
 
 /*
-- (BOOL)beginTransaction:(NSError**)error
-{
-    __block NSError *err = nil;
-    __block BOOL ret = NO;
-    
-    dispatch_sync(self.adapterDispatchQueue, ^{
-        ret = [self _beginTransaction:&err];
-    });
-    
-    return ret;
-}*/
+ - (BOOL)beginTransaction:(NSError**)error
+ {
+ __block NSError *err = nil;
+ __block BOOL ret = NO;
+ 
+ dispatch_sync(self.adapterDispatchQueue, ^{
+ ret = [self _beginTransaction:&err];
+ });
+ 
+ return ret;
+ }*/
 
 - (BOOL)_beginTransaction:(NSError**)error
 {
     //[_transactionLock lock];
     
-	return [self _executeNonQuery:@"BEGIN DEFERRED TRANSACTION;" error:error];
+    return [self _executeNonQuery:@"BEGIN DEFERRED TRANSACTION;" error:error];
 }
 
 /*
-- (BOOL)beginImmediateTransaction:(NSError**)error
-{
-    __block NSError *err = nil;
-    __block BOOL ret = NO;
-    
-    dispatch_sync(self.adapterDispatchQueue, ^{
-        ret = [self _beginImmediateTransaction:&err];
-    });
-    
-    return ret;
-}*/
+ - (BOOL)beginImmediateTransaction:(NSError**)error
+ {
+ __block NSError *err = nil;
+ __block BOOL ret = NO;
+ 
+ dispatch_sync(self.adapterDispatchQueue, ^{
+ ret = [self _beginImmediateTransaction:&err];
+ });
+ 
+ return ret;
+ }*/
 
 - (BOOL)_beginImmediateTransaction:(NSError**)error
 {
     //[_transactionLock lock];
     
-	return [self _executeNonQuery:@"BEGIN IMMEDIATE TRANSACTION;" error:error];
+    return [self _executeNonQuery:@"BEGIN IMMEDIATE TRANSACTION;" error:error];
 }
 
 /*
-- (BOOL)commit
-{
-    __block BOOL ret = NO;
-    
-    dispatch_sync(self.adapterDispatchQueue, ^{
-        ret = [self _commit:nil];
-    });
-    
-    return ret;
-}*/
+ - (BOOL)commit
+ {
+ __block BOOL ret = NO;
+ 
+ dispatch_sync(self.adapterDispatchQueue, ^{
+ ret = [self _commit:nil];
+ });
+ 
+ return ret;
+ }*/
 
 - (BOOL)_commit
 {
@@ -1142,16 +1144,16 @@ threadingMode;
 }
 
 /*
-- (BOOL)rollback
-{
-    __block BOOL ret = NO;
-    
-    dispatch_sync(self.adapterDispatchQueue, ^{
-        ret = [self _rollback:nil];
-    });
-    
-    return ret;
-}*/
+ - (BOOL)rollback
+ {
+ __block BOOL ret = NO;
+ 
+ dispatch_sync(self.adapterDispatchQueue, ^{
+ ret = [self _rollback:nil];
+ });
+ 
+ return ret;
+ }*/
 
 - (BOOL)_rollback
 {
@@ -1159,16 +1161,16 @@ threadingMode;
 }
 
 /*
-- (BOOL)beginTransaction
-{
-    __block BOOL ret = NO;
-    
-    dispatch_sync(self.adapterDispatchQueue, ^{
-        ret = [self _beginTransaction:nil];
-    });
-    
-    return ret;
-}*/
+ - (BOOL)beginTransaction
+ {
+ __block BOOL ret = NO;
+ 
+ dispatch_sync(self.adapterDispatchQueue, ^{
+ ret = [self _beginTransaction:nil];
+ });
+ 
+ return ret;
+ }*/
 
 - (BOOL)_beginTransaction
 {
@@ -1176,16 +1178,16 @@ threadingMode;
 }
 
 /*
-- (BOOL)beginImmediateTransaction
-{
-    __block BOOL ret = NO;
-    
-    dispatch_sync(self.adapterDispatchQueue, ^{
-        ret = [self _beginImmediateTransaction:nil];
-    });
-    
-    return ret;
-}*/
+ - (BOOL)beginImmediateTransaction
+ {
+ __block BOOL ret = NO;
+ 
+ dispatch_sync(self.adapterDispatchQueue, ^{
+ ret = [self _beginImmediateTransaction:nil];
+ });
+ 
+ return ret;
+ }*/
 
 - (BOOL)_beginImmediateTransaction
 {
@@ -1236,19 +1238,19 @@ threadingMode;
 - (BOOL)_prepareSql:(NSString *)sql inStatament:(sqlite3_stmt **)stmt
 {
     lassert(sql);
-
+    
     if (stmt != NULL)
     {
         *stmt = NULL;
     }
     
-	return [self _prepareSql:sql inStatament:stmt error:nil];
+    return [self _prepareSql:sql inStatament:stmt error:nil];
 }
 
 - (BOOL)_prepareSql:(NSString *)sql inStatament:(sqlite3_stmt **)stmt error:(NSError**)error
 {
     lassert(sql);
-
+    
     if (stmt != NULL)
     {
         *stmt = NULL;
@@ -1259,10 +1261,10 @@ threadingMode;
         *error = nil;
     }
     
-	NSInteger numOfRetries = busyRetryTimeout;
-	int rc = 0;
+    NSInteger numOfRetries = busyRetryTimeout;
+    int rc = 0;
     
-	do
+    do
     {
         rc = sqlite3_prepare_v2(_db, [sql UTF8String], -1, stmt, NULL);
         
@@ -1282,17 +1284,17 @@ threadingMode;
             if (error != NULL)
             {
                 NSString *errorMessage = [NSString stringWithFormat:LightcastLocalizedString(@"Generic SQLite error (%d): %@"), (int)self.errorCode, self.errorMessage];
-
+                
                 *error = [NSError errorWithDomainAndDescription:LSQLiteDatabaseAdapterErrorDomain
                                                       errorCode:LSQLiteDatabaseAdapterErrorGeneric
                                            localizedDescription:errorMessage];
             }
-
+            
             return NO;
         }
     }
     while (numOfRetries >= 0);
-	
+    
     // timed out
     if (error != NULL)
     {
@@ -1303,39 +1305,39 @@ threadingMode;
     
     lassert(false);
     
-	return NO;
+    return NO;
 }
 
 - (BOOL)_executeStatement:(sqlite3_stmt*)stmt error:(NSError**)error
 {
     lassert(stmt != NULL);
-
+    
     if (error != NULL)
     {
         *error = nil;
     }
-	
-	NSInteger numOfRetries = busyRetryTimeout;
-	int rc;
-	
-	do
-	{
-		rc = sqlite3_step(stmt);
-
-		if (rc == SQLITE_OK || rc == SQLITE_DONE)
-		{
-			return YES;
-		}
-		else if (rc == SQLITE_BUSY || rc == SQLITE_IOERR_BLOCKED)
-		{
+    
+    NSInteger numOfRetries = busyRetryTimeout;
+    int rc;
+    
+    do
+    {
+        rc = sqlite3_step(stmt);
+        
+        if (rc == SQLITE_OK || rc == SQLITE_DONE)
+        {
+            return YES;
+        }
+        else if (rc == SQLITE_BUSY || rc == SQLITE_IOERR_BLOCKED)
+        {
             LogDebug(@"sqlite BUSY (executeStatement), retry: %d", (int)numOfRetries);
             numOfRetries--;
             usleep(LSQLiteDatabaseAdapterDefaultBusyRetryTimeoutUSleep);
-			continue;
-		}
-		else
-		{
-			if (error != NULL)
+            continue;
+        }
+        else
+        {
+            if (error != NULL)
             {
                 NSString *errorMessage = [NSString stringWithFormat:LightcastLocalizedString(@"Generic SQLite error (%d): %@"), (int)self.errorCode, self.errorMessage];
                 
@@ -1345,10 +1347,10 @@ threadingMode;
             }
             
             return NO;
-		}
-	}
-	while (numOfRetries >= 0);
-	
+        }
+    }
+    while (numOfRetries >= 0);
+    
     // timed out
     if (error != NULL)
     {
@@ -1359,146 +1361,146 @@ threadingMode;
     
     lassert(false);
     
-	return NO;
+    return NO;
 }
 
 - (void)_bindObject:(id)obj toColumn:(int)idx inStatament:(sqlite3_stmt *)stmt
 {
-	if (obj == nil || obj == [NSNull null])
-	{
-		sqlite3_bind_null(stmt, idx);
-		
-	}
+    if (obj == nil || obj == [NSNull null])
+    {
+        sqlite3_bind_null(stmt, idx);
+        
+    }
     else if ([obj isKindOfClass:[NSData class]])
-	{
-		sqlite3_bind_blob(stmt, idx, [obj bytes], (int)[obj length], SQLITE_STATIC);
-		
-	}
+    {
+        sqlite3_bind_blob(stmt, idx, [obj bytes], (int)[obj length], SQLITE_STATIC);
+        
+    }
     else if ([obj isKindOfClass:[NSDate class]])
-	{
-		sqlite3_bind_double(stmt, idx, [obj timeIntervalSince1970]);
-		
-	}
+    {
+        sqlite3_bind_double(stmt, idx, [obj timeIntervalSince1970]);
+        
+    }
     else if ([obj isKindOfClass:[NSNumber class]])
-	{
-		if (!strcmp([obj objCType], @encode(BOOL)))
-		{
-			sqlite3_bind_int(stmt, idx, [obj boolValue] ? 1 : 0);
-		}
+    {
+        if (!strcmp([obj objCType], @encode(BOOL)))
+        {
+            sqlite3_bind_int(stmt, idx, [obj boolValue] ? 1 : 0);
+        }
         else if (!strcmp([obj objCType], @encode(int)))
-		{
-			sqlite3_bind_int64(stmt, idx, [obj longValue]);
-		}
+        {
+            sqlite3_bind_int64(stmt, idx, [obj longValue]);
+        }
         else if (!strcmp([obj objCType], @encode(long)))
-		{
-			sqlite3_bind_int64(stmt, idx, [obj longValue]);
-		}
+        {
+            sqlite3_bind_int64(stmt, idx, [obj longValue]);
+        }
         else if (!strcmp([obj objCType], @encode(float)))
-		{
-			sqlite3_bind_double(stmt, idx, [obj floatValue]);
-		}
+        {
+            sqlite3_bind_double(stmt, idx, [obj floatValue]);
+        }
         else if (!strcmp([obj objCType], @encode(double)))
-		{
-			sqlite3_bind_double(stmt, idx, [obj doubleValue]);
-		}
+        {
+            sqlite3_bind_double(stmt, idx, [obj doubleValue]);
+        }
         else
-		{
-			sqlite3_bind_text(stmt, idx, [[obj description] UTF8String], -1, SQLITE_STATIC);
-		}
-	}
+        {
+            sqlite3_bind_text(stmt, idx, [[obj description] UTF8String], -1, SQLITE_STATIC);
+        }
+    }
     else
-	{
-		sqlite3_bind_text(stmt, idx, [[obj description] UTF8String], -1, SQLITE_STATIC);
-	}
+    {
+        sqlite3_bind_text(stmt, idx, [[obj description] UTF8String], -1, SQLITE_STATIC);
+    }
 }
 
 - (BOOL)_hasData:(sqlite3_stmt *)stmt
 {
     lassert(stmt != NULL);
-
-	NSInteger numOfRetries = busyRetryTimeout;
-	int rc;
-	
-	do
-	{
-		rc = sqlite3_step(stmt);
-		
-		if (rc == SQLITE_ROW)
-		{
-			return YES;
-		}
-		else if (rc == SQLITE_DONE)
-		{
-			return NO;
-		}
-		else if (rc == SQLITE_BUSY || rc == SQLITE_IOERR_BLOCKED)
-		{
+    
+    NSInteger numOfRetries = busyRetryTimeout;
+    int rc;
+    
+    do
+    {
+        rc = sqlite3_step(stmt);
+        
+        if (rc == SQLITE_ROW)
+        {
+            return YES;
+        }
+        else if (rc == SQLITE_DONE)
+        {
+            return NO;
+        }
+        else if (rc == SQLITE_BUSY || rc == SQLITE_IOERR_BLOCKED)
+        {
             LogDebug(@"sqlite BUSY (hasData), retry: %d", (int)numOfRetries);
-			numOfRetries--;
+            numOfRetries--;
             usleep(LSQLiteDatabaseAdapterDefaultBusyRetryTimeoutUSleep);
             continue;
-		}
+        }
         else
-		{
+        {
             lassert(false);
             return NO;
-		}
-	} while (numOfRetries >= 0);
-	
+        }
+    } while (numOfRetries >= 0);
+    
     lassert(false);
     
-	return NO;
+    return NO;
 }
 
 - (id)_columnData:(sqlite3_stmt *)stmt columnIndex:(NSInteger)index
 {
-	assert(stmt);
-
-	int columnType = sqlite3_column_type(stmt, (int)index);
-	
-	if (columnType == SQLITE_NULL)
-	{
-		return @"";
-		//return([NSNull null]);
-	}
-	else if (columnType == SQLITE_INTEGER)
-	{
-		return [NSNumber numberWithInt:sqlite3_column_int(stmt, (int)index)];
-	}
-	else if (columnType == SQLITE_FLOAT)
-	{
-		return [NSNumber numberWithDouble:sqlite3_column_double(stmt, (int)index)];
-	}
-	else if (columnType == SQLITE_TEXT)
-	{
+    assert(stmt);
+    
+    int columnType = sqlite3_column_type(stmt, (int)index);
+    
+    if (columnType == SQLITE_NULL)
+    {
+        return @"";
+        //return([NSNull null]);
+    }
+    else if (columnType == SQLITE_INTEGER)
+    {
+        return [NSNumber numberWithInt:sqlite3_column_int(stmt, (int)index)];
+    }
+    else if (columnType == SQLITE_FLOAT)
+    {
+        return [NSNumber numberWithDouble:sqlite3_column_double(stmt, (int)index)];
+    }
+    else if (columnType == SQLITE_TEXT)
+    {
         return [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, (int)index)];
-		//const unsigned char *text = sqlite3_column_text(stmt, index);
-		//return [NSString stringWithFormat:@"%s", text];
-	}
-	else if (columnType == SQLITE_BLOB)
-	{
-		int nbytes = sqlite3_column_bytes(stmt, (int)index);
-		const char *bytes = sqlite3_column_blob(stmt, (int)index);
-		return [NSData dataWithBytes:bytes length:nbytes];
-	}
+        //const unsigned char *text = sqlite3_column_text(stmt, index);
+        //return [NSString stringWithFormat:@"%s", text];
+    }
+    else if (columnType == SQLITE_BLOB)
+    {
+        int nbytes = sqlite3_column_bytes(stmt, (int)index);
+        const char *bytes = sqlite3_column_blob(stmt, (int)index);
+        return [NSData dataWithBytes:bytes length:nbytes];
+    }
     else
     {
         lassert(false);
     }
-	
-	return nil;
+    
+    return nil;
 }
 
 - (NSString *)_columnName:(sqlite3_stmt *)stmt columnIndex:(NSInteger)index
 {
-	return [NSString stringWithUTF8String:sqlite3_column_name(stmt, (int)index)];
+    return [NSString stringWithUTF8String:sqlite3_column_name(stmt, (int)index)];
 }
 
 #pragma mark - Helpers
 
 + (NSString *)version
 {
-	return [NSString stringWithFormat:@"%s", sqlite3_libversion()];
+    return [NSString stringWithFormat:@"%s", sqlite3_libversion()];
 }
 
 + (LSQLiteDatabaseAdapterThreadingMode)compiledSQLiteThreadingMode

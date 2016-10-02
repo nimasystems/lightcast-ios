@@ -54,9 +54,6 @@ static dispatch_once_t LDateTimeUtilsSharedDateFormatterOnceToken = 0;
             return nil;
         }
         
-        //NSString *str = [[string copy] autorelease];
-        [string retain];
-        
         [LDateTimeUtilsSharedDateFormatter setDateFormat:format];
         
         //if (fromTimezone) {
@@ -68,8 +65,6 @@ static dispatch_once_t LDateTimeUtilsSharedDateFormatterOnceToken = 0;
         [LDateTimeUtilsSharedDateFormatter setTimeZone:(fromTimezone ? fromTimezone : tz)];
         
         NSDate *date = [LDateTimeUtilsSharedDateFormatter dateFromString:string];
-        
-        [string release];
         
         return date;
     }

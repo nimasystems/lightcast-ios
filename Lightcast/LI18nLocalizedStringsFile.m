@@ -23,8 +23,6 @@ strings;
 - (void)dealloc
 {
     L_RELEASE(strings);
-    
-    [super dealloc];
 }
 
 #pragma mark - File Operations
@@ -51,7 +49,7 @@ strings;
     if (strings_)
     {
         // slash them
-        NSMutableDictionary *slashed = [[[NSMutableDictionary alloc] init] autorelease];
+        NSMutableDictionary *slashed = [[NSMutableDictionary alloc] init];
         
         for(NSString *key in strings_)
         {
@@ -67,7 +65,7 @@ strings;
             [slashed setObject:value forKey:keyNew];
         }
         
-        NSMutableArray *ar = [[[NSMutableArray alloc] init] autorelease];
+        NSMutableArray *ar = [[NSMutableArray alloc] init];
         
         for(NSString *key in slashed)
         {
@@ -88,12 +86,7 @@ strings;
                 continue;
             }
             
-            if ([key isEqualToString:@"Version: %@\nCopyright 2009-%@\nStampii S.L."])
-            {
-                LogDebug(@"ys");
-            }
-            
-            LI18nParsedString *str = [[[LI18nParsedString alloc] init] autorelease];
+            LI18nParsedString *str = [[LI18nParsedString alloc] init];
             str.key = key;
             str.value = [slashed objectForKey:key];
             [ar addObject:str];
@@ -159,7 +152,7 @@ strings;
         return res;
     }];
     
-    NSMutableArray *ar = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *ar = [[NSMutableArray alloc] init];
     
     if (self.strings)
     {
@@ -183,7 +176,7 @@ strings;
     compiled = compiled ? compiled : @"";
     
     BOOL ret = [compiled writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:error];
-
+    
     return ret;
 }
 
@@ -200,12 +193,12 @@ strings;
     // if there are no current strings - set the newKeys to the strings
     if (!self.strings || ![self.strings count])
     {
-        NSMutableArray *newStrings = [[[NSMutableArray alloc] init] autorelease];
+        NSMutableArray *newStrings = [[NSMutableArray alloc] init];
         
         for(NSString *key in newKeys)
         {
             NSString *comment = [newKeys objectForKey:key];
-            LI18nParsedString *str = [[[LI18nParsedString alloc] init] autorelease];
+            LI18nParsedString *str = [[LI18nParsedString alloc] init];
             str.key = key;
             str.comment = comment;
             [newStrings addObject:str];
@@ -215,9 +208,9 @@ strings;
         
         return;
     }
-
+    
     // remove obsolete ones - which are no longer seen in newKeys
-    NSMutableArray *compiled = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *compiled = [[NSMutableArray alloc] init];
     
     for(LI18nParsedString *ps in self.strings)
     {
@@ -260,7 +253,7 @@ strings;
         if (!exists)
         {
             // add it
-            LI18nParsedString *ps = [[[LI18nParsedString alloc] init] autorelease];
+            LI18nParsedString *ps = [[LI18nParsedString alloc] init];
             ps.key = key;
             ps.comment = comment;
             [compiled addObject:ps];

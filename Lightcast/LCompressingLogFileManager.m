@@ -66,8 +66,8 @@
 
 @implementation LCompressingLogFileManager {
     
-	BOOL upToDate;
-
+    BOOL upToDate;
+    
     dispatch_queue_t _compressingQueue;
     dispatch_group_t _compressionGroup;
 }
@@ -80,14 +80,14 @@
 - (id)initWithLogsDirectory:(NSString *)logsDirectory
 {
     self = [super initWithLogsDirectory:logsDirectory];
-	if (self)
-	{
-		upToDate = NO;
+    if (self)
+    {
+        upToDate = NO;
         
         _compressingQueue = dispatch_queue_create("com.lightcast.logger.compressor", DISPATCH_QUEUE_CONCURRENT);
         _compressionGroup = dispatch_group_create();
-	}
-	return self;
+    }
+    return self;
 }
 
 - (void)dealloc
@@ -99,35 +99,31 @@
         if (_compressionGroup)
         {
             dispatch_group_wait(_compressionGroup, DISPATCH_TIME_FOREVER);
-            dispatch_release(_compressionGroup);
             _compressionGroup = NULL;
         }
         
-        dispatch_release(_compressingQueue);
         _compressingQueue = NULL;
     }
-	
-    [super dealloc];
 }
 
 - (void)compressLogFile:(DDLogFileInfo *)logFile
 {
     // DISABLED - not stable enough!
     /*return;
-    
-    dispatch_group_enter(_compressionGroup);
-    
-    dispatch_async(_compressingQueue, ^{
-       
-        @try
-        {
-            [self backgroundThread_CompressLogFile:logFile];
-        }
-        @finally
-        {
-            dispatch_group_leave(_compressionGroup);
-        }
-    });*/
+     
+     dispatch_group_enter(_compressionGroup);
+     
+     dispatch_async(_compressingQueue, ^{
+     
+     @try
+     {
+     [self backgroundThread_CompressLogFile:logFile];
+     }
+     @finally
+     {
+     dispatch_group_leave(_compressionGroup);
+     }
+     });*/
 }
 
 - (void)compressLogFiles
@@ -136,34 +132,34 @@
     return;
     
     NSLogVerbose(@"CompressingLogFileManager: compressNextLogFile");
-	
-	upToDate = NO;
-	
-	NSArray *sortedLogFileInfos = [self sortedLogFileInfos];
-	
-	NSUInteger count = [sortedLogFileInfos count];
     
-	if (count == 0)
-	{
-		// Nothing to compress
-		return;
-	}
+    upToDate = NO;
     
-	NSUInteger i = count;
+    NSArray *sortedLogFileInfos = [self sortedLogFileInfos];
     
-	while (i > 0)
-	{
-		DDLogFileInfo *logFileInfo = [sortedLogFileInfos objectAtIndex:(i - 1)];
-		
-		if (logFileInfo.isArchived && !logFileInfo.isCompressed)
-		{
-			[self compressLogFile:logFileInfo];
-		}
-		
-		i--;
-	}
-	
-	upToDate = YES;
+    NSUInteger count = [sortedLogFileInfos count];
+    
+    if (count == 0)
+    {
+        // Nothing to compress
+        return;
+    }
+    
+    NSUInteger i = count;
+    
+    while (i > 0)
+    {
+        DDLogFileInfo *logFileInfo = [sortedLogFileInfos objectAtIndex:(i - 1)];
+        
+        if (logFileInfo.isArchived && !logFileInfo.isCompressed)
+        {
+            [self compressLogFile:logFileInfo];
+        }
+        
+        i--;
+    }
+    
+    upToDate = YES;
     
     // wait until compression has completed
     dispatch_group_wait(_compressionGroup, DISPATCH_TIME_FOREVER);
@@ -173,40 +169,40 @@
 
 - (void)compressionDidSucceed:(DDLogFileInfo *)logFile
 {
-	NSLogVerbose(@"CompressingLogFileManager: compressionDidSucceed: %@", logFile.fileName);
+    NSLogVerbose(@"CompressingLogFileManager: compressionDidSucceed: %@", logFile.fileName);
 }
 
 - (void)compressionDidFail:(DDLogFileInfo *)logFile
 {
-	NSLogWarn(@"CompressingLogFileManager: compressionDidFail: %@", logFile.fileName);
+    NSLogWarn(@"CompressingLogFileManager: compressionDidFail: %@", logFile.fileName);
 }
 
 - (void)didArchiveLogFile:(NSString *)logFilePath
 {
-	NSLogVerbose(@"CompressingLogFileManager: didArchiveLogFile: %@", [logFilePath lastPathComponent]);
-	
-	// If all other log files have been compressed,
-	// then we can get started right away.
-	// Otherwise we should just wait for the current compression process to finish.
-	
-	/*if (upToDate)
-	{
-		[self compressLogFile:[DDLogFileInfo logFileWithPath:logFilePath]];
-	}*/
+    NSLogVerbose(@"CompressingLogFileManager: didArchiveLogFile: %@", [logFilePath lastPathComponent]);
+    
+    // If all other log files have been compressed,
+    // then we can get started right away.
+    // Otherwise we should just wait for the current compression process to finish.
+    
+    /*if (upToDate)
+     {
+     [self compressLogFile:[DDLogFileInfo logFileWithPath:logFilePath]];
+     }*/
 }
 
 - (void)didRollAndArchiveLogFile:(NSString *)logFilePath
 {
-	NSLogVerbose(@"CompressingLogFileManager: didRollAndArchiveLogFile: %@", [logFilePath lastPathComponent]);
-	
-	// If all other log files have been compressed,
-	// then we can get started right away.
-	// Otherwise we should just wait for the current compression process to finish.
-	
-	/*if (upToDate)
-	{
-		[self compressLogFile:[DDLogFileInfo logFileWithPath:logFilePath]];
-	}*/
+    NSLogVerbose(@"CompressingLogFileManager: didRollAndArchiveLogFile: %@", [logFilePath lastPathComponent]);
+    
+    // If all other log files have been compressed,
+    // then we can get started right away.
+    // Otherwise we should just wait for the current compression process to finish.
+    
+    /*if (upToDate)
+     {
+     [self compressLogFile:[DDLogFileInfo logFileWithPath:logFilePath]];
+     }*/
 }
 
 - (void)backgroundThread_CompressLogFile:(DDLogFileInfo *)logFile
@@ -505,47 +501,47 @@
 
 - (BOOL)isCompressed
 {
-	return [[[self fileName] pathExtension] isEqualToString:@"gz"];
+    return [[[self fileName] pathExtension] isEqualToString:@"gz"];
 }
 
 - (NSString *)tempFilePathByAppendingPathExtension:(NSString *)newExt
 {
-	// Example:
-	// 
-	// Current File Name: "/full/path/to/log-ABC123.txt"
-	// 
-	// newExt: "gzip"
-	// result: "/full/path/to/temp-log-ABC123.txt.gzip"
-	
-	NSString *tempFileName = [NSString stringWithFormat:@"temp-%@", [self fileName]];
-	
-	NSString *newFileName = [tempFileName stringByAppendingPathExtension:newExt];
-	
-	NSString *fileDir = [[self filePath] stringByDeletingLastPathComponent];
-	
-	NSString *newFilePath = [fileDir stringByAppendingPathComponent:newFileName];
-	
-	return newFilePath;
+    // Example:
+    // 
+    // Current File Name: "/full/path/to/log-ABC123.txt"
+    // 
+    // newExt: "gzip"
+    // result: "/full/path/to/temp-log-ABC123.txt.gzip"
+    
+    NSString *tempFileName = [NSString stringWithFormat:@"temp-%@", [self fileName]];
+    
+    NSString *newFileName = [tempFileName stringByAppendingPathExtension:newExt];
+    
+    NSString *fileDir = [[self filePath] stringByDeletingLastPathComponent];
+    
+    NSString *newFilePath = [fileDir stringByAppendingPathComponent:newFileName];
+    
+    return newFilePath;
 }
 
 
 - (NSString *)fileNameByAppendingPathExtension:(NSString *)newExt
 {
-	// Example:
-	// 
-	// Current File Name: "log-ABC123.txt"
-	// 
-	// newExt: "gzip"
-	// result: "log-ABC123.txt.gzip"
-	
-	NSString *fileNameExtension = [[self fileName] pathExtension];
-	
-	if ([fileNameExtension isEqualToString:newExt])
-	{
-		return [self fileName];
-	}
-	
-	return [[self fileName] stringByAppendingPathExtension:newExt];
+    // Example:
+    // 
+    // Current File Name: "log-ABC123.txt"
+    // 
+    // newExt: "gzip"
+    // result: "log-ABC123.txt.gzip"
+    
+    NSString *fileNameExtension = [[self fileName] pathExtension];
+    
+    if ([fileNameExtension isEqualToString:newExt])
+    {
+        return [self fileName];
+    }
+    
+    return [[self fileName] stringByAppendingPathExtension:newExt];
 }
 
 @end

@@ -22,8 +22,6 @@ value;
     L_RELEASE(key);
     L_RELEASE(value);
     L_RELEASE(comment);
-    
-    [super dealloc];
 }
 
 #pragma mark - Helpers

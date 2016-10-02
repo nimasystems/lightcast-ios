@@ -62,8 +62,8 @@ handled;
     self = [super init];
     if (self)
     {
-        name = [aName retain];
-        object = [anObject retain];
+        name = aName;
+        object = anObject;
         returnValue = nil;
     }
     return self;
@@ -74,16 +74,14 @@ handled;
     L_RELEASE(name);
     L_RELEASE(object);
     L_RELEASE(returnValue);
-    
-    [super dealloc];
 }
 
 + (id)notificationWithName:(NSString*)aName {
-    return [[[LNotification alloc] initWithName:aName] autorelease];
+    return [[LNotification alloc] initWithName:aName];
 }
 
 + (id)notificationWithName:(NSString*)aName object:(id)anObject {
-    return [[[LNotification alloc] initWithName:aName object:anObject] autorelease];
+    return [[LNotification alloc] initWithName:aName object:anObject];
 }
 
 @end

@@ -39,31 +39,24 @@
 #define LC_DEFAULT_ROW_HEIGHT 50
 #define LC_CELL_SEPARATOR_STYLE_KEY @"cell_separator"
 
-@interface LAdvancedTableViewController(Private)
+@interface LAdvancedTableViewController()
 
-- (void)setTableNoData;
-- (void)setTableDataExists;
-- (void)firstInit;
+@property (nonatomic, assign) CGRect frm_;
 
-- (void)loadDataInThread1;
-- (void)loadDataInThread_;
+@property (nonatomic, strong) LLabel* noData;
 
-- (void)showProgressView;
-- (void)hideProgressView;
+@property (nonatomic, strong) NSString * cellClassName;
+@property (nonatomic, strong) Class cellClass;
 
-- (void)reloadVisible;
+@property (nonatomic, strong) NSMutableDictionary* cellThreadData;
 
-- (void)informVisibleCells;
+@property (nonatomic, strong) UIActivityIndicatorView *progressView;
+
+@property (nonatomic, strong) NSOperationQueue* queue;
 
 @end
 
 @implementation LAdvancedTableViewController
-
-@synthesize
-tableItems,
-delegate,
-cellOptions,
-searchIndexEnabled;
 
 #pragma mark -
 #pragma mark Initialization / Finalization
@@ -80,8 +73,8 @@ searchIndexEnabled;
     self = [super init];
     if (self)
     {
-        queue = [[NSOperationQueue alloc] init];
-        cellThreadData = [[NSMutableDictionary alloc] init];
+        _queue = [[NSOperationQueue alloc] init];
+        _cellThreadData = [[NSMutableDictionary alloc] init];
         
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center addObserver:self
@@ -89,9 +82,9 @@ searchIndexEnabled;
                        name:UIApplicationDidReceiveMemoryWarningNotification
                      object:nil];
         
-        frm_ = frm;
-        tableItems = [someItems retain];
-        cellOptions = [someCellOptions retain];
+        _frm_ = frm;
+        _tableItems = someItems;
+        _cellOptions = someCellOptions;
         
         if (!aCellClassName)
         {
@@ -99,7 +92,7 @@ searchIndexEnabled;
             
             [self doesNotRecognizeSelector:_cmd];
             L_RELEASE(self);
-			return nil;
+            return nil;
         }
         else 
         {
@@ -112,15 +105,15 @@ searchIndexEnabled;
                 
                 [self doesNotRecognizeSelector:_cmd];
                 L_RELEASE(self);
-				return nil;
+                return nil;
             }
-			else
-			{
-				cellClassName = [aCellClassName retain];
-				cellClass = [tmpClass retain];
-				
-				//LogDebug(@"LAdvancedTableViewController: with cell class: %@ and items: %d", cellClassName, tableItems ? [tableItems count] : 0);
-			}
+            else
+            {
+                _cellClassName = aCellClassName;
+                _cellClass = tmpClass;
+                
+                //LogDebug(@"LAdvancedTableViewController: with cell class: %@ and items: %d", cellClassName, tableItems ? [tableItems count] : 0);
+            }
         }
     }
     return self;
@@ -146,15 +139,14 @@ searchIndexEnabled;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    L_RELEASE(cellThreadData);
-    L_RELEASE(queue);
-    L_RELEASE(cellOptions);
-    L_RELEASE(cellClassName);
-    L_RELEASE(cellClass);
-    L_RELEASE(noData);
-    L_RELEASE(tableItems);
-    L_RELEASE(progressView);
-    [super dealloc];
+    L_RELEASE(_cellThreadData);
+    L_RELEASE(_queue);
+    L_RELEASE(_cellOptions);
+    L_RELEASE(_cellClassName);
+    L_RELEASE(_cellClass);
+    L_RELEASE(_noData);
+    L_RELEASE(_tableItems);
+    L_RELEASE(_progressView);
 }
 
 #pragma mark -
@@ -168,22 +160,22 @@ searchIndexEnabled;
 #pragma mark View Related
 
 - (void)viewDidLoad {
-  
+    
     [super viewDidLoad];
     
-    self.view.frame = frm_;
-
+    self.view.frame = _frm_;
+    
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     // init table view
-    self.tableView = [[[UITableView alloc] initWithFrame:self.view.bounds] autorelease];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     // set row height from options
     NSNumber * rowHeight = [self.cellOptions objectForKey:LC_ROW_HEIGHT_IN_OPTIONS_KEY];
-	
+    
     if (rowHeight)
     {
         if (![rowHeight isKindOfClass:[NSNull class]])
@@ -207,15 +199,15 @@ searchIndexEnabled;
     }
     
     // no data label
-    noData = [[LLabel alloc] init];
-    noData.text = LightcastLocalizedString(@"No Data");
-    [noData sizeToFit];
-
-    // progress view init
-    progressView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [progressView sizeToFit];
+    _noData = [[LLabel alloc] init];
+    _noData.text = LightcastLocalizedString(@"No Data");
+    [_noData sizeToFit];
     
-    [self setTableItemsInternal:tableItems];
+    // progress view init
+    _progressView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [_progressView sizeToFit];
+    
+    [self setTableItemsInternal:_tableItems];
     
     // fetch data from thread if provided
     [self loadDataInThread1];
@@ -223,36 +215,36 @@ searchIndexEnabled;
 
 - (void)showProgressView {
     
-	if (noData)
-	{
-		[noData removeFromSuperview];
-	}
-	
-	if (progressView)
-	{
-		[self.tableView addSubview:progressView];
-		progressView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
-		UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-		
-		[progressView setFrame:CGRectMake(round(self.tableView.frame.size.width / 2 - progressView.frame.size.width / 2),
-										  round(self.tableView.frame.size.height / 2 - progressView.frame.size.height / 2),
-										  progressView.frame.size.width,
-										  progressView.frame.size.height)];
-		[progressView startAnimating];
-	}
+    if (_noData)
+    {
+        [_noData removeFromSuperview];
+    }
+    
+    if (_progressView)
+    {
+        [self.tableView addSubview:_progressView];
+        _progressView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
+        UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        
+        [_progressView setFrame:CGRectMake(round(self.tableView.frame.size.width / 2 - _progressView.frame.size.width / 2),
+                                           round(self.tableView.frame.size.height / 2 - _progressView.frame.size.height / 2),
+                                           _progressView.frame.size.width,
+                                           _progressView.frame.size.height)];
+        [_progressView startAnimating];
+    }
 }
 
 - (void)hideProgressView {
     
-	if (progressView)
-	{
-		[progressView removeFromSuperview];
-		[progressView stopAnimating];
-		progressView = nil;
-	}
-	
-	// if there is no data show the 'noData' label again
-	[self reloadVisible];
+    if (_progressView)
+    {
+        [_progressView removeFromSuperview];
+        [_progressView stopAnimating];
+        _progressView = nil;
+    }
+    
+    // if there is no data show the 'noData' label again
+    [self reloadVisible];
 }
 
 #pragma mark -
@@ -262,9 +254,9 @@ searchIndexEnabled;
     
     // cancel all current operations
     /*[queue cancelAllOperations];
-    [cellThreadData removeAllObjects];
-    
-    [self informVisibleCells];*/
+     [cellThreadData removeAllObjects];
+     
+     [self informVisibleCells];*/
 }
 
 #pragma mark -
@@ -275,104 +267,86 @@ searchIndexEnabled;
 }
 
 - (void)loadDataInThread1 {
-  
+    
     @synchronized(self)
-	{
-		// check if provider gives us such data
-		if (delegate && [delegate respondsToSelector:@selector(LAdvancedTableViewController: provideDataInThread:)])
-		{
-			[NSThread detachNewThreadSelector:@selector(loadDataInThread_:) toTarget:self withObject:self];
-		}
-	}
+    {
+        // check if provider gives us such data
+        if (_delegate && [_delegate respondsToSelector:@selector(LAdvancedTableViewController: provideDataInThread:)])
+        {
+            [NSThread detachNewThreadSelector:@selector(loadDataInThread_:) toTarget:self withObject:self];
+        }
+    }
 }
 
 - (void)loadDataInThread_:(LAdvancedTableViewController*)tableViewController {
     
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
-	//LogDebug(@"LAdvancedTableViewController: started data load thread");
-	
-	[self performSelectorOnMainThread:@selector(showProgressView) withObject:nil waitUntilDone:YES];
-	
-	@try 
-	{
-		NSArray * data = nil;
-		[delegate LAdvancedTableViewController:self provideDataInThread:&data];
-		
-		//LogDebug(@"LAdvancedTableViewController: DELEGATE: Provider returned %d items of data", data ? [data count] : 0);
-		
-		[tableViewController performSelectorOnMainThread:@selector(setTableItemsInternal:) withObject:data waitUntilDone:YES];
-		
-		//LogDebug(@"LAdvancedTableViewController: finished data load thread");
-	}
-	@finally 
-	{
-		[self performSelectorOnMainThread:@selector(hideProgressView) withObject:nil waitUntilDone:YES];
-		
-		[pool drain];
-	}
+    //LogDebug(@"LAdvancedTableViewController: started data load thread");
+    
+    [self performSelectorOnMainThread:@selector(showProgressView) withObject:nil waitUntilDone:YES];
+    
+    NSArray * data = nil;
+    [_delegate LAdvancedTableViewController:self provideDataInThread:&data];
+    
+    //LogDebug(@"LAdvancedTableViewController: DELEGATE: Provider returned %d items of data", data ? [data count] : 0);
+    
+    [tableViewController performSelectorOnMainThread:@selector(setTableItemsInternal:) withObject:data waitUntilDone:YES];
+    
+    //LogDebug(@"LAdvancedTableViewController: finished data load thread");
+    [self performSelectorOnMainThread:@selector(hideProgressView) withObject:nil waitUntilDone:YES];
 }
 
 - (void)reloadData {
-    NSMutableArray * tmp = [tableItems copy];
+    NSMutableArray * tmp = [_tableItems copy];
     
-	@synchronized(tableItems)
-	{
-		@try 
-		{
-			L_RELEASE(tableItems);
-			
-			[self setTableItemsInternal:tmp];
-		}
-		@finally 
-		{
-			[tmp release];
-		}
-	}
+    @synchronized(_tableItems)
+    {
+        L_RELEASE(_tableItems);
+        
+        [self setTableItemsInternal:tmp];
+    }
 }
 
 - (void)reloadVisible {
-   
-	NSString * reloadVisible = [NSString string];
-	
-	@synchronized(reloadVisible)
-	{
-		if (tableItems)
-		{
-			[self setTableDataExists];
-		}
-		else
-		{
-			[self setTableNoData];
-		}
-		
-		if ([tableItems count] == 0)
-		{
-			[self setTableNoData];
-		}
-		
-		[self informVisibleCells];
-		[self.tableView reloadData];
-	}
+    
+    NSString * reloadVisible = [NSString string];
+    
+    @synchronized(reloadVisible)
+    {
+        if (_tableItems)
+        {
+            [self setTableDataExists];
+        }
+        else
+        {
+            [self setTableNoData];
+        }
+        
+        if ([_tableItems count] == 0)
+        {
+            [self setTableNoData];
+        }
+        
+        [self informVisibleCells];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)setTableItemsInternal:(NSArray*)someItems {
     
     @synchronized(someItems)
     {
-        if (tableItems != someItems)
+        if (_tableItems != someItems)
         {
             // clear all objects, flush and reload table
-            L_RELEASE(tableItems);
-            tableItems = [someItems retain];
+            _tableItems = someItems;
         }
         
         [self reloadVisible];
         
-        if (delegate && [delegate respondsToSelector:@selector(LAdvancedTableViewController: dataChanged:)])
+        if (_delegate && [_delegate respondsToSelector:@selector(LAdvancedTableViewController: dataChanged:)])
         {
             //LogDebug(@"LAdvancedTableViewController: DELEGATE: dataChanged");
-            [delegate LAdvancedTableViewController:self dataChanged:tableItems];
+            [_delegate LAdvancedTableViewController:self dataChanged:_tableItems];
         } 
     }
 }
@@ -383,28 +357,28 @@ searchIndexEnabled;
 - (void)setTableNoData {
     
     // label when no data is shown
-	@synchronized(noData)
-	{
-		noData.autoresizingMask = 
-		UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
-		UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-		[noData setFrame:CGRectMake(round(self.tableView.frame.size.width / 2 - noData.frame.size.width / 2),
-									round(self.tableView.frame.size.height / 2 - noData.frame.size.height / 2),
-									noData.frame.size.width, noData.frame.size.height)];
-		[self.tableView addSubview:noData];
-	}
+    @synchronized(_noData)
+    {
+        _noData.autoresizingMask =
+        UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
+        UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        [_noData setFrame:CGRectMake(round(self.tableView.frame.size.width / 2 - _noData.frame.size.width / 2),
+                                     round(self.tableView.frame.size.height / 2 - _noData.frame.size.height / 2),
+                                     _noData.frame.size.width, _noData.frame.size.height)];
+        [self.tableView addSubview:_noData];
+    }
 }
 
 - (void)setTableDataExists {
     
     // label when no data is shown
-	@synchronized(noData)
-	{
-		if (noData)
-		{
-			[noData removeFromSuperview];
-		}
-	}
+    @synchronized(_noData)
+    {
+        if (_noData)
+        {
+            [_noData removeFromSuperview];
+        }
+    }
 }
 
 - (void)informVisibleCells {
@@ -420,7 +394,7 @@ searchIndexEnabled;
             
             if (operation)
             {
-                [queue addOperation:operation];
+                [_queue addOperation:operation];
             }
         }
     }
@@ -439,24 +413,24 @@ searchIndexEnabled;
     
     if (returnedObject)
     {
-        [cellThreadData setObject:returnedObject forKey:indexPath];
+        [_cellThreadData setObject:returnedObject forKey:indexPath];
     }
     else
     {
-        [cellThreadData removeObjectForKey:indexPath];
+        [_cellThreadData removeObjectForKey:indexPath];
     }
     
     LAdvancedTableViewCell* cell = (LAdvancedTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-    cell.threadData = [cellThreadData objectForKey:indexPath];
+    cell.threadData = [_cellThreadData objectForKey:indexPath];
     
     [cell reload];
     
     // check cache
-    if ([cellThreadData count] >= LC_ADVTBL_CACHED_OBJECTS)
+    if ([_cellThreadData count] >= LC_ADVTBL_CACHED_OBJECTS)
     {
         LogWarn(@"Table cache reached %d - will flush all temporal objects", LC_ADVTBL_CACHED_OBJECTS);
         
-        [cellThreadData removeAllObjects];
+        [_cellThreadData removeAllObjects];
         [self informVisibleCells];
     }
 }
@@ -465,7 +439,7 @@ searchIndexEnabled;
 #pragma mark UITableViewDataSource delegate methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return tableItems ? [tableItems count] : 0;
+    return _tableItems ? [_tableItems count] : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -474,15 +448,15 @@ searchIndexEnabled;
     //NSString *kCustomCellID = [NSString stringWithFormat:@"%@_%d", @"AdvancedCellID", indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCustomCellID];
-	
-	if (cell == nil)
-	{
-        cell = [[[cellClass alloc] initWithOptions:UITableViewCellStyleDefault reuseIdentifier:kCustomCellID options:cellOptions] autorelease];
+    
+    if (cell == nil)
+    {
+        cell = [[_cellClass alloc] initWithOptions:UITableViewCellStyleDefault reuseIdentifier:kCustomCellID options:_cellOptions];
     }
     
-    ((LAdvancedTableViewCell*)cell).data = [tableItems objectAtIndex:indexPath.row];
-    ((LAdvancedTableViewCell*)cell).threadData = [cellThreadData objectForKey:indexPath];
-   
+    ((LAdvancedTableViewCell*)cell).data = [_tableItems objectAtIndex:indexPath.row];
+    ((LAdvancedTableViewCell*)cell).threadData = [_cellThreadData objectForKey:indexPath];
+    
     [((LAdvancedTableViewCell*)cell) reload];
     
     return cell;
@@ -506,28 +480,28 @@ searchIndexEnabled;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (delegate && [delegate respondsToSelector:@selector(LAdvancedTableViewController:didSelectCellWithData:)])
+    if (_delegate && [_delegate respondsToSelector:@selector(LAdvancedTableViewController:didSelectCellWithData:)])
     {
         LAdvancedTableViewCell * cell = (LAdvancedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
         NSDictionary * cellData = cell.data;
         
         if (cell)
         {
-            [delegate LAdvancedTableViewController:self didSelectCellWithData:cellData];
+            [_delegate LAdvancedTableViewController:self didSelectCellWithData:cellData];
         }
     }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (delegate && [delegate respondsToSelector:@selector(LAdvancedTableViewController:didDeselectCellWithData:)])
+    if (_delegate && [_delegate respondsToSelector:@selector(LAdvancedTableViewController:didDeselectCellWithData:)])
     {
         LAdvancedTableViewCell * cell = (LAdvancedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
         NSDictionary * cellData = cell.data;
-
+        
         if (cell)
         {
-            [delegate LAdvancedTableViewController:self didDeselectCellWithData:cellData];
+            [_delegate LAdvancedTableViewController:self didDeselectCellWithData:cellData];
         }
     }
 }
@@ -545,11 +519,11 @@ searchIndexEnabled;
  *	@return void
  */
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-	
-	if (!tableItems) return;
-	
-	//LogDebug(@"scrollViewDidEndDragging");
-	
+    
+    if (!_tableItems) return;
+    
+    //LogDebug(@"scrollViewDidEndDragging");
+    
     if (!decelerate)
     {
         [self informVisibleCells]; 
@@ -561,12 +535,12 @@ searchIndexEnabled;
  *	@return void
  */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-	
-	if (!tableItems) return;
-	
-	//LogDebug(@"scrollViewDidEndDecelerating");
-	
-	[self informVisibleCells];
+    
+    if (!_tableItems) return;
+    
+    //LogDebug(@"scrollViewDidEndDecelerating");
+    
+    [self informVisibleCells];
 }
 
 @end

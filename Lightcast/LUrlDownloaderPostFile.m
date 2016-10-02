@@ -79,8 +79,6 @@ actualData;
     L_RELEASE(data);
     L_RELEASE(actualData);
     L_RELEASE(mimetype);
-    
-    [super dealloc];
 }
 
 #pragma mark - Getters / Setters

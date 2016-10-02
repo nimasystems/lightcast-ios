@@ -60,23 +60,16 @@ sqlItems;
                 // convert into lines
                 // TODO - decide what to do with \n escape sequences - they are BROKEN right now!
                 NSString* string = [[NSString alloc] initWithBytes:[data bytes]
-                                                             length:[data length] 
-                                                           encoding:NSUTF8StringEncoding];
+                                                            length:[data length] 
+                                                          encoding:NSUTF8StringEncoding];
                 
-                @try 
+                //split the string around newline characters to create an array
+                NSString* delimiter = @"\n";
+                NSArray* arr = [string componentsSeparatedByString:delimiter];
+                
+                if (arr)
                 {
-                    //split the string around newline characters to create an array
-                    NSString* delimiter = @"\n";
-                    NSArray* arr = [string componentsSeparatedByString:delimiter];
-                    
-                    if (arr)
-                    {
-                        sqlItems = [arr retain];
-                    }
-                }
-                @finally 
-                {
-                    [string release];
+                    sqlItems = arr;
                 }
             }
         }
@@ -87,14 +80,13 @@ sqlItems;
 - (void)dealloc
 {
     L_RELEASE(sqlItems);
-    [super dealloc];
 }
 
 + (id)sqlParserWithFileContents:(NSString*)filename {
     
     id parser = [[SQLParser alloc] initWithContentsOfFile:filename];
     
-    return [parser autorelease];
+    return parser;
 }
 
 @end

@@ -51,14 +51,13 @@ delegate;
 
 - (void)dealloc {
     delegate = nil;
-    [super dealloc];
 }
 
 #pragma mark -
 #pragma mark NSOperation Descendant Methods
 
 - (void)main {
- 
+    
     if (delegate)
     {
         if ([delegate respondsToSelector:@selector(loadInOperation)])

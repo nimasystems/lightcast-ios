@@ -35,8 +35,6 @@ cells;
 {
     L_RELEASE(cellBorderColor);
     L_RELEASE(cells);
-    
-    [super dealloc];
 }
 
 #pragma mark - Getters / Setters
@@ -44,8 +42,7 @@ cells;
 {
     if (cells != cells_)
     {
-        L_RELEASE(cells);
-        cells = [cells_ retain];
+        cells = cells_;
         
         [self removeAllSubviews];
         
@@ -60,8 +57,7 @@ cells;
 {
     if (cellBorderColor != cellBorderColor_)
     {
-        L_RELEASE(cellBorderColor);
-        cellBorderColor = [cellBorderColor_ retain];
+        cellBorderColor = cellBorderColor_;
         
         [self setNeedsDisplay];
     }
@@ -140,7 +136,7 @@ cells;
                                    nextY,
                                    cellSize.width,
                                    cellSize.height
-                    );
+                                   );
                     
                     CGContextStrokeRect(context, r);
                 }

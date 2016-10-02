@@ -63,7 +63,7 @@ textPaddingY;
         
         self.userInteractionEnabled = YES;
         
-        self.badgeParagraphStyle = [[[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+        self.badgeParagraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
         self.badgeParagraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
         self.badgeParagraphStyle.alignment = NSTextAlignmentCenter;
         
@@ -101,8 +101,6 @@ textPaddingY;
     {
         CGColorRelease(_ccTextColor);
     }
-    
-    [super dealloc];
 }
 
 #pragma mark - Getters / Setters
@@ -122,8 +120,7 @@ textPaddingY;
 {
     if (backgroundColor != backgroundColor_)
     {
-        L_RELEASE(backgroundColor);
-        backgroundColor = [backgroundColor_ retain];
+        backgroundColor = backgroundColor_;
         
         CGColorRelease(_ccbackgroundColor);
         _ccbackgroundColor = CGColorRetain([backgroundColor CGColor]);
@@ -146,8 +143,7 @@ textPaddingY;
 {
     if (borderColor != borderColor_)
     {
-        L_RELEASE(borderColor);
-        borderColor = [borderColor_ retain];
+        borderColor = borderColor_;
         
         CGColorRelease(_ccBorderColor);
         _ccBorderColor = CGColorRetain([borderColor CGColor]);
@@ -160,8 +156,7 @@ textPaddingY;
 {
     if (textColor != textColor_)
     {
-        L_RELEASE(textColor);
-        textColor = [textColor_ retain];
+        textColor = textColor_;
         
         CGColorRelease(_ccTextColor);
         _ccTextColor = CGColorRetain([textColor CGColor]);
@@ -177,15 +172,6 @@ textPaddingY;
         cornerRadius = cornerRadius_;
         
         [self setNeedsDisplay];
-    }
-}
-
-- (void)setFont:(UIFont *)font_
-{
-    if (font != font_)
-    {
-        L_RELEASE(font);
-        font = [font_ retain];
     }
 }
 

@@ -25,12 +25,12 @@ validationErrors;
 - (id)initWithStampiiError:(NSString*)apiDomainName_ errorMessage:(NSString*)errorMessage_ errorCode:(NSInteger)errorCode_
 {
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                          (errorMessage_ ? [[errorMessage_ copy] autorelease] : @""), NSLocalizedDescriptionKey
+                          (errorMessage_ ? [errorMessage_ copy] : @""), NSLocalizedDescriptionKey
                           , nil];
     self = [super initWithDomain:APIErrorDomain code:errorCode_ userInfo:dict];
     if (self)
     {
-        apiDomainName = [apiDomainName_ retain];
+        apiDomainName = apiDomainName_;
     }
     return self;
 }
@@ -47,8 +47,6 @@ validationErrors;
     L_RELEASE(exceptionName);
     L_RELEASE(extraData);
     L_RELEASE(validationErrors);
-
-    [super dealloc];
 }
 
 #pragma mark -
@@ -60,7 +58,7 @@ validationErrors;
     
     NSString *d = [NSString stringWithFormat:@"%@ ApiDomainName=%@ ExceptionName=%@ Trace=%@ ExtraData=%@ ValidationErrors=%@",
                    pd,
-                    apiDomainName,
+                   apiDomainName,
                    exceptionName,
                    trace,
                    extraData,

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Lightcast"
-  s.version      = "0.0.30"
+  s.version      = "0.0.31"
   s.summary      = "iOS utility framework"
 
   # This description is used to generate tags and improve search results.
@@ -96,11 +96,11 @@ Pod::Spec.new do |s|
 
   #s.compiler_flags = '-fno-objc-arc'
 
-  s.subspec 'arc' do |sp|
-    sp.source_files = "Lightcast/3rdParty/Base64/Base64.m", "Lightcast/3rdParty/System\ Services/**"
-    sp.requires_arc = true
-    sp.compiler_flags = '-fobjc-arc'
-  end
+  #s.subspec 'arc' do |sp|
+  #  sp.source_files = "Lightcast/3rdParty/Base64/Base64.m", "Lightcast/3rdParty/System\ Services/**"
+  #  sp.requires_arc = true
+  #  sp.compiler_flags = '-fobjc-arc'
+  #end
 
   s.ios.prefix_header_file = "Lightcast/Lightcast\ iOS-Prefix.pch"
   s.osx.prefix_header_file = "Lightcast/Lightcast-MacOSX-Prefix.pch"
@@ -137,7 +137,7 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  s.requires_arc = false
+  s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency "CocoaLumberjack"

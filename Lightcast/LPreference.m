@@ -66,8 +66,6 @@ value;
     L_RELEASE(category);
     L_RELEASE(key);
     L_RELEASE(value);
-    
-    [super dealloc];
 }
 
 #pragma mark - NSCopying

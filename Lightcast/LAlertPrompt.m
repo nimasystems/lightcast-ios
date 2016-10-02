@@ -43,7 +43,7 @@ textField;
 - (id)initWithTitle:(NSString*)title message:(NSString*)message delegate:(id)delegate cancelButtonTitle:(NSString*)cancelButtonTitle okButtonTitle:(NSString*)okayButtonTitle
 {
     // necessary to shift the buttons a bit down (below the text input)
-	self = [super initWithTitle:title message:[NSString stringWithFormat:@"%@\n", message] delegate:delegate cancelButtonTitle:cancelButtonTitle otherButtonTitles:okayButtonTitle, nil];
+    self = [super initWithTitle:title message:[NSString stringWithFormat:@"%@\n", message] delegate:delegate cancelButtonTitle:cancelButtonTitle otherButtonTitles:okayButtonTitle, nil];
     if (self)
     {
         if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
@@ -53,13 +53,13 @@ textField;
         }
         else
         {
-            UITextField *theTextField = [[[UITextField alloc] initWithFrame:CGRectMake(12.0, 45.0, 260.0, 25.0)] autorelease];
+            UITextField *theTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 45.0, 260.0, 25.0)];
             [theTextField setBackgroundColor:[UIColor whiteColor]];
             [self addSubview:theTextField];
             self.textField = theTextField;
         }
         
-
+        
         //CGAffineTransform myTransform = CGAffineTransformMakeScale(1.0, 0.5f);
         //[self setTransform:myTransform];
     }
@@ -68,9 +68,7 @@ textField;
 
 - (void)dealloc
 {
-    L_RELEASE(textField);
-    
-    [super dealloc];
+    self.textField = nil;
 }
 
 #pragma mark -
@@ -78,10 +76,10 @@ textField;
 
 - (void)show
 {
-	textField.textAlignment = UITextAlignmentCenter;
+    textField.textAlignment = UITextAlignmentCenter;
     //[textField becomeFirstResponder];
-	
-	[super show];
+    
+    [super show];
 }
 
 - (BOOL)canBecomeFirstResponder

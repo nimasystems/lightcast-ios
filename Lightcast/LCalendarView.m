@@ -55,15 +55,15 @@ showsOnlyCurrentMonth;
         
         allowTitleClickToReset = YES;
         
-        calendar = [calendar_ retain];
+        calendar = calendar_;
         _lastCellSize = [self preferredCellSize];
         
         _reusableCells = [[NSMutableDictionary alloc] init];
         
         monthNameBarHeight = kLCalendarViewMonthBarHeight;
         weekdaysBarHeight = kLCalendarViewWeekBarHeight;
-        weekdayBarFont = [[UIFont systemFontOfSize:14.0] retain];
-        weekdayBarTextColor = [[UIColor whiteColor] retain];
+        weekdayBarFont = [UIFont systemFontOfSize:14.0];
+        weekdayBarTextColor = [UIColor whiteColor];
         
         self.backgroundColor = [UIColor whiteColor];
         
@@ -72,7 +72,7 @@ showsOnlyCurrentMonth;
         
         // init month bar
         CGRect r = CGRectMake(0, 0, self.bounds.size.width, kLCalendarViewMonthBarHeight + kLCalendarViewWeekBarHeight);
-        _monthBar = [[[UIView alloc] initWithFrame:r] autorelease];
+        _monthBar = [[UIView alloc] initWithFrame:r];
         _monthBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _monthBar.backgroundColor = [UIColor clearColor];
         [self addSubview:_monthBar];
@@ -96,7 +96,7 @@ showsOnlyCurrentMonth;
                        _monthName.frame.origin.y + _monthName.frame.size.height,
                        self.bounds.size.width,
                        weekdaysBarHeight);
-        _weekdayBar = [[[UIView alloc] initWithFrame:r] autorelease];
+        _weekdayBar = [[UIView alloc] initWithFrame:r];
         _weekdayBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _weekdayBar.backgroundColor = [UIColor purpleColor];
         
@@ -107,7 +107,7 @@ showsOnlyCurrentMonth;
             
             r = CGRectMake((self.weekdayBar.bounds.size.width / 7) * (i % 7), 0,
                            self.weekdayBar.bounds.size.width / 7, self.weekdayBar.bounds.size.height);
-            UILabel *label = [[[UILabel alloc] initWithFrame:r] autorelease];
+            UILabel *label = [[UILabel alloc] initWithFrame:r];
             label.tag = i;
             label.font = weekdayBarFont;
             label.textAlignment = UITextAlignmentCenter;
@@ -130,7 +130,7 @@ showsOnlyCurrentMonth;
                        self.bounds.size.width,
                        self.bounds.size.height);
         
-        _gridView = [[[LCalendarGridView alloc] initWithFrame:r] autorelease];
+        _gridView = [[LCalendarGridView alloc] initWithFrame:r];
         _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _gridView.backgroundColor = [UIColor clearColor];
         _gridView.cellSize = _lastCellSize;
@@ -160,8 +160,6 @@ showsOnlyCurrentMonth;
     L_RELEASE(weekdayBarFont);
     L_RELEASE(weekdayBarTextColor);
     L_RELEASE(_reusableCells);
-    
-    [super dealloc];
 }
 
 #pragma mark - View Related
@@ -326,7 +324,7 @@ showsOnlyCurrentMonth;
     //NSInteger day = components.day;
     
     NSCalendar* cal = self.calendar;
-    NSDateComponents* comps = [[[NSDateComponents alloc] init] autorelease];
+    NSDateComponents* comps = [[NSDateComponents alloc] init];
     
     [comps setMonth:month];
     [comps setYear:year];
@@ -473,8 +471,7 @@ showsOnlyCurrentMonth;
         
         if (selectedCell_ != selectedCell)
         {
-            L_RELEASE(selectedCell);
-            selectedCell = [selectedCell_ retain];
+            selectedCell = selectedCell_;
         }
         
         if (selectedDate)
@@ -546,8 +543,7 @@ showsOnlyCurrentMonth;
 {
     if (weekdayBarFont != weekdayBarFont_)
     {
-        L_RELEASE(weekdayBarFont);
-        weekdayBarFont = [weekdayBarFont_ retain];
+        weekdayBarFont = weekdayBarFont_;
         
         // weekday name labels
         for (UILabel *v in _weekdayBar.subviews)
@@ -563,8 +559,7 @@ showsOnlyCurrentMonth;
 {
     if (weekdayBarTextColor != weekdayBarTextColor_)
     {
-        L_RELEASE(weekdayBarTextColor);
-        weekdayBarTextColor = [weekdayBarTextColor_ retain];
+        weekdayBarTextColor = weekdayBarTextColor_;
         
         // weekday name labels
         for (UILabel *v in _weekdayBar.subviews)
@@ -657,7 +652,7 @@ showsOnlyCurrentMonth;
 
 - (void)monthForward
 {
-    NSDateComponents *monthStep = [[[NSDateComponents alloc] init] autorelease];
+    NSDateComponents *monthStep = [[NSDateComponents alloc] init];
     monthStep.month = 1;
     NSDate *newDate = [self.calendar dateByAddingComponents: monthStep toDate: self.displayedDate options: 0];
     
@@ -666,7 +661,7 @@ showsOnlyCurrentMonth;
 
 - (void)monthBack
 {
-    NSDateComponents *monthStep = [[NSDateComponents new] autorelease];
+    NSDateComponents *monthStep = [NSDateComponents new];
     monthStep.month = -1;
     NSDate *newDate = [self.calendar dateByAddingComponents: monthStep toDate: self.displayedDate options: 0];
     

@@ -56,62 +56,59 @@ defaultConfiguration;
     
     L_RELEASE(configuration);
     L_RELEASE(nd);
-    [super dealloc];
 }
 
 - (BOOL)initialize:(LCAppConfiguration*)aConfiguration notificationDispatcher:(LNotificationDispatcher*)aDispatcher error:(NSError**)error {
-	
+    
     LogDebug(@"LSystemObject: initialize: %@", NSStringFromClass([self class]));
     
     if (aConfiguration)
     {
-        L_RELEASE(configuration);
-        configuration = [aConfiguration retain];
+        configuration = aConfiguration;
     }
-
+    
     if (aDispatcher)
     {
-        L_RELEASE(nd);
-        nd = [aDispatcher retain];
+        nd = aDispatcher;
     }
-	
+    
 #ifdef TARGET_IOS	// iOS Target
-	
-	// register to receive low memory notifications
-	[nd addObserver:self selector:@selector(didReceiveLowMemoryNotification:) name:lnLightcastApplicationDidReceiveMemoryWarning object:nil];
-
+    
+    // register to receive low memory notifications
+    [nd addObserver:self selector:@selector(didReceiveLowMemoryNotification:) name:lnLightcastApplicationDidReceiveMemoryWarning object:nil];
+    
 #endif
-	
+    
     return YES;
 }
-             
+
 #pragma mark -
 #pragma mark Configuration
-             
+
 - (LConfiguration*)defaultConfiguration {
-    return [[[LConfiguration alloc] init] autorelease];
+    return [[LConfiguration alloc] init];
 }
 
 #pragma mark - Memory Notifications
 
 - (void)didReceiveLowMemoryNotification:(LNotification*)notification {
-	
-	NSDictionary *object = [NSDictionary dictionaryWithObjectsAndKeys:
-							(notification.object ? notification.object : [NSNull null]), @"object",
-							nil];
-	[self didReceiveMemoryWarning:object];
+    
+    NSDictionary *object = [NSDictionary dictionaryWithObjectsAndKeys:
+                            (notification.object ? notification.object : [NSNull null]), @"object",
+                            nil];
+    [self didReceiveMemoryWarning:object];
 }
 
 - (void)didReceiveMemoryWarning:(NSDictionary*)additionalInformation {
-	
-	// do nothing
+    
+    // do nothing
 }
 
 #pragma mark - 
 #pragma mark Class Factory
 
 + (id)classFactory:(NSString*)objectName suffix:(NSString*)suffix subclassOf:(Class)subclass {
-   
+    
     if (!objectName) return nil;
     
     NSString * className = [NSString stringWithFormat:@"L%@%@", objectName, suffix];
@@ -125,7 +122,7 @@ defaultConfiguration;
     
     id instance = [[class alloc] init];
     
-    return [instance autorelease];
+    return instance;
 }
 
 @end

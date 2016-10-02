@@ -75,9 +75,9 @@ activityProgressIsShown;
         self.activityIndicator = nil;
         self.waitingLabel = nil;
         self.activityHolderView = nil;
-        progressFont = [[UIFont fontWithName:@"Helvetica-Bold" size:18.0] retain];
-        progressColor = [[UIColor whiteColor] retain];
-        progressBgColor = [[UIColor colorWithWhite:0.0 alpha:0.3] retain];
+        progressFont = [UIFont fontWithName:@"Helvetica-Bold" size:18.0];
+        progressColor = [UIColor whiteColor];
+        progressBgColor = [UIColor colorWithWhite:0.0 alpha:0.3];
 #endif
     }
     return self;
@@ -99,8 +99,6 @@ activityProgressIsShown;
     L_RELEASE(progressBgColor);
     
 #endif
-    
-    [super dealloc];
 }
 
 #pragma mark - View related
@@ -248,7 +246,7 @@ activityProgressIsShown;
          errDescription = [NSString stringWithFormat:@"Web Service Error:\nDomain:%@\nException:%@", lerr.domain, lerr.exceptionName];
          #endif*/
         
-        NSMutableArray *allVErrs = [[[NSMutableArray alloc] init] autorelease];
+        NSMutableArray *allVErrs = [[NSMutableArray alloc] init];
         
         if (lerr.validationErrors && [lerr.validationErrors count])
         {
@@ -350,7 +348,7 @@ activityProgressIsShown;
     _activityHolderView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     // show progress view
-    _activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:iStyle] autorelease];
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:iStyle];
     [_activityIndicator sizeToFit];
     _activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -367,7 +365,7 @@ activityProgressIsShown;
     {
         nextY += _activityIndicator.size.height + 10.0;
         
-        _waitingLabel = [[[UILabel alloc] init] autorelease];
+        _waitingLabel = [[UILabel alloc] init];
         _waitingLabel.text = statusText;
         _waitingLabel.font = self.progressFont;
         _waitingLabel.textColor = self.progressColor;
@@ -433,7 +431,7 @@ activityProgressIsShown;
     _activityHolderView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     // show progress view
-    _activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:iStyle] autorelease];
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:iStyle];
     [_activityIndicator sizeToFit];
     _activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -450,7 +448,7 @@ activityProgressIsShown;
     {
         nextY += _activityIndicator.size.height + 10.0;
         
-        _waitingLabel = [[[UILabel alloc] init] autorelease];
+        _waitingLabel = [[UILabel alloc] init];
         _waitingLabel.text = statusText;
         _waitingLabel.font = self.progressFont;
         _waitingLabel.textColor = self.progressColor;

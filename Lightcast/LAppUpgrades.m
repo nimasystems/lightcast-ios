@@ -32,12 +32,10 @@ lastError;
 
 - (void)dealloc
 {
-    L_RELEASE(resourcePath);
-    L_RELEASE(documentsPath);
-    L_RELEASE(temporaryPath);
-    L_RELEASE(lastError);
-    
-    [super dealloc];
+    self.resourcePath = nil;
+    self.documentsPath = nil;
+    self.temporaryPath = nil;
+    self.lastError = nil;
 }
 
 #pragma mark - Methods to be overriden by subclassers

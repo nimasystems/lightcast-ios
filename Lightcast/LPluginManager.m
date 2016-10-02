@@ -69,7 +69,6 @@ count;
 - (void)dealloc {
     L_RELEASE(plugins);
     L_RELEASE(db);
-    [super dealloc];
 }
 
 #pragma mark -
@@ -78,52 +77,52 @@ count;
 - (BOOL)upgradePluginDbSchema:(LPlugin*)plugin schemaInstance:(id<LDatabaseSchemaProtocol>)schemaInstance error:(NSError**)error {
     
     LogInfo(@"Upgrading plugin database schema");
- 
+    
     @try 
-	{
-		NSString *schemaIdentifier = schemaInstance.identifier;
-		LDatabaseSchema *schemaUpgrader = [[LDatabaseSchema alloc] initWithAdapter:db.mainAdapter identifier:schemaIdentifier];
-		
-		@try 
-		{
-			// this is to force schema upgrader to save the last version or to run all upgrades from 1 > N for old and existing databases
-			schemaUpgrader.firstDatabaseInit = NO;
-			
-			if (!schemaUpgrader)
-			{
-				if (error != NULL)
-				{
-					NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-					[errorDetail setValue:LightcastLocalizedString(@"Schema upgrader cannot be initialized") forKey:NSLocalizedDescriptionKey];
-					*error = [NSError errorWithDomain:LERR_DOMAIN_DB code:LERR_DB_CANT_INIT_APP_DATABASE_INSTANCE userInfo:errorDetail];
-				}
-				
-				return NO;
-			}
-			
-			BOOL upgradeRan = [schemaUpgrader upgradeSchema:schemaInstance error:error];
-			
-			if (!upgradeRan)
-			{
-				LogError(@"Schema upgrader error: %@", *error);
-				
-				return NO;
-			}
-		}
-		@finally 
-		{
-			L_RELEASE(schemaUpgrader);
-		}
-		
-		LogInfo(@"Plugin database schema upgrade complete");
-	}
-	@catch (NSException *e) 
-	{
-		LogError(@"Error upgrading plugin database schema: %@", e);
-		return NO;
-	}
-	
-	return YES;
+    {
+        NSString *schemaIdentifier = schemaInstance.identifier;
+        LDatabaseSchema *schemaUpgrader = [[LDatabaseSchema alloc] initWithAdapter:db.mainAdapter identifier:schemaIdentifier];
+        
+        @try 
+        {
+            // this is to force schema upgrader to save the last version or to run all upgrades from 1 > N for old and existing databases
+            schemaUpgrader.firstDatabaseInit = NO;
+            
+            if (!schemaUpgrader)
+            {
+                if (error != NULL)
+                {
+                    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                    [errorDetail setValue:LightcastLocalizedString(@"Schema upgrader cannot be initialized") forKey:NSLocalizedDescriptionKey];
+                    *error = [NSError errorWithDomain:LERR_DOMAIN_DB code:LERR_DB_CANT_INIT_APP_DATABASE_INSTANCE userInfo:errorDetail];
+                }
+                
+                return NO;
+            }
+            
+            BOOL upgradeRan = [schemaUpgrader upgradeSchema:schemaInstance error:error];
+            
+            if (!upgradeRan)
+            {
+                LogError(@"Schema upgrader error: %@", *error);
+                
+                return NO;
+            }
+        }
+        @finally 
+        {
+            L_RELEASE(schemaUpgrader);
+        }
+        
+        LogInfo(@"Plugin database schema upgrade complete");
+    }
+    @catch (NSException *e) 
+    {
+        LogError(@"Error upgrading plugin database schema: %@", e);
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - 
@@ -133,7 +132,7 @@ count;
     
     if (![super initialize:aConfiguration notificationDispatcher:aDispatcher error:error]) return NO;
     
-    db = [[LC sharedLC].db retain];
+    db = [LC sharedLC].db;
     
     // notify everyone
     [self.dispatcher postNotification:[LNotification notificationWithName:lnPluginManagerInitialized object:self]];
@@ -144,22 +143,22 @@ count;
 #pragma mark - Inherited from LSystemObject
 
 - (void)didReceiveMemoryWarning:(NSDictionary*)additionalInformation {
-	[super didReceiveMemoryWarning:additionalInformation];
-	
-	// alert each plugin
-	if (plugins)
-	{
-		for(LPlugin *plugin in plugins)
-		{
-			if ([plugin conformsToProtocol:@protocol(LPluginBehaviour)])
-			{
-				if ([plugin respondsToSelector:@selector(didReceiveMemoryWarning:)])
-				{
-					[plugin didReceiveMemoryWarning:additionalInformation];
-				}
-			}
-		}
-	}
+    [super didReceiveMemoryWarning:additionalInformation];
+    
+    // alert each plugin
+    if (plugins)
+    {
+        for(LPlugin *plugin in plugins)
+        {
+            if ([plugin conformsToProtocol:@protocol(LPluginBehaviour)])
+            {
+                if ([plugin respondsToSelector:@selector(didReceiveMemoryWarning:)])
+                {
+                    [plugin didReceiveMemoryWarning:additionalInformation];
+                }
+            }
+        }
+    }
 }
 
 #pragma mark - 
@@ -191,18 +190,16 @@ count;
                 
                 if (err)
                 {
-                  [arr addObject:err];  
+                    [arr addObject:err];  
                 }
             }
         }
     }
     @finally 
     {
-        arr = [arr autorelease];
-        
         if (arr)
         {
-           *errors = arr;  
+            *errors = arr;  
         }
     }
     
@@ -222,11 +219,11 @@ count;
         if (!plugin)
         {
             if (error != NULL)
-			{
-				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				[errorDetail setValue:[NSString stringWithFormat:@"%@ %@", LightcastLocalizedString(@"Could not find plugin:"), pluginName] forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_CANT_LOAD userInfo:errorDetail];
-			}
+            {
+                NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                [errorDetail setValue:[NSString stringWithFormat:@"%@ %@", LightcastLocalizedString(@"Could not find plugin:"), pluginName] forKey:NSLocalizedDescriptionKey];
+                *error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_CANT_LOAD userInfo:errorDetail];
+            }
             
             // inform the delegate
             if([self.delegate respondsToSelector:@selector(errorLoadingPlugin:error:)])
@@ -252,11 +249,11 @@ count;
         }
         
         // run schema updates
-		if ([plugin respondsToSelector:@selector(databaseSchemaInstance)])
-		{
-			id schemaInstance = [plugin databaseSchemaInstance];
-			
-			if (schemaInstance)
+        if ([plugin respondsToSelector:@selector(databaseSchemaInstance)])
+        {
+            id schemaInstance = [plugin databaseSchemaInstance];
+            
+            if (schemaInstance)
             {
                 BOOL res = [self upgradePluginDbSchema:(LPlugin*)plugin schemaInstance:schemaInstance error:error];
                 
@@ -265,8 +262,8 @@ count;
                     return NO;
                 }
             }
-		}
-      
+        }
+        
         // inform the delegate
         if([self.delegate respondsToSelector:@selector(pluginLoaded:)])
         {
@@ -306,11 +303,11 @@ count;
     @catch (NSException * e) 
     {
         if (error != NULL)
-		{
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:[NSString stringWithFormat:LightcastLocalizedString(@"Plugin could not be initialized properly, error: %@"), [e description]] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_CANT_INITIALIZE userInfo:errorDetail];
-		}
+        {
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:[NSString stringWithFormat:LightcastLocalizedString(@"Plugin could not be initialized properly, error: %@"), [e description]] forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_CANT_INITIALIZE userInfo:errorDetail];
+        }
         
         // inform the delegate
         if([self.delegate respondsToSelector:@selector(errorLoadingPlugin:error:)])
@@ -342,138 +339,122 @@ count;
 
 - (BOOL)pluginMeetsRequirements:(LPlugin*)plugin error:(NSError**)error; {
     
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    
-    @try 
+    // plugin does not have any dependancies
+    if(![plugin respondsToSelector:@selector(checkPluginRequirements: maxLightcastVer: pluginRequirements:)])
     {
-        // plugin does not have any dependancies
-        if(![plugin respondsToSelector:@selector(checkPluginRequirements: maxLightcastVer: pluginRequirements:)])
+        return YES;
+    }
+    
+    NSString * minLightcastVer = nil;
+    NSString * maxLightcastVer = nil;
+    NSArray * pluginRequirements = nil;
+    
+    NSInteger currentLightcastVersion = [LVersionComparator strVerToIntVer:LC_VER];
+    
+    BOOL doCheck = [plugin checkPluginRequirements:&minLightcastVer maxLightcastVer:&maxLightcastVer pluginRequirements:&pluginRequirements];
+    
+    // plugin does not want us to verify this
+    if (!doCheck)
+    {
+        return YES;
+    }
+    
+    // validate lightcast version
+    NSInteger tmpMin = [LVersionComparator strVerToIntVer:minLightcastVer];
+    NSInteger tmpMax = [LVersionComparator strVerToIntVer:maxLightcastVer];
+    
+    if ((minLightcastVer && currentLightcastVersion < tmpMin) ||
+        (maxLightcastVer && currentLightcastVersion > tmpMax))
+    {
+        if (error != NULL)
         {
-            return YES;
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            NSString * errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Lightcast version does not meet the plugin's requirements (%@), min: %@, max: %@, current: %@ "),
+                                 plugin.pluginName, minLightcastVer, maxLightcastVer, LC_VER];
+            [errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_REQUIREMENTS_NOT_MET userInfo:errorDetail];
         }
         
-        NSString * minLightcastVer = nil;
-        NSString * maxLightcastVer = nil;
-        NSArray * pluginRequirements = nil;
-        
-        NSInteger currentLightcastVersion = [LVersionComparator strVerToIntVer:LC_VER];
-        
-        BOOL doCheck = [plugin checkPluginRequirements:&minLightcastVer maxLightcastVer:&maxLightcastVer pluginRequirements:&pluginRequirements];
-        
-        // plugin does not want us to verify this
-        if (!doCheck)
+        return NO;
+    }
+    
+    // validate dependant plugins and their versions
+    NSMutableArray * mar = [[NSMutableArray alloc] init];
+    
+    // name
+    // min
+    // max
+    
+    if (pluginRequirements)
+    {
+        for (NSDictionary * pluginReq in pluginRequirements)
         {
-            return YES;
-        }
-        
-        // validate lightcast version
-        NSInteger tmpMin = [LVersionComparator strVerToIntVer:minLightcastVer];
-        NSInteger tmpMax = [LVersionComparator strVerToIntVer:maxLightcastVer];
-        
-        if ((minLightcastVer && currentLightcastVersion < tmpMin) ||
-            (maxLightcastVer && currentLightcastVersion > tmpMax))
-        {
-            if (error != NULL)
-			{
-				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				NSString * errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Lightcast version does not meet the plugin's requirements (%@), min: %@, max: %@, current: %@ "),
-									 plugin.pluginName, minLightcastVer, maxLightcastVer, LC_VER];
-				[errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_REQUIREMENTS_NOT_MET userInfo:errorDetail]; 
-			}
-			
-            return NO;
-        }
-        
-        // validate dependant plugins and their versions
-        NSMutableArray * mar = [[NSMutableArray alloc] init];
-        
-        // name
-        // min
-        // max
-        
-        @try 
-        {
-            if (pluginRequirements)
+            if (![pluginReq isKindOfClass:[NSDictionary class]])
             {
-                for (NSDictionary * pluginReq in pluginRequirements)
+                LogWarn(@"Incorrect plugin requirement definition for plugin: %@", plugin.pluginName);
+                continue;
+            }
+            
+            NSString * pName = [pluginReq objectForKey:@"name"];
+            NSString * pMin = [pluginReq objectForKey:@"min"];
+            NSString * pMax = [pluginReq objectForKey:@"max"];
+            
+            if (!pName || ![pName length] || [pName isEqualToString:plugin.pluginName])
+            {
+                LogWarn(@"Incorrect plugin requirement definition for plugin: %@", plugin.pluginName);
+                continue;
+            }
+            
+            LPlugin* pl = [plugins objectForKey:pName];
+            
+            // not loaded
+            if (!pl)
+            {
+                [mar addObject:pName];
+                break;
+            }
+            
+            NSString * plVersion = pl.version;
+            
+            // min ver
+            if (pMin)
+            {
+                LVersionComparismentResult res1 = [LVersionComparator compareVersion:plVersion to:pMin];
+                
+                if ((res1 != lVersionHigher) && (res1 != lVersionEqual))
                 {
-                    if (![pluginReq isKindOfClass:[NSDictionary class]])
-                    {
-                        LogWarn(@"Incorrect plugin requirement definition for plugin: %@", plugin.pluginName);
-                        continue;
-                    }
-                    
-                    NSString * pName = [pluginReq objectForKey:@"name"];
-                    NSString * pMin = [pluginReq objectForKey:@"min"];
-                    NSString * pMax = [pluginReq objectForKey:@"max"];
-                    
-                    if (!pName || ![pName length] || [pName isEqualToString:plugin.pluginName])
-                    {
-                        LogWarn(@"Incorrect plugin requirement definition for plugin: %@", plugin.pluginName);
-                        continue;
-                    }
-                    
-                    LPlugin* pl = [plugins objectForKey:pName];
-                    
-                    // not loaded
-                    if (!pl)
-                    {
-                        [mar addObject:pName];
-                        break;
-                    }
-                    
-                    NSString * plVersion = pl.version;
-                    
-                    // min ver
-                    if (pMin)
-                    {
-                        LVersionComparismentResult res1 = [LVersionComparator compareVersion:plVersion to:pMin];
-                        
-                        if ((res1 != lVersionHigher) && (res1 != lVersionEqual))
-                        {
-                            [mar addObject:pName];
-                            break;
-                        }
-                    }
-                    
-                    // max ver
-                    if (pMax)
-                    {
-                        LVersionComparismentResult res1 = [LVersionComparator compareVersion:plVersion to:pMax];
-                        
-                        if ((res1 != lVersionLower) && (res1 != lVersionEqual))
-                        {
-                            [mar addObject:pName];
-                            break;
-                        }
-                    }
+                    [mar addObject:pName];
+                    break;
                 }
             }
             
-            // plugin deps errors
-            if ([mar count])
+            // max ver
+            if (pMax)
             {
-                if (error != NULL)
-				{
-					NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-					NSString * errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Dependant plugins missing - for plugin (%@): %@ "),
-										 plugin.pluginName, mar];
-					[errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
-					*error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_REQUIREMENTS_NOT_MET userInfo:errorDetail]; 
-				}
-				
-                return NO;
+                LVersionComparismentResult res1 = [LVersionComparator compareVersion:plVersion to:pMax];
+                
+                if ((res1 != lVersionLower) && (res1 != lVersionEqual))
+                {
+                    [mar addObject:pName];
+                    break;
+                }
             }
         }
-        @finally 
-        {
-            [mar release];
-        }
     }
-    @finally 
+    
+    // plugin deps errors
+    if ([mar count])
     {
-        [pool drain];
+        if (error != NULL)
+        {
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            NSString * errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Dependant plugins missing - for plugin (%@): %@ "),
+                                 plugin.pluginName, mar];
+            [errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:LERR_DOMAIN_PLUGINS code:LERR_PLUGINS_REQUIREMENTS_NOT_MET userInfo:errorDetail];
+        }
+        
+        return NO;
     }
     
     return YES;

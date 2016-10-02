@@ -86,8 +86,6 @@ NSInteger const kSecondsYear     =   31556926;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:style];
     NSString *dateFormatted = [dateFormat stringFromDate:self];
-    [dateFormat release];
-    
     return dateFormatted;
 }
 
@@ -280,17 +278,9 @@ NSInteger const kSecondsYear     =   31556926;
     
     NSString *formattedDateStringTime = nil;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    
-    @try
-    {
-        [formatter setDateFormat:SQL_DATETIME_FORMAT]; //this is the sqlite's format
-        formatter.timeZone = timezone;
-        formattedDateStringTime = [formatter stringFromDate:self];
-    }
-    @finally
-    {
-        [formatter release];
-    }
+    [formatter setDateFormat:SQL_DATETIME_FORMAT]; //this is the sqlite's format
+    formatter.timeZone = timezone;
+    formattedDateStringTime = [formatter stringFromDate:self];
     
     formattedDateStringTime = (formattedDateStringTime && formattedDateStringTime != NULL) ?
     [NSString stringWithFormat:@"'%@'", [formattedDateStringTime addSlashes]] : @"NULL";
@@ -324,7 +314,6 @@ NSInteger const kSecondsYear     =   31556926;
     NSDateFormatter *mdf = [[NSDateFormatter alloc] init];
     [mdf setDateFormat:@"yyyy-MM-dd"];
     NSDate *midnight = [mdf dateFromString:[mdf stringFromDate:self]];
-    [mdf release];
     
     return (int)[midnight timeIntervalSinceNow] / (60*60*24) *-1;
 }
@@ -363,7 +352,6 @@ NSInteger const kSecondsYear     =   31556926;
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
     [inputFormatter setDateFormat:format];
     NSDate *date = [inputFormatter dateFromString:string];
-    [inputFormatter release];
     return date;
 }
 
@@ -405,7 +393,7 @@ NSInteger const kSecondsYear     =   31556926;
         NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
         [componentsToSubtract setDay:-7];
         NSDate *lastweek = [calendar dateByAddingComponents:componentsToSubtract toDate:today options:0];
-        [componentsToSubtract release];
+        
         NSComparisonResult lastweek_result = [date compare:lastweek];
         if (lastweek_result == NSOrderedDescending) {
             if (displayTime) {
@@ -446,8 +434,6 @@ NSInteger const kSecondsYear     =   31556926;
     // use display formatter to return formatted date string
     displayString = [displayFormatter stringFromDate:date];
     
-    [displayFormatter release];
-    
     return displayString;
 }
 
@@ -463,7 +449,6 @@ NSInteger const kSecondsYear     =   31556926;
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:format];
     NSString *timestamp_str = [outputFormatter stringFromDate:self];
-    [outputFormatter release];
     return timestamp_str;
 }
 
@@ -476,7 +461,6 @@ NSInteger const kSecondsYear     =   31556926;
     [outputFormatter setDateStyle:dateStyle];
     [outputFormatter setTimeStyle:timeStyle];
     NSString *outputString = [outputFormatter stringFromDate:self];
-    [outputFormatter release];
     return outputString;
 }
 
@@ -503,7 +487,6 @@ NSInteger const kSecondsYear     =   31556926;
     [componentsToSubtract setDay: 0 - ([weekdayComponents weekday] - 1)];
     beginningOfWeek = nil;
     beginningOfWeek = [calendar dateByAddingComponents:componentsToSubtract toDate:self options:0];
-    [componentsToSubtract release];
     
     //normalize to midnight, extract the year, month, and day components and create a new date from those components.
     NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
@@ -539,7 +522,6 @@ NSInteger const kSecondsYear     =   31556926;
     // to get the end of week for a particular date, add (7 - weekday) days
     [componentsToAdd setDay:(7 - [weekdayComponents weekday])];
     NSDate *endOfWeek = [calendar dateByAddingComponents:componentsToAdd toDate:self options:0];
-    [componentsToAdd release];
     
     return endOfWeek;
 }
@@ -590,7 +572,7 @@ NSInteger const kSecondsYear     =   31556926;
 
 - (NSString*)localeFormattedDateString {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[NSLocale currentLocale]];
     [formatter setDateStyle:NSDateFormatterLongStyle];
     [formatter setTimeStyle:NSDateFormatterNoStyle];
@@ -602,7 +584,7 @@ NSInteger const kSecondsYear     =   31556926;
 
 - (NSString*)localeFormattedDateStringWithTime {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM dd, yyyy HH:mm"];
     [formatter setLocale:[NSLocale currentLocale]];
     //   [formatter setDateStyle:NSDateFormatterShortStyle];
@@ -617,7 +599,7 @@ NSInteger const kSecondsYear     =   31556926;
 
 - (NSDate *)dateFormattedLocale {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[NSLocale currentLocale]];
     [formatter setTimeStyle:NSDateFormatterNoStyle];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -630,7 +612,7 @@ NSInteger const kSecondsYear     =   31556926;
 
 - (NSString *)formattedStringWithFormat:(NSString *)format
 {
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
     NSString *ret = [formatter stringFromDate:self];
     
@@ -640,7 +622,7 @@ NSInteger const kSecondsYear     =   31556926;
 - (NSDate *)dateWithoutTime
 {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     NSString *ret = [formatter stringFromDate:self];
@@ -658,7 +640,7 @@ NSInteger const kSecondsYear     =   31556926;
 #pragma mark SQLite formatting
 
 - (NSDate *) dateForSqlite {
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[NSLocale currentLocale]];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
@@ -671,7 +653,7 @@ NSInteger const kSecondsYear     =   31556926;
 
 + (NSDate*) dateFromSQLString:(NSString*)dateStr {
     
-    NSDateFormatter *dateForm = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateForm = [[NSDateFormatter alloc] init];
     [dateForm setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
     NSDate *date = [dateForm dateFromString:dateStr];
     return date;
@@ -872,7 +854,7 @@ NSInteger const kSecondsYear     =   31556926;
 
 - (NSString*) monthName {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMMM"];
     [formatter setLocale:[NSLocale currentLocale]];
     
@@ -883,7 +865,7 @@ NSInteger const kSecondsYear     =   31556926;
 
 - (NSString*) yearFromDateStr {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY"];
     [formatter setLocale:[NSLocale currentLocale]];
     

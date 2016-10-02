@@ -74,7 +74,6 @@ basePath;
     L_RELEASE(basePath);
     L_RELEASE(currentDir);
     L_RELEASE(db);
-    [super dealloc];
 }
 
 - (BOOL)initialize:(LCAppConfiguration*)aConfiguration notificationDispatcher:(LNotificationDispatcher*)aDispatcher error:(NSError**)error {
@@ -86,11 +85,11 @@ basePath;
         
         if (aConfiguration)
         {
-            configuration = [aConfiguration retain];
+            configuration = aConfiguration;
         }
         
         // check the database
-        db = [[LC sharedLC].db retain];
+        db = [LC sharedLC].db;
         
         if (!db)
         {
@@ -110,7 +109,7 @@ basePath;
         
         NSString * rPath = [LC sharedLC].documentsPath;
         rPath = [rPath stringByAppendingPathComponent:[self.configuration get:@"path"]];
-        basePath = [rPath retain];
+        basePath = rPath;
         
         if (![self initFS:error])
         {
@@ -133,12 +132,12 @@ basePath;
 
 - (LConfiguration*)defaultConfiguration
 {
-    return [[[LConfiguration alloc] initWithNameAndDeepValues:
-             self.pluginName deepValues:
-             [NSDictionary dictionaryWithObjectsAndKeys:
-              VFS_DEFAULT_BASE_PATH_NAME, @"path",
-              [NSNumber numberWithInt:VFS_DEFAULT_FILES_PER_FOLDER], @"files_per_dir",
-              nil]] autorelease];
+    return [[LConfiguration alloc] initWithNameAndDeepValues:
+            self.pluginName deepValues:
+            [NSDictionary dictionaryWithObjectsAndKeys:
+             VFS_DEFAULT_BASE_PATH_NAME, @"path",
+             [NSNumber numberWithInt:VFS_DEFAULT_FILES_PER_FOLDER], @"files_per_dir",
+             nil]];
 }
 
 - (BOOL)checkPluginRequirements:(NSString**)minLightcastVer
@@ -160,7 +159,7 @@ basePath;
 
 - (id<LDatabaseSchemaProtocol>)databaseSchemaInstance
 {
-    return [[[LVirtualFSSchema alloc] init] autorelease];
+    return [[LVirtualFSSchema alloc] init];
 }
 
 #pragma mark -
@@ -238,8 +237,7 @@ basePath;
         
         if (randHash != currentDir)
         {
-            L_RELEASE(currentDir);
-            currentDir = [randHash retain];
+            currentDir = randHash;
         }
         
         filesCountInCurrentDir = 0;
@@ -254,7 +252,7 @@ basePath;
     
     @try
     {
-        lvFile = [[[LVirtualFile alloc] init] autorelease];
+        lvFile = [[LVirtualFile alloc] init];
         
         lvFile.fileId = 0;
         lvFile.fileName = tmpName;
@@ -520,8 +518,7 @@ basePath;
         {
             LogDebug(@"File per dir limit reached - changing folder");
             
-            L_RELEASE(currentDir);
-            currentDir = [[self randomHash] retain];
+            currentDir = [self randomHash];
             filesCountInCurrentDir = 0;
         }
         
@@ -553,7 +550,7 @@ basePath;
             }
         }
         
-        lvFile = [[[LVirtualFile alloc] init] autorelease];
+        lvFile = [[LVirtualFile alloc] init];
         
         lvFile.fileId = 0;
         lvFile.fileName = tmpName;
@@ -663,7 +660,7 @@ basePath;
         }
         
         // create a temp holder
-        f = [[[LVirtualFile alloc] init] autorelease];
+        f = [[LVirtualFile alloc] init];
         
         NSDictionary * itm = [res objectAtIndex:0];
         
@@ -853,7 +850,7 @@ basePath;
         currentHash = [self randomHash];
     }
     
-    currentDir = [currentHash retain];
+    currentDir = currentHash;
     filesCountInCurrentDir = currentCount;
     
     LogDebug(@"Current dir: %@ (%d)", currentDir, (int)filesCountInCurrentDir);

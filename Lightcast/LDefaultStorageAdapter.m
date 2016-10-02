@@ -42,14 +42,13 @@
     self = [super init];
     if (self)
     {
-        ud = [[NSUserDefaults standardUserDefaults] retain];
+        ud = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
 
 - (void)dealloc {
     L_RELEASE(ud);
-    [super dealloc];
 }
 
 #pragma mark -

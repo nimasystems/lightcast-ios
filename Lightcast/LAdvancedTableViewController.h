@@ -51,28 +51,7 @@
 
 @end
 
-@interface LAdvancedTableViewController : LTableViewController<UITableViewDataSource,UITableViewDelegate,LCellLoadingDelegate> {
-    
-    CGRect frm_;
-    
-    LLabel* noData;
-    
-    NSArray* tableItems;
-    
-    NSString * cellClassName;
-    Class cellClass;
-    
-    NSDictionary* cellOptions;
-    NSMutableDictionary* cellThreadData;
-    
-    UIActivityIndicatorView *progressView;
-    
-    NSOperationQueue* queue;
-    
-    id<LAdvancedTableViewControllerDelegate> delegate;
-    
-    BOOL searchIndexEnabled;
-}
+@interface LAdvancedTableViewController : LTableViewController<UITableViewDataSource,UITableViewDelegate,LCellLoadingDelegate>
 
 @property (nonatomic, retain, setter = setTableItemsInternal:) NSArray* tableItems;
 @property (nonatomic, assign) id<LAdvancedTableViewControllerDelegate> delegate;

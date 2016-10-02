@@ -74,7 +74,6 @@ currentDate;
 
 - (void)dealloc {
     L_RELEASE(currentDate);
-    [super dealloc];
 }
 
 #pragma mark -
@@ -121,37 +120,30 @@ currentDate;
     NSString* dstr = [NSString stringWithFormat:@"%ld-%ld-%ld", (long)aDay, (long)aMonth, (long)aYear];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     
-    @try 
+    [df setDateFormat:@"dd-MM-yyyy"];
+    NSDate* d = [df dateFromString:dstr];
+    
+    ///////
+    
+    NSDateComponents* components = nil;
+    NSDate* dd = nil;
+    
+    if (d)
     {
-        [df setDateFormat:@"dd-MM-yyyy"];
-        NSDate* d = [df dateFromString:dstr];
-        
-        ///////
-        
-        NSDateComponents* components = nil;
-        NSDate* dd = nil;
-        
-        if (d)
-        {
-            dd = d;
-            components = [calendar components:NSCalendarUnitHour fromDate:d];
-        }
-        else
-        {
-            dd = now;
-            components = [calendar components:NSCalendarUnitHour fromDate:now];
-        }
-        
-        day = [components day];
-        month = (int)[components month];
-        year = [components year];
-        
-        currentDate = [dd retain];
+        dd = d;
+        components = [calendar components:NSCalendarUnitHour fromDate:d];
     }
-    @finally 
+    else
     {
-        [df release];
+        dd = now;
+        components = [calendar components:NSCalendarUnitHour fromDate:now];
     }
+    
+    day = [components day];
+    month = (int)[components month];
+    year = [components year];
+    
+    currentDate = dd;
 }
 
 @end

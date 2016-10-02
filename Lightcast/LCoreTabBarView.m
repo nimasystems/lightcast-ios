@@ -41,7 +41,7 @@ badgeOffset;
         self.tabTitlePosition = LCoreTabBarViewTextPositionRight;
         self.fixedTabSize = CGSizeMake(0,0);
         
-        CALayer *backgroundLayer = [[[LCoreTabBarBackingLayer alloc] init] autorelease];
+        CALayer *backgroundLayer = [[LCoreTabBarBackingLayer alloc] init];
         [self setBackgroundLayer:backgroundLayer];
         
         self.clipsToBounds = YES;
@@ -60,7 +60,7 @@ badgeOffset;
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        [self setBackgroundLayer:[[[LCoreTabBarBackingLayer alloc] init] autorelease]];
+        [self setBackgroundLayer:[[LCoreTabBarBackingLayer alloc] init]];
         tabContainer = [[LCoreTabBarContainerView alloc] initWithFrame:self.bounds];
         self.itemPadding = CGSizeMake(kLCoreTabBarViewDefaultItemPaddingW, kLCoreTabBarViewDefaultItemPaddingH);
         [self addSubview:tabContainer];
@@ -75,8 +75,6 @@ badgeOffset;
     L_RELEASE(tabTitleFont);
     L_RELEASE(tabContainer);
     L_RELEASE(tabItems);
-    
-    [super dealloc];
 }
 
 #pragma mark - View Related

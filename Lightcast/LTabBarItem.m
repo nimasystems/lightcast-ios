@@ -34,24 +34,4 @@
 
 @implementation LTabBarItem
 
-#pragma mark - Initialization / Finalization
-
-- (id)init
-{
-    self = [super init];
-    if (self) 
-    {
-        //
-    }
-    
-    return self;
-}
-
-- (void)dealloc {
-    
-    //
-    
-    [super dealloc];
-}
-
 @end

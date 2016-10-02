@@ -46,7 +46,7 @@ bundle;
     self = [super init];
     if (self)
     {
-        bundle = [aBundle retain];
+        bundle = aBundle;
     }
     return self;
 }
@@ -59,8 +59,6 @@ bundle;
 - (void)dealloc
 {
     L_RELEASE(bundle);
-    
-    [super dealloc];
 }
 
 #pragma mark - Localization
@@ -75,13 +73,13 @@ bundle;
     }
     
     NSString *lString = [bundle localizedStringForKey:key value:key table:nil];
-	
-	if ([NSString isNullOrEmpty:lString])
-	{
-		return key;
-	}
-	
-	return lString;
+    
+    if ([NSString isNullOrEmpty:lString])
+    {
+        return key;
+    }
+    
+    return lString;
 }
 
 - (NSString*)localizedStringWithFormat:(NSString*)format, ... NS_FORMAT_FUNCTION(1,2)
@@ -91,7 +89,7 @@ bundle;
     va_list argumentList;
     
     va_start(argumentList, format);
-    translatedStr = [[[NSString alloc] initWithFormat:translatedStr arguments:argumentList] autorelease];
+    translatedStr = [[NSString alloc] initWithFormat:translatedStr arguments:argumentList];
     va_end(argumentList);
     
     return translatedStr;
@@ -111,14 +109,14 @@ bundle;
     va_list argumentList;
     
     va_start(argumentList, format);
-    translatedStr = [[[NSString alloc] initWithFormat:translatedStr arguments:argumentList] autorelease];
+    translatedStr = [[NSString alloc] initWithFormat:translatedStr arguments:argumentList];
     va_end(argumentList);
     
     return translatedStr;
 }
 
 + (LLocalizationManager*)defaultLocalizationManager {
-	@synchronized(self)
+    @synchronized(self)
     {
         if (defaultLocalizationManager == nil)
         {

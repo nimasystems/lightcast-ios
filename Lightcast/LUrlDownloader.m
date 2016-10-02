@@ -85,7 +85,7 @@ static void LUrlDownloaderReadStreamClientCallBack(CFReadStreamRef stream, CFStr
     
     @autoreleasepool
     {
-        [((LUrlDownloader*)clientCallBackInfo) handleNetworkEvent:type];
+        [((__bridge LUrlDownloader*)clientCallBackInfo) handleNetworkEvent:type];
     } 
 }
 
@@ -314,8 +314,6 @@ allowCompressedResponse;
 #ifdef TARGET_IOS
     [self changeIOSDeviceProgressIndicators:NO];
 #endif
-    
-    [super dealloc];
 }
 
 #pragma mark - Connection control
@@ -373,8 +371,7 @@ allowCompressedResponse;
     
     if (date != _lastTimeRead)
     {
-        L_RELEASE(_lastTimeRead);
-        _lastTimeRead = [date retain];
+        _lastTimeRead = date;
     }
     
     // Dispatch the stream events.
@@ -496,7 +493,7 @@ allowCompressedResponse;
         
         if (_response)
         {
-            NSDictionary * _responseHeaders = [(NSDictionary*)CFHTTPMessageCopyAllHeaderFields(_response) autorelease];
+            NSDictionary * _responseHeaders = (__bridge NSDictionary*)CFHTTPMessageCopyAllHeaderFields(_response);
             
             if (_responseHeaders != responseHeaders)
             {
@@ -528,7 +525,7 @@ allowCompressedResponse;
                 redirectLocation = [responseHeaders objectForKey:@"Location"];
             }
             
-            NSString * _responseDescription = [(NSString*)CFHTTPMessageCopyResponseStatusLine(_response) autorelease];
+            NSString * _responseDescription = (__bridge NSString*)CFHTTPMessageCopyResponseStatusLine(_response);
             
             if (_responseDescription != responseDescription)
             {
@@ -932,7 +929,7 @@ allowCompressedResponse;
     
     if (streamError != NULL)
     {
-        NSError *strErr = (NSError*)streamError;
+        NSError *strErr = (__bridge NSError*)streamError;
         self.lastError = strErr;
         CFRelease(streamError);
         streamError = NULL;
@@ -1043,8 +1040,7 @@ allowCompressedResponse;
     
     if (pathToDownloadedFile != filename)
     {
-        L_RELEASE(pathToDownloadedFile);
-        pathToDownloadedFile = [filename retain];
+        pathToDownloadedFile = filename;
     }
     
     // try to create the file
@@ -1069,7 +1065,7 @@ allowCompressedResponse;
         lassert(furl);
         
         // create the file handle
-        _fileHandle = [[NSFileHandle fileHandleForWritingToURL:furl error:error] retain];
+        _fileHandle = [NSFileHandle fileHandleForWritingToURL:furl error:error];
         
         if (!_fileHandle || (error != NULL && *error))
         {
@@ -1202,8 +1198,7 @@ allowCompressedResponse;
             
             if (decompressedData != _decompressedData)
             {
-                L_RELEASE(_decompressedData);
-                _decompressedData = [decompressedData retain];
+                _decompressedData = decompressedData;
             }
             
             return _decompressedData;
@@ -1327,15 +1322,13 @@ allowCompressedResponse;
     
     if (_runLoop != rl)
     {
-        L_RELEASE(_runLoop);
-        _runLoop = [rl retain];
+        _runLoop = rl;
     }
     
     // save the last used url
     if (aUrl != _currentUrl)
     {
-        L_RELEASE(_currentUrl);
-        _currentUrl = [aUrl retain];
+        _currentUrl = aUrl;
     }
     
     // add to the list of redirect urls
@@ -1351,10 +1344,10 @@ allowCompressedResponse;
     }
     
     // create context and request
-    CFStreamClientContext ctxt = {0, self, NULL, NULL, NULL};
+    CFStreamClientContext ctxt = {0, (__bridge void *)(self), NULL, NULL, NULL};
     NSString *downloadRequestStr = [self downloadRequestMethodDescription:requestMethod];
     
-    _request = CFHTTPMessageCreateRequest(kCFAllocatorDefault, (CFStringRef)downloadRequestStr, (CFURLRef)aUrl, kCFHTTPVersion1_1);
+    _request = CFHTTPMessageCreateRequest(kCFAllocatorDefault, (__bridge CFStringRef)downloadRequestStr, (__bridge CFURLRef)aUrl, kCFHTTPVersion1_1);
     
     if (!_request)
     {
@@ -1385,7 +1378,7 @@ allowCompressedResponse;
             [httpAuthCredentials setObject:self.httpAuthUsername forKey:(NSString *)kCFHTTPAuthenticationUsername];
             [httpAuthCredentials setObject:self.httpAuthPassword forKey:(NSString *)kCFHTTPAuthenticationPassword];
             
-            if (!CFHTTPMessageApplyCredentialDictionary(_request, _httpAuth, (CFMutableDictionaryRef)httpAuthCredentials, NULL)) {
+            if (!CFHTTPMessageApplyCredentialDictionary(_request, _httpAuth, (__bridge CFMutableDictionaryRef)httpAuthCredentials, NULL)) {
                 // clear the auth
                 CFRelease(_httpAuth);
                 _httpAuth = NULL;
@@ -1398,7 +1391,7 @@ allowCompressedResponse;
     
     if (_preparedPostData)
     {
-        CFHTTPMessageSetBody(_request,(CFDataRef)_preparedPostData);
+        CFHTTPMessageSetBody(_request,(__bridge CFDataRef)_preparedPostData);
     }
     
     // set the headers
@@ -1421,7 +1414,7 @@ allowCompressedResponse;
     // set all headers to the request
     for(NSString *key in headers)
     {
-        CFHTTPMessageSetHeaderFieldValue(_request, (CFStringRef)key, (CFStringRef)[headers objectForKey:key]);
+        CFHTTPMessageSetHeaderFieldValue(_request, (__bridge CFStringRef)key, (__bridge CFStringRef)[headers objectForKey:key]);
     }
     
     // create the stream for the request.
@@ -1510,8 +1503,7 @@ allowCompressedResponse;
         
         if (date != _lastTimeRead)
         {
-            L_RELEASE(_lastTimeRead);
-            _lastTimeRead = [date retain];
+            _lastTimeRead = date;
         }
         
         // run the runloop
@@ -1558,7 +1550,7 @@ allowCompressedResponse;
             self.lastError = err;
         }
         
-        NSError *err2 = [[self.lastError copy] autorelease];
+        NSError *err2 = [self.lastError copy];
         
         if (!isSuccessful)
         {
@@ -1632,7 +1624,7 @@ allowCompressedResponse;
             self.lastError = err;
         }
         
-        NSError *err2 = [[self.lastError copy] autorelease];
+        NSError *err2 = [self.lastError copy];
         
         if (!isSuccessful)
         {
@@ -1785,8 +1777,7 @@ allowCompressedResponse;
         
         if (boundaryValue != _multipartBoundaryValue1)
         {
-            L_RELEASE(_multipartBoundaryValue1);
-            _multipartBoundaryValue1 = [boundaryValue retain];
+            _multipartBoundaryValue1 = boundaryValue;
         }
         
         // multipart post
@@ -1807,8 +1798,7 @@ allowCompressedResponse;
     // assign the prepared post data
     if (newPreparedData_ != _preparedPostData)
     {
-        L_RELEASE(_preparedPostData);
-        _preparedPostData = [newPreparedData_ retain];
+        _preparedPostData = newPreparedData_;
     }
 }
 
@@ -1931,10 +1921,8 @@ allowCompressedResponse;
         
         if ([tmpA count])
         {
-            paramsStr = [[[NSString alloc] initWithString:[tmpA componentsJoinedByString:@"&"]] autorelease];
+            paramsStr = [[NSString alloc] initWithString:[tmpA componentsJoinedByString:@"&"]];
         }
-        
-        [tmpA release];
     }
     
     return paramsStr;
@@ -1943,8 +1931,8 @@ allowCompressedResponse;
 - (NSString *)urlEncodeValue:(NSString *)str
 {
     @try {
-        NSString *result = (NSString *) CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)str, CFSTR("[]"), CFSTR("?=&+"), kCFStringEncodingUTF8);
-        return [result autorelease];
+        NSString *result = (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)str, CFSTR("[]"), CFSTR("?=&+"), kCFStringEncodingUTF8));
+        return result;
     }
     @catch (NSException *e) {
         lassert(false);
@@ -1955,7 +1943,7 @@ allowCompressedResponse;
 - (void)prepareRequestHeaders
 {
     // prepare and set the headers
-    NSMutableDictionary *headers = [[[NSMutableDictionary alloc] initWithDictionary:[self mergedRequestHeaders]] autorelease];
+    NSMutableDictionary *headers = [[NSMutableDictionary alloc] initWithDictionary:[self mergedRequestHeaders]];
     
     lassert(headers);
     
@@ -2003,10 +1991,9 @@ allowCompressedResponse;
         // format the date
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         df.dateFormat = @"EEE',' dd MMM yyyy HH':'mm':'ss 'GMT'";
-        df.locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+        df.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
         df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
         NSString *lastModDT = [df stringFromDate:requestIfModifiedSince];
-        [df release];
         
         lassert(lastModDT);
         
@@ -2030,7 +2017,7 @@ allowCompressedResponse;
     // set cookies
     if (cookies && [cookies count])
     {
-        NSMutableArray *cookiesTmp = [[[NSMutableArray alloc] init] autorelease];
+        NSMutableArray *cookiesTmp = [[NSMutableArray alloc] init];
         
         for(NSString *key in cookies)
         {
@@ -2050,8 +2037,7 @@ allowCompressedResponse;
     
     if (headers != _preparedRequestHeaders)
     {
-        L_RELEASE(_preparedRequestHeaders);
-        _preparedRequestHeaders = [headers retain];
+        _preparedRequestHeaders = headers;
     }
 }
 
@@ -2219,7 +2205,7 @@ allowCompressedResponse;
 
 - (NSDictionary*)mergedRequestHeaders
 {
-    NSMutableDictionary *mergedHeaders = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *mergedHeaders = [[NSMutableDictionary alloc] init];
     
     // get the defaults
     [mergedHeaders addEntriesFromDictionary:[self defaultRequestHeaders]];

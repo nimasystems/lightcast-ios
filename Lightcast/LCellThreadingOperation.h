@@ -41,10 +41,7 @@
 
 @end
 
-@interface LCellThreadingOperation : NSOperation {
-    
-    id<LCellThreadingOperationDelegate> delegate;
-}
+@interface LCellThreadingOperation : NSOperation
 
 @property (nonatomic, assign) id<LCellThreadingOperationDelegate> delegate;
 

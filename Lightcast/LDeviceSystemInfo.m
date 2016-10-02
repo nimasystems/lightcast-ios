@@ -68,8 +68,6 @@ UUID;
     L_RELEASE(deviceDescription);
     L_RELEASE(UUID);
     L_RELEASE(currentResolution);
-    
-    [super dealloc];
 }
 
 - (void)initDeviceOSInfo
@@ -111,8 +109,7 @@ UUID;
     
     if (deviceDescription != ret)
     {
-        L_RELEASE(deviceDescription);
-        deviceDescription = [ret retain];
+        deviceDescription = ret;
     }
 }
 
@@ -166,7 +163,7 @@ UUID;
         // Release the buffer memory
         free(msgBuffer);
         
-        primaryMacAddress = [macAddressString retain];
+        primaryMacAddress = macAddressString;
         
         return;
     }
@@ -213,7 +210,7 @@ UUID;
     {
         // init the rest
 #ifdef TARGET_IOS
-        deviceName = [[UIDevice currentDevice].name retain];
+        deviceName = [UIDevice currentDevice].name;
 #else
         deviceName = (NSString*)SCDynamicStoreCopyComputerName(NULL, NULL);
 #endif

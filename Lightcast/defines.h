@@ -81,7 +81,7 @@
 #define L_DOMAIN    @"lightcast-ios.nimasystems.com"
 
 // Safe releases
-#define L_RELEASE(__POINTER) { [__POINTER release]; __POINTER = nil; }
+#define L_RELEASE(__POINTER) { /*[__POINTER release];*/ __POINTER = nil; }
 #define L_INVALIDATE_TIMER(__TIMER) { [__TIMER invalidate]; __TIMER = nil; }
 
 // Release a CoreFoundation object safely.

@@ -25,7 +25,7 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void);
 
 static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
 {
-	CFMutableDictionaryRef query = CFDictionaryCreateMutable(kCFAllocatorDefault, 4, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+    CFMutableDictionaryRef query = CFDictionaryCreateMutable(kCFAllocatorDefault, 4, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
     CFDictionarySetValue(query, kSecClass, kSecClassGenericPassword);
     CFDictionarySetValue(query, kSecAttrAccount, luuidHandlerAccount);
     CFDictionarySetValue(query, kSecAttrService, luuidHandlerService);
@@ -43,20 +43,20 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
     @synchronized(self)
     {
         NSString *uuid = nil;
-      
+        
         /*
-#if TARGET_IPHONE_SIMULATOR && (TESTING || DEBUG)
-        if ([[UIDevice currentDevice] respondsToSelector:@selector(uniqueIdentifier)])
-        {
-            uuid = [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
-            return uuid;
-        }
-#endif*/
+         #if TARGET_IPHONE_SIMULATOR && (TESTING || DEBUG)
+         if ([[UIDevice currentDevice] respondsToSelector:@selector(uniqueIdentifier)])
+         {
+         uuid = [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
+         return uuid;
+         }
+         #endif*/
         
         CFUUIDRef uuidRef = CFUUIDCreate(NULL);
         CFStringRef uuidStringRef = CFUUIDCreateString(NULL, uuidRef);
         CFRelease(uuidRef);
-        uuid = [(NSString *)uuidStringRef autorelease];
+        uuid = (__bridge NSString *)uuidStringRef;
         
         return uuid;
     }
@@ -64,16 +64,16 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
 
 + (NSString*)storeUUID:(BOOL)itemExists
 {
-	@synchronized(self)
+    @synchronized(self)
     {
         // Build a query
         CFMutableDictionaryRef query = CreateKeychainQueryDictionary();
         
         NSString *uuid = [[self class] generateUUID];
         
-        CFDataRef dataRef = CFRetain([uuid dataUsingEncoding:NSUTF8StringEncoding]);
+        CFDataRef dataRef = CFRetain((__bridge CFTypeRef)([uuid dataUsingEncoding:NSUTF8StringEncoding]));
         OSStatus status;
-
+        
         if (itemExists)
         {
             CFMutableDictionaryRef passwordDictionaryRef = CFDictionaryCreateMutable(kCFAllocatorDefault, 4, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
@@ -109,7 +109,7 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
 
 + (NSString *)UUID
 {
-	@synchronized(self)
+    @synchronized(self)
     {
         if (luuidHandlerUUID != nil)
         {
@@ -166,7 +166,7 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
         
         if (resultData != NULL)
         {
-            luuidHandlerUUID = [[NSString alloc] initWithData:(NSData *)resultData encoding:NSUTF8StringEncoding];
+            luuidHandlerUUID = [[NSString alloc] initWithData:(__bridge NSData *)resultData encoding:NSUTF8StringEncoding];
             CFRelease(resultData);
         }
         
@@ -178,7 +178,7 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
 
 + (void)reset
 {
-	@synchronized(self)
+    @synchronized(self)
     {
         L_RELEASE(luuidHandlerUUID);
         
@@ -214,7 +214,7 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
 
 + (NSString *)accessGroup
 {
-	return luuidHandlerAccessGroup;
+    return luuidHandlerAccessGroup;
 }
 
 + (void)setAccessGroup:(NSString*)accessGroup
@@ -222,7 +222,7 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
     if (luuidHandlerAccessGroup != accessGroup)
     {
         L_RELEASE(luuidHandlerAccessGroup);
-        luuidHandlerAccessGroup = [accessGroup retain];
+        luuidHandlerAccessGroup = accessGroup;
     }
 }
 

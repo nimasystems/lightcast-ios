@@ -40,7 +40,7 @@ NSString *const kLNSUserDefaultsPreferencesEncodingSeparatorSlashed = @"::";
             return nil;
         }
         
-        _ud = [userDefaults retain];
+        _ud = userDefaults;
         [_ud synchronize];
     }
     return self;
@@ -59,8 +59,6 @@ NSString *const kLNSUserDefaultsPreferencesEncodingSeparatorSlashed = @"::";
     }
     
     L_RELEASE(_ud);
-    
-    [super dealloc];
 }
 
 #pragma mark - Abstract methods
@@ -119,7 +117,7 @@ NSString *const kLNSUserDefaultsPreferencesEncodingSeparatorSlashed = @"::";
         return nil;
     }
     
-    NSMutableArray *results = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *results = [[NSMutableArray alloc] init];
     
     for(NSString *key in udKeys)
     {
@@ -207,10 +205,10 @@ NSString *const kLNSUserDefaultsPreferencesEncodingSeparatorSlashed = @"::";
     }
     
     NSString *category_ = [category stringByReplacingOccurrencesOfString:kLNSUserDefaultsPreferencesEncodingSeparator
-                                                                        withString:kLNSUserDefaultsPreferencesEncodingSeparatorSlashed];
+                                                              withString:kLNSUserDefaultsPreferencesEncodingSeparatorSlashed];
     
     NSString *key_ = [key stringByReplacingOccurrencesOfString:kLNSUserDefaultsPreferencesEncodingSeparator
-                                                              withString:kLNSUserDefaultsPreferencesEncodingSeparatorSlashed];
+                                                    withString:kLNSUserDefaultsPreferencesEncodingSeparatorSlashed];
     
     NSString *fullKey = [NSString stringWithFormat:@"%@%@%ld%@%@",
                          category_,
@@ -226,7 +224,7 @@ NSString *const kLNSUserDefaultsPreferencesEncodingSeparatorSlashed = @"::";
 - (LPreference*)preferenceForUDKey:(NSString*)udKey
 {
     lassert(udKey);
-
+    
     // parse the key
     NSArray *parsedKey = [udKey componentsSeparatedByString:kLNSUserDefaultsPreferencesEncodingSeparatorSlashed];
     
@@ -234,15 +232,15 @@ NSString *const kLNSUserDefaultsPreferencesEncodingSeparatorSlashed = @"::";
     {
         return nil;
     }
-
+    
     id value = [_ud objectForKey:udKey];
     
-    LPreference *preference = [[[LPreference alloc] init] autorelease];
+    LPreference *preference = [[LPreference alloc] init];
     preference.category = [parsedKey objectAtIndex:1];
     preference.uniqueId = [((NSNumber*)[parsedKey objectAtIndex:2]) intValue];
     preference.key = [parsedKey objectAtIndex:3];
     preference.value = value;
-
+    
     return preference;
 }
 

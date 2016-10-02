@@ -121,7 +121,7 @@
     
     if (escapedStr)
     {
-        NSMutableString *mutable = [NSMutableString stringWithString:(NSString *)escapedStr];
+        NSMutableString *mutable = [NSMutableString stringWithString:(__bridge NSString *)escapedStr];
         CFRelease(escapedStr);
         
         [mutable replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutable length])];
@@ -209,12 +209,11 @@
     NSData * hashedData = [NSData dataWithBytes:hashedChars length:20];
     
     // may be a more optimized way to do this?
-    NSMutableString * tmp = [[NSMutableString stringWithFormat:@"%@", [hashedData description]] retain];
+    NSMutableString * tmp = [NSMutableString stringWithFormat:@"%@", [hashedData description]];
     [tmp replaceOccurrencesOfString:@" " withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tmp length])];
     [tmp deleteCharactersInRange:NSMakeRange([tmp length]-1, 1)];
     [tmp deleteCharactersInRange:NSMakeRange(0, 1)];
-    
-    return [tmp autorelease];
+    return tmp;
 }
 
 - (NSString*)base64EncodedString {
@@ -250,7 +249,7 @@
     
     NSString * tmp = [[NSString alloc] initWithCharacters:(const unichar *)buff length:y];
     
-    return [tmp autorelease];
+    return tmp;
 }
 
 - (NSString *)stringByReplacingSubstring:(NSString *)substring
@@ -349,7 +348,7 @@
 - (NSData *)dataFromHexRepresentation
 {
     NSString *string = [self lowercaseString];
-    NSMutableData *data= [[NSMutableData new] autorelease];
+    NSMutableData *data= [NSMutableData new];
     unsigned char whole_byte;
     char byte_chars[3] = {'\0','\0','\0'};
     int i = 0;

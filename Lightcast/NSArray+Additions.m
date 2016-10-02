@@ -79,7 +79,7 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
                                                        options:0
                                                          error:&err];
-    NSString *str = jsonData ? [[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] autorelease] : nil;
+    NSString *str = jsonData ? [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] : nil;
     return str;
 }
 

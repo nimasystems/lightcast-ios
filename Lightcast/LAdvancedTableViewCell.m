@@ -65,7 +65,7 @@ threadData;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) 
     {
-        options = [someOptions retain];
+        self.options = someOptions;
         
         // call setupCell
         [(LAdvancedTableViewCell<LAdvancedTableViewCellViewRequirements>*)self setup];
@@ -83,20 +83,17 @@ threadData;
     L_RELEASE(options);
     L_RELEASE(threadData);
     L_RELEASE(cellIndexPath);
-  
-    [super dealloc];
 }
 
 - (void)setThreadData_:(NSDictionary*)threadData_ {
     if (threadData != threadData_)
     {
-        [threadData release];
-        threadData = [threadData_ retain];
-    }
-    
-    if (!threadData)
-    {
-        threadData = [[NSDictionary dictionary] retain];
+        threadData = threadData_;
+        
+        if (!threadData)
+        {
+            threadData = [NSDictionary dictionary];
+        }
     }
 }
 
@@ -151,7 +148,7 @@ threadData;
 #pragma mark NSOperation
 
 - (NSOperation*)cellThreadedOperation:(id<LCellLoadingDelegate>)loadingDelegate_ indexPath:(NSIndexPath*)indexPath_ {
-   // LogDebug(@"Cell fire operation");
+    // LogDebug(@"Cell fire operation");
     
     if (cellLoadingDelegate) return nil;
     
@@ -159,14 +156,13 @@ threadData;
     
     if (cellIndexPath != indexPath_)
     {
-        [cellIndexPath release];
-        cellIndexPath = [indexPath_ retain];
+        cellIndexPath = indexPath_;
     }
     
     LCellThreadingOperation* op = [[LCellThreadingOperation alloc] init];
     op.delegate = self;
     
-    return [op autorelease];
+    return op;
 }
 
 - (void)didFinishOperation:(id)returnedObject {

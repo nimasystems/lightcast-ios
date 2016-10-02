@@ -35,8 +35,6 @@ count;
     
     L_RELEASE(_delegates);
     L_RELEASE(_delegatesLock);
-    
-    [super dealloc];
 }
 
 #pragma mark - Delegate setting / unsetting methods

@@ -46,12 +46,7 @@
  *
  *	@author Martin Kovachev (miracle@nimasystems.com), Nimasystems Ltd
  */
-@interface LCacheFIFO : NSObject <LCacheProtocol> {
-
-	NSMutableArray * cacheObjects;
-	NSMutableArray * cacheKeys;
-	int maximumCacheObjects;
-}
+@interface LCacheFIFO : NSObject <LCacheProtocol>
 
 @property (readonly) NSInteger cachedObjectsCount;
 

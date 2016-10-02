@@ -35,8 +35,6 @@ formatFile;
     L_RELEASE(iCloudPath);
     L_RELEASE(filePathInApp);
     L_RELEASE(formatFile);
-    
-    [super dealloc];
 }
 
 @end

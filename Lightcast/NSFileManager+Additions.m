@@ -303,7 +303,7 @@
     NSString *dir = pathToFolder;
     NSMutableArray *gc = [NSMutableArray array];
     
-    NSMutableSet *contents = [[[NSMutableSet alloc] init] autorelease];
+    NSMutableSet *contents = [[NSMutableSet alloc] init];
     NSFileManager *fm = [NSFileManager defaultManager];
     
     BOOL isDir = NO;

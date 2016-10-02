@@ -248,8 +248,6 @@ float randomFloat()
 - (void)dealloc {
     
     L_RELEASE(_particlePath);
-    
-    [super dealloc];
 }
 
 @end

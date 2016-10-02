@@ -21,8 +21,6 @@ errorMessage;
 {
     L_RELEASE(fieldName);
     L_RELEASE(errorMessage);
-    
-    [super dealloc];
 }
 
 #pragma mark -

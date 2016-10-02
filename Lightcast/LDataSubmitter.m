@@ -76,7 +76,6 @@ requestHeaders;
     if (_sendQueue != NULL)
     {
         dispatch_sync(_sendQueue, ^{});
-        dispatch_release(_sendQueue);
         _sendQueue = NULL;
     }
     
@@ -89,8 +88,6 @@ requestHeaders;
     L_RELEASE(remoteUrl);
     L_RELEASE(userAgent);
     L_RELEASE(requestHeaders);
-    
-    [super dealloc];
 }
 
 #pragma mark - Sending
@@ -154,10 +151,10 @@ requestHeaders;
     
     // take a snapshot of the params to send so nothing else
     // changes them meanwhile
-    NSURL *url_ = [[self.remoteUrl copy] autorelease];
-    NSDictionary *files_ = [[self.files copy] autorelease];
-    NSDictionary *props_ = [[self.properties copy] autorelease];
-    NSString *sessionKey__ = [[sessionKey copy] autorelease];
+    NSURL *url_ = [self.remoteUrl copy];
+    NSDictionary *files_ = [self.files copy];
+    NSDictionary *props_ = [self.properties copy];
+    NSString *sessionKey__ = [sessionKey copy];
     
     // pool props
     if (props_ && [props_ count])
@@ -431,7 +428,7 @@ requestHeaders;
                             nil];
     
     // create the file
-    LUrlDownloaderPostFile *pf = [[[LUrlDownloaderPostFile alloc] initWithFilename:filename] autorelease];
+    LUrlDownloaderPostFile *pf = [[LUrlDownloaderPostFile alloc] initWithFilename:filename];
     NSArray *files = [NSArray arrayWithObject:pf];
     BOOL ret = [self sendNetworkData:url sessionKey:sessionKey_ postParams:params postFiles:files error:error];
     
@@ -454,7 +451,7 @@ requestHeaders;
     LUrlDownloader *downloader = [[LUrlDownloader alloc] initWithUrl:url downloadTo:nil requestMethod:LUrlDownloadRequestMethodPost timeout:connectionTimeout];
     
     NSMutableDictionary *pd = [NSMutableDictionary dictionaryWithDictionary:postParams];
-
+    
     // add the session key
     [pd setObject:sessionKey_ forKey:kLDataSubmitterSessionKeyPostKey];
     

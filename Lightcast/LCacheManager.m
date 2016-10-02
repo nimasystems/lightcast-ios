@@ -42,72 +42,71 @@ const NSString * cacheManagerDefaultBackend = @"LCacheFIFO";
 #pragma mark Cache Methods
 
 - (BOOL)set:(NSString *)identifier object:(id)aObject {
-	setRequests++;
-	return [cacheBackend set:identifier object:aObject];
+    setRequests++;
+    return [cacheBackend set:identifier object:aObject];
 }
 
 - (id)get:(NSString *)aIdentifier {
-	getRequests++;
-	return [cacheBackend get:aIdentifier];
+    getRequests++;
+    return [cacheBackend get:aIdentifier];
 }
 
 - (BOOL)remove:(NSString *)aIdentifier {
-	return [cacheBackend remove:aIdentifier];
+    return [cacheBackend remove:aIdentifier];
 }
 
 - (BOOL)has:(NSString *)aIdentifier {
-	return [cacheBackend has:aIdentifier];
+    return [cacheBackend has:aIdentifier];
 }
 
 - (void)clear {
-	return [cacheBackend clear];
+    return [cacheBackend clear];
 }
 
 - (void)didReceiveMemoryWarning:(NSDictionary*)additionalInformation {
-	
-	// clear the cached objects
-	[cacheBackend clear];
-	
-	LogWarn(@"CacheManager: Cache cleared due to low memory warning");
+    
+    // clear the cached objects
+    [cacheBackend clear];
+    
+    LogWarn(@"CacheManager: Cache cleared due to low memory warning");
 }
 
 - (id)initWithCacheBackend:(NSObject<LCacheProtocol> *)aCacheBackend {
-	self = [super init];
-	if (self != nil)
-	{
-		cacheBackend = aCacheBackend;
-	}
-	return self;
+    self = [super init];
+    if (self != nil)
+    {
+        cacheBackend = aCacheBackend;
+    }
+    return self;
 }
 
 - (id)init {
-	
-	id backend;
-	
-	@try
-	{
-		backend = [[NSClassFromString((NSString *)cacheManagerDefaultBackend) alloc] init];
-	}
-	@catch (NSException * e) 
-	{
+    
+    id backend;
+    
+    @try
+    {
+        backend = [[NSClassFromString((NSString *)cacheManagerDefaultBackend) alloc] init];
+    }
+    @catch (NSException * e) 
+    {
         LogError(@"Cache backend is missing: %@", [e description]);
         
         return nil;
-	}
-		
-	return [self initWithCacheBackend:backend];
+    }
+    
+    return [self initWithCacheBackend:backend];
 }
 
 - (void)dealloc {
-
-	L_RELEASE(cacheBackend);
-	[super dealloc];
+    
+    L_RELEASE(cacheBackend);
 }
 
 #pragma mark - Singleton Pattern
 
 + (LCacheManager*)sharedCacheManager {
-	@synchronized(self)
+    @synchronized(self)
     {
         if (cacheManager == nil) 
         {
@@ -130,22 +129,6 @@ const NSString * cacheManagerDefaultBackend = @"LCacheFIFO";
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    return self;
-}
-
-- (id)retain {
-    return self;
-}
-
-- (NSUInteger)retainCount {
-    return NSUIntegerMax;
-}
-
-- (oneway void)release {
-    //do nothing
-}
-
-- (id)autorelease {
     return self;
 }
 

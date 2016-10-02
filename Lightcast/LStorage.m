@@ -47,7 +47,7 @@ NSString *const lnStorageInitialized = @"notifications.StorageInitialized";
     self = [super init];
     if (self)
     {
-        adapter = [anAdapter retain];
+        adapter = anAdapter;
     }
     return self;
 }
@@ -59,7 +59,6 @@ NSString *const lnStorageInitialized = @"notifications.StorageInitialized";
 
 - (void)dealloc {
     L_RELEASE(adapter);
-    [super dealloc];
 }
 
 #pragma mark - 

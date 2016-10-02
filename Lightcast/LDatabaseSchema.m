@@ -65,21 +65,20 @@ lastError;
     if (self)
     {
         _currentSchemaVersion = 0;
-		_identifier = [identifier retain];
+        _identifier = identifier;
         _firstDatabaseInit = NO;
-		_schemaVersions = nil;
-     
+        _schemaVersions = nil;
+        
         if (adapter != _adapter)
         {
-            L_RELEASE(_adapter);
-            _adapter = [adapter retain];
+            _adapter = adapter;
         }
-		
-		if (!_adapter || !_identifier)
-		{
-			L_RELEASE(self);
-			return nil;
-		}
+        
+        if (!_adapter || !_identifier)
+        {
+            L_RELEASE(self);
+            return nil;
+        }
     }
     return self;
 }
@@ -89,17 +88,16 @@ lastError;
 }
 
 - (void)dealloc {
-	L_RELEASE(_schemaVersions);
+    L_RELEASE(_schemaVersions);
     L_RELEASE(_adapter);
-	L_RELEASE(_identifier);
+    L_RELEASE(_identifier);
     L_RELEASE(lastError);
-    [super dealloc];
 }
 
 #pragma mark - Schema Operations
 
 - (BOOL)insertSchemaVersion:(NSInteger)toVersion error:(NSError**)error {
-	
+    
     // because of a bug which existed at some point and the inability to easily fix the problem
     // (unique index of schemaName was added as a clustered index with the Version column)
     // we will run two queries here
@@ -112,49 +110,49 @@ lastError;
                     [_identifier sqlString],
                     (int)toVersion]
                    , nil];
-
-	BOOL res = [_adapter executeStatements:qs error:error];
+    
+    BOOL res = [_adapter executeStatements:qs error:error];
     
     if (!res)
     {
         lassert(false);
     }
-	
-	return res;
+    
+    return res;
 }
 
 - (BOOL)runSQLStatements:(NSArray*)sqlStatements error:(NSError**)error {
     
     BOOL overallRet = YES;
     
-	if (sqlStatements && [sqlStatements count])
-	{
-		LogInfo(@"Running sql statements: %d", (int)[sqlStatements count]);
+    if (sqlStatements && [sqlStatements count])
+    {
+        LogInfo(@"Running sql statements: %d", (int)[sqlStatements count]);
         
         NSError *err = nil;
-		
-		for(NSString *sql in sqlStatements)
-		{
-			if (!sql || [sql isEqual:[NSNull null]] || ![[sql trim] length]) continue;
-			
-			LogInfo(@"SQL: %@", sql);
-			
+        
+        for(NSString *sql in sqlStatements)
+        {
+            if (!sql || [sql isEqual:[NSNull null]] || ![[sql trim] length]) continue;
+            
+            LogInfo(@"SQL: %@", sql);
+            
             err = nil;
-			BOOL res = [_adapter executeStatement:&err sql:sql];
-			
-			if (!res)
-			{
+            BOOL res = [_adapter executeStatement:&err sql:sql];
+            
+            if (!res)
+            {
                 overallRet = NO;
                 
                 // do not stop - this is not a transaction!
                 lassert(false);
                 LogError(@"Could not run sql statement: %@", err);
                 continue;
-			}
-		}
-	}
-	
-	return overallRet;
+            }
+        }
+    }
+    
+    return overallRet;
 }
 
 - (BOOL)upgradeSchema:(id<LDatabaseSchemaProtocol>)schemaSpecsObject error:(NSError**)error {
@@ -170,47 +168,47 @@ lastError;
         return NO;
     }
     
-	BOOL res = [self initializeMasterSchema:error];
-	
-	if (!res)
-	{
-		return NO;
-	}
-    
-    self.lastError = nil;
-	
-    NSInteger schemaNextVersion = schemaSpecsObject.currentSchemaVersion;
-    
-	// check if there is a problem with the currently allocated versions
-	if (!schemaNextVersion || schemaNextVersion < _currentSchemaVersion)
-	{
-		if (error != NULL)
-		{
-			NSString *errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Logic Error - either internal error or target schema version lower than current. Cannot Continue, current version: %d, target version: %d"), _currentSchemaVersion, schemaNextVersion];
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:LDatabaseSchemaErrorDomain code:LDatabaseSchemaErrorUpgrade userInfo:errorDetail];
-		}
-		
-		return NO;
-	}
-	
-	// check if we need to upgrade
-	if (schemaNextVersion == _currentSchemaVersion)
-	{
-		LogInfo(@"Schema does NOT need any upgrades - cancelling upgrade");
-		
-		// NO UPGRADE NECESSARRY
-		return YES;
-	}
-	
-	/*res = [_adapter beginTransaction:error];
+    BOOL res = [self initializeMasterSchema:error];
     
     if (!res)
     {
         return NO;
-    }*/
-	
+    }
+    
+    self.lastError = nil;
+    
+    NSInteger schemaNextVersion = schemaSpecsObject.currentSchemaVersion;
+    
+    // check if there is a problem with the currently allocated versions
+    if (!schemaNextVersion || schemaNextVersion < _currentSchemaVersion)
+    {
+        if (error != NULL)
+        {
+            NSString *errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Logic Error - either internal error or target schema version lower than current. Cannot Continue, current version: %d, target version: %d"), _currentSchemaVersion, schemaNextVersion];
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:LDatabaseSchemaErrorDomain code:LDatabaseSchemaErrorUpgrade userInfo:errorDetail];
+        }
+        
+        return NO;
+    }
+    
+    // check if we need to upgrade
+    if (schemaNextVersion == _currentSchemaVersion)
+    {
+        LogInfo(@"Schema does NOT need any upgrades - cancelling upgrade");
+        
+        // NO UPGRADE NECESSARRY
+        return YES;
+    }
+    
+    /*res = [_adapter beginTransaction:error];
+     
+     if (!res)
+     {
+     return NO;
+     }*/
+    
     // upgrade now
     @try 
     {
@@ -233,8 +231,8 @@ lastError;
         }
         
         // for old installations (existing database) - without a schema table - we have to
-		// run the upgrades from 1 to the latest to be sure everything is in
-		// and pray :)
+        // run the upgrades from 1 to the latest to be sure everything is in
+        // and pray :)
         if (!hasSchemaRowInserted || (/*_firstDatabaseInit &&*/ _masterSchemaRecreated))
         {
             LogInfo(@"This is a force database schema upgrade - upgrading to: %d without running any upgrades!", (int)schemaNextVersion);
@@ -259,66 +257,66 @@ lastError;
                                 VALUES(%@, %d, CURRENT_TIMESTAMP)", 
                                 [_identifier sqlString],
                                 (int)schemaNextVersion];
-			
+            
             if (![_adapter executeStatement:error sql:query])
-			{
-				//[_adapter rollback:nil];
-				assert(false);
-				return NO;
-			}
-			
-			if ([schemaSpecsObject respondsToSelector:@selector(postSQLStatements)])
-			{
+            {
+                //[_adapter rollback:nil];
+                assert(false);
+                return NO;
+            }
+            
+            if ([schemaSpecsObject respondsToSelector:@selector(postSQLStatements)])
+            {
                 LogInfo(@"Running POST-sql statements...");
                 
                 NSError *err = nil;
-				BOOL postSQL = [self runSQLStatements:[schemaSpecsObject postSQLStatements] error:&err];
-				
-				if (!postSQL)
-				{
-					//[_adapter rollback:nil];
+                BOOL postSQL = [self runSQLStatements:[schemaSpecsObject postSQLStatements] error:&err];
+                
+                if (!postSQL)
+                {
+                    //[_adapter rollback:nil];
                     lassert(false);
                     LogError(@"Could not run POST-sql successfully - proceeding still: %@!", err);
-					//return NO;
-				}
-			}
-			
-			_currentSchemaVersion = schemaNextVersion;
+                    //return NO;
+                }
+            }
             
-			LogInfo(@"Database schemaName '%@' schema update completed", _identifier);
-			
-			/*res = [_adapter commit:error];
-			
-            if (!res)
-            {
-                lassert(false);
-                return NO;
-            }*/
+            _currentSchemaVersion = schemaNextVersion;
+            
+            LogInfo(@"Database schemaName '%@' schema update completed", _identifier);
+            
+            /*res = [_adapter commit:error];
+             
+             if (!res)
+             {
+             lassert(false);
+             return NO;
+             }*/
             
             return YES;
         }
-		
-		LogInfo(@"Upgrading database schemaName '%@' schema from version: %d to version: %d", 
-				_identifier, (int)_currentSchemaVersion, (int)schemaNextVersion);
-		
-		BOOL anyUpgradesRan = NO;
-		
-		for(NSInteger i=_currentSchemaVersion+1;i<=schemaNextVersion;i++)
-		{
-			NSInteger upgradeFrom = i-1;
-			NSInteger upgradeTo = i;
-			
+        
+        LogInfo(@"Upgrading database schemaName '%@' schema from version: %d to version: %d", 
+                _identifier, (int)_currentSchemaVersion, (int)schemaNextVersion);
+        
+        BOOL anyUpgradesRan = NO;
+        
+        for(NSInteger i=_currentSchemaVersion+1;i<=schemaNextVersion;i++)
+        {
+            NSInteger upgradeFrom = i-1;
+            NSInteger upgradeTo = i;
+            
             LogInfo(@"Upgrading schema from: %d to %d", (int)upgradeFrom, (int)upgradeTo);
             
-			// find an upgrade to run from the schema definitions
+            // find an upgrade to run from the schema definitions
             NSArray *schemaObjects = nil;
             
             if ([schemaSpecsObject respondsToSelector:@selector(schemaChangesForVersion:)])
             {
                 schemaObjects = [schemaSpecsObject schemaChangesForVersion:upgradeTo];
             }
-			
-			if (schemaObjects)
+            
+            if (schemaObjects)
             {
                 BOOL res = [_adapter executeStatements:schemaObjects error:error];
                 
@@ -336,7 +334,7 @@ lastError;
             if ([schemaSpecsObject respondsToSelector:selector])
             {
                 NSError *invocationError = nil;
-
+                
                 NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
                                             [[schemaSpecsObject class] instanceMethodSignatureForSelector:selector]];
                 [invocation setSelector:selector];
@@ -372,73 +370,73 @@ lastError;
                     return NO;
                 }
             }
-			
-			// mark the schema version
-			BOOL res = [self insertSchemaVersion:upgradeTo error:error];
-			
-			if (!res)
-			{
-				//[_adapter rollback:nil];
-				lassert(false);
-				return NO;
-			}
-		}
-		
-		// always raise to the last specified version by the schema
-		BOOL res = [self insertSchemaVersion:schemaNextVersion error:error];
-		
-		if (!res)
-		{
-			//[_adapter rollback:nil];
-			
-			return NO;
-		}
-		
-		if ([schemaSpecsObject respondsToSelector:@selector(postSQLStatements)])
-		{
-            LogInfo(@"Running POST-sql statements...");
             
-            NSError *err = nil;
-			BOOL postSQL = [self runSQLStatements:[schemaSpecsObject postSQLStatements] error:&err];
-			
-			if (!postSQL)
-			{
-                LogError(@"Could not run POST-sql successfully - proceeding still: %@!", err);
-				//[_adapter rollback:nil];
-				//return NO;
-			}
-		}
-		
-		// set the new version internally
-		_currentSchemaVersion = schemaNextVersion;
-		
-		LogInfo(@"Database schemaName '%@' schema update completed", _identifier);
-		
-		/*res = [_adapter commit:error];
+            // mark the schema version
+            BOOL res = [self insertSchemaVersion:upgradeTo error:error];
+            
+            if (!res)
+            {
+                //[_adapter rollback:nil];
+                lassert(false);
+                return NO;
+            }
+        }
+        
+        // always raise to the last specified version by the schema
+        BOOL res = [self insertSchemaVersion:schemaNextVersion error:error];
         
         if (!res)
         {
-            lassert(false);
+            //[_adapter rollback:nil];
+            
             return NO;
-        }*/
-		
-		return YES;
+        }
+        
+        if ([schemaSpecsObject respondsToSelector:@selector(postSQLStatements)])
+        {
+            LogInfo(@"Running POST-sql statements...");
+            
+            NSError *err = nil;
+            BOOL postSQL = [self runSQLStatements:[schemaSpecsObject postSQLStatements] error:&err];
+            
+            if (!postSQL)
+            {
+                LogError(@"Could not run POST-sql successfully - proceeding still: %@!", err);
+                //[_adapter rollback:nil];
+                //return NO;
+            }
+        }
+        
+        // set the new version internally
+        _currentSchemaVersion = schemaNextVersion;
+        
+        LogInfo(@"Database schemaName '%@' schema update completed", _identifier);
+        
+        /*res = [_adapter commit:error];
+         
+         if (!res)
+         {
+         lassert(false);
+         return NO;
+         }*/
+        
+        return YES;
     }
     @catch (NSException * e) 
     {
-		//[_adapter rollback:nil];
-		
+        //[_adapter rollback:nil];
+        
         LogError(@"Error while upgrading database schema for schemaName: %@: %@", 
                  _identifier,
                  [e description]);
         
         if (error != NULL)
-		{
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			NSString * errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Could not upgrade schema: %@"), [e description]];
-			[errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:LDatabaseSchemaErrorDomain code:LDatabaseSchemaErrorUpgrade userInfo:errorDetail];
-		}
+        {
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            NSString * errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Could not upgrade schema: %@"), [e description]];
+            [errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:LDatabaseSchemaErrorDomain code:LDatabaseSchemaErrorUpgrade userInfo:errorDetail];
+        }
         
         return NO;
     }
@@ -458,9 +456,7 @@ lastError;
     NSString * query = @"SELECT schemaName, version FROM schema GROUP BY schemaName";
     NSArray * res = [_adapter executeQuery:query];
     
-    NSAutoreleasePool * pool = nil;
-    
-    NSMutableArray * tmp = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray * tmp = [[NSMutableArray alloc] init];
     
     @autoreleasepool
     {
@@ -470,33 +466,24 @@ lastError;
         {
             for (NSDictionary * item in res)
             {
-                pool = [[NSAutoreleasePool alloc] init];
+                NSString * schemaName = [item objectForKey:@"schemaName"];
+                NSString * version = [item objectForKey:@"version"];
                 
-                @try
+                [tmp addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                schemaName, @"schemaName",
+                                version, @"version",
+                                nil]];
+                
+                // mark the current schema version
+                if ([_identifier isEqualToString:schemaName])
                 {
-                    NSString * schemaName = [item objectForKey:@"schemaName"];
-                    NSString * version = [item objectForKey:@"version"];
-                    
-                    [tmp addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    schemaName, @"schemaName",
-                                    version, @"version",
-                                    nil]];
-                    
-                    // mark the current schema version
-                    if ([_identifier isEqualToString:schemaName])
-                    {
-                        _currentSchemaVersion = [version intValue];
-                    }
-                }
-                @finally
-                {
-                    [pool drain];
+                    _currentSchemaVersion = [version intValue];
                 }
             }
         }
         
         L_RELEASE(_schemaVersions);
-        _schemaVersions = [[NSArray arrayWithArray:tmp] retain];
+        _schemaVersions = [NSArray arrayWithArray:tmp];
         
         /*if (_schemaVersions && [_schemaVersions count])
          {
@@ -506,7 +493,7 @@ lastError;
 }
 
 - (BOOL)recreateSchemaTables:(NSError**)error {
-	
+    
     NSString * query = nil;
     
     @try
@@ -602,13 +589,13 @@ lastError;
         // go to ver. 1 - the very first version
         // insert the record for this version silently and fake things :)
         /*NSString * query = [NSString stringWithFormat:
-                            @"INSERT INTO schema (schemaName, version, date_installed) VALUES(%@, 1, CURRENT_TIMESTAMP)",
-                            [_identifier sqlString]];
-        
-        if (![_adapter executeStatement:error sql:query])
-        {
-            return NO;
-        }*/
+         @"INSERT INTO schema (schemaName, version, date_installed) VALUES(%@, 1, CURRENT_TIMESTAMP)",
+         [_identifier sqlString]];
+         
+         if (![_adapter executeStatement:error sql:query])
+         {
+         return NO;
+         }*/
     }
     else
     {

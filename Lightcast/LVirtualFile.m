@@ -76,7 +76,6 @@ fullPath;
     L_RELEASE(fileHash);
     L_RELEASE(fileType);
     L_RELEASE(createdOn);
-    [super dealloc];
 }
 
 #pragma mark -

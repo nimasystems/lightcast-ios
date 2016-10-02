@@ -25,7 +25,7 @@ parsedStrings;
     self = [super init];
     if (self)
     {
-        sourceString = [string retain];
+        sourceString = string;
     }
     return self;
 }
@@ -40,8 +40,6 @@ parsedStrings;
     L_RELEASE(patterns);
     L_RELEASE(sourceString);
     L_RELEASE(parsedStrings);
-    
-    [super dealloc];
 }
 
 #pragma mark - Parsing
@@ -54,10 +52,10 @@ parsedStrings;
     }
     
     /*patterns = [[NSArray arrayWithObjects:
-                @"\\[LI18n[\\s]+?localizedString\\:\\@\"([\\w\\d\\s]+?)\"[\\s\\n]*\\]",
-                @"\\[LI18n[\\s]+?localizedStringWithFormat\\:\\@\"([\\w\\d\\s]+?)\".*\\]",
-                 nil] retain];*/
-
+     @"\\[LI18n[\\s]+?localizedString\\:\\@\"([\\w\\d\\s]+?)\"[\\s\\n]*\\]",
+     @"\\[LI18n[\\s]+?localizedStringWithFormat\\:\\@\"([\\w\\d\\s]+?)\".*\\]",
+     nil] retain];*/
+    
     // check for patterns
     if (!patterns || ![patterns count])
     {
@@ -79,8 +77,8 @@ parsedStrings;
     L_RELEASE(parsedStrings);
     
     // walk each regex and find translations
-    NSMutableArray *ret1 = [[[NSMutableArray alloc] init] autorelease];
-
+    NSMutableArray *ret1 = [[NSMutableArray alloc] init];
+    
     for(NSString *pattern in patterns)
     {
         NSArray *parsedStrings_ = nil;
@@ -123,8 +121,7 @@ parsedStrings;
         
         if (parsedStrings != ret1)
         {
-            L_RELEASE(parsedStrings);
-            parsedStrings = [ret1 retain];
+            parsedStrings = ret1;
         }
     }
     
@@ -161,25 +158,25 @@ parsedStrings;
     stmp = [stmp stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     lassert(![NSString isNullOrEmpty:stmp]);
     
-    NSMutableArray *foundStrings = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *foundStrings = [[NSMutableArray alloc] init];
     
     [regex enumerateMatchesInString:stmp options:NSMatchingReportCompletion range:NSMakeRange(0, [stmp length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop)
-    {
-        if (!match)
-        {
-            *stop = YES;
-            return;
-        }
-        
-        NSInteger matches = [match numberOfRanges];
-
-        if (matches == 2)
-        {
-            NSString *matchedString = [stmp substringWithRange:[match rangeAtIndex:1]];
-            
-            [foundStrings addObject:matchedString];
-        }
-    }];
+     {
+         if (!match)
+         {
+             *stop = YES;
+             return;
+         }
+         
+         NSInteger matches = [match numberOfRanges];
+         
+         if (matches == 2)
+         {
+             NSString *matchedString = [stmp substringWithRange:[match rangeAtIndex:1]];
+             
+             [foundStrings addObject:matchedString];
+         }
+     }];
     
     if ([foundStrings count] && parsedStrings_ != NULL)
     {

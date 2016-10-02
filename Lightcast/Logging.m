@@ -37,68 +37,59 @@ NSInteger const kMaxSystemLogFileSize = 3; // in MB
 void openSystemLog(NSInteger maxLogFileSize, NSString *path) {
     // file logging
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
     maxLogFileSize = maxLogFileSize ? maxLogFileSize : kMaxSystemLogFileSize;
     
-    @try 
+    NSString *logFileName = nil;
+    NSString *logFolderName = nil;
+    
+    if (!path)
     {
-        NSString *logFileName = nil;
-        NSString *logFolderName = nil;
+        // default is in documents folder
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
         
-        if (!path)
+        logFolderName = [documentsDirectory stringByAppendingPathComponent:@"Logs"];
+        logFileName = [logFolderName stringByAppendingPathComponent:
+                       [NSString stringWithFormat: @"%@.log", [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleName"]]];
+    } else
+    {
+        logFolderName = [path stringByExpandingTildeInPath];
+        logFileName = [logFolderName stringByAppendingPathComponent:
+                       [NSString stringWithFormat: @"%@.log", [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleName"]]];
+    }
+    
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    
+    NSError *error = nil;
+    
+    // check and create the log
+    BOOL res = [fileManager createDirectoryAtPath:logFolderName withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    if (!res)
+    {
+        LogCError(@"Could not create logs directory: %@", error);
+        return;
+    }
+    
+    // check the size of the file - if it is larger than kStCocoaMaxLogFilesize
+    // truncate it
+    NSDictionary * attrs = [fileManager attributesOfItemAtPath:logFileName error:&error];
+    
+    if (attrs)
+    {
+        NSNumber * fileSize = [attrs objectForKey:NSFileSize];
+        
+        if (fileSize)
         {
-            // default is in documents folder
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
-            NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-            
-            logFolderName = [documentsDirectory stringByAppendingPathComponent:@"Logs"];
-            logFileName = [logFolderName stringByAppendingPathComponent:
-                           [NSString stringWithFormat: @"%@.log", [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleName"]]];
-        } else
-        {
-            logFolderName = [path stringByExpandingTildeInPath];
-            logFileName = [logFolderName stringByAppendingPathComponent:
-                           [NSString stringWithFormat: @"%@.log", [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleName"]]];
-        }
-        
-        NSFileManager * fileManager = [NSFileManager defaultManager];
-        
-        NSError *error = nil;
-        
-        // check and create the log
-        BOOL res = [fileManager createDirectoryAtPath:logFolderName withIntermediateDirectories:YES attributes:nil error:&error];
-        
-        if (!res) 
-        {
-            LogCError(@"Could not create logs directory: %@", error);
-            return;
-        }
-        
-        // check the size of the file - if it is larger than kStCocoaMaxLogFilesize 
-        // truncate it
-        NSDictionary * attrs = [fileManager attributesOfItemAtPath:logFileName error:&error];
-        
-        if (attrs)
-        {
-            NSNumber * fileSize = [attrs objectForKey:NSFileSize];
-            
-            if (fileSize)
+            if ([fileSize intValue] > maxLogFileSize * 1024 * 1024)
             {
-                if ([fileSize intValue] > maxLogFileSize * 1024 * 1024)
-                {
-                    // truncate the file
-                    [fileManager removeItemAtPath:logFileName error:&error];
-                }
+                // truncate the file
+                [fileManager removeItemAtPath:logFileName error:&error];
             }
         }
-        
-        freopen([logFileName fileSystemRepresentation], "a", stderr);
-        
-        LogCInfo(@"Log attached at path: %@", logFileName);
     }
-    @finally
-    {
-        [pool release];  
-    }
+    
+    freopen([logFileName fileSystemRepresentation], "a", stderr);
+    
+    LogCInfo(@"Log attached at path: %@", logFileName);
 }

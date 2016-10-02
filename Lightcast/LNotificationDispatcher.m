@@ -43,14 +43,13 @@ static LNotificationDispatcher * sharedND = nil;
     self = [super init];
     if (self)
     {
-        nd = [[NSNotificationCenter defaultCenter] retain];
+        nd = [NSNotificationCenter defaultCenter];
     }
     return self;
 }
 
 - (void)dealloc {
     L_RELEASE(nd);
-    [super dealloc];
 }
 
 #pragma mark -
@@ -82,7 +81,7 @@ static LNotificationDispatcher * sharedND = nil;
 #pragma mark Singleton
 
 + (LNotificationDispatcher*)sharedND {
-	@synchronized(self)
+    @synchronized(self)
     {
         if (sharedND == nil) 
         {
@@ -90,38 +89,6 @@ static LNotificationDispatcher * sharedND = nil;
         }
     }
     return sharedND;
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-    @synchronized(self)
-    {
-        if (sharedND == nil)
-        {
-            sharedND = [super allocWithZone:zone];
-            return sharedND;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    return self;
-}
-
-- (id)retain {
-    return self;
-}
-
-- (NSUInteger)retainCount {
-    return NSUIntegerMax;
-}
-
-- (oneway void)release {
-    //do nothing
-}
-
-- (id)autorelease {
-    return self;
 }
 
 @end

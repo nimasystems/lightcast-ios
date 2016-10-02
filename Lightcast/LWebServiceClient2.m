@@ -63,7 +63,7 @@ httpAuthPassword;
     {
         lassert(![NSString isNullOrEmpty:aHostname]);
         
-        hostname = [aHostname retain];
+        hostname = aHostname;
         shouldUseSSL = useSSL;
         requesType = requestType;
         urlDownloader = nil;
@@ -114,8 +114,6 @@ httpAuthPassword;
     L_RELEASE(_params);
     
     L_RELEASE(urlDownloader);
-    
-    [super dealloc];
 }
 
 #pragma mark -
@@ -136,14 +134,12 @@ httpAuthPassword;
     // save internally
     if (_serviceUrl != serviceUrl)
     {
-        L_RELEASE(_serviceUrl);
-        _serviceUrl = [serviceUrl retain];
+        _serviceUrl = serviceUrl;
     }
     
     if (_params != params)
     {
-        L_RELEASE(_params);
-        _params = [params retain];
+        _params = params;
     }
     
     // make the uri - if POST - no params are to be passed
@@ -159,8 +155,7 @@ httpAuthPassword;
     
     if (requestUri_ != requestUri)
     {
-        L_RELEASE(requestUri);
-        requestUri = [requestUri_ retain];
+        requestUri = requestUri_;
     }
     
     // mark the start
@@ -255,7 +250,7 @@ httpAuthPassword;
     urlDownloader.httpAuthEnabled = self.httpAuthEnabled;
     urlDownloader.httpAuthUsername = self.httpAuthUsername;
     urlDownloader.httpAuthPassword = self.httpAuthPassword;
-
+    
     // post params
     if (isPost)
     {
@@ -380,7 +375,7 @@ httpAuthPassword;
         if (err)
         {
             // check if the result is string FALSE - which means no results
-            NSString *tmp = [[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding] autorelease];
+            NSString *tmp = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
             
             if (![tmp isEqualToString:@"false"])
             {
@@ -424,7 +419,7 @@ httpAuthPassword;
     // assign the response
     if (response != NULL)
     {
-        *response = [[parserResult copy] autorelease];
+        *response = [parserResult copy];
     }
     
     NSDictionary *err = ([parserResult isKindOfClass:[NSDictionary class]] && [parserResult objectForKey:@"error"]) ? [parserResult objectForKey:@"error"] : nil;
@@ -447,7 +442,7 @@ httpAuthPassword;
         // parse the validation errors, if any
         NSDictionary *srvValidationErrors = [err objectForKey:@"validation_errors"];
         
-        NSMutableArray *allErrors = [[[NSMutableArray alloc] init] autorelease];
+        NSMutableArray *allErrors = [[NSMutableArray alloc] init];
         
         if (srvValidationErrors)
         {
@@ -459,7 +454,7 @@ httpAuthPassword;
                 {
                     NSString *v = [srvValidationErrors objectForKey:key];
                     
-                    LWebServicesValidationError *err = [[[LWebServicesValidationError alloc] init] autorelease];
+                    LWebServicesValidationError *err = [[LWebServicesValidationError alloc] init];
                     err.fieldName = key;
                     err.errorMessage = v;
                     
@@ -497,16 +492,14 @@ httpAuthPassword;
     {
         if (requestStartTime != now)
         {
-            L_RELEASE(requestStartTime);
-            requestStartTime = [now retain];
+            requestStartTime = now;
         }
     }
     else
     {
         if (requestEndTime != now)
         {
-            L_RELEASE(requestEndTime);
-            requestEndTime = [now retain];
+            requestEndTime = now;
         }
     }
 }
@@ -554,23 +547,21 @@ httpAuthPassword;
                          [tmpA componentsJoinedByString:@"&"]
                          ];
         }
-        
-        [tmpA release];
     }
     
     uri = [NSString stringWithFormat:@"%@%@%@%@",
-                         (useSSL ? @"https://" : @"http://"),
-                         aHostname,
-                         serviceUrl,
-                         (paramsStr ? paramsStr : @"")
-                         ];
+           (useSSL ? @"https://" : @"http://"),
+           aHostname,
+           serviceUrl,
+           (paramsStr ? paramsStr : @"")
+           ];
     
     if (requestUri_ != NULL)
     {
         *requestUri_ = [NSString stringWithFormat:@"%@%@",
-                       serviceUrl,
-                       (paramsStr ? paramsStr : @"")
-                       ];
+                        serviceUrl,
+                        (paramsStr ? paramsStr : @"")
+                        ];
     }
     
     return uri;
@@ -578,8 +569,8 @@ httpAuthPassword;
 
 - (NSString *)urlEncodeValue:(NSString *)str
 {
-    NSString *result = (NSString *) CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)str, NULL, CFSTR("?=&+"), kCFStringEncodingUTF8);
-    return [result autorelease];
+    NSString *result = (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)str, NULL, CFSTR("?=&+"), kCFStringEncodingUTF8));
+    return result;
 }
 
 @end

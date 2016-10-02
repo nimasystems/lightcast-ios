@@ -34,20 +34,4 @@
 
 @implementation LView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        self.contentMode = UIViewContentModeRedraw;
-        
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    [super dealloc];
-}
-
 @end

@@ -62,10 +62,6 @@ adapterDispatchQueue;
             // create a new serial dispatch queue
             queue_ = dispatch_queue_create("com.lightcast.LDatabaseAdapter", DISPATCH_QUEUE_SERIAL);
         }
-        else
-        {
-            dispatch_retain(queue);
-        }
         
         dispatch_queue_t high = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
         dispatch_set_target_queue(queue_,high);
@@ -93,11 +89,8 @@ adapterDispatchQueue;
     if (adapterDispatchQueue)
     {
         dispatch_sync(adapterDispatchQueue, ^{});
-        dispatch_release(adapterDispatchQueue);
         adapterDispatchQueue = NULL;
     }
-    
-    [super dealloc];
 }
 
 #pragma mark -
@@ -131,17 +124,17 @@ adapterDispatchQueue;
     Class class = NSClassFromString(className);
     LDatabaseAdapter *instance = [((LDatabaseAdapter*)[class alloc]) initWithConnectionString:connectionString];
     
-    return [instance autorelease];
+    return instance;
 }
 
 #pragma mark - LDatabaseAdapterProtocol stubs
 
 - (NSArray *)executeQuery:(NSString *)sql, ... {
-	return [NSArray array];
+    return [NSArray array];
 }
 
 - (BOOL)connect:(NSString*)connectinString error:(NSError**)error {
-	return NO;
+    return NO;
 }
 
 - (BOOL)open:(NSError **)error
@@ -155,7 +148,7 @@ adapterDispatchQueue;
 }
 
 - (void)disconnect {
-	//
+    //
 }
 
 - (void)close
@@ -164,23 +157,23 @@ adapterDispatchQueue;
 }
 
 - (BOOL)reconnect:(NSError**)error {
-	return NO;
+    return NO;
 }
 
 - (BOOL)isConnected {
-	return NO;
+    return NO;
 }
 
 - (NSString*)databaseType {
-	return nil;
+    return nil;
 }
 
 - (NSString*)connectionString {
-	return nil;
+    return nil;
 }
 
 - (BOOL)executeStatement:(NSError**)error sql:(NSString*)sql, ... {
-	return NO;
+    return NO;
 }
 
 - (BOOL)executeDirectStatement:(NSError**)error sql:(NSString*)sql, ... {
@@ -188,7 +181,7 @@ adapterDispatchQueue;
 }
 
 - (BOOL)executeStatement:(NSString*)sql, ... {
-	return NO;
+    return NO;
 }
 
 - (BOOL)executeStatements:(NSArray*)statements error:(NSError**)error {

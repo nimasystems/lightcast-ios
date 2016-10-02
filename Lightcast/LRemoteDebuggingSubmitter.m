@@ -32,7 +32,7 @@ secure=_secure;
         }
         
         _secure = NO;
-        _hostname = [hostname retain];
+        _hostname = hostname;
         
         LogInfo(@"LRemoteDebuggingSubmitter initialized with host: %@", hostname);
     }
@@ -43,8 +43,6 @@ secure=_secure;
 - (void)dealloc {
     
     L_RELEASE(_hostname);
-    
-    [super dealloc];
 }
 
 #pragma mark - Submitting
@@ -55,7 +53,7 @@ secure=_secure;
     
     @try 
     {
-        LRemoteDebuggingSubmitter *submitter = [[[LRemoteDebuggingSubmitter alloc] initWithHostname:hostname] autorelease];
+        LRemoteDebuggingSubmitter *submitter = [[LRemoteDebuggingSubmitter alloc] initWithHostname:hostname];
         
         res = [submitter submitError:submittedError error:nil];
     }
@@ -88,18 +86,11 @@ secure=_secure;
         // get version info
         NSData *sysVerData = [[NSData alloc] initWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
         
-        @try
+        NSDictionary *dict = [NSPropertyListSerialization propertyListWithData:sysVerData options:NSPropertyListImmutable format:nil error:nil];
+        
+        if (dict)
         {
-            NSDictionary *dict = [NSPropertyListSerialization propertyListWithData:sysVerData options:NSPropertyListImmutable format:nil error:nil];
-            
-            if (dict)
-            {
-                [deviceSysInfo addEntriesFromDictionary:dict];
-            }
-        }
-        @finally 
-        {
-            [sysVerData release];
+            [deviceSysInfo addEntriesFromDictionary:dict];
         }
         
         // make a request to the web service
@@ -110,21 +101,14 @@ secure=_secure;
         
         LWebServiceClient *client = [[LWebServiceClient alloc] initWithHost:_hostname makeSecureCalls:_secure];
         
-        @try 
+        res = [client makeRequest:@"remote_debugging" methodName:@"submit_ios_error" params:params error:error];
+        
+        if (!res)
         {
-            res = [client makeRequest:@"remote_debugging" methodName:@"submit_ios_error" params:params error:error];
-            
-            if (!res)
-            {
-                return NO;
-            }
-        }
-        @finally 
-        {
-            [client release];
+            return NO;
         }
     }
-    @catch (NSException *e) 
+    @catch (NSException *e)
     {
         res = NO;
     }

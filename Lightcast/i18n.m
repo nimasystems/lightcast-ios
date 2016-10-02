@@ -42,7 +42,7 @@ NSLocale *LCurrentLocale(void)
     if (languages.count > 0)
     {
         NSString* currentLanguage = [languages objectAtIndex:0];
-        return [[[NSLocale alloc] initWithLocaleIdentifier:currentLanguage] autorelease];
+        return [[NSLocale alloc] initWithLocaleIdentifier:currentLanguage];
     }
     else
     {
@@ -67,6 +67,5 @@ NSString *LFormatInteger(NSInteger num)
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setGroupingSeparator:@","];
     NSString* formatted = [formatter stringForObjectValue:number];
-    [formatter release];
     return formatted;
 }

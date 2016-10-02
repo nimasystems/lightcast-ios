@@ -76,7 +76,11 @@ NSString *LightcastLocalizedString(NSString *key)
 }
 
 // private class methods
-@interface LC(Private) 
+@interface LC()
+
+@property (nonatomic, strong) NSMutableDictionary * systemObjects;
+
+@property (nonatomic, assign) BOOL hasInitialized;
 
 - (void)initSystemObjects;
 - (void)initSystemObject:(NSString*)className type:(NSString*)type;
@@ -106,6 +110,8 @@ storage,
 appUpgrader,
 documentsPath,
 resourcesPath,
+hasInitialized,
+systemObjects,
 temporaryPath,
 eventDispatcher=nd,
 logFileManager=_logFileManager;
@@ -131,7 +137,7 @@ logFileManager=_logFileManager;
         // init the default localization manager and lc bundle
         NSString *bundlePath = [NSFileManager combinePaths:[[NSBundle mainBundle] resourcePath], kLightcastI18NBundleName, nil];
         lassert(bundlePath);
-        lightcastBundle = [[NSBundle bundleWithPath:bundlePath] retain];
+        lightcastBundle = [NSBundle bundleWithPath:bundlePath];
         lassert(lightcastBundle);
         
         localizationManager = [[LLocalizationManager alloc] initWithBundle:lightcastBundle];
@@ -191,8 +197,6 @@ logFileManager=_logFileManager;
     L_RELEASE(resourcesPath);
     L_RELEASE(storage);
     L_RELEASE(temporaryPath);
-    
-    [super dealloc];
 }
 
 #pragma mark - Getters / Setters
@@ -256,20 +260,18 @@ logFileManager=_logFileManager;
     // init config
     if (aConfiguration != configuration && aConfiguration)
     {
-        L_RELEASE(configuration);
-        configuration = [aConfiguration retain];
+        configuration = aConfiguration;
     }
     
     if (!configuration)
     {
-        configuration = [[self defaultConfiguration] retain];
+        configuration = [self defaultConfiguration];
     }
     
     // set dispatcher
     if (dispatcher != nd)
     {
-        L_RELEASE(nd);
-        nd = [dispatcher retain];
+        nd = dispatcher;
     }
     
     // initialize environment paths
@@ -632,7 +634,6 @@ logFileManager=_logFileManager;
         
         // add it to the local array
         [systemObjects setObject:instance forKey:type];
-        [instance release];
         
         LogInfo(@"Loading %@... DONE!", type);
     }
@@ -892,17 +893,17 @@ logFileManager=_logFileManager;
 #pragma mark - Configuration
 
 + (LCAppConfiguration*)defaultConfiguration {
-    LCAppConfiguration *defaultConfiguration = [[[LCAppConfiguration alloc] initWithNameAndDeepValues:LIGHTCAST_NAME
-                                                                                           deepValues:
+    LCAppConfiguration *defaultConfiguration = [[LCAppConfiguration alloc] initWithNameAndDeepValues:LIGHTCAST_NAME
+                                                                                          deepValues:
+                                                [NSDictionary dictionaryWithObjectsAndKeys:
+                                                 LC_VER, @"version",
                                                  [NSDictionary dictionaryWithObjectsAndKeys:
-                                                  LC_VER, @"version",
-                                                  [NSDictionary dictionaryWithObjectsAndKeys:
-                                                   @"LDatabaseManager", LC_LOADER_NAME_DATABASE_MANAGER,
-                                                   @"LStorage",         LC_LOADER_NAME_STORAGE,
-                                                   @"LPluginManager",   LC_LOADER_NAME_PLUGIN_MANAGER,
-                                                   nil
-                                                   ], @"loaders",
-                                                  nil]] autorelease];
+                                                  @"LDatabaseManager", LC_LOADER_NAME_DATABASE_MANAGER,
+                                                  @"LStorage",         LC_LOADER_NAME_STORAGE,
+                                                  @"LPluginManager",   LC_LOADER_NAME_PLUGIN_MANAGER,
+                                                  nil
+                                                  ], @"loaders",
+                                                 nil]];
     
     // set the default environment paths
     defaultConfiguration.documentsPath = [[NSFileManager defaultManager] documentsPath];
@@ -916,17 +917,17 @@ logFileManager=_logFileManager;
 
 // TODO: Remove this - we have it now as a static method
 - (LCAppConfiguration*)defaultConfiguration {
-    LCAppConfiguration *defaultConfiguration = [[[LCAppConfiguration alloc] initWithNameAndDeepValues:LIGHTCAST_NAME
-                                                                                           deepValues:
+    LCAppConfiguration *defaultConfiguration = [[LCAppConfiguration alloc] initWithNameAndDeepValues:LIGHTCAST_NAME
+                                                                                          deepValues:
+                                                [NSDictionary dictionaryWithObjectsAndKeys:
+                                                 LC_VER, @"version",
                                                  [NSDictionary dictionaryWithObjectsAndKeys:
-                                                  LC_VER, @"version",
-                                                  [NSDictionary dictionaryWithObjectsAndKeys:
-                                                   @"LDatabaseManager", LC_LOADER_NAME_DATABASE_MANAGER,
-                                                   @"LStorage",         LC_LOADER_NAME_STORAGE,
-                                                   @"LPluginManager",   LC_LOADER_NAME_PLUGIN_MANAGER,
-                                                   nil
-                                                   ], @"loaders",
-                                                  nil]] autorelease];
+                                                  @"LDatabaseManager", LC_LOADER_NAME_DATABASE_MANAGER,
+                                                  @"LStorage",         LC_LOADER_NAME_STORAGE,
+                                                  @"LPluginManager",   LC_LOADER_NAME_PLUGIN_MANAGER,
+                                                  nil
+                                                  ], @"loaders",
+                                                 nil]];
     
     // set the default environment paths
     defaultConfiguration.documentsPath = [[NSFileManager defaultManager] documentsPath];
@@ -1035,7 +1036,6 @@ logFileManager=_logFileManager;
                                                       encoding: NSUTF8StringEncoding];
             
             [description appendString:result];
-            [result release];
         }
     }
     
@@ -1058,38 +1058,6 @@ logFileManager=_logFileManager;
         }
     }
     return sharedLC;
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-    @synchronized(self)
-    {
-        if (sharedLC == nil)
-        {
-            sharedLC = [super allocWithZone:zone];
-            return sharedLC;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    return self;
-}
-
-- (id)retain {
-    return self;
-}
-
-- (NSUInteger)retainCount {
-    return NSUIntegerMax;
-}
-
-- (oneway void)release {
-    //do nothing
-}
-
-- (id)autorelease {
-    return self;
 }
 
 @end

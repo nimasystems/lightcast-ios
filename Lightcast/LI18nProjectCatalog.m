@@ -39,9 +39,9 @@ matchPatterns;
             return nil;
         }
         
-        _fm = [[NSFileManager defaultManager] retain];
+        _fm = [NSFileManager defaultManager];
         
-        fileExtensions = [[self defaultFileExtensions] retain];
+        fileExtensions = [self defaultFileExtensions];
         
         baseDir = [projectBaseDir copy];
     }
@@ -61,8 +61,6 @@ matchPatterns;
     L_RELEASE(skippedItems);
     L_RELEASE(matchPatterns);
     L_RELEASE(_fm);
-    
-    [super dealloc];
 }
 
 #pragma mark - Config
@@ -96,7 +94,7 @@ matchPatterns;
         return nil;
     }
     
-    NSMutableDictionary *found = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *found = [[NSMutableDictionary alloc] init];
     
     for (NSString *file in objects)
     {
@@ -157,7 +155,7 @@ matchPatterns;
     languages = languages && [languages count] ? languages : [NSArray arrayWithObject:LI18nProjectCatalogDefaultLanguage];
     
     // obtain the locale files
-    NSMutableDictionary *languageFiles = [[[NSMutableDictionary alloc] initWithDictionary:[self currentBundleLanguages]] autorelease];
+    NSMutableDictionary *languageFiles = [[NSMutableDictionary alloc] initWithDictionary:[self currentBundleLanguages]];
     
     NSString *bName = self.bundleName ? self.bundleName : @"";
     
@@ -172,7 +170,7 @@ matchPatterns;
     }
     
     // prepare the keys as a pair of key:comment
-    NSMutableDictionary *newKeys = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *newKeys = [[NSMutableDictionary alloc] init];
     
     for(NSString *key in preparedResults)
     {
@@ -189,14 +187,14 @@ matchPatterns;
             NSString *dirName = [languageFiles objectForKey:langCode];
             NSString *fname = [dirName stringByAppendingPathComponent:@"Localizable.strings"];
             
-            LI18nLocalizedStringsFile *p = [[[LI18nLocalizedStringsFile alloc] init] autorelease];
+            LI18nLocalizedStringsFile *p = [[LI18nLocalizedStringsFile alloc] init];
             
             NSError *err = nil;
             [p loadFromFile:fname error:&err];
             
             // merge
             [p mergeStringsWithKeys:newKeys];
-         
+            
             // create the dir if missing
             [_fm createDirectoryAtPath:dirName withIntermediateDirectories:YES attributes:nil error:nil];
             
@@ -229,7 +227,7 @@ matchPatterns;
         return nil;
     }
     
-    NSMutableArray *found = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *found = [[NSMutableArray alloc] init];
     
     for (NSString *file in objects)
     {
@@ -323,7 +321,7 @@ matchPatterns;
         return NO;
     }
     
-    NSMutableDictionary *parsedStrings_ = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *parsedStrings_ = [[NSMutableDictionary alloc] init];
     
     // find the files in the project's base directory
     NSArray *foundFiles = [self findFiles:self.baseDir allowedFileExtensions:self.fileExtensions skippedItems:self.skippedItems];
@@ -347,9 +345,9 @@ matchPatterns;
                     continue;
                 }
                 
-                NSString *fdata_ = [[[NSString alloc] initWithData:fdata encoding:NSUTF8StringEncoding] autorelease];
+                NSString *fdata_ = [[NSString alloc] initWithData:fdata encoding:NSUTF8StringEncoding];
                 lassert(fdata_);
-                parser = [[[LI18nTranslationSourceParser alloc] initWithSourceString:fdata_] autorelease];
+                parser = [[LI18nTranslationSourceParser alloc] initWithSourceString:fdata_];
                 parser.patterns = self.matchPatterns;
                 ret = [parser parse:&err];
                 lassert(ret);
@@ -377,7 +375,7 @@ matchPatterns;
     lassert(parseResults);
     
     // prepare the comments
-    NSMutableDictionary *tmp = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *tmp = [[NSMutableDictionary alloc] init];
     
     for(NSString *filename in parseResults)
     {
@@ -386,7 +384,7 @@ matchPatterns;
         
         for(NSString *key in strings)
         {
-            NSMutableArray *ar = [tmp objectForKey:key] ? [tmp objectForKey:key] : [[[NSMutableArray alloc] init] autorelease];
+            NSMutableArray *ar = [tmp objectForKey:key] ? [tmp objectForKey:key] : [[NSMutableArray alloc] init];
             
             if ([ar containsObject:baseFilename])
             {

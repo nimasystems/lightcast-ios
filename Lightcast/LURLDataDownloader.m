@@ -47,8 +47,6 @@ timeout;
     L_RELEASE(downloadedUrl);
     L_RELEASE(cacheDir);
     L_RELEASE(downloader);
-    
-    [super dealloc];
 }
 
 + (LURLDataDownloader*)downloadedUrlData:(NSURL*)url cacheDir:(NSString*)cacheDir {
@@ -56,7 +54,7 @@ timeout;
         return nil;
     }
     
-    LURLDataDownloader *d = [[[LURLDataDownloader alloc] initWithUrl:url] autorelease];
+    LURLDataDownloader *d = [[LURLDataDownloader alloc] initWithUrl:url];
     d.cacheDir = cacheDir;
     
     return d;

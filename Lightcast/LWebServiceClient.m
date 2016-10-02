@@ -65,13 +65,12 @@ results=_results;
     {
         if (!hostname || [hostname isEqual:[NSNull null]])
         {
-            [self release];
             self = nil;
             return nil;
         }
         
         _secureCalls = secureCalls;
-        _hostname = [hostname retain];
+        _hostname = hostname;
         
         [self reset];
     }
@@ -84,8 +83,6 @@ results=_results;
     L_RELEASE(_response);
     
     [self reset];
-    
-    [super dealloc];
 }
 
 #pragma mark - Request
@@ -113,27 +110,23 @@ results=_results;
     
     if (serviceName != _serviceName)
     {
-        L_RELEASE(_serviceName);
-        _serviceName = [serviceName retain];
+        _serviceName = serviceName;
     }
     
     if (methodName != _methodName)
     {
-        L_RELEASE(_methodName);
-        _methodName = [methodName retain];
+        _methodName = methodName;
     }
     
     if (params != _params)
     {
-        L_RELEASE(_params);
-        _params = [params retain];
+        _params = params;
     }
     
     BOOL res = [self makeRequest:error];
     
     if (error != NULL && *error != nil)
     {
-        L_RELEASE(_lastError);
         _lastError = [*error copy];
     }
     
@@ -171,7 +164,7 @@ results=_results;
     
     if ([_methodName isEqualToString:@"create_member"] || [_methodName isEqualToString:@"link_member_facebook_token"]) 
     {   
-        _data = [[self convertToPostWithServiceName:_serviceName methodName:_methodName andParams:paramsStrForPost andURL:[NSString stringWithFormat:@"%@://%@", (_secureCalls ? @"https" : @"http"), _hostname] error:error] retain];
+        _data = [self convertToPostWithServiceName:_serviceName methodName:_methodName andParams:paramsStrForPost andURL:[NSString stringWithFormat:@"%@://%@", (_secureCalls ? @"https" : @"http"), _hostname] error:error];
     }
     else
     {
@@ -198,7 +191,9 @@ results=_results;
         
         if (![_methodName isEqualToString:@"create_member"] && ![_methodName isEqualToString:@"link_member_facebook_token"]) 
         {
-            _data = [[NSURLConnection sendSynchronousRequest:_request returningResponse:&_response error:error] retain];
+            NSHTTPURLResponse *response = nil;
+            _data = [NSURLConnection sendSynchronousRequest:_request returningResponse:&response error:error];
+            _response = response;
         }
         
         NSInteger statusCode = _response ? [_response statusCode] : 0;
@@ -277,7 +272,7 @@ results=_results;
             }
             
             // assign
-            _results = [objres retain];
+            _results = objres;
         }
         @catch (NSException *e) 
         {
@@ -357,7 +352,7 @@ results=_results;
 - (NSData*)convertToPostWithServiceName:(NSString*)_serviceForPost methodName:(NSString*)_methodForPost andParams:(NSString*)_paramsForPost andURL:(NSString*)_urlForPost error:(NSError**)_errorPost {
     
     //NSString * post =[[NSString alloc] initWithFormat:@"?service=%@&method=%@%@",_serviceForPost, _methodForPost, _paramsForPost];
-    NSString * post = [[[NSString alloc] initWithFormat:@"%@", _paramsForPost] autorelease];
+    NSString * post = [[NSString alloc] initWithFormat:@"%@", _paramsForPost];
     
     //NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding];
@@ -374,10 +369,13 @@ results=_results;
     [_request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [_request setHTTPBody:postData];
     
-    NSData * tmp = [NSURLConnection sendSynchronousRequest:_request returningResponse:&_response error:_errorPost];
+    NSHTTPURLResponse *response = nil;
+    NSData * tmp = [NSURLConnection sendSynchronousRequest:_request returningResponse:&response error:_errorPost];
+    
+    _response = response;
     
 #ifdef DEBUG
-    NSString * data = [[[NSString alloc]initWithData:tmp encoding:NSUTF8StringEncoding] autorelease];
+    NSString * data = [[NSString alloc]initWithData:tmp encoding:NSUTF8StringEncoding];
     LogDebug(@"%@",data);
 #endif
     
@@ -385,8 +383,8 @@ results=_results;
 }
 
 - (NSString *)urlEncodeValue:(NSString *)str {
-    NSString *result = (NSString *) CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)str, NULL, CFSTR("?=&+"), kCFStringEncodingUTF8);
-    return [result autorelease];
+    NSString *result = (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)str, NULL, CFSTR("?=&+"), kCFStringEncodingUTF8));
+    return result;
 }
 
 #pragma mark - Static method for a new request
@@ -398,7 +396,7 @@ results=_results;
     
     [wc makeRequest:serviceName methodName:methodName params:params error:error];
     
-    return [wc autorelease];
+    return wc;
 }
 
 @end

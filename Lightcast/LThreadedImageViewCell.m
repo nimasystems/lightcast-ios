@@ -44,7 +44,6 @@ NSString *const lnThreadedImageCellDefaultLocalImageKey = @"constant.lnThreadedI
     
     //L_RELEASE(lbl);
     L_RELEASE(progressView);
-    [super dealloc];
 }
 
 - (UIImage*)defaultImage {
@@ -77,19 +76,19 @@ NSString *const lnThreadedImageCellDefaultLocalImageKey = @"constant.lnThreadedI
 }
 
 /*
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    CGRect contentRect = self.contentView.bounds;
-    CGFloat boundsX = contentRect.origin.x;
-    CGRect frame;
-    
-    frame= CGRectMake(boundsX+10 ,0, 50, 50);
-    imageView.frame = frame;
-    
-    frame = CGRectMake(frame.origin.x + frame.size.width + 2, 0, 100, 50);
-    lbl.frame = frame;
-}*/
+ - (void)layoutSubviews {
+ [super layoutSubviews];
+ 
+ CGRect contentRect = self.contentView.bounds;
+ CGFloat boundsX = contentRect.origin.x;
+ CGRect frame;
+ 
+ frame= CGRectMake(boundsX+10 ,0, 50, 50);
+ imageView.frame = frame;
+ 
+ frame = CGRectMake(frame.origin.x + frame.size.width + 2, 0, 100, 50);
+ lbl.frame = frame;
+ }*/
 
 - (void)reload {
     
@@ -111,19 +110,19 @@ NSString *const lnThreadedImageCellDefaultLocalImageKey = @"constant.lnThreadedI
 }
 
 /*
-- (void)showProgressView {
-    
-    UIActivityIndicatorView* activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [activityView sizeToFit];
-    activityView.tag = 2000;
-    [self.imageView addSubview:activityView];
-    [activityView startAnimating];
-    [activityView release];
-}
-
-- (void)hideProgressView {
-    [[imageView viewWithTag:2000] removeFromSuperview];
-}*/
+ - (void)showProgressView {
+ 
+ UIActivityIndicatorView* activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+ [activityView sizeToFit];
+ activityView.tag = 2000;
+ [self.imageView addSubview:activityView];
+ [activityView startAnimating];
+ [activityView release];
+ }
+ 
+ - (void)hideProgressView {
+ [[imageView viewWithTag:2000] removeFromSuperview];
+ }*/
 
 - (id)loadInOperation {
     

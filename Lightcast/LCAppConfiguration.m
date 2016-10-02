@@ -50,8 +50,6 @@ cachesPath;
     L_RELEASE(temporaryPath);
     L_RELEASE(libraryPath);
     L_RELEASE(cachesPath);
-    
-    [super dealloc];
 }
 
 #pragma mark - Helpers

@@ -45,8 +45,6 @@ filterDelegate;
     
     L_RELEASE(_unfilteredDictionary);
     L_RELEASE(_filteredDictionary);
-    
-    [super dealloc];
 }
 
 #pragma mark - Getters / Setters
@@ -88,7 +86,7 @@ filterDelegate;
         return;
     }
     
-    NSMutableDictionary *filteredDictionary_ = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *filteredDictionary_ = [[NSMutableDictionary alloc] init];
     
     for(id key in _unfilteredDictionary)
     {
@@ -103,7 +101,7 @@ filterDelegate;
     if (filteredDictionary_ != _filteredDictionary)
     {
         L_RELEASE(_filteredDictionary);
-        _filteredDictionary = [[NSDictionary dictionaryWithDictionary:filteredDictionary_] retain];
+        _filteredDictionary = [NSDictionary dictionaryWithDictionary:filteredDictionary_];
     }
     
     // inform the delegate
@@ -202,7 +200,7 @@ filterDelegate;
 {
     return [[self actualDictionary] writeToURL:url atomically:atomically];
 }
- 
+
 - (NSArray *)keysSortedByValueUsingSelector:(SEL)comparator
 {
     return [[self actualDictionary] keysSortedByValueUsingSelector:comparator];

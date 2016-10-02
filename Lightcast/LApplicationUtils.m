@@ -43,14 +43,14 @@
 @implementation LApplicationUtils
 
 + (BOOL)resetFolder:(NSString*)folderName error:(NSError**)error {
-	
+    
     if (error != NULL)
     {
         *error = nil;
     }
     
-	NSFileManager *fm = [NSFileManager defaultManager];
-
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
     BOOL res = NO;
     
     if ([NSString isNullOrEmpty:folderName])
@@ -63,7 +63,7 @@
     {
         return YES;
     }
-	
+    
     LogInfo(@"resetDocumentsFolder start: %@", folderName);
     
     @try
@@ -100,7 +100,7 @@
 }
 
 + (BOOL)resetTemporaryFolder:(NSError**)error {
-	
+    
     if (error != NULL)
     {
         *error = nil;
@@ -115,38 +115,38 @@
 + (void)resetUserDefaults:(NSUserDefaults*)userDefaults preserveKeys:(NSArray*)preservedKeys
 {
     NSArray *keys = [userDefaults allSavedKeys];
-	
-	if (!keys || ![keys count]) return;
-	
-	NSInteger count = [keys count];
-	
-	LogInfo(@"resetUserDefaults: %d", (int)count);
-	
-	for (NSString *key in keys)
-	{
+    
+    if (!keys || ![keys count]) return;
+    
+    NSInteger count = [keys count];
+    
+    LogInfo(@"resetUserDefaults: %d", (int)count);
+    
+    for (NSString *key in keys)
+    {
         if (preservedKeys && [preservedKeys containsObject:key])
         {
             continue;
         }
         
-		[userDefaults removeObjectForKey:key];
-	}
+        [userDefaults removeObjectForKey:key];
+    }
     
     [userDefaults synchronize];
 }
 
 + (void)resetUserDefaults:(NSUserDefaults*)userDefaults
 {
-	[self resetUserDefaults:userDefaults preserveKeys:nil];
+    [self resetUserDefaults:userDefaults preserveKeys:nil];
 }
 
 + (NSString*)currentLocale
 {
     // obtain locale from OS
-	NSLocale * currentUsersLocale = [NSLocale currentLocale];
-	NSString * currentLocale = [currentUsersLocale localeIdentifier];
-	
-	return currentLocale;
+    NSLocale * currentUsersLocale = [NSLocale currentLocale];
+    NSString * currentLocale = [currentUsersLocale localeIdentifier];
+    
+    return currentLocale;
 }
 
 + (NSString*)bundleVersion
@@ -236,7 +236,7 @@
     isRetina = (displayScale > 1);
 #endif
     
-    NSMutableArray *items = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *items = [NSMutableArray array];
     
     [items addObject:deviceDescription];
     [items addObject:[NSString stringWithFormat:@"lightcast:%@", LC_VER]];
@@ -258,11 +258,11 @@
         }
     }
     
-	NSString * tmp = [NSString stringWithFormat:@"%@/%@ (%@)",
+    NSString * tmp = [NSString stringWithFormat:@"%@/%@ (%@)",
                       productName,
-					  version,
-					  [items componentsJoinedByString:@"; "]
-					  ];
+                      version,
+                      [items componentsJoinedByString:@"; "]
+                      ];
     
     return tmp;
 }
@@ -272,7 +272,7 @@
 + (NSString*)formattedDeviceInfoString
 {
     // TODO: Find a way to obtain this once statically
-    LDeviceSystemInfo *sysInfo = [[[LDeviceSystemInfo alloc] init] autorelease];
+    LDeviceSystemInfo *sysInfo = [[LDeviceSystemInfo alloc] init];
     
     lassert(![NSString isNullOrEmpty:sysInfo.model]);
     lassert(![NSString isNullOrEmpty:sysInfo.systemName]);

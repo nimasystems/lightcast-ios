@@ -58,7 +58,7 @@ adapterName;
         clName = [clName substringWithRange:NSMakeRange(1, 
                                                         [clName length]-14
                                                         )];
-        adapterName = [clName retain];
+        adapterName = clName;
         
         LogInfo(@"Storage adapter: %@ initialized", adapterName);
     }
@@ -68,7 +68,6 @@ adapterName;
 - (void)dealloc {
     [self sync];
     L_RELEASE(adapterName);
-    [super dealloc];
 }
 
 #pragma mark -
@@ -120,7 +119,7 @@ adapterName;
     Class class = NSClassFromString(className);
     LStorageAdapter<LStorageAdapterBehaviour> * instance = [[class alloc] init];
     
-    return [instance autorelease];
+    return instance;
 }
 
 @end

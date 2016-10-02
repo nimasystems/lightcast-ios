@@ -60,14 +60,13 @@ pluginName;
         clName = [clName substringWithRange:NSMakeRange(1, 
                                                         [clName length]-7
                                                         )];
-        pluginName = [clName retain];
+        pluginName = clName;
     }
     return self;
 }
 
 - (void)dealloc {
     L_RELEASE(pluginName);
-    [super dealloc];
 }
 
 #pragma mark - 
@@ -112,21 +111,14 @@ pluginName;
     
     LPlugin<LPluginBehaviour> * instance = [[class alloc] init];
     
-    @try 
+    NSString * name = instance.pluginName;
+    NSString * ver = [instance version];
+    
+    // validate
+    if (!name || ![name length] || !ver || ![ver length])
     {
-        NSString * name = instance.pluginName;
-        NSString * ver = [instance version];
-        
-        // validate
-        if (!name || ![name length] || !ver || ![ver length])
-        {
-            LogError(@"pluginFactory: Invalid plugin definitions: %@", pluginName);
-            return nil;
-        }
-    }
-    @finally 
-    {
-        [instance autorelease];
+        LogError(@"pluginFactory: Invalid plugin definitions: %@", pluginName);
+        return nil;
     }
     
     return instance;
@@ -136,14 +128,14 @@ pluginName;
 
 
 - (NSString *)version {
-	return nil;
+    return nil;
 }
 
 - (BOOL)checkPluginRequirements:(NSString**)minLightcastVer
                 maxLightcastVer:(NSString**)maxLightcastVer
              pluginRequirements:(NSArray**)pluginRequirements {
-	
-	return NO;
+    
+    return NO;
 }
 
 

@@ -46,15 +46,15 @@ controllerDelegate;
     if (self)
     {
         selectedViewController = nil;
-        tabBar = [tabBar_ retain];
-        _innerView = [[[UIView alloc] init] autorelease];
+        tabBar = tabBar_;
+        _innerView = [[UIView alloc] init];
     }
     return self;
 }
 
 - (id)init
 {
-    return [self initWithTabBar:[[[LCoreTabBarView alloc] init] autorelease]];
+    return [self initWithTabBar:[[LCoreTabBarView alloc] init]];
 }
 
 - (void)dealloc
@@ -65,8 +65,6 @@ controllerDelegate;
     L_RELEASE(tabBar);
     L_RELEASE(_innerView);
     L_RELEASE(viewControllers);
-    
-    [super dealloc];
 }
 
 #pragma mark - View Related
@@ -245,7 +243,7 @@ controllerDelegate;
     }
     
     NSString *anim = shouldHide ? kLCoreTabBarControllerBottomBarHideAnimation : kLCoreTabBarControllerBottomBarShowAnimation;
-    [UIView beginAnimations:anim context:self.view];
+    [UIView beginAnimations:anim context:(__bridge void * _Nullable)(self.view)];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(bottomBarShowHideAnimationCompleted:)];
@@ -480,7 +478,7 @@ controllerDelegate;
                     selectedImg = itm ? itm.selectedImage : nil;
                 }
                 
-                tab = [[[LCoreTabBarControllerTab alloc] initWithTitle:title icon:img selectedIcon:selectedImg] autorelease];
+                tab = [[LCoreTabBarControllerTab alloc] initWithTitle:title icon:img selectedIcon:selectedImg];
             }
             
             // add the tab

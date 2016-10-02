@@ -23,11 +23,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
-
 - (BOOL)initialize:(LCAppConfiguration*)aConfiguration notificationDispatcher:(LNotificationDispatcher*)aDispatcher error:(NSError**)error
 {
     if ([super initialize:aConfiguration notificationDispatcher:aDispatcher error:error])
@@ -37,14 +32,12 @@
         
         if (aConfiguration)
         {
-            configuration = [aConfiguration retain];
+            configuration = aConfiguration;
         }
-        
-        
         
         LogInfo(@"Reachability plugin started");
     }
-	
+    
     return YES;
 }
 
@@ -70,7 +63,7 @@
 
 - (id<LDatabaseSchemaProtocol>)databaseSchemaInstance
 {
-	return nil;
+    return nil;
 }
 
 @end

@@ -42,7 +42,7 @@
             keyIndex = 0, keyPtr = keyData;
     }
     
-    return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 - (NSData*)obsd:(unsigned char *)input len:(uint)len cls:(Class)cls {

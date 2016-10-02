@@ -62,12 +62,12 @@ showsTouchEffect;
         
         defaultBgColor = [UIColor clearColor];
         defaultLabelTextColor = [UIColor blackColor];
-        selectedLabelTextColor = [[UIColor whiteColor] retain];
-        selectedBgColor = [[UIColor redColor] retain];
-        todayBgColor = [[UIColor purpleColor] retain];
-        todayLabelTextColor = [[UIColor whiteColor] retain];
-        otherMonthBgColor = [[UIColor grayColor] retain];
-        otherMonthLabelTextColor = [[UIColor whiteColor] retain];
+        selectedLabelTextColor = [UIColor whiteColor];
+        selectedBgColor = [UIColor redColor];
+        todayBgColor = [UIColor purpleColor];
+        todayLabelTextColor = [UIColor whiteColor];
+        otherMonthBgColor = [UIColor grayColor];
+        otherMonthLabelTextColor = [UIColor whiteColor];
         
         self.backgroundColor = defaultBgColor;
         
@@ -75,7 +75,7 @@ showsTouchEffect;
         //self.layer.borderColor = [[UIColor grayColor] CGColor];
         
         // UILabel Date
-        _dateLabel = [[[UILabel alloc] initWithFrame:self.bounds] autorelease];
+        _dateLabel = [[UILabel alloc] initWithFrame:self.bounds];
         _dateLabel.backgroundColor = [UIColor clearColor];
         _dateLabel.textColor = defaultLabelTextColor;
         [_dateLabel setText:@""];
@@ -103,8 +103,6 @@ showsTouchEffect;
     L_RELEASE(otherMonthLabelTextColor);
     L_RELEASE(todayBgColor);
     L_RELEASE(todayLabelTextColor);
-    
-    [super dealloc];
 }
 
 #pragma mark - Touches
@@ -269,8 +267,7 @@ showsTouchEffect;
 {
     if (selectedLabelTextColor != selectedLabelTextColor_)
     {
-        L_RELEASE(selectedLabelTextColor);
-        selectedLabelTextColor = [selectedLabelTextColor_ retain];
+        selectedLabelTextColor = selectedLabelTextColor_;
         
         if (self.selected && self.isDateWithinCurrentMonth)
         {
@@ -283,8 +280,7 @@ showsTouchEffect;
 {
     if (selectedBgColor != selectedBgColor_)
     {
-        L_RELEASE(selectedBgColor);
-        selectedBgColor = [selectedBgColor_ retain];
+        selectedBgColor = selectedBgColor_;
         
         if (self.selected && self.isDateWithinCurrentMonth)
         {
@@ -297,8 +293,7 @@ showsTouchEffect;
 {
     if (otherMonthBgColor != otherMonthBgColor_)
     {
-        L_RELEASE(otherMonthBgColor);
-        otherMonthBgColor = [otherMonthBgColor_ retain];
+        otherMonthBgColor = otherMonthBgColor_;
         
         if (!self.selected && self.isDateWithinCurrentMonth)
         {
@@ -311,8 +306,7 @@ showsTouchEffect;
 {
     if (otherMonthLabelTextColor != otherMonthLabelTextColor_)
     {
-        L_RELEASE(otherMonthLabelTextColor);
-        otherMonthLabelTextColor = [otherMonthLabelTextColor_ retain];
+        otherMonthLabelTextColor = otherMonthLabelTextColor_;
         
         if (!self.selected && self.isDateWithinCurrentMonth)
         {
@@ -325,8 +319,7 @@ showsTouchEffect;
 {
     if (defaultBgColor != defaultBgColor_)
     {
-        L_RELEASE(defaultBgColor);
-        defaultBgColor = [defaultBgColor_ retain];
+        defaultBgColor = defaultBgColor_;
         
         if (!self.selected && self.isDateWithinCurrentMonth)
         {
@@ -339,8 +332,7 @@ showsTouchEffect;
 {
     if (defaultLabelTextColor != defaultLabelTextColor_)
     {
-        L_RELEASE(defaultLabelTextColor);
-        defaultLabelTextColor = [defaultLabelTextColor_ retain];
+        defaultLabelTextColor = defaultLabelTextColor_;
         
         if (!self.selected && self.isDateWithinCurrentMonth)
         {
@@ -353,8 +345,7 @@ showsTouchEffect;
 {
     if (todayBgColor != todayBgColor_)
     {
-        L_RELEASE(todayBgColor);
-        todayBgColor = [todayBgColor_ retain];
+        todayBgColor = todayBgColor_;
         
         if (isToday)
         {
@@ -375,8 +366,7 @@ showsTouchEffect;
 {
     if (todayLabelTextColor != todayLabelTextColor_)
     {
-        L_RELEASE(todayLabelTextColor);
-        todayLabelTextColor = [todayLabelTextColor_ retain];
+        todayLabelTextColor = todayLabelTextColor_;
         
         if (isToday)
         {

@@ -16,7 +16,7 @@ NSString *const LCloudBackupErrorDomain = @"com.nimasystems.iCloudBackup";
     
     LCloudFile *_uploadFile;
     NSArray *_uploadFiles;
-
+    
     BOOL _isCancelled;
     
     NSObject *_queryLock;
@@ -60,28 +60,24 @@ arrayFilesInICloud;
     if (_queryDataQueue)
     {
         dispatch_sync(_queryDataQueue, ^{});
-        dispatch_release(_queryDataQueue);
         _queryDataQueue = NULL;
     }
     
     if (_loadDataQueue)
     {
         dispatch_sync(_loadDataQueue, ^{});
-        dispatch_release(_loadDataQueue);
         _loadDataQueue = NULL;
     }
     
     if (_queryDataQueueDownload)
     {
         dispatch_sync(_queryDataQueueDownload, ^{});
-        dispatch_release(_queryDataQueueDownload);
         _queryDataQueueDownload = NULL;
     }
     
     if (_downloadDataQueue)
     {
         dispatch_sync(_downloadDataQueue, ^{});
-        dispatch_release(_downloadDataQueue);
         _downloadDataQueue = NULL;
     }
     
@@ -97,8 +93,6 @@ arrayFilesInICloud;
     L_RELEASE(_uploadFile);
     L_RELEASE(_uploadFiles);
     L_RELEASE(_queryLock);
-    
-    [super dealloc];
 }
 
 #pragma mark - Setters / Getters
@@ -179,13 +173,12 @@ arrayFilesInICloud;
                 
                 queryFile = [[NSMetadataQuery alloc] init];
                 [queryFile setSearchScopes:[NSArray arrayWithObject:NSMetadataQueryUbiquitousDocumentsScope]];
-
+                
                 NSPredicate *pred = [NSPredicate predicateWithFormat: @"%K == %@", NSMetadataItemFSNameKey, file.filename];
                 [queryFile setPredicate:pred];
                 
                 if (_uploadFile != file) {
-                    L_RELEASE(_uploadFile);
-                    _uploadFile = [file retain];
+                    _uploadFile = file;
                 }
                 
                 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryDidFinishGatheringForFile:) name:NSMetadataQueryDidFinishGatheringNotification object:queryFile];
@@ -214,7 +207,6 @@ arrayFilesInICloud;
             
             // wait here
             dispatch_semaphore_wait(_querySyncSemaphore, DISPATCH_TIME_FOREVER);
-            dispatch_release(_querySyncSemaphore);
             _querySyncSemaphore = NULL;
         }
         @catch (NSException *e) {
@@ -259,7 +251,7 @@ arrayFilesInICloud;
         [queryData stopQuery];
         
         BOOL fileExistsOnCloud = ([queryData resultCount] > 0);
-
+        
         if (fileExistsOnCloud && !file.overwriteIfExisting)
         {
             LogInfo(@"File already existed on iCloud, overwrite: NO - so doing nothing");
@@ -323,7 +315,7 @@ arrayFilesInICloud;
                 }
             }
             @finally {
-                 dispatch_semaphore_signal(_querySyncSemaphore);
+                dispatch_semaphore_signal(_querySyncSemaphore);
             }
         });
     }
@@ -405,9 +397,9 @@ arrayFilesInICloud;
         lassert(localUrl);
         
         success = [fileManager setUbiquitous:YES
-                                        itemAtURL:localUrl
-                                   destinationURL:remoteUrl
-                                            error:error];
+                                   itemAtURL:localUrl
+                              destinationURL:remoteUrl
+                                       error:error];
     }
     @finally {
         [fileManager removeItemAtPath:tempFilename error:nil];
@@ -484,8 +476,7 @@ arrayFilesInICloud;
                 
                 if (_uploadFiles != uploadFiles)
                 {
-                    L_RELEASE(_uploadFiles);
-                    _uploadFiles = [uploadFiles retain];
+                    _uploadFiles = uploadFiles;
                 }
                 
                 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryDidFinishGathering:) name:NSMetadataQueryDidFinishGatheringNotification object:queryFile];
@@ -515,7 +506,6 @@ arrayFilesInICloud;
             
             // wait here
             dispatch_semaphore_wait(_querySyncSemaphore, DISPATCH_TIME_FOREVER);
-            dispatch_release(_querySyncSemaphore);
             _querySyncSemaphore = NULL;
         }
         @catch (NSException *e)
@@ -573,7 +563,7 @@ arrayFilesInICloud;
             
             for (LCloudFile *file in _uploadFiles)
             {
-                NSMutableDictionary *dic = [[[NSMutableDictionary alloc] init] autorelease];
+                NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
                 
                 NSString *localFilename = file.filename;
                 
@@ -612,11 +602,11 @@ arrayFilesInICloud;
                 isAddFile = NO;
             }
         }
-
+        
         dispatch_async(_loadDataQueue, ^{
             @try {
-//#warning delete me
-//                [NSThread sleepForTimeInterval:5];
+                //#warning delete me
+                //                [NSThread sleepForTimeInterval:5];
                 
                 NSURL *ubiq = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
                 lassert(ubiq);
@@ -665,7 +655,7 @@ arrayFilesInICloud;
                     {
                         LogError(@"Unhandled exception while executing _loadDataQueue: %@", e);
                         lassert(false);
-
+                        
                         if (uploadDataDelegate && [uploadDataDelegate respondsToSelector:@selector(didCompleteUploadingDataWithError:filename:error:)])
                         {
                             [uploadDataDelegate didCompleteUploadingDataWithError:self filename:file.filename error:nil];
@@ -749,7 +739,7 @@ arrayFilesInICloud;
                 
                 queryFile = [[NSMetadataQuery alloc] init];
                 [queryFile setSearchScopes:[NSArray arrayWithObject:NSMetadataQueryUbiquitousDocumentsScope]];
-
+                
                 NSPredicate *pred = [NSPredicate predicateWithFormat: @"%K LIKE '*'", NSMetadataItemFSNameKey];
                 [queryFile setPredicate:pred];
                 
@@ -778,9 +768,8 @@ arrayFilesInICloud;
             
             // wait here
             dispatch_semaphore_wait(_querySyncSemaphoreDownload, DISPATCH_TIME_FOREVER);
-            dispatch_release(_querySyncSemaphoreDownload);
             _querySyncSemaphoreDownload = NULL;
-
+            
         }
         @catch (NSException *e)
         {
@@ -808,7 +797,7 @@ arrayFilesInICloud;
         [queryData disableUpdates];
         [queryData stopQuery];
         
-        NSMutableArray *_downloadFiles = [[[NSMutableArray alloc] init] autorelease];
+        NSMutableArray *_downloadFiles = [[NSMutableArray alloc] init];
         
         for (NSMetadataItem *item in [queryData results])
         {
@@ -816,7 +805,7 @@ arrayFilesInICloud;
             [_downloadFiles addObject:url.lastPathComponent];
         }
         
-        arrayFilesInICloud = [_downloadFiles retain];
+        arrayFilesInICloud = _downloadFiles;
         
         @synchronized(_queryLock) {
             L_RELEASE(queryFile);
@@ -855,7 +844,7 @@ arrayFilesInICloud;
     NSURL *itemURL = [[ubiq URLByAppendingPathComponent:iCloudPath] URLByAppendingPathComponent:filename];
     
     NSError *err = nil;
-    NSFileCoordinator *coordinator = [[[NSFileCoordinator alloc] initWithFilePresenter:nil] autorelease];
+    NSFileCoordinator *coordinator = [[NSFileCoordinator alloc] initWithFilePresenter:nil];
     
     [coordinator coordinateReadingItemAtURL:itemURL options:0 error:&err byAccessor:^(NSURL *newURL) {
         
@@ -895,8 +884,8 @@ arrayFilesInICloud;
         }
         
         BOOL success = [fm createFileAtPath:newPath
-                                    contents:data
-                                    attributes:nil];
+                                   contents:data
+                                 attributes:nil];
         if (!success)
         {
             LogError(@"Could not create iCloud path: %@", newPath);
@@ -935,7 +924,7 @@ arrayFilesInICloud;
     {
         [downloadDataDelegate willBeginDownloadingData:self filename:file.filename];
     }
-
+    
     dispatch_async(_downloadDataQueue, ^{
         @try {
             
@@ -992,8 +981,8 @@ arrayFilesInICloud;
     
     dispatch_async(_downloadDataQueue, ^{
         
-//        NSURL *ubiq = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
-//        lassert(ubiq);
+        //        NSURL *ubiq = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+        //        lassert(ubiq);
         
         for (LCloudFile *file in downloadFiles)
         {
@@ -1023,7 +1012,7 @@ arrayFilesInICloud;
                 }
             }
         }
-
+        
     });
     
     return YES;

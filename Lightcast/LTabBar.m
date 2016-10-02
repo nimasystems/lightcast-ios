@@ -82,8 +82,6 @@ delegate=_delegate;
     L_RELEASE(_items);
     L_RELEASE(_innerView);
     _delegate = nil;
-    
-    [super dealloc];
 }
 
 #pragma mark - Setters / Getters
@@ -91,8 +89,7 @@ delegate=_delegate;
 - (void)setItems:(NSArray *)items {
     if (_items != items)
     {
-        [_items release];
-        _items = [items retain]; // copy ?
+        _items = items;
         
         [self reloadTabItems];
     }
@@ -136,7 +133,7 @@ delegate=_delegate;
     if (!_items) return;
     
     CGFloat itemWidth = (_tabItemSize.width);
-
+    
     NSInteger visibleItems = [self maxVisibleTabsForWidth:itemWidth];
     
     // set the alignment
@@ -170,13 +167,13 @@ delegate=_delegate;
     
     for(int i=0;i<visibleItems;i++)
     {
-        UIView *view = [[[UIView alloc] init] autorelease];
+        UIView *view = [[UIView alloc] init];
         view.tag = i;
         
         UITabBarItem *itm = [_items objectAtIndex:i];
         
         // create the button which will receive the touch events
-        UIButton *itemButton = [[[UIButton alloc] init] autorelease];
+        UIButton *itemButton = [[UIButton alloc] init];
         itemButton.backgroundColor = [UIColor clearColor];
         itemButton.titleLabel.textColor = [UIColor blackColor];
         itemButton.tag = i;
@@ -207,7 +204,7 @@ delegate=_delegate;
 }
 
 - (void)layoutTabs {
-
+    
     CGFloat itemWidth = (_tabItemSize.width);
     CGFloat tHeight = _tabItemSize.height > self.bounds.size.height ? self.bounds.size.height : _tabItemSize.height;
     
@@ -265,9 +262,9 @@ delegate=_delegate;
         case tabsAlignmentCenter:
         {
             r = CGRectMake(round(self.bounds.size.width / 2 - tWidth / 2),
-             0,
-             tWidth,
-             tHeight);
+                           0,
+                           tWidth,
+                           tHeight);
             
             break;
         }

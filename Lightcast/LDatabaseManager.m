@@ -55,30 +55,28 @@ mainAdapter=_mainAdapter;
 
 - (id)init {
     self = [super init];
-	if (self)
-	{
-		_mainAdapter = nil;
-		_appDatabaseInstances = [[NSMutableArray alloc] init];
-		_adapters = [[NSMutableDictionary alloc] init];
-	}
-	return self;
+    if (self)
+    {
+        _mainAdapter = nil;
+        _appDatabaseInstances = [[NSMutableArray alloc] init];
+        _adapters = [[NSMutableDictionary alloc] init];
+    }
+    return self;
 }
 
 - (void)dealloc {
     
-	// shutdown all live adapters
-	for(NSString *adapterIdentifier in _adapters)
-	{
-		LDatabaseAdapter *adapter = [_adapters objectForKey:adapterIdentifier];
-		
-		[self shutdownAdapter:adapter];
-	}
+    // shutdown all live adapters
+    for(NSString *adapterIdentifier in _adapters)
+    {
+        LDatabaseAdapter *adapter = [_adapters objectForKey:adapterIdentifier];
+        
+        [self shutdownAdapter:adapter];
+    }
     
-	L_RELEASE(_appDatabaseInstances);
-	L_RELEASE(_adapters);
-	L_RELEASE(_mainAdapter);
-	
-	[super dealloc];
+    L_RELEASE(_appDatabaseInstances);
+    L_RELEASE(_adapters);
+    L_RELEASE(_mainAdapter);
 }
 
 #pragma mark - LSystemObject derived
@@ -157,19 +155,19 @@ mainAdapter=_mainAdapter;
 #pragma mark - Configuration
 
 - (LConfiguration*)defaultConfiguration {
-    return [[[LConfiguration alloc] initWithNameAndDeepValues:@"database_manager"
-                                                   deepValues:
-             [NSDictionary dictionaryWithObjectsAndKeys:
-              [NSNumber numberWithBool:NO], @"useDatabase", /* if NO - no adapter will be initialized at startup - even if defined below */
-			  [NSNull null], @"primary_adapter", /* identifier of the primary adapter which must be initialized upon startup */
-			  [NSArray arrayWithObjects:	/* an array of database adapters */
-			   [NSDictionary dictionaryWithObjectsAndKeys:	/* null database adapter - does nothing */
-				@"Null", @"adapter",	/* the adapter's name for the class factory */
-				@"", @"connectionString", /* connection string */
-				@"", @"identifier", /* identifier */
-				nil],
-			   nil], @"adapters",
-              nil]] autorelease];
+    return [[LConfiguration alloc] initWithNameAndDeepValues:@"database_manager"
+                                                  deepValues:
+            [NSDictionary dictionaryWithObjectsAndKeys:
+             [NSNumber numberWithBool:NO], @"useDatabase", /* if NO - no adapter will be initialized at startup - even if defined below */
+             [NSNull null], @"primary_adapter", /* identifier of the primary adapter which must be initialized upon startup */
+             [NSArray arrayWithObjects:	/* an array of database adapters */
+              [NSDictionary dictionaryWithObjectsAndKeys:	/* null database adapter - does nothing */
+               @"Null", @"adapter",	/* the adapter's name for the class factory */
+               @"", @"connectionString", /* connection string */
+               @"", @"identifier", /* identifier */
+               nil],
+              nil], @"adapters",
+             nil]];
 }
 
 #pragma mark - Database Adapters Initialization / Management
@@ -177,154 +175,153 @@ mainAdapter=_mainAdapter;
 - (BOOL)initializeAdapter:(LDatabaseAdapter*)adapter identifier:(NSString*)identifier connectionString:(NSString*)connectionString error:(NSError **)error {
     
     @synchronized(self)
-	{
-		@try 
-		{
-			if (![adapter connect:connectionString error:error])
-			{
-				return NO;
-			}
-			
-			// check if not already existing
-			if ([_adapters objectForKey:identifier])
-			{
-				if (error != NULL)
-				{
-					NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-					NSString *errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Database adapter with the same identifier (%@) already initialized"), identifier];
-					[errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
-					*error = [NSError errorWithDomain:LERR_DOMAIN_DB code:LERR_DB_CANT_INIT_ADAPTER userInfo:errorDetail];
-				}
-				
-				return NO;
-			}
-			
-			// add it to all adapters
-			[_adapters setObject:adapter forKey:identifier];
-			
-			LogInfo(@"Database adapter with identifier: %@ initialized", identifier);
-			
-			// make it primary if no adapters exist prior this one
-			if ([_adapters count] <= 1)
-			{
-				if (_mainAdapter != adapter)
-				{
-					L_RELEASE(_mainAdapter);
-					_mainAdapter = [adapter retain];
-					
-					LogInfo(@"Main database adapter with identifier: %@ set", identifier);
-				}
-			}
-		}
-		@catch (NSException *e) 
-		{
-			LogError(@"Error while trying to initialize db adapter: %@", e);
-			return NO;
-		}
-		
-		return YES;
-	}
+    {
+        @try 
+        {
+            if (![adapter connect:connectionString error:error])
+            {
+                return NO;
+            }
+            
+            // check if not already existing
+            if ([_adapters objectForKey:identifier])
+            {
+                if (error != NULL)
+                {
+                    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                    NSString *errStr = [NSString stringWithFormat:LightcastLocalizedString(@"Database adapter with the same identifier (%@) already initialized"), identifier];
+                    [errorDetail setValue:errStr forKey:NSLocalizedDescriptionKey];
+                    *error = [NSError errorWithDomain:LERR_DOMAIN_DB code:LERR_DB_CANT_INIT_ADAPTER userInfo:errorDetail];
+                }
+                
+                return NO;
+            }
+            
+            // add it to all adapters
+            [_adapters setObject:adapter forKey:identifier];
+            
+            LogInfo(@"Database adapter with identifier: %@ initialized", identifier);
+            
+            // make it primary if no adapters exist prior this one
+            if ([_adapters count] <= 1)
+            {
+                if (_mainAdapter != adapter)
+                {
+                    _mainAdapter = adapter;
+                    
+                    LogInfo(@"Main database adapter with identifier: %@ set", identifier);
+                }
+            }
+        }
+        @catch (NSException *e) 
+        {
+            LogError(@"Error while trying to initialize db adapter: %@", e);
+            return NO;
+        }
+        
+        return YES;
+    }
 }
 
 - (void)disconnectAllAdapters {
-	
-	LogInfo(@"DatabaseManager: Disconnect All Adapters");
-	
-	for (NSString *adapterIdentifier in _adapters)
-	{
-		[[_adapters objectForKey:adapterIdentifier] disconnect];
-	}
+    
+    LogInfo(@"DatabaseManager: Disconnect All Adapters");
+    
+    for (NSString *adapterIdentifier in _adapters)
+    {
+        [[_adapters objectForKey:adapterIdentifier] disconnect];
+    }
 }
 
 - (void)shutdownAdapterWithIdentifier:(NSString*)identifier {
-	
-	for (NSString *adapterIdentifier in _adapters)
-	{
-		if ([adapterIdentifier isEqualToString:identifier])
-		{
-			[self shutdownAdapter:[_adapters objectForKey:adapterIdentifier]];
-			break;
-		}
-	}
+    
+    for (NSString *adapterIdentifier in _adapters)
+    {
+        if ([adapterIdentifier isEqualToString:identifier])
+        {
+            [self shutdownAdapter:[_adapters objectForKey:adapterIdentifier]];
+            break;
+        }
+    }
 }
 
 - (void)shutdownAdapter:(LDatabaseAdapter<LDatabaseAdapterProtocol>*)adapter {
-	
-	@synchronized(self)
-	{
-		LogInfo(@"Shutdown db adapter: %@", adapter);
-		
-		LDatabaseAdapter *foundAdapter = nil;
-		NSString *foundIdentifier = nil;
-		
-		// try to find it
-		for(NSString *adapterIdentifer in _adapters)
-		{
-			LDatabaseAdapter *obj = [_adapters objectForKey:adapterIdentifer];
-			foundIdentifier = adapterIdentifer;
-			
-			if ([obj isEqual:adapter])
-			{
-				foundAdapter = obj;
-				
-				break;
-			}
-		}
-		
-		if (!foundAdapter)
-		{
-			LogError(@"DB Adapter not found");
-			return;
-		}
-		
-		// disconnect
-		@try 
-		{
-			[foundAdapter disconnect];
-		}
-		@catch (NSException *e) 
-		{
-			LogError(@"Error while trying to shutdown adapter %@", foundAdapter);
-		}
-		
-		// remove from holder and main db var if it is the main db
-		[_adapters removeObjectForKey:foundIdentifier];
-		
-		LogInfo(@"DB Adapter shutdown");
-		
-		if ([_mainAdapter isEqual:foundAdapter])
-		{
-			L_RELEASE(_mainAdapter);
-			
-			LogInfo(@"Main db adapter shutdown");
-		}
-	}
+    
+    @synchronized(self)
+    {
+        LogInfo(@"Shutdown db adapter: %@", adapter);
+        
+        LDatabaseAdapter *foundAdapter = nil;
+        NSString *foundIdentifier = nil;
+        
+        // try to find it
+        for(NSString *adapterIdentifer in _adapters)
+        {
+            LDatabaseAdapter *obj = [_adapters objectForKey:adapterIdentifer];
+            foundIdentifier = adapterIdentifer;
+            
+            if ([obj isEqual:adapter])
+            {
+                foundAdapter = obj;
+                
+                break;
+            }
+        }
+        
+        if (!foundAdapter)
+        {
+            LogError(@"DB Adapter not found");
+            return;
+        }
+        
+        // disconnect
+        @try 
+        {
+            [foundAdapter disconnect];
+        }
+        @catch (NSException *e) 
+        {
+            LogError(@"Error while trying to shutdown adapter %@", foundAdapter);
+        }
+        
+        // remove from holder and main db var if it is the main db
+        [_adapters removeObjectForKey:foundIdentifier];
+        
+        LogInfo(@"DB Adapter shutdown");
+        
+        if ([_mainAdapter isEqual:foundAdapter])
+        {
+            L_RELEASE(_mainAdapter);
+            
+            LogInfo(@"Main db adapter shutdown");
+        }
+    }
 }
 
 - (LDatabaseAdapter*)adapterWithIdentifier:(NSString*)adapterIdentifier {
-	
-	for (NSString *identifier in _adapters)
-	{
-		if ([identifier isEqualToString:adapterIdentifier])
-		{
-			LDatabaseAdapter *adapter = [_adapters objectForKey:identifier];
-			
-			return adapter;
-		}
-	}
-	
-	return nil;
+    
+    for (NSString *identifier in _adapters)
+    {
+        if ([identifier isEqualToString:adapterIdentifier])
+        {
+            LDatabaseAdapter *adapter = [_adapters objectForKey:identifier];
+            
+            return adapter;
+        }
+    }
+    
+    return nil;
 }
 
 #pragma mark - AppDatabaseInstances methods
 
 - (BOOL)initializeAppDatabaseInstance:(id<LAppDatabaseInstance>)databaseInstanceObject error:(NSError**)error {
-	return [self initializeAppDatabaseInstance:databaseInstanceObject databaseAdapter:nil error:error];
+    return [self initializeAppDatabaseInstance:databaseInstanceObject databaseAdapter:nil error:error];
 }
 
 - (BOOL)initializeAppDatabaseInstance:(id<LAppDatabaseInstance>)databaseInstanceObject databaseAdapter:(LDatabaseAdapter*)databaseAdapter error:(NSError**)error
 {	
-	LDatabaseAdapter *adapter = databaseAdapter;
+    LDatabaseAdapter *adapter = databaseAdapter;
     
     @try
     {
@@ -476,14 +473,8 @@ mainAdapter=_mainAdapter;
                                 return NO;
                             }
                             
-                            @try
-                            {
-                                sqlExecFileStatements = parser.sqlItems;
-                            }
-                            @finally
-                            {
-                                [parser release];
-                            }
+                            sqlExecFileStatements = parser.sqlItems;
+                            parser = nil;
                             
                         } else
                         {
@@ -689,19 +680,19 @@ mainAdapter=_mainAdapter;
 
 - (NSArray *)executeQuery:(NSString *)sql, ... {
     
-	if (!_mainAdapter) 
-	{
-		return [NSArray array];
-	}
-	
-	NSArray *res = [_mainAdapter executeQuery:sql];
-	
-	if (!res)
-	{
-		return [NSArray array];
-	}
-	
-	return res;
+    if (!_mainAdapter) 
+    {
+        return [NSArray array];
+    }
+    
+    NSArray *res = [_mainAdapter executeQuery:sql];
+    
+    if (!res)
+    {
+        return [NSArray array];
+    }
+    
+    return res;
 }
 
 - (BOOL)executeSql:(NSString *)sql, ... {
@@ -713,17 +704,17 @@ mainAdapter=_mainAdapter;
 }
 
 - (BOOL)executeStatement:(NSError**)error sql:(NSString*)sql, ... {
-	
-	if (!_mainAdapter)
-	{
-		return NO;
-	}
-	
-	return [_mainAdapter executeStatement:error sql:sql];
+    
+    if (!_mainAdapter)
+    {
+        return NO;
+    }
+    
+    return [_mainAdapter executeStatement:error sql:sql];
 }
 
 - (BOOL)executeStatement:(NSString*)sql, ... {
-	return [self executeStatement:nil sql:sql];
+    return [self executeStatement:nil sql:sql];
 }
 
 - (BOOL)executeDirectStatement:(NSError**)error sql:(NSString*)sql, ... {
@@ -745,127 +736,127 @@ mainAdapter=_mainAdapter;
 
 - (NSUInteger)lastInsertId {
     
-	if (!_mainAdapter)
-	{
-		return NSNotFound;
-	}
-	
-	if ([_mainAdapter respondsToSelector:@selector(lastInsertId)])
-	{
-		return [_mainAdapter lastInsertId];
-	}
-	
-	return NO;
+    if (!_mainAdapter)
+    {
+        return NSNotFound;
+    }
+    
+    if ([_mainAdapter respondsToSelector:@selector(lastInsertId)])
+    {
+        return [_mainAdapter lastInsertId];
+    }
+    
+    return NO;
 }
 
 /*
-- (BOOL)commit:(NSError**)error {
-    
-    if (error != NULL)
-    {
-        *error = nil;
-    }
-    
-    if (!_mainAdapter)
-    {
-        return NO;
-    }
-    
+ - (BOOL)commit:(NSError**)error {
+ 
+ if (error != NULL)
+ {
+ *error = nil;
+ }
+ 
+ if (!_mainAdapter)
+ {
+ return NO;
+ }
+ 
 	if ([_mainAdapter respondsToSelector:@selector(commit:)])
 	{
-		return [_mainAdapter commit:error];
+ return [_mainAdapter commit:error];
 	}
 	
 	return NO;
-}
-
-- (BOOL)rollback:(NSError**)error {
-    
-    if (error != NULL)
-    {
-        *error = nil;
-    }
-    
-    if (!_mainAdapter)
-    {
-        return NO;
-    }
-    
+ }
+ 
+ - (BOOL)rollback:(NSError**)error {
+ 
+ if (error != NULL)
+ {
+ *error = nil;
+ }
+ 
+ if (!_mainAdapter)
+ {
+ return NO;
+ }
+ 
 	if ([_mainAdapter respondsToSelector:@selector(rollback:)])
 	{
-		return [_mainAdapter rollback:error];
+ return [_mainAdapter rollback:error];
 	}
 	
 	return NO;
-}
+ }
+ 
+ - (BOOL)beginTransaction:(NSError**)error {
+ 
+ if (error != NULL)
+ {
+ *error = nil;
+ }
+ 
+ if (!_mainAdapter)
+ {
+ return NO;
+ }
+ 
+	if ([_mainAdapter respondsToSelector:@selector(beginTransaction:)])
+	{
+ return [_mainAdapter beginTransaction:error];
+	}
+	
+	return NO;
+ }*/
 
-- (BOOL)beginTransaction:(NSError**)error {
-    
-    if (error != NULL)
-    {
-        *error = nil;
-    }
+- (BOOL)connect:(NSString*)connectinString error:(NSError**)error {
     
     if (!_mainAdapter)
     {
         return NO;
     }
     
-	if ([_mainAdapter respondsToSelector:@selector(beginTransaction:)])
-	{
-		return [_mainAdapter beginTransaction:error];
-	}
-	
-	return NO;
-}*/
-
-- (BOOL)connect:(NSString*)connectinString error:(NSError**)error {
-	
-	if (!_mainAdapter)
-	{
-		return NO;
-	}
-	
-	if ([_mainAdapter isConnected])
-	{
-		return YES;
-	}
-	
+    if ([_mainAdapter isConnected])
+    {
+        return YES;
+    }
+    
     return [_mainAdapter connect:connectinString error:error];
 }
 
 - (BOOL)reconnect:(NSError**)error {
-	
-	if (!_mainAdapter)
-	{
-		return NO;
-	}
-	
+    
+    if (!_mainAdapter)
+    {
+        return NO;
+    }
+    
     return [_mainAdapter reconnect:error];
 }
 
 - (void)disconnect {
-	
-	if (!_mainAdapter)
-	{
-		return;
-	}
-	
-	if (![_mainAdapter isConnected])
-	{
-		return;
-	}
-	
-	[_mainAdapter disconnect];
+    
+    if (!_mainAdapter)
+    {
+        return;
+    }
+    
+    if (![_mainAdapter isConnected])
+    {
+        return;
+    }
+    
+    [_mainAdapter disconnect];
 }
 
 - (BOOL)isConnected {
-	
-	if (!_mainAdapter)
-	{
-		return NO;
-	}
-	
+    
+    if (!_mainAdapter)
+    {
+        return NO;
+    }
+    
     return [_mainAdapter isConnected];
 }
 

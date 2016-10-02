@@ -28,7 +28,7 @@ static NSDictionary *cLStringLowercaseMap = nil;
 - (NSString*)toCyrUppercase:(NSString*)lowercaseChar {
     NSString *r = nil;
     if (!cLStringLowercaseMap) {
-        cLStringLowercaseMap = [[NSDictionary dictionaryWithObjectsAndKeys:
+        cLStringLowercaseMap = [NSDictionary dictionaryWithObjectsAndKeys:
                                 @"А", @"а",
                                 @"Б", @"б",
                                 @"В", @"в",
@@ -57,7 +57,7 @@ static NSDictionary *cLStringLowercaseMap = nil;
                                 @"Щ", @"щ",
                                 @"Я", @"я",
                                 @"Ь", @"ь",
-                                 nil] retain];
+                                nil];
     }
     
     r = ([cLStringLowercaseMap objectForKey:lowercaseChar] ? [cLStringLowercaseMap objectForKey:lowercaseChar] : lowercaseChar);
@@ -152,7 +152,7 @@ static NSDictionary *cLStringLowercaseMap = nil;
                      @{@"z": @"з"},
                      ];
     
-    sLStringTranscoderLatCyrMap = [map retain];
+    sLStringTranscoderLatCyrMap = map;
     
     return sLStringTranscoderLatCyrMap;
 }
@@ -165,7 +165,7 @@ static NSDictionary *cLStringLowercaseMap = nil;
     }
     
     // iterate the map and replace chars
-    NSString *ret = [[string copy] autorelease];
+    NSString *ret = [string copy];
     
     NSArray *map = [LStringTranscoder latinToCyrillicMap];
     

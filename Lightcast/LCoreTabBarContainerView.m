@@ -38,8 +38,8 @@ selectionAnimationDuration;
     self = [super initWithFrame:frame];
     if (self)
     {
-        tabItems = [[NSMutableArray array] retain];
-        self.selectionView = [[[LCoreTabBarSelectionView alloc] initWithFrame:CGRectZero] autorelease];
+        tabItems = [NSMutableArray array];
+        self.selectionView = [[LCoreTabBarSelectionView alloc] initWithFrame:CGRectZero];
         self.itemSpacing = kLCoreTabBarContainerViewDefaultTabSpacing;
         [self addSubview:self.selectionView];
         
@@ -53,8 +53,6 @@ selectionAnimationDuration;
     self.selectionView = nil;
     
     L_RELEASE(tabItems);
-    
-    [super dealloc];
 }
 
 #pragma mark - Getters / Setters
@@ -213,7 +211,7 @@ selectionAnimationDuration;
 {
     LCoreTabBarControllerTab *tabItem = [self.tabItems objectAtIndex:itemIndex];
     
-    [UIView beginAnimations:kLCoreTabBarContainerViewSelectionAnimation context:self.selectionView];
+    [UIView beginAnimations:kLCoreTabBarContainerViewSelectionAnimation context:(__bridge void * _Nullable)(self.selectionView)];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDuration:(CGRectIsEmpty(self.selectionView.frame) ? 0. : selectionAnimationDuration)];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];

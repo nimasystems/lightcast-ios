@@ -46,26 +46,24 @@ callStackSymbols;
 - (id)init {
     self = [super init];
     if (self) 
-	{
+    {
         error = nil;
-		exception = nil;
-		annotation = nil;
-		callStackReturnAddresses = nil;
-		callStackSymbols = nil;
+        exception = nil;
+        annotation = nil;
+        callStackReturnAddresses = nil;
+        callStackSymbols = nil;
     }
     
     return self;
 }
 
 - (void)dealloc {
-	
-	L_RELEASE(error);
-	L_RELEASE(exception);
-	L_RELEASE(callStackReturnAddresses);
-	L_RELEASE(callStackSymbols);
-	L_RELEASE(annotation);
-	
-	[super dealloc];
+    
+    L_RELEASE(error);
+    L_RELEASE(exception);
+    L_RELEASE(callStackReturnAddresses);
+    L_RELEASE(callStackSymbols);
+    L_RELEASE(annotation);
 }
 
 @end
