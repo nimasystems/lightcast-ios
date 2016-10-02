@@ -30,10 +30,10 @@ extern CGFloat const kLBadgeViewDefaultShadowOffset;
 
 @property (nonatomic, copy, setter = setValue:) NSString *value;
 
-@property (nonatomic, retain, setter = setFont:) UIFont *font;
-@property (nonatomic, retain, setter = setBackgroundColor:) UIColor *backgroundColor;
-@property (nonatomic, retain, setter = setBorderColor:) UIColor *borderColor;
-@property (nonatomic, retain, setter = setTextColor:) UIColor *textColor;
+@property (nonatomic, strong, setter = setFont:) UIFont *font;
+@property (nonatomic, strong, setter = setBackgroundColor:) UIColor *backgroundColor;
+@property (nonatomic, strong, setter = setBorderColor:) UIColor *borderColor;
+@property (nonatomic, strong, setter = setTextColor:) UIColor *textColor;
 @property (nonatomic, assign, setter = setBorderWidth:) CGFloat borderWidth;
 @property (nonatomic, assign, setter = setCornerRadius:) CGFloat cornerRadius;
 

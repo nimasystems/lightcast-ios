@@ -25,26 +25,26 @@ typedef enum
 
 @interface LCoreTabBarControllerTab : UIButton <LBadgeViewDelegate>
 
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) UIImage *icon;
-@property (nonatomic, retain) UIImage *selectedIcon;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) UIImage *icon;
+@property (nonatomic, strong) UIImage *selectedIcon;
 
 @property (nonatomic) CGFloat fixedWidth;
 @property (nonatomic) CGFloat fixedHeight;
 
-@property (nonatomic, retain, setter = setFont:) UIFont *font;
+@property (nonatomic, strong, setter = setFont:) UIFont *font;
 @property (nonatomic, assign) LCoreTabBarViewTextPosition textPosition;
-@property (nonatomic, retain, setter = setTextColor:) UIColor *textColor;
-@property (nonatomic, retain, setter = setSelectedTextColor:) UIColor *selectedTextColor;
+@property (nonatomic, strong, setter = setTextColor:) UIColor *textColor;
+@property (nonatomic, strong, setter = setSelectedTextColor:) UIColor *selectedTextColor;
 @property (nonatomic, assign, setter = setPadding:) CGSize padding;
 @property (nonatomic, assign, setter = setMargin:) CGFloat margin;
 
-@property (nonatomic, retain, setter = setBadgeView:) LBadgeView *badgeView;
+@property (nonatomic, strong, setter = setBadgeView:) LBadgeView *badgeView;
 @property (nonatomic, copy, setter = setBadgeValue:) NSString *badgeValue;
 @property (nonatomic, assign, setter = setBadgeOffset:) CGSize badgeOffset;
 
 @property (nonatomic, assign, setter = setShadowVisible:) BOOL shadowVisible;
-@property (nonatomic, retain, setter = setShadowColor:) UIColor *shadowColor;
+@property (nonatomic, strong, setter = setShadowColor:) UIColor *shadowColor;
 
 @property (nonatomic, assign) BOOL showsHighlight;
 

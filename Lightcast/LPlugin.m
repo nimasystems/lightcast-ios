@@ -30,6 +30,10 @@
  * @version $Revision: 189 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LPlugin.h"
 #import "LPluginBehaviour.h"
 

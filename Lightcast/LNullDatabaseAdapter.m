@@ -30,6 +30,10 @@
  * @version $Revision: 345 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LNullDatabaseAdapter.h"
 
 @implementation LNullDatabaseAdapter
@@ -39,7 +43,7 @@
 }
 
 - (BOOL)executeStatement:(NSError**)error sql:(NSString*)sql, ... {
-	return NO;
+    return NO;
 }
 
 - (BOOL)executeStatements:(NSArray*)statements error:(NSError**)error {
@@ -47,7 +51,7 @@
 }
 
 - (BOOL)executeStatement:(NSString*)sql, ... {
-	return NO;
+    return NO;
 }
 
 - (BOOL)connect:(NSString*)connectinString error:(NSError**)error {
@@ -55,7 +59,7 @@
 }
 
 - (BOOL)reconnect:(NSError**)error {
-	return NO;
+    return NO;
 }
 
 - (void)disconnect {
@@ -67,17 +71,17 @@
 }
 
 /*
-- (BOOL)beginTransaction {
-    return YES;
-}
-
-- (BOOL)commit {
-    return YES;
-}
-
-- (BOOL)rollback {
-    return YES;
-}*/
+ - (BOOL)beginTransaction {
+ return YES;
+ }
+ 
+ - (BOOL)commit {
+ return YES;
+ }
+ 
+ - (BOOL)rollback {
+ return YES;
+ }*/
 
 - (NSString *)databaseType {
     return nil;

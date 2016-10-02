@@ -40,7 +40,7 @@
     NSString * adapterName;
 }
 
-@property (nonatomic, retain, readonly) NSString * adapterName;
+@property (nonatomic, strong, readonly) NSString * adapterName;
 
 + (LStorageAdapter*)classFactory:(NSString*)objectName;
 

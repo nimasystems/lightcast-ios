@@ -70,7 +70,7 @@ typedef enum
 @property (readonly, getter = getDatabaseVersion) NSString *databaseVersion;
 
 @property NSInteger busyRetryTimeout;
-@property (nonatomic, retain, readonly) NSString *dataSource;
+@property (nonatomic, strong, readonly) NSString *dataSource;
 
 + (NSString *)version;
 

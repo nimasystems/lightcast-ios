@@ -13,16 +13,16 @@ extern CGFloat const kLDeviceSystemInfoDefaultTabBarHeight;
 
 @interface LDeviceSystemInfo : NSObject
 
-@property (retain, readonly, getter = getPrimaryMacAddress) NSString *primaryMacAddress;
-@property (retain, readonly, getter = getDeviceName) NSString *deviceName;
-@property (retain, readonly, getter = getDeviceDescription) NSString *deviceDescription;
+@property (strong, readonly, getter = getPrimaryMacAddress) NSString *primaryMacAddress;
+@property (strong, readonly, getter = getDeviceName) NSString *deviceName;
+@property (strong, readonly, getter = getDeviceDescription) NSString *deviceDescription;
 
-@property (retain, readonly, getter = getCurrentResolution) NSString *currentResolution;
+@property (strong, readonly, getter = getCurrentResolution) NSString *currentResolution;
 
-@property (retain, readonly, getter = getModel) NSString *model;                    // e.g. @"iPhone", @"iPod Touch"
-@property (retain, readonly, getter = getLocalizedModel) NSString *localizedModel;  // localized version of model
-@property (retain, readonly, getter = getSystemName) NSString *systemName;          // e.g. @"iPhone OS"
-@property (retain, readonly, getter = getSystemVersion) NSString *systemVersion;    // e.g. @"2.0"
+@property (strong, readonly, getter = getModel) NSString *model;                    // e.g. @"iPhone", @"iPod Touch"
+@property (strong, readonly, getter = getLocalizedModel) NSString *localizedModel;  // localized version of model
+@property (strong, readonly, getter = getSystemName) NSString *systemName;          // e.g. @"iPhone OS"
+@property (strong, readonly, getter = getSystemVersion) NSString *systemVersion;    // e.g. @"2.0"
 
 #ifdef TARGET_IOS
 @property (readonly, getter = getScreenBounds) CGRect screenBounds;
@@ -32,7 +32,7 @@ extern CGFloat const kLDeviceSystemInfoDefaultTabBarHeight;
 
 @property (readonly, getter = getOrientation) UIDeviceOrientation orientation;
 
-@property (retain, readonly, getter = getUUID) NSString *UUID;
+@property (strong, readonly, getter = getUUID) NSString *UUID;
 #endif
 
 #ifdef TARGET_OSX

@@ -53,9 +53,9 @@
 
 @interface LAdvancedTableViewController : LTableViewController<UITableViewDataSource,UITableViewDelegate,LCellLoadingDelegate>
 
-@property (nonatomic, retain, setter = setTableItemsInternal:) NSArray* tableItems;
+@property (nonatomic, strong, setter = setTableItemsInternal:) NSArray* tableItems;
 @property (nonatomic, assign) id<LAdvancedTableViewControllerDelegate> delegate;
-@property (nonatomic, retain, readonly) NSDictionary* cellOptions;
+@property (nonatomic, strong, readonly) NSDictionary* cellOptions;
 @property (nonatomic, assign, setter = setSearchIndexEnabled:) BOOL searchIndexEnabled;
 
 - (id)initWithFrame:(CGRect)frm;

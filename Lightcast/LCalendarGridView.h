@@ -12,9 +12,9 @@
 
 @property (nonatomic, assign) BOOL cellBorderToVisibleCellsOnly;
 @property (nonatomic, assign) CGFloat cellBorderWidth;
-@property (nonatomic, retain) UIColor *cellBorderColor;
+@property (nonatomic, strong) UIColor *cellBorderColor;
 
 @property (nonatomic, assign) CGSize cellSize;
-@property (nonatomic, retain) NSArray *cells;
+@property (nonatomic, strong) NSArray *cells;
 
 @end

@@ -30,18 +30,22 @@
  * @version $Revision: 219 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LWindow.h"
 
 @implementation LWindow
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	[[NSNotificationCenter defaultCenter] postNotificationName:LWindowShakeBegan object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:LWindowShakeBegan object:self];
 }
 - (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	[[NSNotificationCenter defaultCenter] postNotificationName:LWindowShakeCancelled object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:LWindowShakeCancelled object:self];
 }
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	[[NSNotificationCenter defaultCenter] postNotificationName:LWindowShakeEnded object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:LWindowShakeEnded object:self];
 }
 
 @end

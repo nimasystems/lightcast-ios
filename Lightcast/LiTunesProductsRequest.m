@@ -6,6 +6,10 @@
 //
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LiTunesProductsRequest.h"
 
 NSString *LiTunesProductsRequestErrorDomain = @"com.lightcast.iTunesProductsRequest";

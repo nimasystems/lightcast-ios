@@ -30,6 +30,10 @@
  * @version $Revision: 341 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "NSFileManager+Additions.h"
 #import "LApplicationUtils.h"
 

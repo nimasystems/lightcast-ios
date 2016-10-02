@@ -30,6 +30,10 @@
  * @version $Revision: 226 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "CALayer+Additions.h"
 
 @implementation CALayer(Additions)

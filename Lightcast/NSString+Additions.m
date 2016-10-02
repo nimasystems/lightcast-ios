@@ -30,6 +30,10 @@
  * @version $Revision: 354 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import <Security/Security.h>
 #import "NSData+Additions.h"
 #import <CommonCrypto/CommonDigest.h>

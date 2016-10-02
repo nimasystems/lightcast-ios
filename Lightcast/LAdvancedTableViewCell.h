@@ -58,9 +58,9 @@
     NSIndexPath* cellIndexPath;
 }
 
-@property (nonatomic, retain) NSDictionary* data;
-@property (nonatomic, retain) NSDictionary* options;
-@property (nonatomic, retain, setter = setThreadData_:) NSDictionary* threadData;
+@property (nonatomic, strong) NSDictionary* data;
+@property (nonatomic, strong) NSDictionary* options;
+@property (nonatomic, strong, setter = setThreadData_:) NSDictionary* threadData;
 
 - (id)initWithOptions:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier options:(NSDictionary*)someOptions;
 

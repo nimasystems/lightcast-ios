@@ -30,6 +30,10 @@
  * @version $Revision: 345 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LDatabaseAdapter.h"
 
 NSString* const LSQLDateFormat = @"yyyy-MM-dd";

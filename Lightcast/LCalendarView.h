@@ -29,21 +29,21 @@
 
 @interface LCalendarView : UIView <UIGestureRecognizerDelegate, LCalendarCellViewDelegate>
 
-@property(nonatomic, retain, readonly) NSCalendar *calendar;
+@property(nonatomic, strong, readonly) NSCalendar *calendar;
 
 @property(nonatomic, assign) id<LCalendarViewDelegate> delegate;
 @property(nonatomic, assign) id<LCalendarViewDataSource> dataSource;
 
 @property(nonatomic, copy) NSDate *selectedDate;
 @property(nonatomic, copy) NSDate *displayedDate;
-@property (nonatomic, retain, readonly) LCalendarCellView *selectedCell;
+@property (nonatomic, strong, readonly) LCalendarCellView *selectedCell;
 
 @property (nonatomic, assign) BOOL allowTitleClickToReset;
 
 @property (nonatomic, assign) NSInteger monthNameBarHeight;
 @property (nonatomic, assign) NSInteger weekdaysBarHeight;
-@property(nonatomic, retain) UIFont *weekdayBarFont;
-@property(nonatomic, retain) UIColor *weekdayBarTextColor;
+@property(nonatomic, strong) UIFont *weekdayBarFont;
+@property(nonatomic, strong) UIColor *weekdayBarTextColor;
 
 @property (nonatomic, assign) BOOL showsOnlyCurrentMonth;
 

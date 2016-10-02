@@ -30,6 +30,10 @@
  * @version $Revision: 275 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #ifdef TARGET_OSX
 
 #import "NSColor+Additions.h"
@@ -40,11 +44,11 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 + (NSArray *)controlAlternatingRowBackgroundColors {
-	NSColor *colorForControlTint = [[NSColor colorForControlTint:[NSColor currentControlTint]] highlightWithLevel:2.60];
-	return [NSArray arrayWithObjects:colorForControlTint, [NSColor colorWithCalibratedRed:230.0/255.0 
-																					green:242.0/255.0 
-																					 blue:250.0/255.0 
-																					alpha:1.0], nil];
+    NSColor *colorForControlTint = [[NSColor colorForControlTint:[NSColor currentControlTint]] highlightWithLevel:2.60];
+    return [NSArray arrayWithObjects:colorForControlTint, [NSColor colorWithCalibratedRed:230.0/255.0 
+                                                                                    green:242.0/255.0 
+                                                                                     blue:250.0/255.0 
+                                                                                    alpha:1.0], nil];
 }
 #pragma clang diagnostic pop
 
@@ -56,16 +60,16 @@
     const NSInteger numberOfComponents = [self numberOfComponents];
     CGFloat components[numberOfComponents];
     CGColorSpaceRef colorSpace = [[self colorSpace] CGColorSpace];
-	
+    
     [self getComponents:(CGFloat *)&components];
-	
+    
     return (CGColorRef)[(id)CGColorCreate(colorSpace, components) autorelease];
 }
 #pragma clang diagnostic pop
 
 + (NSColor*)randomColor {
-
-	float red = LRandomFloatBetween( 0.0, 255.0 ) / 255.0;
+    
+    float red = LRandomFloatBetween( 0.0, 255.0 ) / 255.0;
     float green = LRandomFloatBetween( 0.0, 255.0 ) / 255.0;
     float blue = LRandomFloatBetween( 0.0, 255.0 ) / 255.0;
     

@@ -30,6 +30,10 @@
  * @version $Revision: 75 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LDefaultStorageAdapter.h"
 
 #define LC_DEFAULT_STORAGE_ADAPTER_PREFIX @"_lc_"

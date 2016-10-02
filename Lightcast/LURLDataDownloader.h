@@ -24,13 +24,13 @@ extern NSTimeInterval const kLURLDataDownloaderDefaultTimeout;
 @interface LURLDataDownloader : NSObject
 
 @property (nonatomic, copy) NSString *cacheDir;
-@property (nonatomic, readonly, retain) NSURL *url;
+@property (nonatomic, readonly, strong) NSURL *url;
 
 @property (nonatomic, assign) NSTimeInterval timeout;
 
-@property (nonatomic, readonly, retain) LUrlDownloader *downloader;
+@property (nonatomic, readonly, strong) LUrlDownloader *downloader;
 
-@property (nonatomic, retain, readonly) NSURL *downloadedUrl;
+@property (nonatomic, strong, readonly) NSURL *downloadedUrl;
 
 - (id)initWithUrl:(NSURL*)url;
 

@@ -83,13 +83,13 @@ typedef enum
 
 #ifdef TARGET_IOS
 @property (readonly) BOOL isVisible;
-@property (nonatomic, retain) UIFont *progressFont;
-@property (nonatomic, retain) UIColor *progressColor;
-@property (nonatomic, retain) UIColor *progressBgColor;
+@property (nonatomic, strong) UIFont *progressFont;
+@property (nonatomic, strong) UIColor *progressColor;
+@property (nonatomic, strong) UIColor *progressBgColor;
 @property (nonatomic, assign, readonly) BOOL activityProgressIsShown;
-@property (nonatomic, retain) UIView *activityHolderView;
-@property (nonatomic, retain) UIActivityIndicatorView* activityIndicator;
-@property (nonatomic, retain) UILabel* waitingLabel;
+@property (nonatomic, strong) UIView *activityHolderView;
+@property (nonatomic, strong) UIActivityIndicatorView* activityIndicator;
+@property (nonatomic, strong) UILabel* waitingLabel;
 #endif
 
 @property (assign) id<LViewControllerDelegate> viewControllerDelegate;

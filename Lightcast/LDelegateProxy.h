@@ -10,7 +10,7 @@
 
 @interface LDelegateProxy : NSProxy
 
-@property (nonatomic, retain, readonly, getter = getDelegates) NSArray *delegates;
+@property (nonatomic, strong, readonly, getter = getDelegates) NSArray *delegates;
 @property (nonatomic, readonly) NSInteger count;
 
 - (id)init;

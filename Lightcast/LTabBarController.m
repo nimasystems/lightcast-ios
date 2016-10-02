@@ -30,8 +30,11 @@
  * @version $Revision: 75 $
  */
 
-#import "LTabBarController.h"
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
 
+#import "LTabBarController.h"
 
 @implementation LTabBarController
 

@@ -21,6 +21,10 @@
  * Mobile: +359 896 610 876
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 /**
  * File Description
  * @package File Category

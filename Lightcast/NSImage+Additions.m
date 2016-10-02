@@ -30,6 +30,10 @@
  * @version $Revision: 228 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #ifdef TARGET_OSX
 
 #import "NSImage+Additions.h"
@@ -40,54 +44,54 @@
 - (CGImageRef)CGImage __deprecated
 {
 #ifndef __clang_analyzer__
-	return [self newCGImage];
+    return [self newCGImage];
 #endif
 }
 
 - (CGImageRef)newCGImage
 {
     // data - pass NULL to let CG allocate the memory
-	CGContextRef context = CGBitmapContextCreate(NULL,
-												 [self size].width,
-												 [self size].height,
-												 8,
-												 0,
-												 [[NSColorSpace genericRGBColorSpace] CGColorSpace],
-												 kCGBitmapByteOrder32Host|kCGImageAlphaPremultipliedFirst);
-	
-	[NSGraphicsContext saveGraphicsState];
-	[NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:NO]];
-	[self drawInRect:NSMakeRect(0,0, [self size].width, [self size].height) fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];
-	[NSGraphicsContext restoreGraphicsState];
-	
-	CGImageRef cgImage = CGBitmapContextCreateImage(context);
-	CGContextRelease(context);
-	
-	return cgImage;
+    CGContextRef context = CGBitmapContextCreate(NULL,
+                                                 [self size].width,
+                                                 [self size].height,
+                                                 8,
+                                                 0,
+                                                 [[NSColorSpace genericRGBColorSpace] CGColorSpace],
+                                                 kCGBitmapByteOrder32Host|kCGImageAlphaPremultipliedFirst);
+    
+    [NSGraphicsContext saveGraphicsState];
+    [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:NO]];
+    [self drawInRect:NSMakeRect(0,0, [self size].width, [self size].height) fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];
+    [NSGraphicsContext restoreGraphicsState];
+    
+    CGImageRef cgImage = CGBitmapContextCreateImage(context);
+    CGContextRelease(context);
+    
+    return cgImage;
 }
 
 + (NSImage *)reflectedImage:(NSImage *)sourceImage amountReflected:(float)fraction
 {	
-	NSImage *reflection = [[NSImage alloc] initWithSize:[sourceImage size]];
-	
-	@try
-	{
-		[reflection setFlipped:NO];
-		
-		NSRect reflectionRect = NSMakeRect(0, 0, [sourceImage size].width, [sourceImage size].height*fraction);
-		
-		[reflection lockFocus];
-		CTGradient *fade = [CTGradient gradientWithBeginningColor:[NSColor colorWithCalibratedWhite:1.0 alpha:0.5] endingColor:[NSColor clearColor]];
-		[fade fillRect:reflectionRect angle:90.0];
-		[sourceImage drawAtPoint:NSMakePoint(0,0) fromRect:reflectionRect operation:NSCompositeSourceIn fraction:1.0];
-		[reflection unlockFocus];
-	}
-	@finally 
-	{
-		reflection = [reflection autorelease];
-	}
-	
-	return reflection;
+    NSImage *reflection = [[NSImage alloc] initWithSize:[sourceImage size]];
+    
+    @try
+    {
+        [reflection setFlipped:NO];
+        
+        NSRect reflectionRect = NSMakeRect(0, 0, [sourceImage size].width, [sourceImage size].height*fraction);
+        
+        [reflection lockFocus];
+        CTGradient *fade = [CTGradient gradientWithBeginningColor:[NSColor colorWithCalibratedWhite:1.0 alpha:0.5] endingColor:[NSColor clearColor]];
+        [fade fillRect:reflectionRect angle:90.0];
+        [sourceImage drawAtPoint:NSMakePoint(0,0) fromRect:reflectionRect operation:NSCompositeSourceIn fraction:1.0];
+        [reflection unlockFocus];
+    }
+    @finally 
+    {
+        reflection = [reflection autorelease];
+    }
+    
+    return reflection;
 }
 
 

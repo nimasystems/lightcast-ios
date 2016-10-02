@@ -14,9 +14,9 @@
 
 @interface UIViewController(LCoreTabBarControllerTab)
 
-@property(nonatomic, retain) LCoreTabBarControllerTab *customCoreTabBarItem;
+@property(nonatomic, strong) LCoreTabBarControllerTab *customCoreTabBarItem;
 
-@property(nonatomic, readonly, retain) LCoreTabBarController *coreTabBarController;
+@property(nonatomic, readonly, strong) LCoreTabBarController *coreTabBarController;
 
 @end
 

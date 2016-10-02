@@ -100,23 +100,23 @@ NSString *LightcastLocalizedString(NSString *key);
 @interface LC : NSObject
 
 @property (nonatomic, assign) id<LightcastDelegate> delegate;
-@property (nonatomic, retain, readonly) LCAppConfiguration * config;
-@property (nonatomic, retain) LAppUpgrades *appUpgrader;
-@property (nonatomic, retain, readonly, getter = getEventDispatcher) LNotificationDispatcher *eventDispatcher;
-@property (nonatomic, retain, readonly, getter = getPluginManager_) LPluginManager * plugins;
-@property (nonatomic, retain, readonly, getter = getDatabaseManager_) LDatabaseManager * db;
-@property (nonatomic, retain, readonly, getter = getStorage_) LStorage * storage;
-@property (nonatomic, retain, retain) LLocalizationManager *localizationManager;
+@property (nonatomic, strong, readonly) LCAppConfiguration * config;
+@property (nonatomic, strong) LAppUpgrades *appUpgrader;
+@property (nonatomic, strong, readonly, getter = getEventDispatcher) LNotificationDispatcher *eventDispatcher;
+@property (nonatomic, strong, readonly, getter = getPluginManager_) LPluginManager * plugins;
+@property (nonatomic, strong, readonly, getter = getDatabaseManager_) LDatabaseManager * db;
+@property (nonatomic, strong, readonly, getter = getStorage_) LStorage * storage;
+@property (nonatomic, strong, strong) LLocalizationManager *localizationManager;
 @property (nonatomic, assign) BOOL firstInstall;
 
-@property (nonatomic, retain, readonly) LCompressingLogFileManager *logFileManager;
+@property (nonatomic, strong, readonly) LCompressingLogFileManager *logFileManager;
 
-@property (nonatomic, retain) NSBundle *lightcastBundle;
+@property (nonatomic, strong) NSBundle *lightcastBundle;
 
 // these are here only for compatibility with previous versions!
-@property (nonatomic, retain, getter = getResourcesPath) NSString *resourcesPath;
-@property (nonatomic, retain, getter = getDocumentsPath) NSString *documentsPath;
-@property (nonatomic, retain, getter = getTemporaryPath) NSString *temporaryPath;
+@property (nonatomic, strong, getter = getResourcesPath) NSString *resourcesPath;
+@property (nonatomic, strong, getter = getDocumentsPath) NSString *documentsPath;
+@property (nonatomic, strong, getter = getTemporaryPath) NSString *temporaryPath;
 
 @property (nonatomic, assign) LCAppBuildType buildType;
 @property (nonatomic, assign, readonly) BOOL isDebug;

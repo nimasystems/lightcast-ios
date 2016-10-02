@@ -54,11 +54,11 @@ typedef enum
 
 @property (nonatomic, copy) NSURL *remoteUrl;
 
-@property (nonatomic, retain, readonly) NSString *sessionKey;
+@property (nonatomic, strong, readonly) NSString *sessionKey;
 @property (nonatomic, assign, readonly) LDataSubmitterState state;
 
-@property (nonatomic, retain, readonly) NSDictionary *files;
-@property (nonatomic, retain, readonly) NSDictionary *properties;
+@property (nonatomic, strong, readonly) NSDictionary *files;
+@property (nonatomic, strong, readonly) NSDictionary *properties;
 
 @property (nonatomic, assign) NSTimeInterval connectionTimeout;
 @property (nonatomic, copy) NSString *userAgent;

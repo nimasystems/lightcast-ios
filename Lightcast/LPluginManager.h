@@ -47,7 +47,7 @@
 
 @interface LPluginManager : LSystemObject
 
-@property (nonatomic, retain, readonly) NSDictionary * plugins;
+@property (nonatomic, strong, readonly) NSDictionary * plugins;
 @property (nonatomic, readonly, getter = getPluginsCount) NSInteger count;
 @property (nonatomic, assign) id<LPluginManagerDelegate> delegate;
 

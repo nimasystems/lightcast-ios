@@ -53,7 +53,7 @@ typedef enum
     
 }
 
-@property (nonatomic, retain, setter=setItems:) NSArray *items; // an array of LTabBarItem
+@property (nonatomic, strong, setter=setItems:) NSArray *items; // an array of LTabBarItem
 @property (nonatomic, assign, setter=setTabsAlignment:) LTabBarTabsAlignment tabsAlignment;
 
 @property (nonatomic, assign, setter=setTabItemSize:) CGSize tabItemSize;

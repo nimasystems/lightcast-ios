@@ -36,8 +36,8 @@ extern CGFloat const kLCoreTabBarControllerDefaultTabBarHeight;
 @property(nonatomic, assign, setter = setSelectedViewController:) UIViewController *selectedViewController;
 @property(nonatomic, setter = setSelectedIndex:) NSUInteger selectedIndex;
 
-@property(nonatomic, retain) LCoreTabBarView *tabBar;
-@property(nonatomic, retain, readonly) UIView *innerView;
+@property(nonatomic, strong) LCoreTabBarView *tabBar;
+@property(nonatomic, strong, readonly) UIView *innerView;
 
 @property(nonatomic, assign) id<LCoreTabBarControllerDelegate> controllerDelegate;
 

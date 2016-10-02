@@ -40,9 +40,9 @@
     BOOL handled;
 }
 
-@property (nonatomic, retain, readonly) NSString* name;
-@property (nonatomic, retain, readonly) id object;
-@property (nonatomic, retain, retain) id returnValue;
+@property (nonatomic, strong, readonly) NSString* name;
+@property (nonatomic, strong, readonly) id object;
+@property (nonatomic, strong, strong) id returnValue;
 @property (nonatomic) BOOL handled;
 
 + (id)notificationWithName:(NSString*)aName;

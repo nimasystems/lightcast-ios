@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 г. Nimasystems Ltd. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LBadgeView.h"
 
 CGFloat const kLBadgeViewDefaultCornerRadius = 9.0;
@@ -18,7 +22,7 @@ CGFloat const kLBadgeViewDefaultShadowOffset = 4.0;
 
 @interface LBadgeView()
 
-@property (nonatomic, retain) NSMutableParagraphStyle *badgeParagraphStyle;
+@property (nonatomic, strong) NSMutableParagraphStyle *badgeParagraphStyle;
 
 @end
 

@@ -65,7 +65,7 @@
 	NSMutableArray *_appDatabaseInstances;
 }
 
-@property (nonatomic, retain, readonly) LDatabaseAdapter *mainAdapter;
+@property (nonatomic, strong, readonly) LDatabaseAdapter *mainAdapter;
 
 - (BOOL)initializeAdapter:(LDatabaseAdapter*)adapter identifier:(NSString*)identifier connectionString:(NSString*)connectionString error:(NSError **)error;
 

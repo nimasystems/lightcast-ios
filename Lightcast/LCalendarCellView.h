@@ -26,7 +26,7 @@ extern CGFloat const kCXCalendarCellViewLabelHeight;
 
 @property (nonatomic, assign) NSInteger cellIndex;
 
-@property (nonatomic, retain) NSCalendar *calendar;
+@property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, assign) BOOL isToday;
 @property (nonatomic, assign) BOOL isDateWithinCurrentMonth;
@@ -36,14 +36,14 @@ extern CGFloat const kCXCalendarCellViewLabelHeight;
 @property (nonatomic, assign) BOOL allowsSelection;
 @property (nonatomic, assign) BOOL allowsSelectionIfOtherMonth;
 
-@property (nonatomic, retain) UIColor *defaultBgColor;
-@property (nonatomic, retain) UIColor *defaultLabelTextColor;
-@property (nonatomic, retain) UIColor *selectedLabelTextColor;
-@property (nonatomic, retain) UIColor *selectedBgColor;
-@property (nonatomic, retain) UIColor *todayBgColor;
-@property (nonatomic, retain) UIColor *todayLabelTextColor;
-@property (nonatomic, retain) UIColor *otherMonthBgColor;
-@property (nonatomic, retain) UIColor *otherMonthLabelTextColor;
+@property (nonatomic, strong) UIColor *defaultBgColor;
+@property (nonatomic, strong) UIColor *defaultLabelTextColor;
+@property (nonatomic, strong) UIColor *selectedLabelTextColor;
+@property (nonatomic, strong) UIColor *selectedBgColor;
+@property (nonatomic, strong) UIColor *todayBgColor;
+@property (nonatomic, strong) UIColor *todayLabelTextColor;
+@property (nonatomic, strong) UIColor *otherMonthBgColor;
+@property (nonatomic, strong) UIColor *otherMonthLabelTextColor;
 @property (nonatomic, assign) CGFloat otherMonthAlphaValue;
 
 @property (nonatomic, assign) BOOL showsTouchEffect;

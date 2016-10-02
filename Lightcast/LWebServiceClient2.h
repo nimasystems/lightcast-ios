@@ -18,12 +18,12 @@ typedef enum
 
 @interface LWebServiceClient2 : NSObject
 
-@property (nonatomic, retain, readonly) NSString *hostname;
+@property (nonatomic, strong, readonly) NSString *hostname;
 @property (nonatomic, assign) BOOL shouldUseSSL;
 @property (nonatomic, assign) LWebServiceClientRequestType requesType;
 @property (nonatomic, assign) NSTimeInterval timeout;
 
-@property (nonatomic, retain, readonly) LUrlDownloader *urlDownloader;
+@property (nonatomic, strong, readonly) LUrlDownloader *urlDownloader;
 
 @property (nonatomic, copy) NSDate *lastModifiedCheckDate;
 
@@ -35,18 +35,18 @@ typedef enum
 @property (nonatomic, copy) NSDictionary *requestHeaders;
 @property (nonatomic, copy) NSDictionary *requestCookies;
 
-@property (nonatomic, retain, readonly) NSString *requestUri;
+@property (nonatomic, strong, readonly) NSString *requestUri;
 
 @property (nonatomic, copy) NSString *userAgent;
 
-@property (nonatomic, retain, readonly) NSDate *requestStartTime;
-@property (nonatomic, retain, readonly) NSDate *requestEndTime;
+@property (nonatomic, strong, readonly) NSDate *requestStartTime;
+@property (nonatomic, strong, readonly) NSDate *requestEndTime;
 
-@property (nonatomic, retain) NSArray *requestPostFiles;
+@property (nonatomic, strong) NSArray *requestPostFiles;
 
 @property (nonatomic, readonly) NSInteger responseCode;
 @property (nonatomic, readonly) NSInteger responseLength;
-@property (nonatomic, retain, readonly) NSString *responseMimetype;
+@property (nonatomic, strong, readonly) NSString *responseMimetype;
 
 @property (nonatomic, assign) BOOL httpAuthEnabled;
 @property (nonatomic, copy) NSString *httpAuthUsername;

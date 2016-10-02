@@ -10,7 +10,7 @@
 
 @interface LWebServicesValidationError : NSObject
 
-@property (retain) NSString *fieldName;
-@property (retain) NSString *errorMessage;
+@property (strong) NSString *fieldName;
+@property (strong) NSString *errorMessage;
 
 @end

@@ -34,7 +34,7 @@ typedef enum
 @property (nonatomic, assign, readonly) BOOL isUploading;
 @property (nonatomic, assign, readonly) BOOL isDownloading;
 
-@property (nonatomic, retain, readonly) NSArray *arrayFilesInICloud;
+@property (nonatomic, strong, readonly) NSArray *arrayFilesInICloud;
 
 @property (nonatomic, readonly, getter = getICloudAccess) BOOL iCloudAccess;
 

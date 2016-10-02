@@ -58,10 +58,10 @@ typedef enum
 	NSError *_lastError;
 }
 
-@property (nonatomic, retain, readonly) NSError*lastError;
+@property (nonatomic, strong, readonly) NSError*lastError;
 @property (nonatomic, readonly) BOOL secureCalls;
-@property (nonatomic, retain, readonly) NSHTTPURLResponse *response;
-@property (nonatomic, retain, readonly) id results;
+@property (nonatomic, strong, readonly) NSHTTPURLResponse *response;
+@property (nonatomic, strong, readonly) id results;
 
 + (id)webServiceClientWithRequest:(NSString*)hostname makeSecureCalls:(BOOL)secureCalls serviceName:(NSString*)serviceName methodName:(NSString*)methodName params:(NSArray*)params error:(NSError**)error;
 

@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 г. Nimasystems Ltd. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #ifdef TARGET_OSX
 
 #import "NSView+Additions.h"
@@ -13,112 +17,112 @@
 @implementation NSView(Additions)
 
 - (CGFloat)left {
-	return self.frame.origin.x;
+    return self.frame.origin.x;
 }
 
 - (void)setLeft:(CGFloat)x {
-	CGRect frame = self.frame;
-	frame.origin.x = x;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.origin.x = x;
+    self.frame = frame;
 }
 
 - (CGFloat)top {
-	return self.frame.origin.y;
+    return self.frame.origin.y;
 }
 
 - (void)setTop:(CGFloat)y {
-	CGRect frame = self.frame;
-	frame.origin.y = y;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.origin.y = y;
+    self.frame = frame;
 }
 
 - (CGFloat)right {
-	return self.frame.origin.x + self.frame.size.width;
+    return self.frame.origin.x + self.frame.size.width;
 }
 
 - (void)setRight:(CGFloat)right {
-	CGRect frame = self.frame;
-	frame.origin.x = right - frame.size.width;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.origin.x = right - frame.size.width;
+    self.frame = frame;
 }
 
 - (CGFloat)bottom {
-	return self.frame.origin.y + self.frame.size.height;
+    return self.frame.origin.y + self.frame.size.height;
 }
 
 - (void)setBottom:(CGFloat)bottom {
-	CGRect frame = self.frame;
-	frame.origin.y = bottom - frame.size.height;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.origin.y = bottom - frame.size.height;
+    self.frame = frame;
 }
 
 - (CGFloat)centerX {
-	return self.center.x;
+    return self.center.x;
 }
 
 - (void)setCenterX:(CGFloat)centerX {
-	self.center = CGPointMake(centerX, self.center.y);
+    self.center = CGPointMake(centerX, self.center.y);
 }
 
 - (CGFloat)centerY {
-	return self.center.y;
+    return self.center.y;
 }
 
 - (void)setCenterY:(CGFloat)centerY {
-	self.center = CGPointMake(self.center.x, centerY);
+    self.center = CGPointMake(self.center.x, centerY);
 }
 
 - (CGFloat)width {
-	return self.frame.size.width;
+    return self.frame.size.width;
 }
 
 - (void)setWidth:(CGFloat)width {
-	CGRect frame = self.frame;
-	frame.size.width = width;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.size.width = width;
+    self.frame = frame;
 }
 
 - (CGFloat)height {
-	return self.frame.size.height;
+    return self.frame.size.height;
 }
 
 - (void)setHeight:(CGFloat)height {
-	CGRect frame = self.frame;
-	frame.size.height = height;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.size.height = height;
+    self.frame = frame;
 }
 
 - (CGPoint)origin {
-	return self.frame.origin;
+    return self.frame.origin;
 }
 
 - (void)setOrigin:(CGPoint)origin {
-	CGRect frame = self.frame;
-	frame.origin = origin;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.origin = origin;
+    self.frame = frame;
 }
 
 - (CGSize)size {
-	return self.frame.size;
+    return self.frame.size;
 }
 
 - (void)setSize:(CGSize)size {
-	CGRect frame = self.frame;
-	frame.size = size;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.size = size;
+    self.frame = frame;
 }
 
 - (NSView*)descendantOrSelfWithClass:(Class)cls {
-	if ([self isKindOfClass:cls])
-		return self;
-	
-	for (NSView* child in self.subviews) {
-		NSView* it = [child descendantOrSelfWithClass:cls];
-		if (it)
-			return it;
-	}
-	
-	return nil;
+    if ([self isKindOfClass:cls])
+        return self;
+    
+    for (NSView* child in self.subviews) {
+        NSView* it = [child descendantOrSelfWithClass:cls];
+        if (it)
+            return it;
+    }
+    
+    return nil;
 }
 
 - (CGPoint)center {
@@ -132,24 +136,24 @@
 }
 
 - (NSView*)ancestorOrSelfWithClass:(Class)cls {
-	if ([self isKindOfClass:cls]) {
-		return self;
-	} else if (self.superview) {
-		return [self.superview ancestorOrSelfWithClass:cls];
-	} else {
-		return nil;
-	}
+    if ([self isKindOfClass:cls]) {
+        return self;
+    } else if (self.superview) {
+        return [self.superview ancestorOrSelfWithClass:cls];
+    } else {
+        return nil;
+    }
 }
 
 - (void)removeAllSubviews {
-	while (self.subviews.count) {
-		NSView* child = self.subviews.lastObject;
-		[child removeFromSuperview];
-	}
+    while (self.subviews.count) {
+        NSView* child = self.subviews.lastObject;
+        [child removeFromSuperview];
+    }
 }
 
 - (void)removeAllSubviewsWithoutView:(NSView*)_view {
-	for (id obj in [self subviews])
+    for (id obj in [self subviews])
     {
         if (obj != _view)
         {
@@ -159,12 +163,12 @@
 }
 
 - (CGPoint)offsetFromView:(NSView*)otherView {
-	CGFloat x = 0, y = 0;
-	for (NSView* view = self; view && view != otherView; view = view.superview) {
-		x += view.left;
-		y += view.top;
-	}
-	return CGPointMake(x, y);
+    CGFloat x = 0, y = 0;
+    for (NSView* view = self; view && view != otherView; view = view.superview) {
+        x += view.left;
+        y += view.top;
+    }
+    return CGPointMake(x, y);
 }
 
 #pragma mark - Positioning
@@ -214,13 +218,13 @@
 #pragma mark - Other
 
 - (NSViewController*)viewController {
-	for (NSView* next = [self superview]; next; next = next.superview) {
-		NSResponder* nextResponder = [next nextResponder];
-		if ([nextResponder isKindOfClass:[NSViewController class]]) {
-			return (NSViewController*)nextResponder;
-		}
-	}
-	return nil;
+    for (NSView* next = [self superview]; next; next = next.superview) {
+        NSResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[NSViewController class]]) {
+            return (NSViewController*)nextResponder;
+        }
+    }
+    return nil;
 }
 
 - (void)applyGradientWithColors:(NSArray*)colors atPoints:(NSArray*)points {
@@ -282,7 +286,7 @@
     
     CGContextAddPath(context, visiblePath);
     CGContextClip(context);
-
+    
     NSColor * shadowColor = [NSColor colorWithCalibratedRed:0.0f green:0.0f blue:0.0f alpha:0.6f];
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, CGSizeMake(0.0f, 4.0f), 8.0f, [shadowColor CGColor]);
@@ -365,50 +369,50 @@
 
 - (void)drawLinearGloss:(CGContextRef)context rect:(CGRect)rect reverse:(BOOL)reverse
 {
-	CGColorRef highlightStart = [[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.35] CGColor];
-	CGColorRef highlightEnd = [[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.1] CGColor];
+    CGColorRef highlightStart = [[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.35] CGColor];
+    CGColorRef highlightEnd = [[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.1] CGColor];
     
     if (reverse)
     {
-		CGRect half = CGRectMake(rect.origin.x, rect.origin.y+rect.size.height/2, rect.size.width, rect.size.height/2);
+        CGRect half = CGRectMake(rect.origin.x, rect.origin.y+rect.size.height/2, rect.size.width, rect.size.height/2);
         [self drawLinearGradient:context rect:half startColor:highlightEnd endColor:highlightStart];
-	}
-	else
+    }
+    else
     {
-		CGRect half = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height/2);
+        CGRect half = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height/2);
         [self drawLinearGradient:context rect:half startColor:highlightStart endColor:highlightEnd];
-	}
+    }
 }
 
 - (void)drawCurvedGloss:(CGContextRef)context rect:(CGRect)rect radius:(CGFloat)radius
 {
-	CGColorRef glossStart = [[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.6] CGColor];
-	CGColorRef glossEnd = [[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.1] CGColor];
+    CGColorRef glossStart = [[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.6] CGColor];
+    CGColorRef glossEnd = [[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.1] CGColor];
     
-	//CGFloat radius = 60.0f; //radius of gloss
+    //CGFloat radius = 60.0f; //radius of gloss
     
-	CGMutablePathRef glossPath = CGPathCreateMutable();
+    CGMutablePathRef glossPath = CGPathCreateMutable();
     
-	CGContextSaveGState(context);
+    CGContextSaveGState(context);
     CGPathMoveToPoint(glossPath, NULL, CGRectGetMidX(rect), CGRectGetMinY(rect)-radius+rect.size.height/2);
-	CGPathAddArc(glossPath, NULL, CGRectGetMidX(rect), CGRectGetMinY(rect)-radius+rect.size.height/2, radius, 0.75f*M_PI, 0.25f*M_PI, YES);
-	CGPathCloseSubpath(glossPath);
-	CGContextAddPath(context, glossPath);
-	CGContextClip(context);
+    CGPathAddArc(glossPath, NULL, CGRectGetMidX(rect), CGRectGetMinY(rect)-radius+rect.size.height/2, radius, 0.75f*M_PI, 0.25f*M_PI, YES);
+    CGPathCloseSubpath(glossPath);
+    CGContextAddPath(context, glossPath);
+    CGContextClip(context);
     
-	CGMutablePathRef buttonPath = [self newRoundedRectForRect:rect radius:6.0f];
+    CGMutablePathRef buttonPath = [self newRoundedRectForRect:rect radius:6.0f];
     
-	CGContextAddPath(context, buttonPath);
+    CGContextAddPath(context, buttonPath);
     CGPathRelease(buttonPath);
     
-	CGContextClip(context);
+    CGContextClip(context);
     
-	CGRect half = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height/2);
+    CGRect half = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height/2);
     
     [self drawLinearGradient:context rect:half startColor:glossStart endColor:glossEnd];
-	CGContextRestoreGState(context);
+    CGContextRestoreGState(context);
     
-	CGPathRelease(glossPath);
+    CGPathRelease(glossPath);
 }
 
 - (CGMutablePathRef)newRoundedRectForRect:(CGRect)rect radius:(CGFloat)radius
@@ -441,7 +445,7 @@
 {
     NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
     [formatter setMaximumSignificantDigits:3];
-	[formatter setUsesSignificantDigits:YES];
+    [formatter setUsesSignificantDigits:YES];
     return formatter;
 }
 

@@ -53,8 +53,8 @@ typedef enum
 @interface LUrlDownloader : NSObject
 
 @property (nonatomic, copy) NSURL *url;
-@property (nonatomic, retain, readonly) NSURL *finalDownloadUrl;
-@property (nonatomic, retain, readonly) NSArray *redirectUrls;
+@property (nonatomic, strong, readonly) NSURL *finalDownloadUrl;
+@property (nonatomic, strong, readonly) NSArray *redirectUrls;
 @property (nonatomic, readonly, getter = getDownloadState) LUrlDownloadState downloadState;
 @property (nonatomic, copy) NSString *downloadPath;
 @property (nonatomic, assign) BOOL keepDownloadedFile;
@@ -81,26 +81,26 @@ typedef enum
 
 @property (nonatomic, assign) BOOL allowCompressedResponse;
 
-@property (nonatomic, retain, readonly) NSDictionary *responseHeaders;
+@property (nonatomic, strong, readonly) NSDictionary *responseHeaders;
 @property (nonatomic, readonly) NSInteger responseCode;
 @property (nonatomic, readonly) long long responseLength;
-@property (nonatomic, retain, readonly) NSString *responseContentType;
-@property (nonatomic, retain, readonly) NSString *responseDescription;
+@property (nonatomic, strong, readonly) NSString *responseContentType;
+@property (nonatomic, strong, readonly) NSString *responseDescription;
 @property (readonly, getter = getIsResponseCompressed) BOOL isResponseCompressed;
 
 @property (nonatomic, readonly) long long bytesDownloaded;
 @property (nonatomic, readonly) NSInteger progress;
 
-@property (nonatomic, retain, readonly) NSString *pathToDownloadedFile;
-@property (nonatomic, retain, readonly, getter = getReceivedData) NSData *receivedData;
-@property (nonatomic, retain, readonly, getter = getReceivedData) NSData *responseData;
+@property (nonatomic, strong, readonly) NSString *pathToDownloadedFile;
+@property (nonatomic, strong, readonly, getter = getReceivedData) NSData *receivedData;
+@property (nonatomic, strong, readonly, getter = getReceivedData) NSData *responseData;
 
-@property (nonatomic, retain, readonly) NSError *lastError;
+@property (nonatomic, strong, readonly) NSError *lastError;
 @property (nonatomic, readonly) BOOL isSuccessful;
 
 @property (nonatomic, assign) id<LUrlDownloaderDelegate> downloadDelegate;
 
-@property (nonatomic, retain) NSRunLoop *runLoop;
+@property (nonatomic, strong) NSRunLoop *runLoop;
 @property (nonatomic, assign) BOOL pollAndBlockMode;
 
 @property (nonatomic, assign) BOOL isCancelled;

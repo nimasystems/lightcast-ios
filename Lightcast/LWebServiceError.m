@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 г. Stampii S.L. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LWebServiceError.h"
 
 NSString *const APIErrorDomain = @"com.nimasystems.lightcast.APIError";

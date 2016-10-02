@@ -30,6 +30,10 @@
  * @version $Revision: 75 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LVersionComparator.h"
 
 @implementation LVersionComparator
@@ -42,24 +46,24 @@
     if (![version length] || ![versionToCompareTo length]) return res;
     
     NSInteger f = [LVersionComparator strVerToIntVer:version];
-	NSInteger s = [LVersionComparator strVerToIntVer:versionToCompareTo];
-	
+    NSInteger s = [LVersionComparator strVerToIntVer:versionToCompareTo];
+    
     if (f > s)
     {
         res = lVersionHigher;
     }
     else
-    if (f == s)
-    {
-        res = lVersionEqual;
-    }
-    else
-    if (f < s)
-    {
-        res = lVersionLower;
-    }
+        if (f == s)
+        {
+            res = lVersionEqual;
+        }
+        else
+            if (f < s)
+            {
+                res = lVersionLower;
+            }
     
-	return res;
+    return res;
 }
 
 + (NSInteger)strVerToIntVer:(NSString *)strVer {
@@ -74,7 +78,7 @@
     }
     
     return out1;
-	//return [[strVer stringByReplacingOccurrencesOfString:@"." withString:@""] intValue];
+    //return [[strVer stringByReplacingOccurrencesOfString:@"." withString:@""] intValue];
 }
-                        
+
 @end

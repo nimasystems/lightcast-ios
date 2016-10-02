@@ -30,6 +30,10 @@
  * @version $Revision: 282 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "UIColor+Additions.h"
 #import "Primitives.h"
 
@@ -47,11 +51,11 @@
     a = components[3];
     
     NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
-                       [NSNumber numberWithFloat:r], @"red",
-                       [NSNumber numberWithFloat:g], @"green",
-                       [NSNumber numberWithFloat:b], @"blue",
-                       [NSNumber numberWithFloat:a], @"alpha",
-                       nil];
+                         [NSNumber numberWithFloat:r], @"red",
+                         [NSNumber numberWithFloat:g], @"green",
+                         [NSNumber numberWithFloat:b], @"blue",
+                         [NSNumber numberWithFloat:a], @"alpha",
+                         nil];
     
     return ret;
 }

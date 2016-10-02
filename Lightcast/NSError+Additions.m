@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 г. Nimasystems Ltd. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "NSError+Additions.h"
 
 NSString *const kNSErrorAdditionsCustomDataKey = @"customData";
@@ -32,7 +36,7 @@ NSString *const kNSErrorAdditionsCustomDataKey = @"customData";
     }
     
     NSError *err = [NSError errorWithDomain:domain code:errorCode userInfo:errorDetail];
-
+    
     return err;
 }
 

@@ -30,6 +30,10 @@
  * @version $Revision: 93 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LVirtualFSSchema.h"
 
 @implementation LVirtualFSSchema
@@ -37,19 +41,19 @@
 #pragma mark - LDatabaseSchemaProtocol Protocl
 
 - (NSString*)identifier {
-	return @"virtual_fs";
+    return @"virtual_fs";
 }
 
 - (NSInteger)currentSchemaVersion {
-	return 1;
+    return 1;
 }
 
 - (NSArray*)schemaChangesForVersion:(NSInteger)schemaVersion {
-	return nil;
+    return nil;
 }
 
 - (NSArray*)initializationSQLStatements {
-	return [NSArray arrayWithObjects:
+    return [NSArray arrayWithObjects:
             /* filesystem table and indexes */
             @"CREATE TABLE IF NOT EXISTS [filesystem] (file_id integer PRIMARY KEY AUTOINCREMENT,filename varchar(150) NOT NULL,filetype varchar(15),filesize integer NOT NULL,created_on datetime,dir_hash varchar(32) NOT NULL,file_hash varchar(32) NOT NULL)",
             

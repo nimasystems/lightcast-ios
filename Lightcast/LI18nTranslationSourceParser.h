@@ -23,10 +23,10 @@ typedef enum
 
 @interface LI18nTranslationSourceParser : NSObject
 
-@property (nonatomic, retain, readonly) NSString *sourceString;
-@property (nonatomic, retain) NSArray *patterns;
+@property (nonatomic, strong, readonly) NSString *sourceString;
+@property (nonatomic, strong) NSArray *patterns;
 
-@property (nonatomic, retain, readonly) NSArray *parsedStrings;
+@property (nonatomic, strong, readonly) NSArray *parsedStrings;
 
 - (id)initWithSourceString:(NSString*)string;
 

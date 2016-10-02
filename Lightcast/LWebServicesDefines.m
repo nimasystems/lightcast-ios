@@ -6,6 +6,10 @@
 //  Copyright © 2016 г. Nimasystems Ltd. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LWebServicesDefines.h"
 
 // default timeout

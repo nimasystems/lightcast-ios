@@ -23,7 +23,7 @@ typedef enum
 
 @interface LI18nLocalizedStringsFile : NSObject
 
-@property (nonatomic, retain) NSArray *strings;
+@property (nonatomic, strong) NSArray *strings;
 
 - (BOOL)loadFromFile:(NSString*)filename error:(NSError**)error;
 - (BOOL)saveToFile:(NSString*)filename error:(NSError**)error;

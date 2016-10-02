@@ -30,6 +30,10 @@
  * @version $Revision: 312 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #include "UI-General.h"
 
 const CGFloat lkDefaultRowHeight = 44;

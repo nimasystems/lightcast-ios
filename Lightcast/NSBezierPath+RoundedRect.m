@@ -30,6 +30,10 @@
  * @version $Revision: 134 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #ifdef TARGET_OSX
 
 #import "NSBezierPath+RoundedRect.h"
@@ -38,18 +42,18 @@
 
 + (NSBezierPath *)bezierPathWithRect:(NSRect)aRect cornerRadius:(float)radius;
 {
-	// optomized solution from http://cocoadev.com/index.pl?RoundedRectangles
-	
-	NSBezierPath* path = [self bezierPath];
-	radius = MIN(radius, 0.5f * MIN(NSWidth(aRect), NSHeight(aRect)));
-	NSRect rect = NSInsetRect(aRect, radius, radius);
-	[path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(rect), NSMinY(rect)) radius:radius startAngle:180.0 endAngle:270.0];
-	[path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(rect), NSMinY(rect)) radius:radius startAngle:270.0 endAngle:360.0];
-	[path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(rect), NSMaxY(rect)) radius:radius startAngle:  0.0 endAngle: 90.0];
-	[path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(rect), NSMaxY(rect)) radius:radius startAngle: 90.0 endAngle:180.0];
-	[path closePath];
-	
-	return path;
+    // optomized solution from http://cocoadev.com/index.pl?RoundedRectangles
+    
+    NSBezierPath* path = [self bezierPath];
+    radius = MIN(radius, 0.5f * MIN(NSWidth(aRect), NSHeight(aRect)));
+    NSRect rect = NSInsetRect(aRect, radius, radius);
+    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(rect), NSMinY(rect)) radius:radius startAngle:180.0 endAngle:270.0];
+    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(rect), NSMinY(rect)) radius:radius startAngle:270.0 endAngle:360.0];
+    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(rect), NSMaxY(rect)) radius:radius startAngle:  0.0 endAngle: 90.0];
+    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(rect), NSMaxY(rect)) radius:radius startAngle: 90.0 endAngle:180.0];
+    [path closePath];
+    
+    return path;
 }
 
 @end

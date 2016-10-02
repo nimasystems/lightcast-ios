@@ -30,6 +30,10 @@
  * @version $Revision: 319 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "Logging.h"
 
 NSInteger const kMaxSystemLogFileSize = 3; // in MB

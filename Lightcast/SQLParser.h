@@ -37,7 +37,7 @@
     NSArray* sqlItems;
 }
 
-@property (nonatomic, retain, readonly) NSArray* sqlItems;
+@property (nonatomic, strong, readonly) NSArray* sqlItems;
 
 - (id)initWithContentsOfFile:(NSString*)filename;
 

@@ -51,13 +51,13 @@
 }
 
 @property (nonatomic) NSInteger fileId;
-@property (nonatomic, retain) NSString * fileName;
-@property (nonatomic, retain) NSString * pathToVfs;
-@property (nonatomic, retain) NSString * dirHash;
-@property (nonatomic, retain) NSString * fileHash;
-@property (nonatomic, retain) NSString * fileType;
+@property (nonatomic, strong) NSString * fileName;
+@property (nonatomic, strong) NSString * pathToVfs;
+@property (nonatomic, strong) NSString * dirHash;
+@property (nonatomic, strong) NSString * fileHash;
+@property (nonatomic, strong) NSString * fileType;
 @property (nonatomic) long long filesize;
-@property (nonatomic, retain) NSDate *createdOn;
+@property (nonatomic, strong) NSDate *createdOn;
 @property (nonatomic, readonly, getter=fullFileName) NSString* fullPath;
 @property (nonatomic, readonly,getter=getFileData) NSData * fileData;
 

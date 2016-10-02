@@ -15,7 +15,7 @@
 	BOOL _secure;
 }
 
-@property (nonatomic, retain, readonly) NSString *hostname;
+@property (nonatomic, strong, readonly) NSString *hostname;
 @property (nonatomic, assign) BOOL secure;
 
 - (id)initWithHostname:(NSString*)hostname;

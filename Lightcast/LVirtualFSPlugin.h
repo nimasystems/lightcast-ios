@@ -68,7 +68,7 @@ typedef enum
     LDatabaseManager *db;
 }
 
-@property (nonatomic, retain, readonly) NSString *basePath;
+@property (nonatomic, strong, readonly) NSString *basePath;
 
 - (LVirtualFile*)appendFileDataToVFSFile:(NSInteger)vfsFileId sourceFile:(NSString*)sourceFilePath createIfMissing:(BOOL)createIfMissing error:(NSError**)error;
 

@@ -30,6 +30,10 @@
  * @version $Revision: 75 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "UIViewController+Additions.h"
 #import "GeneralUtils.h"
 
@@ -37,12 +41,12 @@
 
 - (BOOL)isIPad
 {
-	return [GeneralUtils isIPad];
+    return [GeneralUtils isIPad];
 }
 
 - (BOOL)isIPhone
 {
-	return [GeneralUtils isIPhone];
+    return [GeneralUtils isIPhone];
 }
 
 @end

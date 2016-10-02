@@ -30,6 +30,10 @@
  * @version $Revision: 360 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "UIScreen+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -49,7 +53,7 @@
     CGSize imageSize = [self bounds].size;
     
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
-  
+    
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     // Iterate over every window from back to front
@@ -99,7 +103,7 @@ static BOOL _l_isIPhone5Checked, _l_isIPhone5;
         return _l_isIPhone5;
     }
     _l_isIPhone5 = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) &&
-     ([UIScreen mainScreen].bounds.size.height > 480.0f));
+                    ([UIScreen mainScreen].bounds.size.height > 480.0f));
     _l_isIPhone5Checked = YES;
     return _l_isIPhone5;
 }

@@ -16,9 +16,9 @@ extern CGFloat const kLCoreTabBarContainerViewDefaultSelectionAnimationDuration;
 
 @interface LCoreTabBarContainerView : UIView
 
-@property (nonatomic, retain, setter = setTabItems:) NSArray *tabItems;
+@property (nonatomic, strong, setter = setTabItems:) NSArray *tabItems;
 
-@property (nonatomic,retain) LCoreTabBarSelectionView *selectionView;
+@property (nonatomic,strong) LCoreTabBarSelectionView *selectionView;
 @property (assign) BOOL momentary;
 @property (nonatomic, assign, setter = setSelectedIndex:) NSUInteger selectedIndex;
 @property (assign) CGFloat itemSpacing;

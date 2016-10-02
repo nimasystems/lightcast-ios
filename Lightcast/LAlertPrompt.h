@@ -40,7 +40,7 @@
     UITextField *textField;
 }
 
-@property (nonatomic, retain) UITextField *textField;
+@property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, readonly) NSString *enteredText;
 
 /** Initializes and shows the alert with the specified options

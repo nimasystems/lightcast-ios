@@ -30,6 +30,10 @@
  * @version $Revision: 345 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LDatabaseSchema.h"
 
 NSString *const LDatabaseSchemaErrorDomain = @"schema_upgrader.db.lightcast-ios.nimasystems.com";

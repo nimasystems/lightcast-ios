@@ -40,12 +40,12 @@
 	id annotation; // only a stub - to compile in 32-bit mode
 }
 
-@property (nonatomic, retain) NSError *error;
+@property (nonatomic, strong) NSError *error;
 
-@property (nonatomic, retain) NSException *exception;
-@property (nonatomic, retain) NSArray *callStackReturnAddresses;
-@property (nonatomic, retain) NSArray *callStackSymbols;
+@property (nonatomic, strong) NSException *exception;
+@property (nonatomic, strong) NSArray *callStackReturnAddresses;
+@property (nonatomic, strong) NSArray *callStackSymbols;
 
-@property (nonatomic, retain) id annotation;
+@property (nonatomic, strong) id annotation;
 
 @end

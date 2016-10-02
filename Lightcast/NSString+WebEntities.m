@@ -30,6 +30,10 @@
  * @version $Revision: 178 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "NSString+WebEntities.h"
 
 @implementation NSString(WebEntities)

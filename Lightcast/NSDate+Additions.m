@@ -30,6 +30,10 @@
  * @version $Revision: 357 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "NSDate+Additions.h"
 #import "LDateTimeUtils.h"
 

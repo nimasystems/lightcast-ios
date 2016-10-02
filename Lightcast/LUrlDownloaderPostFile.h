@@ -12,12 +12,12 @@ extern NSString *const LUrlDownloaderPostFileDefaultMimetype;
 
 @interface LUrlDownloaderPostFile : NSObject
 
-@property (retain, readonly) NSString *filename;
-@property (retain, readonly) NSData *data;
+@property (strong, readonly) NSString *filename;
+@property (strong, readonly) NSData *data;
 
-@property (retain, readonly, getter = getMimetype) NSString *mimetype;
+@property (strong, readonly, getter = getMimetype) NSString *mimetype;
 @property (readonly, getter = getDataSize) long long dataSize;
-@property (retain, readonly, getter = getActualData) NSData *actualData;
+@property (strong, readonly, getter = getActualData) NSData *actualData;
 
 - (id)initWithFilename:(NSString*)aFilename;
 - (id)initWithData:(NSData*)someData;

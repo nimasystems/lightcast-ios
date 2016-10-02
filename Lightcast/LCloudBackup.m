@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Nimasystems Ltd. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LCloudBackup.h"
 
 NSString *const LCloudBackupErrorDomain = @"com.nimasystems.iCloudBackup";

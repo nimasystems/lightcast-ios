@@ -42,10 +42,10 @@
 	NSInteger subnodesCount; // only a stub - to compile in 32-bit mode
 }
 
-@property (nonatomic, retain, readonly) NSString * name;
-@property (nonatomic, retain, retain) NSMutableDictionary * values;
+@property (nonatomic, strong, readonly) NSString * name;
+@property (nonatomic, strong, strong) NSMutableDictionary * values;
 @property (nonatomic, readonly, getter = getValuesCount) NSInteger valuesCount;
-@property (nonatomic, retain) NSMutableArray * subnodes;
+@property (nonatomic, strong) NSMutableArray * subnodes;
 @property (nonatomic, readonly, getter = getSubnodesCount) NSInteger subnodesCount;
 
 

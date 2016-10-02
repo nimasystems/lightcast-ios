@@ -12,7 +12,7 @@ extern NSString *const StampiiAPIErrorDomain;
 
 @interface LWebServiceError : NSError
 
-@property (retain, readonly) NSString *apiDomainName;
+@property (strong, readonly) NSString *apiDomainName;
 
 @property (copy) NSString *trace;
 @property (copy) NSString *exceptionName;

@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 г. Nimasystems Ltd. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LUserDefaults.h"
 
 @implementation LUserDefaults
@@ -16,9 +20,9 @@ syncOnWrite;
 - (void)setObject:(id)value forKey:(NSString *)defaultName
 {
     /*if (!value || !defaultName)
-    {
-        LogError(@"Attempted to set a NIL value for UD key: %@", defaultName);
-    }*/
+     {
+     LogError(@"Attempted to set a NIL value for UD key: %@", defaultName);
+     }*/
     
     [super setObject:value forKey:defaultName];
     

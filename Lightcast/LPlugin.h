@@ -50,8 +50,8 @@
     NSString * pluginName;
 }
 
-@property (nonatomic, retain, readonly) NSString * pluginName;
-@property (nonatomic, retain, readonly, getter = version) NSString * version;
+@property (nonatomic, strong, readonly) NSString * pluginName;
+@property (nonatomic, strong, readonly, getter = version) NSString * version;
 
 + (BOOL)pluginExists:(NSString*)pluginName;
 + (LPlugin*)pluginFactory:(NSString*)pluginName;

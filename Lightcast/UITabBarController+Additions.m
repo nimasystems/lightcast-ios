@@ -30,8 +30,11 @@
  * @version $Revision: 75 $
  */
 
-#import "UITabBarController+Additions.h"
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
 
+#import "UITabBarController+Additions.h"
 
 @implementation UITabBarController(LAdditions)
 

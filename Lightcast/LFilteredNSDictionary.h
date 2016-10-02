@@ -25,7 +25,7 @@ typedef BOOL (^LFilteredNSDictionaryExecuteFilterBlock)(id key, id value);
 
 @property (nonatomic, readonly, getter = getIsFiltered) BOOL isFiltered;
 @property (nonatomic, assign) id<LFilteredNSDictionaryDelegate> filterDelegate;
-@property (nonatomic, retain, readonly) NSDictionary *unfilteredDictionary;
+@property (nonatomic, strong, readonly) NSDictionary *unfilteredDictionary;
 
 - (void)setFilter:(LFilteredNSDictionaryExecuteFilterBlock)block;
 - (void)resetFilter;

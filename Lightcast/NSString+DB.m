@@ -30,6 +30,10 @@
  * @version $Revision: 342 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "NSString+DB.h"
 
 @implementation NSString(DB)
@@ -45,19 +49,19 @@
 #define SQLITE_SLASH_REPLACEMENT @"''"
 
 - (NSString *)addSlashes {
-	NSString * res = [self stringByReplacingOccurrencesOfString:SQLITE_SLASH_SEARCH withString:SQLITE_SLASH_REPLACEMENT];
-	
-	return res;
+    NSString * res = [self stringByReplacingOccurrencesOfString:SQLITE_SLASH_SEARCH withString:SQLITE_SLASH_REPLACEMENT];
+    
+    return res;
 }
 
 - (NSString *)stripSlashes {
-	NSString * res = [self stringByReplacingOccurrencesOfString:SQLITE_SLASH_REPLACEMENT withString:SQLITE_SLASH_SEARCH];
-	
-	return res;
+    NSString * res = [self stringByReplacingOccurrencesOfString:SQLITE_SLASH_REPLACEMENT withString:SQLITE_SLASH_SEARCH];
+    
+    return res;
 }
 
 - (NSString *)getStrWithNullValue {
-	if (self == (id)[NSNull null])
+    if (self == (id)[NSNull null])
     {
         return @"NULL";
     }
@@ -75,19 +79,19 @@
 }
 
 - (NSString *)sqlString {
-	return [self getStrWithNullValue];
+    return [self getStrWithNullValue];
 }
 
 - (int)sqlInt {
-	return [self intValue];
+    return [self intValue];
 }
 
 - (float)sqlFloat {
-	return [self floatValue];
+    return [self floatValue];
 }
 
 - (NSString *)sqlDate {
-	return [self getStrWithNullValue];
+    return [self getStrWithNullValue];
 }
 
 @end

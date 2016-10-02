@@ -44,8 +44,8 @@
 	LConfiguration* defaultConfiguration; // only a stub - to compile in 32-bit mode
 }
 
-@property (nonatomic, retain) LConfiguration* configuration;
-@property (nonatomic, retain) LNotificationDispatcher* dispatcher;
+@property (nonatomic, strong) LConfiguration* configuration;
+@property (nonatomic, strong) LNotificationDispatcher* dispatcher;
 @property (nonatomic, readonly, getter = getDefaultConfiguration) LConfiguration* defaultConfiguration;
 
 - (BOOL)initialize:(LConfiguration*)aConfiguration notificationDispatcher:(LNotificationDispatcher*)aDispatcher error:(NSError**)error;

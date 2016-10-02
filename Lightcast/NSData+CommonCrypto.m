@@ -36,6 +36,10 @@
  *
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import <Foundation/Foundation.h>
 #import "NSData+CommonCrypto.h"
 #import <CommonCrypto/CommonDigest.h>

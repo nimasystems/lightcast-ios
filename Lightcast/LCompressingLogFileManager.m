@@ -30,6 +30,10 @@
  * @version $Revision: 324 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LCompressingLogFileManager.h"
 #import <zlib.h>
 

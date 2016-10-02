@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 г. Nimasystems Ltd. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LNumbers.h"
 #include <stdlib.h>
 
@@ -28,15 +32,15 @@
     
     return arc4random_uniform((int)highBound);
     /*
-    if (!highBound)
-    {
-        return 0;
-    }
-    
-    srandom((unsigned)time(NULL));
-    NSInteger ret = random() % highBound;
-    
-    return ret;*/
+     if (!highBound)
+     {
+     return 0;
+     }
+     
+     srandom((unsigned)time(NULL));
+     NSInteger ret = random() % highBound;
+     
+     return ret;*/
 }
 
 + (BOOL)randBool

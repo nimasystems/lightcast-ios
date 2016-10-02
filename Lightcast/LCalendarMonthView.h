@@ -61,7 +61,7 @@ typedef enum {
 @property (nonatomic, readonly) NSInteger day;
 @property (nonatomic, readonly) LCalendarMonth month;
 @property (nonatomic, readonly) NSInteger year;
-@property (nonatomic, retain, readonly) NSDate* currentDate;
+@property (nonatomic, strong, readonly) NSDate* currentDate;
 
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithMonth:(LCalendarMonth)aMonth year:(NSInteger)aYear;

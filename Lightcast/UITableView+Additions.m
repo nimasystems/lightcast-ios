@@ -30,8 +30,11 @@
  * @version $Revision: 75 $
  */
 
-#import "UITableView+Additions.h"
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
 
+#import "UITableView+Additions.h"
 
 @implementation UITableView(LAdditions)
 

@@ -30,6 +30,10 @@
  * @version $Revision: 346 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LDatabaseManager.h"
 #import "GeneralUtils.h"
 #import "LDatabaseSchema.h"

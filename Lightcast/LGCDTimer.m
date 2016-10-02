@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 г. Nimasystems Ltd. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LGCDTimer.h"
 
 // original source: http://www.fieryrobot.com/blog/2010/07/10/a-watchdog-timer-in-gcd/

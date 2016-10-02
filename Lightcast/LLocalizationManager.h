@@ -32,7 +32,7 @@
 
 @interface LLocalizationManager : NSObject
 
-@property (nonatomic, retain, readonly) NSBundle *bundle;
+@property (nonatomic, strong, readonly) NSBundle *bundle;
 
 - (id)initWithBundle:(NSBundle*)aBundle;
 

@@ -46,7 +46,7 @@
 	int getRequests;
 }
 
-@property (nonatomic, retain, readonly) NSObject <LCacheProtocol> * cacheBackend;
+@property (nonatomic, strong, readonly) NSObject <LCacheProtocol> * cacheBackend;
 @property int setRequests;
 @property int getRequests;
 

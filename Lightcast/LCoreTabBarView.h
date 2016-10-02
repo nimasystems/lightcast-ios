@@ -31,14 +31,14 @@ extern CGFloat const kLCoreTabBarViewDefaultItemPaddingH;
 @property (nonatomic, setter = setItemPadding:) CGSize itemPadding;
 @property (nonatomic, setter = setItemMargin:) CGFloat itemMargin;
 
-@property (nonatomic, retain, setter = setTabItems:, getter = getTabItems) NSArray *tabItems;
+@property (nonatomic, strong, setter = setTabItems:, getter = getTabItems) NSArray *tabItems;
 
 @property (nonatomic, assign) id<LCoreTabBarViewDelegate> delegate;
 
 @property (nonatomic, assign, setter = setBadgeOffset:) CGSize badgeOffset;
 
 @property (nonatomic, assign) BOOL showsTabHighlight;
-@property (nonatomic, retain) UIFont *tabTitleFont;
+@property (nonatomic, strong) UIFont *tabTitleFont;
 @property (nonatomic, assign) LCoreTabBarViewTextPosition tabTitlePosition;
 @property (nonatomic, assign) CGSize fixedTabSize;
 

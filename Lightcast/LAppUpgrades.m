@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 г. Nimasystems Ltd. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LAppUpgrades.h"
 
 NSString *const LAppUpgradesErrorDomain = @"com.nimasystems.lightcast.lapp_upgrades";

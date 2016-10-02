@@ -30,6 +30,10 @@
  * @version $Revision: 234 $
  */
 
+#if !__has_feature(objc_arc)
+#error This library requires automatic reference counting
+#endif
+
 #import "LLocalizationManager.h"
 
 static LLocalizationManager *defaultLocalizationManager = nil;
