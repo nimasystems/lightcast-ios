@@ -36,7 +36,7 @@ static CFMutableDictionaryRef CreateKeychainQueryDictionary(void)
 #if !TARGET_IPHONE_SIMULATOR
     if ([LUUIDHandler accessGroup])
     {
-        CFDictionarySetValue(query, kSecAttrAccessGroup, [LUUIDHandler accessGroup]);
+        CFDictionarySetValue(query, kSecAttrAccessGroup, (__bridge const void *)([LUUIDHandler accessGroup]));
     }
 #endif
     return query;
