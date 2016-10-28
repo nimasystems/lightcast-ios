@@ -69,9 +69,11 @@
 
 - (void)stop
 {
-    if (!self.isRunning && _timer) {
-        dispatch_source_cancel(_timer);
-        _timer = nil;
+    if (self.isRunning) {
+        if (_timer) {
+            dispatch_source_cancel(_timer);
+            _timer = nil;
+        }
         self.isRunning = NO;
     }
 }
