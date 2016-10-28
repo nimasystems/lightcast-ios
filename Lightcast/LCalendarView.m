@@ -39,7 +39,6 @@ delegate,
 dataSource,
 calendar,
 selectedDate,
-displayedDate,
 allowTitleClickToReset,
 selectedCell,
 monthNameBarHeight,
@@ -158,7 +157,7 @@ showsOnlyCurrentMonth;
     
     calendar = nil;
     selectedDate = nil;
-    displayedDate = nil;
+    _displayedDate = nil;
     _dateFormatter = nil;
     selectedCell = nil;
     weekdayBarFont = nil;
@@ -304,7 +303,7 @@ showsOnlyCurrentMonth;
 
 - (void)initInternalViews
 {
-    lassert(displayedDate);
+    lassert(_displayedDate);
     lassert(calendar);
     
     selectedCell = nil;
@@ -495,7 +494,7 @@ showsOnlyCurrentMonth;
         
         if (self.gridView.cells)
         {
-            id view = [self cellForDate:displayedDate];
+            id view = [self cellForDate:_displayedDate];
             
             if (!view)
             {
@@ -510,7 +509,7 @@ showsOnlyCurrentMonth;
         }
         
         // update the selected date
-        self.selectedDate = displayedDate;
+        self.selectedDate = _displayedDate;
     }
 }
 
