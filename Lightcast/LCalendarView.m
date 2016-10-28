@@ -490,7 +490,7 @@ showsOnlyCurrentMonth;
 {
     if (displayedDate_ == nil || ![self.displayedDate isSameMonthAsDate:displayedDate_])
     {
-        self.displayedDate = displayedDate_;
+        _displayedDate = displayedDate_;
         
         if (self.gridView.cells)
         {
