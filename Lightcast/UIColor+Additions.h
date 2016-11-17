@@ -42,6 +42,7 @@ alpha:(a)]
 
 + (UIColor*)colorWithHex:(long)hexColor;
 + (UIColor *)colorWithHex:(long)hexColor alpha:(float)opacity;
++ (UIColor *)colorFromHexString:(NSString *)hexString;
 
 - (NSDictionary*)rgbComponents;
 

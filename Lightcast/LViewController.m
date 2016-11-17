@@ -237,8 +237,7 @@ activityProgressIsShown;
     [self displayAlert:LightcastLocalizedString(@"Error") description:errMsg];
 }
 
-- (void)displayError:(NSError*)error description:(NSString*)description
-{
+- (void)displayError:(NSError*)error description:(NSString*)description processCallback:(LViewControllerErrorProcessCallback)callback {
     NSString *errDescription = @"";
     
     if (error && [error isKindOfClass:[LWebServiceError class]])
@@ -284,7 +283,16 @@ activityProgressIsShown;
         errDescription = error && ![NSString isNullOrEmpty:[error localizedDescription]] ? [error localizedDescription] : LightcastLocalizedString(@"Unknown Error");
     }
     
-    [self displayAlert:description description:errDescription];
+    if (callback) {
+        callback(description, errDescription);
+    }
+}
+
+- (void)displayError:(NSError*)error description:(NSString*)description
+{
+    [self displayError:error description:description processCallback:^(NSString *title, NSString *description) {
+        [self displayAlert:title description:description];
+    }];
 }
 
 - (void)displayAlert:(NSString*)title description:(NSString*)description

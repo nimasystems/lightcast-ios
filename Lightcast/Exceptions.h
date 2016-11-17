@@ -72,7 +72,7 @@ __asm__("li r0, 20\nsc\nnop\nli r0, 37\nli r4, 2\nsc\nnop\n" \
 // a "breakInDebugger" function.
 #if TARGET_IPHONE_SIMULATOR
 #define lassert(xx) { if(!(xx)) { Log(@"lassert failed: %s", #xx); \
-__asm__("int $3\n" : : );  } \
+/*__asm__("int $3\n" : : );*/  } \
 } ((void)0)
 #else
 #define lassert(xx) { if(!(xx)) { Log(@"lassert failed: %s", #xx); \

@@ -35,6 +35,8 @@
 #import <Lightcast/LPluginManager.h>
 #import <Lightcast/LStorage.h>
 
+typedef void (^LViewControllerErrorProcessCallback)(NSString *title, NSString *description);
+
 @class LViewController;
 
 @protocol LViewControllerDelegate <NSObject>
@@ -96,6 +98,7 @@ typedef enum
 
 - (void)displayError:(NSError*)error;
 - (void)displayError:(NSError*)error description:(NSString*)description;
+- (void)displayError:(NSError*)error description:(NSString*)description processCallback:(LViewControllerErrorProcessCallback)callback;
 
 - (void)displayAlert:(NSString*)title description:(NSString*)description;
 
