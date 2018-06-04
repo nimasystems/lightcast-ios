@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^ViewExplodeAnimationEnded)();
+typedef void (^ViewExplodeAnimationEnded)(void);
 
 @interface UIView (Explode)
 

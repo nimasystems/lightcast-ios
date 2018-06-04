@@ -80,4 +80,6 @@ typedef enum {
 
 + (UIImage *)imageWithColor:(UIColor*)color;
 
+- (UIImage*)grayscaleImage;
+
 @end
