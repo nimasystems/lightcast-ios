@@ -43,6 +43,16 @@
 
 NSString *const LVirtualFSPluginErrorDomain = LERR_DOMAIN_VIRTUALFS;
 
+@interface LVirtualFSPlugin()
+
+@property (nonatomic, strong) NSString *basePath;
+@property (nonatomic, strong) NSString *currentDir;
+@property (nonatomic, assign) NSInteger filesCountInCurrentDir;
+
+@property (nonatomic, strong) LDatabaseManager *db;
+
+@end
+
 @interface LVirtualFSPlugin(Private)
 
 - (BOOL)initFS:(NSError**)error;
@@ -54,9 +64,6 @@ NSString *const LVirtualFSPluginErrorDomain = LERR_DOMAIN_VIRTUALFS;
 
 @implementation LVirtualFSPlugin
 
-@synthesize 
-basePath;
-
 #pragma mark -
 #pragma mark Initialization / Finalization
 
@@ -65,19 +72,19 @@ basePath;
     self = [super init];
     if (self)
     {
-        filesCountInCurrentDir = 0;
-        basePath = nil;
-        currentDir = nil;
-        db = nil;
+        self.filesCountInCurrentDir = 0;
+        self.basePath = nil;
+        self.currentDir = nil;
+        self.db = nil;
     }
     return self;
 }
 
 - (void)dealloc
 {
-    basePath = nil;
-    currentDir = nil;
-    db = nil;
+    self.basePath = nil;
+    self.currentDir = nil;
+    self.db = nil;
 }
 
 - (BOOL)initialize:(LCAppConfiguration*)aConfiguration notificationDispatcher:(LNotificationDispatcher*)aDispatcher error:(NSError**)error {
@@ -93,9 +100,9 @@ basePath;
         }
         
         // check the database
-        db = [LC sharedLC].db;
+        self.db = [LC sharedLC].db;
         
-        if (!db)
+        if (!self.db)
         {
             if (error != NULL)
             {
@@ -108,19 +115,19 @@ basePath;
         }
         
         // set the base path
-        basePath = nil;
+        self.basePath = nil;
         //NSString * rPath = [[NSFileManager defaultManager] documentsPath]; old logic with documents path
         
         NSString * rPath = [LC sharedLC].documentsPath;
         rPath = [rPath stringByAppendingPathComponent:[self.configuration get:@"path"]];
-        basePath = rPath;
+        self.basePath = rPath;
         
         if (![self initFS:error])
         {
             return NO;
         }
         
-        LogInfo(@"VFS module started with base path: %@", basePath);
+        LogInfo(@"VFS module started with base path: %@", self.basePath);
     }
     
     return YES;
@@ -233,22 +240,22 @@ basePath;
     NSString * fileType = [NSString stringWithFormat:@".%@", extension];
     
     // check if we have reached the maximum files per folder
-    if (filesCountInCurrentDir >= [[self.configuration get:@"files_per_dir"] intValue])
+    if (self.filesCountInCurrentDir >= [[self.configuration get:@"files_per_dir"] intValue])
     {
         LogDebug(@"File per dir limit reached - changing folder");
         
         NSString *randHash = [self randomHash];
         
-        if (randHash != currentDir)
+        if (randHash != self.currentDir)
         {
-            currentDir = randHash;
+            self.currentDir = randHash;
         }
         
-        filesCountInCurrentDir = 0;
+        self.filesCountInCurrentDir = 0;
     }
     
     // this is where we have to write to
-    NSString * fullFPath = [self fullFileNameFromHashes:currentDir
+    NSString * fullFPath = [self fullFileNameFromHashes:self.currentDir
                                                fileHash:fileHash
                                                fileType:fileType];
     
@@ -260,7 +267,7 @@ basePath;
         
         lvFile.fileId = 0;
         lvFile.fileName = tmpName;
-        lvFile.dirHash = currentDir;
+        lvFile.dirHash = self.currentDir;
         lvFile.fileHash = fileHash;
         lvFile.fileType = fileType;
         lvFile.filesize = fileSize;
@@ -292,7 +299,7 @@ basePath;
             }
         }
         
-        BOOL ret = [db executeTransactionalBlock:^BOOL(LDatabaseAdapter *adapter, NSError **error) {
+        BOOL ret = [self.db executeTransactionalBlock:^BOOL(LDatabaseAdapter *adapter, NSError **error) {
             
             // insert in database
             NSString * cSQL = [NSString stringWithFormat:@"INSERT INTO filesystem (filename,\
@@ -309,13 +316,13 @@ basePath;
                                [lvFile.dirHash sqlString],
                                [lvFile.fileHash sqlString]
                                ];
-            BOOL res = [db executeStatement:error sql:cSQL];
+            BOOL res = [self.db executeStatement:error sql:cSQL];
             
             if (!res) {
                 return NO;
             }
             
-            lvFile.fileId = [db lastInsertId];
+            lvFile.fileId = [self.db lastInsertId];
             
             return YES;
         } error:error];
@@ -324,7 +331,7 @@ basePath;
             return nil;
         }
         
-        filesCountInCurrentDir++;
+        self.filesCountInCurrentDir++;
         
         LogInfo(@"Virtual file created: %@", lvFile);
     }
@@ -447,7 +454,7 @@ basePath;
                            file.filesize,
                            (long)file.fileId
                            ];
-        [db exec:cSQL];
+        [self.db exec:cSQL];
         
         // everything is OK
     }
@@ -518,16 +525,16 @@ basePath;
         NSInteger configMax = [[self.configuration get:@"files_per_dir"] intValue];
         lassert(configMax);
         
-        if (filesCountInCurrentDir >= configMax)
+        if (self.filesCountInCurrentDir >= configMax)
         {
             LogDebug(@"File per dir limit reached - changing folder");
             
-            currentDir = [self randomHash];
-            filesCountInCurrentDir = 0;
+            self.currentDir = [self randomHash];
+            self.filesCountInCurrentDir = 0;
         }
         
         // this is where we have to write to
-        NSString * fullFPath = [self fullFileNameFromHashes:currentDir fileHash:fHash fileType:fType];
+        NSString * fullFPath = [self fullFileNameFromHashes:self.currentDir fileHash:fHash fileType:fType];
         
         // try to create the dir
         NSString * dName = [fullFPath stringByDeletingLastPathComponent];
@@ -558,12 +565,12 @@ basePath;
         
         lvFile.fileId = 0;
         lvFile.fileName = tmpName;
-        lvFile.dirHash = currentDir;
+        lvFile.dirHash = self.currentDir;
         lvFile.fileHash = fHash;
         lvFile.fileType = fType;
         lvFile.filesize = fSize;
         
-        BOOL ret = [db executeTransactionalBlock:^BOOL(LDatabaseAdapter *adapter, NSError **error) {
+        BOOL ret = [self.db executeTransactionalBlock:^BOOL(LDatabaseAdapter *adapter, NSError **error) {
             
             // insert in database
             NSString * cSQL = [NSString stringWithFormat:@"INSERT INTO filesystem (filename,\
@@ -581,14 +588,14 @@ basePath;
                                [lvFile.fileHash sqlString]
                                ];
             
-            BOOL res = [db executeDirectStatement:error sql:cSQL];
+            BOOL res = [self.db executeDirectStatement:error sql:cSQL];
             
             if (!res) {
                 return NO;
             }
             
             // get the autoinc id
-            lvFile.fileId = [db lastInsertId];
+            lvFile.fileId = [self.db lastInsertId];
             lassert(lvFile.fileId);
             
             return YES;
@@ -599,7 +606,7 @@ basePath;
             return nil;
         }
         
-        filesCountInCurrentDir++;
+        self.filesCountInCurrentDir++;
         
         LogInfo(@"Virtual file created: %@", lvFile);
     }
@@ -640,7 +647,7 @@ basePath;
     // find the vfile in the database
     // fill the object and return it
     
-    if (!db) return nil;
+    if (!self.db) return nil;
     if (!fileId) return nil;
     
     LVirtualFile * f = nil;
@@ -649,7 +656,7 @@ basePath;
     {
         NSString* sql = [NSString stringWithFormat:@"SELECT filesystem.* FROM filesystem WHERE file_id = %d",
                          (int)fileId];
-        NSArray * res = [db executeQuery:sql];
+        NSArray * res = [self.db executeQuery:sql];
         
         if (![res count])
         {
@@ -719,7 +726,7 @@ basePath;
         
         // delete from database
         NSString * sql = [NSString stringWithFormat:@"DELETE FROM filesystem WHERE file_id = %d", (int)fileId];
-        [db exec:sql];
+        [self.db exec:sql];
         
         // @todo - affected rows???
         
@@ -757,7 +764,7 @@ basePath;
     (SELECT Count(filesystem.file_id) FROM filesystem) AS total_files,\
     (SELECT SUM(filesystem.filesize) FROM filesystem) AS total_filesize";
     
-    NSArray * res = [db executeQuery:sql];
+    NSArray * res = [self.db executeQuery:sql];
     
     if (![res count]) return nil;
     
@@ -779,7 +786,7 @@ basePath;
 
 - (BOOL)initFS:(NSError**)error {
     
-    if (!db) return NO;
+    if (!self.db) return NO;
     
     // find the next dir to write in
     
@@ -803,12 +810,12 @@ basePath;
 
 - (void)initCurrentDirAndCounters {
     
-    currentDir = nil;
-    filesCountInCurrentDir = 0;
+    self.currentDir = nil;
+    self.filesCountInCurrentDir = 0;
     
     // fetch the last file's dir hash
     NSString * sql = [NSString stringWithFormat:@"SELECT dir_hash FROM filesystem ORDER BY file_id DESC LIMIT 1"];
-    NSArray * res = [db executeQuery:sql];
+    NSArray * res = [self.db executeQuery:sql];
     
     NSString* currentHash = nil;
     NSInteger currentCount = 0;
@@ -828,7 +835,7 @@ basePath;
             // check if we need to get a new hash if filecount will pass the limit
             sql = [NSString stringWithFormat:@"SELECT Count(filesystem.file_id) AS counted FROM filesystem WHERE dir_hash = %@",
                    [currentHash sqlString]];
-            res = [db executeQuery:sql];
+            res = [self.db executeQuery:sql];
             
             if ([res count])
             {
@@ -854,10 +861,10 @@ basePath;
         currentHash = [self randomHash];
     }
     
-    currentDir = currentHash;
-    filesCountInCurrentDir = currentCount;
+    self.currentDir = currentHash;
+    self.filesCountInCurrentDir = currentCount;
     
-    LogDebug(@"Current dir: %@ (%d)", currentDir, (int)filesCountInCurrentDir);
+    LogDebug(@"Current dir: %@ (%d)", self.currentDir, (int)self.filesCountInCurrentDir);
 }
 
 - (NSString *)randomHash {

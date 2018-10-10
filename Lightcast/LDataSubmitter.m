@@ -20,29 +20,24 @@ NSInteger const kLDataSubmitterDefaultSessionKeyLength = 50;
 NSString *const kLDataSubmitterSessionKeyPostKey = @"session_key";
 NSString *const kLDataSubmitterFilesGroupPostKey = @"file_groups";
 
-@implementation LDataSubmitter {
-    
-    NSMutableDictionary *_files;
-    NSMutableDictionary *_properties;
-    
-    dispatch_queue_t _sendQueue;
-    
-    NSInteger _activeSessions;
-    NSObject *_activeSessionsLock;
-    
-    BOOL _cancelFlag;
-}
+@interface LDataSubmitter()
 
-@synthesize
-remoteUrl,
-files=_files,
-properties=_properties,
-sessionKey,
-state,
-dataSubmitterDelegate,
-connectionTimeout,
-userAgent,
-requestHeaders;
+@property (nonatomic, strong) NSString *sessionKey;
+@property (nonatomic, assign) LDataSubmitterState state;
+
+@property (nonatomic, strong) NSMutableDictionary *files;
+@property (nonatomic, strong) NSMutableDictionary *properties;
+
+@property (nonatomic, strong) dispatch_queue_t sendQueue;
+
+@property (nonatomic, assign) NSInteger activeSessions;
+@property (nonatomic, strong) NSObject *activeSessionsLock;
+
+@property (nonatomic, assign) BOOL cancelFlag;
+
+@end
+
+@implementation LDataSubmitter
 
 #pragma mark - Initialization / Finalization
 
@@ -51,7 +46,7 @@ requestHeaders;
     self = [super init];
     if (self)
     {
-        remoteUrl = [url_ copy];
+        self.remoteUrl = [url_ copy];
         
         _files = [[NSMutableDictionary alloc] init];
         _properties = [[NSMutableDictionary alloc] init];
@@ -59,7 +54,7 @@ requestHeaders;
         _activeSessionsLock = [[NSObject alloc] init];
         
         // default timeout
-        connectionTimeout = LUrlDownloaderDefaultTimeout;
+        self.connectionTimeout = LUrlDownloaderDefaultTimeout;
         
         _sendQueue = dispatch_queue_create("com.nimasystems.lightcast.LDataSubmitter", DISPATCH_QUEUE_CONCURRENT);
     }
@@ -75,7 +70,7 @@ requestHeaders;
 {
     [self cancel];
     
-    dataSubmitterDelegate = nil;
+    self.dataSubmitterDelegate = nil;
     
     if (_sendQueue != NULL)
     {
@@ -87,11 +82,11 @@ requestHeaders;
     
     _files = nil;
     _properties = nil;
-    sessionKey = nil;
+    self.sessionKey = nil;
     
-    remoteUrl = nil;
-    userAgent = nil;
-    requestHeaders = nil;
+    self.remoteUrl = nil;
+    self.userAgent = nil;
+    self.requestHeaders = nil;
 }
 
 #pragma mark - Sending
@@ -130,7 +125,7 @@ requestHeaders;
     // start sending
     
     // set the state to working
-    state = LDataSubmitterStateWorking;
+    self.state = LDataSubmitterStateWorking;
     _cancelFlag = NO;
     
     @synchronized(_activeSessionsLock)
@@ -141,7 +136,7 @@ requestHeaders;
     // assign the key
     if (sessionKey_ != self.sessionKey)
     {
-        sessionKey = [sessionKey_ copy];
+        self.sessionKey = [sessionKey_ copy];
     }
     
     // inform the delegate
@@ -157,7 +152,7 @@ requestHeaders;
     NSURL *url_ = [self.remoteUrl copy];
     NSDictionary *files_ = [self.files copy];
     NSDictionary *props_ = [self.properties copy];
-    NSString *sessionKey__ = [sessionKey copy];
+    NSString *sessionKey__ = [self.sessionKey copy];
     
     // pool props
     if (props_ && [props_ count])
@@ -170,7 +165,7 @@ requestHeaders;
         dispatch_async(_sendQueue, ^{
             
             // check if cancelled
-            if (_cancelFlag)
+            if (self.cancelFlag)
             {
                 return;
             }
@@ -220,9 +215,9 @@ requestHeaders;
             }
             @finally
             {
-                @synchronized(_activeSessionsLock)
+                @synchronized(self.activeSessionsLock)
                 {
-                    _activeSessions--;
+                    self.activeSessions--;
                     
                     // check / inform sending end
                     [self checkAndInformOnSendingEnd];
@@ -256,7 +251,7 @@ requestHeaders;
                     dispatch_async(_sendQueue, ^{
                         
                         // check if cancelled
-                        if (_cancelFlag)
+                        if (self.cancelFlag)
                         {
                             return;
                         }
@@ -309,9 +304,9 @@ requestHeaders;
                         }
                         @finally
                         {
-                            @synchronized(_activeSessionsLock)
+                            @synchronized(self.activeSessionsLock)
                             {
-                                _activeSessions--;
+                                self.activeSessions--;
                                 
                                 // check / inform sending end
                                 [self checkAndInformOnSendingEnd];
@@ -344,12 +339,12 @@ requestHeaders;
     // we are in a synchronized lock over _activeSessions here!
     
     lassert(_activeSessions >= 0);
-    lassert(state == LDataSubmitterStateWorking);
+    lassert(self.state == LDataSubmitterStateWorking);
     
     if (_activeSessions <= 0)
     {
         // set the state to finished
-        state = LDataSubmitterStateIdle;
+        self.state = LDataSubmitterStateIdle;
         _activeSessions = 0;
         
         // inform the delegate
@@ -451,7 +446,7 @@ requestHeaders;
         return NO;
     }
     
-    LUrlDownloader *downloader = [[LUrlDownloader alloc] initWithUrl:url downloadTo:nil requestMethod:LUrlDownloadRequestMethodPost timeout:connectionTimeout];
+    LUrlDownloader *downloader = [[LUrlDownloader alloc] initWithUrl:url downloadTo:nil requestMethod:LUrlDownloadRequestMethodPost timeout:self.connectionTimeout];
     
     NSMutableDictionary *pd = [NSMutableDictionary dictionaryWithDictionary:postParams];
     

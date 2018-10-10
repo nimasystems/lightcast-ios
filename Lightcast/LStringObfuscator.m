@@ -42,8 +42,10 @@
         
         // If at end of key data, reset count and
         // set key pointer back to start of key value
-        if (++keyIndex == [key length])
-            keyIndex = 0, keyPtr = keyData;
+        if (++keyIndex == [key length]) {
+            keyIndex = 0;
+            keyPtr = keyData;
+        }
     }
     
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -75,3 +77,4 @@
 }
 
 @end
+

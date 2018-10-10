@@ -59,16 +59,10 @@ typedef enum
     
 } LVirtualFSPluginError;
 
-@interface LVirtualFSPlugin : LPlugin {
-    
-    NSString *basePath;
-    NSString *currentDir;
-    NSInteger filesCountInCurrentDir;
-    
-    LDatabaseManager *db;
-}
+@interface LVirtualFSPlugin : LPlugin
 
 @property (nonatomic, strong, readonly) NSString *basePath;
+
 
 - (LVirtualFile*)appendFileDataToVFSFile:(NSInteger)vfsFileId sourceFile:(NSString*)sourceFilePath createIfMissing:(BOOL)createIfMissing error:(NSError**)error;
 

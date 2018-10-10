@@ -44,23 +44,22 @@ NSInteger const LSQLiteDatabaseAdapterDefaultBusyRetryTimeoutUSleep = 500;
 
 BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
 
-@implementation LSQLiteDatabaseAdapter {
+@interface LSQLiteDatabaseAdapter()
     
-    sqlite3 *_db;
+@property (nonatomic, assign) sqlite3 *db;
     
-    BOOL _isThreadSafe;
-    BOOL _inTransactionalBlock;
+@property (nonatomic, assign) BOOL isThreadSafe;
+@property (nonatomic, assign) BOOL inTransactionalBlock;
     
-    //id _attachedDatabasesLock;
-    NSMutableArray *_attachedDatabases;
-    
-    //NSLock *_transactionLock;
-}
+@property (nonatomic, strong) NSMutableArray *attachedDatabases;
 
-@synthesize
-busyRetryTimeout,
-dataSource,
-threadingMode;
+@property (nonatomic, strong) NSString *dataSource;
+
+@property (nonatomic, assign) LSQLiteDatabaseAdapterThreadingMode threadingMode;
+
+@end
+
+@implementation LSQLiteDatabaseAdapter
 
 #pragma mark - Initialization / Finalization
 
@@ -85,9 +84,9 @@ threadingMode;
         
         //_transactionLock = [[NSLock alloc] init];
         
-        busyRetryTimeout = LSQLiteDatabaseAdapterDefaultBusyRetryTimeout;
+        self.busyRetryTimeout = LSQLiteDatabaseAdapterDefaultBusyRetryTimeout;
         
-        dataSource = [aConnectionString copy];
+        self.dataSource = [aConnectionString copy];
     }
     return self;
 }
@@ -99,7 +98,7 @@ threadingMode;
     [self close];
     
     //L_RELEASE(_transactionLock);
-    dataSource = nil;
+    self.dataSource = nil;
     _attachedDatabases = nil;
     //L_RELEASE(_attachedDatabasesLock);
 }
@@ -108,7 +107,7 @@ threadingMode;
 
 - (NSString*)connectionString
 {
-    return dataSource;
+    return self.dataSource;
 }
 
 - (sqlite3*)sqliteBackend
@@ -126,7 +125,7 @@ threadingMode;
 {
     __block BOOL isConnected_ = NO;
     
-    void (^b)() = ^() { isConnected_ = [self _isConnected]; };
+    void (^b)(void) = ^() { isConnected_ = [self _isConnected]; };
     
     if (_isThreadSafe || _inTransactionalBlock) {
         b();
@@ -147,7 +146,7 @@ threadingMode;
 {
     __block NSInteger lastInsertId = 0;
     
-    void (^b)() = ^() {
+    void (^b)(void) = ^() {
         if (![self _isConnected])
         {
             if (![self _open:nil])
@@ -157,7 +156,7 @@ threadingMode;
             }
         }
         
-        lastInsertId = (NSUInteger)sqlite3_last_insert_rowid(_db);
+        lastInsertId = (NSUInteger)sqlite3_last_insert_rowid(self.db);
     };
     
     if (_isThreadSafe || _inTransactionalBlock) {
@@ -253,12 +252,12 @@ threadingMode;
             return;
         }
         
-        if (!_attachedDatabases)
+        if (!self.attachedDatabases)
         {
-            _attachedDatabases = [[NSMutableArray alloc] init];
+            self.attachedDatabases = [[NSMutableArray alloc] init];
         }
         
-        [_attachedDatabases addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+        [self.attachedDatabases addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                                        alias, @"alias",
                                        connectionString, @"connectionString"
                                        , nil]];
@@ -376,7 +375,7 @@ threadingMode;
     
     dispatch_sync(self.adapterDispatchQueue, ^{
         
-        if (!_attachedDatabases || ![_attachedDatabases count])
+        if (!self.attachedDatabases || ![self.attachedDatabases count])
         {
             ret = YES;
             return;
@@ -385,7 +384,7 @@ threadingMode;
         ret = NO;
         
         // make a copy as the original one will mutate
-        NSMutableArray *cp = [_attachedDatabases copy];
+        NSMutableArray *cp = [self.attachedDatabases copy];
         
         for(NSDictionary *attDb in cp)
         {
@@ -419,10 +418,10 @@ threadingMode;
         return NO;
     }
     
-    lassert(dataSource);
+    lassert(self.dataSource);
     lassert(aThreadingMode);
     
-    threadingMode = aThreadingMode;
+    self.threadingMode = aThreadingMode;
     
     int threadingMode_ = 0;
     
@@ -443,7 +442,7 @@ threadingMode;
         // default will be Serialized
         lassert(false);
         threadingMode_ = SQLITE_OPEN_FULLMUTEX;
-        threadingMode = LSQLiteDatabaseAdapterThreadingModeSerialized;
+        self.threadingMode = LSQLiteDatabaseAdapterThreadingModeSerialized;
     }
     
     int params = SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | threadingMode_ | (LSQLiteDatabaseAdapterUseOpenSharedCache ?
@@ -470,7 +469,7 @@ threadingMode;
      }
      }*/
     
-    int openRes = sqlite3_open_v2([dataSource fileSystemRepresentation], &_db, params, NULL);
+    int openRes = sqlite3_open_v2([self.dataSource fileSystemRepresentation], &_db, params, NULL);
     
     if (openRes != SQLITE_OK)
     {
@@ -513,7 +512,7 @@ threadingMode;
     }
     
     LogInfo(@"SQLite database opened\n--------------\nDataSource: %@\nSQLite Version: %s\nThreading mode: %@\nOpen Share Cache: %@\n--------------",
-            dataSource,
+            self.dataSource,
             SQLITE_VERSION,
             thModeStr,
             (LSQLiteDatabaseAdapterUseOpenSharedCache ? @"YES" : @"NO"));
@@ -568,7 +567,7 @@ threadingMode;
         return;
     }
     
-    NSInteger numOfRetries = busyRetryTimeout;
+    NSInteger numOfRetries = self.busyRetryTimeout;
     int rc;
     
     do
@@ -602,7 +601,7 @@ threadingMode;
 {
     __block NSArray *ret = nil;
     
-    void (^b)() = ^() {
+    void (^b)(void) = ^() {
         ret = [self _executeQuery:sql];
     };
     
@@ -756,7 +755,7 @@ threadingMode;
     __block NSError *err = nil;
     __block BOOL ret = NO;
     
-    void (^b)() = ^() {
+    void (^b)(void) = ^() {
         ret = [self _executeStatements:statements error:&err];
     };
     
@@ -794,8 +793,8 @@ threadingMode;
     
     __block BOOL ret = NO;
     
-    void (^b)() = ^() {
-        _inTransactionalBlock = YES;
+    void (^b)(void) = ^() {
+        self.inTransactionalBlock = YES;
         
         @try {
             ret = [self _beginTransaction:&err];
@@ -832,7 +831,7 @@ threadingMode;
             }
         }
         @finally {
-            _inTransactionalBlock = NO;
+            self.inTransactionalBlock = NO;
         }
     };
     
@@ -966,7 +965,7 @@ threadingMode;
 {
     __block BOOL ret = NO;
     
-    void (^b)() = ^() {
+    void (^b)(void) = ^() {
         ret = [self _executeStatement:sql];
     };
     
@@ -990,7 +989,7 @@ threadingMode;
     __block NSError *err = nil;
     __block BOOL ret = NO;
     
-    void (^b)() = ^() {
+    void (^b)(void) = ^() {
         ret = [self _executeStatement:&err sql:sql];
     };
     
@@ -1201,7 +1200,7 @@ threadingMode;
 {
     __block BOOL ret = NO;
     
-    void (^b)() = ^() {
+    void (^b)(void) = ^() {
         ret = [self _tableExists:tableName];
     };
     
@@ -1264,7 +1263,7 @@ threadingMode;
         *error = nil;
     }
     
-    NSInteger numOfRetries = busyRetryTimeout;
+    NSInteger numOfRetries = self.busyRetryTimeout;
     int rc = 0;
     
     do
@@ -1320,7 +1319,7 @@ threadingMode;
         *error = nil;
     }
     
-    NSInteger numOfRetries = busyRetryTimeout;
+    NSInteger numOfRetries = self.busyRetryTimeout;
     int rc;
     
     do
@@ -1421,7 +1420,7 @@ threadingMode;
 {
     lassert(stmt != NULL);
     
-    NSInteger numOfRetries = busyRetryTimeout;
+    NSInteger numOfRetries = self.busyRetryTimeout;
     int rc;
     
     do

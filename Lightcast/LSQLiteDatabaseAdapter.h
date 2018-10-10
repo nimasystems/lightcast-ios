@@ -61,13 +61,13 @@ typedef enum
 
 @interface LSQLiteDatabaseAdapter : LDatabaseAdapter
 
-@property (readonly) LSQLiteDatabaseAdapterThreadingMode threadingMode;
-@property (readonly, getter = getErrorMessage) NSString *errorMessage;
-@property (readonly, getter = getErrorCode) NSInteger errorCode;
+@property (readonly, nonatomic, assign) LSQLiteDatabaseAdapterThreadingMode threadingMode;
+@property (readonly, nonatomic, strong, getter = getErrorMessage) NSString *errorMessage;
+@property (readonly, nonatomic, assign, getter = getErrorCode) NSInteger errorCode;
 
-@property (readonly, getter = getIsConnected) BOOL isConnected;
-@property (readonly, getter = getDatabaseType) NSString *databaseType;
-@property (readonly, getter = getDatabaseVersion) NSString *databaseVersion;
+@property (readonly, nonatomic, assign, getter = getIsConnected) BOOL isConnected;
+@property (readonly, nonatomic, strong, getter = getDatabaseType) NSString *databaseType;
+@property (readonly, nonatomic, strong, getter = getDatabaseVersion) NSString *databaseVersion;
 
 @property NSInteger busyRetryTimeout;
 @property (nonatomic, strong, readonly) NSString *dataSource;
