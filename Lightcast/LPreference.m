@@ -155,47 +155,27 @@ value;
 
 - (BOOL)boolValue
 {
-    NSNumber *n = [self convertedFromPossibleNumericalValueToNumericalValue:value];
-    
-    BOOL v = n ? [n boolValue] : NO;
-    
-    return v;
+    return [[self convertedFromPossibleNumericalValueToNumericalValue:value] boolValue];
 }
 
 - (NSInteger)intValue
 {
-    NSNumber *n = [self convertedFromPossibleNumericalValueToNumericalValue:value];
-    
-    NSInteger v = n ? [n intValue] : 0;
-    
-    return v;
+    return [[self convertedFromPossibleNumericalValueToNumericalValue:value] intValue];
 }
 
 - (double)doubleValue
 {
-    NSNumber *n = [self convertedFromPossibleNumericalValueToNumericalValue:value];
-    
-    double v = n ? [n doubleValue] : 0;
-    
-    return v;
+    return [[self convertedFromPossibleNumericalValueToNumericalValue:value] doubleValue];
 }
 
 - (float)floatValue
 {
-    NSNumber *n = [self convertedFromPossibleNumericalValueToNumericalValue:value];
-    
-    double v = n ? [n floatValue] : 0;
-    
-    return v;
+    return [[self convertedFromPossibleNumericalValueToNumericalValue:value] floatValue];
 }
 
 - (long long)longLongValue
 {
-    NSNumber *n = [self convertedFromPossibleNumericalValueToNumericalValue:value];
-    
-    long long v = n ? [n longLongValue] : 0;
-    
-    return v;
+    return [[self convertedFromPossibleNumericalValueToNumericalValue:value] longValue];
 }
 
 - (NSString*)stringValue

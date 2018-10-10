@@ -46,7 +46,7 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
 
 @interface LSQLiteDatabaseAdapter()
     
-@property (nonatomic, assign) sqlite3 *db;
+@property (nonatomic) sqlite3 *db;
     
 @property (nonatomic, assign) BOOL isThreadSafe;
 @property (nonatomic, assign) BOOL inTransactionalBlock;
@@ -112,12 +112,12 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
 
 - (sqlite3*)sqliteBackend
 {
-    return _db;
+    return self.db;
 }
 
 - (BOOL)_isConnected
 {
-    BOOL  isConnected_ = (_db ? YES : NO);
+    BOOL  isConnected_ = (self.db ? YES : NO);
     return isConnected_;
 }
 
@@ -195,12 +195,12 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
 
 - (NSInteger)getErrorCode
 {
-    return sqlite3_errcode(_db);
+    return sqlite3_errcode(self.db);
 }
 
 - (NSString*)getErrorMessage
 {
-    return [NSString stringWithFormat:@"%s", sqlite3_errmsg(_db)];
+    return [NSString stringWithFormat:@"%s", sqlite3_errmsg(self.db)];
 }
 
 - (NSString*)getDatabaseVersion

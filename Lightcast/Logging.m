@@ -83,7 +83,7 @@ void openSystemLog(NSInteger maxLogFileSize, NSString *path) {
     {
         NSNumber * fileSize = [attrs objectForKey:NSFileSize];
         
-        if (fileSize)
+        if ([fileSize intValue])
         {
             if ([fileSize intValue] > maxLogFileSize * 1024 * 1024)
             {

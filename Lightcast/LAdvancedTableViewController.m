@@ -178,7 +178,7 @@
     // set row height from options
     NSNumber * rowHeight = [self.cellOptions objectForKey:LC_ROW_HEIGHT_IN_OPTIONS_KEY];
     
-    if (rowHeight)
+    if (rowHeight != nil)
     {
         if (![rowHeight isKindOfClass:[NSNull class]])
         {
@@ -192,7 +192,8 @@
     
     // set the cell separator style if any
     NSNumber * separatorStyle = [self.cellOptions objectForKey:LC_CELL_SEPARATOR_STYLE_KEY];
-    if (separatorStyle)
+    
+    if (separatorStyle != nil)
     {
         if ([separatorStyle intValue] > -1 && [separatorStyle intValue] < 3)
         {
