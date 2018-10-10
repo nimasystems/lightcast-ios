@@ -44,16 +44,15 @@
 
 NSString *const lnDatabaseManagerInitialized = @"notifications.DatabaseManagerInitialized";
 
-@interface LDatabaseManager(Private) 
+@interface LDatabaseManager()
 
-- (NSString *)copyDatabaseToDocuments:(NSString *)dbInResourcePath error:(NSError**)error;
+@property (nonatomic, strong) LDatabaseAdapter *mainAdapter;
+@property (nonatomic, strong) NSMutableDictionary *adapters;
+@property (nonatomic, strong) NSMutableArray *appDatabaseInstances;
 
 @end;
 
 @implementation LDatabaseManager
-
-@synthesize
-mainAdapter=_mainAdapter;
 
 #pragma mark - Initialization / Finalization
 

@@ -413,7 +413,7 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
         *error = nil;
     }
     
-    if (_db)
+    if (self.db)
     {
         return NO;
     }
@@ -449,7 +449,7 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
                                                                                 SQLITE_OPEN_SHAREDCACHE : SQLITE_OPEN_PRIVATECACHE
                                                                                 );
     
-    _db = nil;
+    self.db = nil;
     
     // deprecated as of iOS 5
     /*if (LSQLiteDatabaseAdapterUseOpenSharedCache)
@@ -469,11 +469,15 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
      }
      }*/
     
-    int openRes = sqlite3_open_v2([self.dataSource fileSystemRepresentation], &_db, params, NULL);
+    sqlite3 *dbd = nil;
+    
+    int openRes = sqlite3_open_v2([self.dataSource fileSystemRepresentation], &dbd, params, NULL);
+    
+    self.db = dbd;
     
     if (openRes != SQLITE_OK)
     {
-        NSString *msg = [NSString stringWithFormat:LightcastLocalizedString(@"SQLite Opening Error: %s"), sqlite3_errmsg(_db)];
+        NSString *msg = [NSString stringWithFormat:LightcastLocalizedString(@"SQLite Opening Error: %s"), sqlite3_errmsg(self.db)];
         
         if (error != NULL) {
             *error = [NSError errorWithDomainAndDescription:LSQLiteDatabaseAdapterErrorDomain
@@ -486,7 +490,7 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
     int actualThreadingMode = sqlite3_threadsafe();
     
     // install busy handler
-    sqlite3_busy_timeout(_db, LSQLiteDatabaseAdapterDefaultBusyRetryTimeoutUSleep);
+    sqlite3_busy_timeout(self.db, LSQLiteDatabaseAdapterDefaultBusyRetryTimeoutUSleep);
     
     NSString *thModeStr = nil;
     

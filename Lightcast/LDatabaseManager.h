@@ -57,13 +57,7 @@
 #define LERR_DB_CANT_INIT_ADAPTER 201
 #define LERR_DB_CANT_INIT_APP_DATABASE_INSTANCE 301
 
-@interface LDatabaseManager : LSystemObject {
-
-	LDatabaseAdapter *_mainAdapter;
-	NSMutableDictionary *_adapters;
-	
-	NSMutableArray *_appDatabaseInstances;
-}
+@interface LDatabaseManager : LSystemObject
 
 @property (nonatomic, strong, readonly) LDatabaseAdapter *mainAdapter;
 
