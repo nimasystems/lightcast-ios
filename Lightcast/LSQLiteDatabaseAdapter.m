@@ -44,11 +44,10 @@ NSInteger const LSQLiteDatabaseAdapterDefaultBusyRetryTimeoutUSleep = 500;
 
 BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
 
-@interface LSQLiteDatabaseAdapter()
-    
-@property (nonatomic) sqlite3 *db;
-    
-@property (nonatomic, assign) BOOL isThreadSafe;
+@interface LSQLiteDatabaseAdapter() {
+    sqlite3 *_db;
+}
+
 @property (nonatomic, assign) BOOL inTransactionalBlock;
     
 @property (nonatomic, strong) NSMutableArray *attachedDatabases;
@@ -112,12 +111,12 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
 
 - (sqlite3*)sqliteBackend
 {
-    return self.db;
+    return _db;
 }
 
 - (BOOL)_isConnected
 {
-    BOOL  isConnected_ = (self.db ? YES : NO);
+    BOOL  isConnected_ = (_db ? YES : NO);
     return isConnected_;
 }
 
@@ -145,6 +144,7 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
 - (NSUInteger)lastInsertId
 {
     __block NSInteger lastInsertId = 0;
+    __block sqlite3 *dba = _db;
     
     void (^b)(void) = ^() {
         if (![self _isConnected])
@@ -156,7 +156,7 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
             }
         }
         
-        lastInsertId = (NSUInteger)sqlite3_last_insert_rowid(self.db);
+        lastInsertId = dba ? (NSUInteger)sqlite3_last_insert_rowid(dba) : 0;
     };
     
     if (_isThreadSafe || _inTransactionalBlock) {
@@ -195,12 +195,12 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
 
 - (NSInteger)getErrorCode
 {
-    return sqlite3_errcode(self.db);
+    return sqlite3_errcode(_db);
 }
 
 - (NSString*)getErrorMessage
 {
-    return [NSString stringWithFormat:@"%s", sqlite3_errmsg(self.db)];
+    return [NSString stringWithFormat:@"%s", sqlite3_errmsg(_db)];
 }
 
 - (NSString*)getDatabaseVersion
@@ -413,7 +413,7 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
         *error = nil;
     }
     
-    if (self.db)
+    if (_db)
     {
         return NO;
     }
@@ -449,7 +449,7 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
                                                                                 SQLITE_OPEN_SHAREDCACHE : SQLITE_OPEN_PRIVATECACHE
                                                                                 );
     
-    self.db = nil;
+    _db = nil;
     
     // deprecated as of iOS 5
     /*if (LSQLiteDatabaseAdapterUseOpenSharedCache)
@@ -473,11 +473,11 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
     
     int openRes = sqlite3_open_v2([self.dataSource fileSystemRepresentation], &dbd, params, NULL);
     
-    self.db = dbd;
+    _db = dbd;
     
     if (openRes != SQLITE_OK)
     {
-        NSString *msg = [NSString stringWithFormat:LightcastLocalizedString(@"SQLite Opening Error: %s"), sqlite3_errmsg(self.db)];
+        NSString *msg = [NSString stringWithFormat:LightcastLocalizedString(@"SQLite Opening Error: %s"), sqlite3_errmsg(_db)];
         
         if (error != NULL) {
             *error = [NSError errorWithDomainAndDescription:LSQLiteDatabaseAdapterErrorDomain
@@ -490,7 +490,7 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
     int actualThreadingMode = sqlite3_threadsafe();
     
     // install busy handler
-    sqlite3_busy_timeout(self.db, LSQLiteDatabaseAdapterDefaultBusyRetryTimeoutUSleep);
+    sqlite3_busy_timeout(_db, LSQLiteDatabaseAdapterDefaultBusyRetryTimeoutUSleep);
     
     NSString *thModeStr = nil;
     
@@ -650,8 +650,15 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
     
     NSError *err = nil;
     
-    if (![self _prepareSql:sql inStatament:(&sqlStmt) error:&err])
+    BOOL success = [self _prepareSql:sql inStatament:(&sqlStmt) error:&err];
+    
+    if (!success)
     {
+        if (sqlStmt != NULL) {
+            sqlite3_finalize(sqlStmt);
+            sqlStmt = NULL;
+        }
+        
         LogError(@"Could not prepare SQL query: %@\n\n%@\n\n", err, sql);
         
         dispatchSuccess = NO;
@@ -686,8 +693,10 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
     }
     @finally
     {
-        sqlite3_finalize(sqlStmt);
-        sqlStmt = NULL;
+        if (sqlStmt != NULL) {
+            sqlite3_finalize(sqlStmt);
+            sqlStmt = NULL;
+        }
     }
     
     dispatchSuccess = YES;
@@ -725,11 +734,11 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
     dispatchErr = nil;
     dispatchSuccess = [self _prepareSql:sql inStatament:(&sqlStmt) error:&dispatchErr];
     
-    if (dispatchSuccess)
+    lassert(sqlStmt != NULL);
+    
+    @try
     {
-        lassert(sqlStmt != NULL);
-        
-        @try
+        if (dispatchSuccess)
         {
             dispatchErr = nil;
             dispatchSuccess = [self _executeStatement:sqlStmt error:&dispatchErr];
@@ -739,8 +748,10 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
                 return YES;
             }
         }
-        @finally
-        {
+    }
+    @finally
+    {
+        if (sqlStmt != NULL) {
             sqlite3_finalize(sqlStmt);
             sqlStmt = NULL;
         }
@@ -1270,16 +1281,28 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
     NSInteger numOfRetries = self.busyRetryTimeout;
     int rc = 0;
     
+    const char *utf8Str = [sql UTF8String];
+    sqlite3_stmt *stmtRet = NULL;
+    
     do
     {
-        rc = sqlite3_prepare_v2(_db, [sql UTF8String], -1, stmt, NULL);
+        rc = sqlite3_prepare_v2(_db, utf8Str, -1, &stmtRet, NULL);
         
         if (rc == SQLITE_OK)
         {
+            if (stmt != NULL) {
+                *stmt = stmtRet;
+            }
+            
             return YES;
         }
         else if (rc == SQLITE_BUSY || rc == SQLITE_IOERR_BLOCKED)
         {
+            if (stmtRet != NULL) {
+                sqlite3_finalize(stmtRet);
+                stmtRet = NULL;
+            }
+            
             LogDebug(@"sqlite BUSY (prepareSql), retry: %d", (int)numOfRetries);
             numOfRetries--;
             usleep(LSQLiteDatabaseAdapterDefaultBusyRetryTimeoutUSleep);
@@ -1287,6 +1310,11 @@ BOOL const LSQLiteDatabaseAdapterUseOpenSharedCache = NO;
         }
         else
         {
+            if (stmtRet != NULL) {
+                sqlite3_finalize(stmtRet);
+                stmtRet = NULL;
+            }
+            
             if (error != NULL)
             {
                 NSString *errorMessage = [NSString stringWithFormat:LightcastLocalizedString(@"Generic SQLite error (%d): %@"), (int)self.errorCode, self.errorMessage];

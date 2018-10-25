@@ -69,6 +69,8 @@ typedef enum
 @property (readonly, nonatomic, strong, getter = getDatabaseType) NSString *databaseType;
 @property (readonly, nonatomic, strong, getter = getDatabaseVersion) NSString *databaseVersion;
 
+@property (nonatomic, assign) BOOL isThreadSafe;
+
 @property NSInteger busyRetryTimeout;
 @property (nonatomic, strong, readonly) NSString *dataSource;
 
